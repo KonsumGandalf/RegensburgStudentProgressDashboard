@@ -4,6 +4,10 @@ const {
 
 module.exports = {
 	rules: {
-		'scope-enum': async (ctx) => [2, 'always', ['uml', 'base-application', 'devops']],
+		'scope-enum': async (ctx) => [
+			2,
+			'always',
+			['uml', 'base-application', 'devops'],
+		],
 	},
 };
