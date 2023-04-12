@@ -1,0 +1,66 @@
+@startuml
+
+
+actor Student
+actor Professor
+
+node Tutors {
+}
+Tutors <-- Professor: uploads lessons
+Tutors <-- Student: studies materials
+
+
+node Elo {
+    component MoodleApi
+}
+Student --> Elo : submits assignment
+Professor --> Elo : grades assignment
+
+node "Web Browser" as browser {
+    component RspdClient as client
+   }
+Student --> browser : analyses progress
+Professor --> browser : checks student progress
+
+node Github {
+    component Actions
+}
+
+node Replit
+Student --> Replit : codes
+Replit --> Github
+
+
+
+node RspdServer as server {
+    component ApiGateway
+
+    Actions -(0- ApiGateway : shares grade
+    client -(0- ApiGateway
+    MoodleApi -0)- ApiGateway : requests grade
+
+    package Grade {
+        component GradeService
+        database GradeDB
+        GradeService --> GradeDB
+        ApiGateway --> GradeService
+    }
+
+    package Account {
+        component AccountService
+        database AccountDB
+        AccountService --> AccountDB
+        ApiGateway --> AccountService
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@enduml

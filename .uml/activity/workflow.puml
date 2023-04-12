@@ -1,0 +1,52 @@
+@startuml
+|rspd|
+start
+note left: user is signed in
+note left: wants to improve his\nprogress in digital skills
+: checks his current progress;
+repeat
+: clicks on unsolved challenge;
+label start1;
+if (viewed lesson?) then (no)
+    :uses cross link to tutors;
+    |tutors|
+    :watches videos and \nother sources;
+else (yes)
+endif
+|rspd|
+if (code challenge?) then (yes)
+    if (started challenge) then (no)
+        :uses cross link to tutors;
+        |replit|
+        :creates replit project;
+        repeat
+        :modifies code;
+        |github|
+            :tests code;
+                fork
+                    :send feedback to replit;
+                fork again
+                    |github|
+                    :send feedback to rspd;
+                end fork
+        |github|
+        repeat while (wants to continue coding?) is (yes)
+        -> no;
+    else (yes)
+    endif
+else (no)
+|elo|
+:works on no github or\n replit related challenge;
+:send data to moodle;
+endif
+|rspd|
+:analyses feedback;
+:goes to community page and compares himself to other students;
+repeat while(is motivated again?) is (yes)
+-> no;
+:logout;
+
+end
+@enduml
+
+

@@ -1,0 +1,49 @@
+@startuml
+
+actor User as u
+actor Student as s
+actor Instructor as i
+actor Professor as p
+i <|-- p
+u <|-- i
+u <|-- s
+
+package assignmentService {
+    usecase "create course" as A1
+    usecase "create assignment" as A2
+    usecase "linking account" as A3
+    usecase "enroll in course" as A4
+    usecase "enroll in course as instructor" as A5
+    usecase "submit assignment" as A6
+}
+(A5) .> (A4): extends
+
+u --> A3
+
+p --> A1
+p --> A2
+
+i --> A5
+
+s --> A5
+s --> A6
+
+
+package moodle {
+    usecase "grade assignment" as M1
+}
+(moodle) .> (assignmentService) : extends
+
+i --> M1
+
+package github {
+    usecase "auto grade" as G1
+    usecase "comment on assignment" as G2
+}
+(github) .> (assignmentService) : extends
+
+i --> G2
+
+
+
+@enduml
