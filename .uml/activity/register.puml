@@ -1,0 +1,51 @@
+@startuml
+|User|
+start
+: wants to register;
+note left: User is not already registered
+    |System|
+        : show register form;
+    |User|
+        fork
+            : input of user data;
+        fork again
+        : connect github;
+            |System|
+                : send data to github;
+            |Github|
+                : answer request;
+
+    |User|
+        fork again
+        : connect elo;
+            |System|
+                : send data to elo;
+            |Elo|
+                : answer request;
+    |User|
+            fork again
+            : connect replit;
+                |System|
+                    : send data to replit;
+                |Replit|
+                    : answer request;
+
+    |User|
+    fork end
+
+
+    |System|
+    if (Authorization valid?) then (yes);
+        : create account;
+        : automatic login of user;
+    |User|
+        : view home-page;
+    else (no)
+    |User|
+    : display error;
+    stop;
+endif
+end
+
+
+@enduml
