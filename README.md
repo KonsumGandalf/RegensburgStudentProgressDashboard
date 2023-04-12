@@ -111,8 +111,6 @@ nx serve frontend
 | --------- | ---------------------------- | --------------------------- |
 | `backend` | [apps/backend](apps/backend) | The backend of the platform |
 
-|
-
 # Domains
 
 ## Grade
