@@ -11,9 +11,10 @@ module.exports = {
                 'uml',
                 'base-application',
                 'devops',
+                'grade-backend-challenge',
                 'grade-backend-github',
                 'shared-backend-test-util',
-                'shared-backend-utils'
+                'shared-backend-utils',
             ],
         ],
     },
