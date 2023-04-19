@@ -7,7 +7,13 @@ module.exports = {
         'scope-enum': async (ctx) => [
             2,
             'always',
-            ['uml', 'base-application', 'devops', 'grade-backend-github', 'shared-backend-test-util'],
+            [
+                'uml',
+                'base-application',
+                'devops',
+                'grade-backend-github',
+                'shared-backend-test-util',
+            ],
         ],
     },
 };
