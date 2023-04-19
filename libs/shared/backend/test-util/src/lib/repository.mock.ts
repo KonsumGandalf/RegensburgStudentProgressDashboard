@@ -2,7 +2,7 @@ import { BaseEntity } from '@rspd/shared/backend/utils';
 import { filter, find } from 'lodash';
 import { Repository } from 'typeorm';
 import { DeepPartial } from 'typeorm/common/DeepPartial';
-import { ObjectID } from 'typeorm/driver/mongodb/typings';
+import { ObjectId } from 'typeorm/driver/mongodb/typings';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
 import { FindOneOptions } from 'typeorm/find-options/FindOneOptions';
 import { FindOptionsWhere } from 'typeorm/find-options/FindOptionsWhere';
@@ -18,6 +18,7 @@ class MockEntity extends BaseEntity {
         this.updatedAt = new Date();
     }
 }
+
 export class RepositoryMock<Entity extends MockEntity = MockEntity>
     implements
         Pick<
@@ -87,16 +88,15 @@ export class RepositoryMock<Entity extends MockEntity = MockEntity>
             | number[]
             | Date
             | Date[]
-            | ObjectID
-            | ObjectID[]
+            | ObjectId
+            | ObjectId[]
             | FindOptionsWhere<Entity>
     ): Promise<DeleteResult> {
         const entitiesToDelete = this.entities.filter((entity: Entity) => {
             if (
                 typeof criteria === 'string' ||
                 typeof criteria === 'number' ||
-                criteria instanceof Date ||
-                criteria instanceof ObjectID
+                criteria instanceof Date
             ) {
                 return entity.id === criteria.toString();
             } else if (Array.isArray(criteria)) {
