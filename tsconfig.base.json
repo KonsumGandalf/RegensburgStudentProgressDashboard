@@ -15,11 +15,11 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@rspd/grade/backend/challenge": [
+                "libs/grade/backend/challenge/src/index.ts"
+            ],
             "@rspd/grade/backend/github": [
                 "libs/grade/backend/github/src/index.ts"
-            ],
-            "@rspd/grade/backend/grade": [
-                "libs/grade/backend/grade/src/index.ts"
             ],
             "@rspd/shared/backend/test-util": [
                 "libs/shared/backend/test-util/src/index.ts"

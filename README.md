@@ -59,8 +59,8 @@ to improve student engagement and performance understanding.
 
 The main objectives of this project are:
 
-- To explore the theoretical foundations of gamification in education
-- To design and develop a complementary learning platform that incorporates gamification elements and mechanics
+-   To explore the theoretical foundations of gamification in education
+-   To design and develop a complementary learning platform that incorporates gamification elements and mechanics
 
 # Understand this workspace
 
@@ -117,18 +117,18 @@ nx serve frontend
 
 ### Backend
 
-| Name                          | Path                                                   | Description                                                |
-| ----------------------------- | ------------------------------------------------------ | ---------------------------------------------------------- |
-| `grade-backend-github`        | [libs/grade/backend/github](libs/grade/backend/github) | Defines an api for github to report grades                 |
-| `grade-backend-common-models` | [libs/shared/common/models](libs/shared/common/models) | A collection of common models used inside the grade domain |
+| Name                      | Path                                                         | Description                               |
+| ------------------------- | ------------------------------------------------------------ | ----------------------------------------- |
+| `grade-backend-challenge` | [libs/grade/backend/challenge](libs/grade/backend/challenge) | Challenge library for tutors and students |
 
 ## Shared
 
 ### Backend
 
-| Name                     | Path                                                 | Description                                        |
-| ------------------------ | ---------------------------------------------------- | -------------------------------------------------- |
-| `shared-backend-swagger` | [libs/shared/nest/swagger](libs/shared/nest/swagger) | Helps to integrate Swagger into the NestJS project |
+| Name                        | Path                                                           | Description                                               |
+| --------------------------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+| `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
+| `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
 
 <!-- CONTACT -->
 
@@ -144,8 +144,8 @@ Project Link: [Regensburg Student Progress Dashboard](https://github.com/users/K
 
 ## Resources
 
-- Nx Workspace: https://nx.dev/getting-started/intro
-- NestJS: https://nestjs.com/
+-   Nx Workspace: https://nx.dev/getting-started/intro
+-   NestJS: https://nestjs.com/
 
 <!-- ACKNOWLEDGMENTS -->
 

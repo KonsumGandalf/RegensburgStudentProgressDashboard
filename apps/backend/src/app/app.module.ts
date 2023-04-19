@@ -2,7 +2,7 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_PIPE, RouterModule } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RspdGradeModule } from '@rspd/grade/backend/grade';
+import { RspdGradeModule } from '@rspd/grade/backend/challenge';
 
 import { AppConfig } from './config/models/app-config.class';
 import { ConfigUtils } from './config/util/config.utils';
@@ -42,13 +42,7 @@ import { ConfigUtils } from './config/util/config.utils';
                 module: RspdGradeModule,
             },
         ]),
-
-        RspdGradeModule.register({
-            imports: [RspdGradeModule],
-            assignments: {
-                // [AssignmentType.GITHUB]: GithubAssignmentService
-            },
-        }),
+        RspdGradeModule,
     ],
     providers: [
         {
