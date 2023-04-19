@@ -13,6 +13,7 @@ module.exports = {
                 'devops',
                 'grade-backend-github',
                 'shared-backend-test-util',
+                'shared-backend-utils'
             ],
         ],
     },
