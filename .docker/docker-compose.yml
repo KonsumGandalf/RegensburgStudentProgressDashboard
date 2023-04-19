@@ -1,0 +1,22 @@
+version: '3.8'
+
+name: rspd-development
+
+services:
+    postgres:
+        image: postgres:alpine
+        volumes:
+            - Z:/programming_projects/docker/docker_volumes/rspd/postgres:/var/lib/postgresql/data
+        restart: unless-stopped
+        ports:
+            - '5432:5432'
+        networks:
+            - backend_network
+            - database_network
+        env_file:
+            - .envs/.postgres.env
+
+networks:
+    database_network:
+    backend_network:
+    frontend_network:
