@@ -1,20 +1,33 @@
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"rootDir": ".",
-		"sourceMap": true,
-		"declaration": false,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"importHelpers": true,
-		"target": "es2015",
-		"module": "esnext",
-		"lib": ["es2017", "dom"],
-		"skipLibCheck": true,
-		"skipDefaultLibCheck": true,
-		"baseUrl": ".",
-		"paths": {}
-	},
-	"exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@rspd/grade/backend/github": [
+                "libs/grade/backend/github/src/index.ts"
+            ],
+            "@rspd/grade/backend/grade": [
+                "libs/grade/backend/grade/src/index.ts"
+            ],
+            "@rspd/shared/backend/test-util": [
+                "libs/shared/backend/test-util/src/index.ts"
+            ],
+            "@rspd/shared/backend/utils": [
+                "libs/shared/backend/utils/src/index.ts"
+            ]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }

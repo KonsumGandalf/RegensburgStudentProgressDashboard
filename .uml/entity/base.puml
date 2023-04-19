@@ -31,6 +31,7 @@ entity Instructor extends Account {
 }
 
 enum AssignmentTopic {
+    FLASK
     IOT
     PYTHON
     ROBOTIK
@@ -51,23 +52,29 @@ entity Challenge extends BaseEntity {
     completionDate: Date
 }
 
-
-
 entity Assignment extends BaseEntity {
     * name: string
     * passingPercentage: number
-    * attempts: number
+    * repoLink: string
     tutorsLink: string
 }
 
-Assignment -- AssignmentTopic
-entity GithubAssignment extends Assignment {
-    * githubLink: string
+entity Submission {
+    * attempts: number
 }
-entity MoodleAssignment extends Assignment {
+Submission "0..n" *-- "1" Assignment
+
+
+Student "1" -> "0..n" Submission: processes
+Instructor "1" -> "0..n" Assignment: creates
+
+AssignmentTemplate -- AssignmentTopic
+entity GithubSubmission extends Submission {
+
+}
+entity MoodleSubmission extends Submission {
     * id: number
     * grade: number
-    * moodleLink: string
 }
 
 entity Test extends BaseEntity {
@@ -81,12 +88,12 @@ entity Semester extends BaseEntity{
     endDate: Date
     moodleCourseId: number
 }
-Semester "1..n" *-- "1" Challenge
+Semester "n" *-- "1" Challenge
 Semester "0..n" --o "0..n" Student
 Challenge "1" --* "0..n" Instructor
 
 Test -- TestState
-GithubAssignment "1..n" *-- "1" Test
-Challenge "1..n" *-- "1" Assignment
+GithubSubmission "1..n" *-- "1" Test
+Challenge "1..n" *-- "1" AssignmentTemplate
 
 @enduml

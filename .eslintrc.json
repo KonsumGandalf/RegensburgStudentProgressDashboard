@@ -1,42 +1,76 @@
 {
-	"root": true,
-	"ignorePatterns": ["**/*"],
-	"plugins": ["@nrwl/nx"],
-	"overrides": [
-		{
-			"files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-			"rules": {
-				"@nrwl/nx/enforce-module-boundaries": [
-					"error",
-					{
-						"enforceBuildableLibDependency": true,
-						"allow": [],
-						"depConstraints": [
-							{
-								"sourceTag": "*",
-								"onlyDependOnLibsWithTags": ["*"]
-							}
-						]
-					}
-				]
-			}
-		},
-		{
-			"files": ["*.ts", "*.tsx"],
-			"extends": ["plugin:@nrwl/nx/typescript"],
-			"rules": {}
-		},
-		{
-			"files": ["*.js", "*.jsx"],
-			"extends": ["plugin:@nrwl/nx/javascript"],
-			"rules": {}
-		},
-		{
-			"files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-			"env": {
-				"jest": true
-			},
-			"rules": {}
-		}
-	]
+    "root": true,
+    "ignorePatterns": ["**/*"],
+    "plugins": ["@nrwl/nx"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {
+                "@nrwl/nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "type:app",
+                                "onlyDependOnLibsWithTags": ["*"]
+                            },
+                            {
+                                "sourceTag": "type:util",
+                                "onlyDependOnLibsWithTags": ["type:util"]
+                            },
+                            {
+                                "sourceTag": "domain:shared",
+                                "onlyDependOnLibsWithTags": ["domain:shared"]
+                            },
+                            {
+                                "sourceTag": "domain:grade",
+                                "onlyDependOnLibsWithTag": [
+                                    "domain:grade",
+                                    "domain:shared"
+                                ]
+                            },
+                            {
+                                "sourceTag": "kind:backend",
+                                "onlyDependOnLibsWithTag": ["kind:backend"]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": [
+                "plugin:@nrwl/nx/typescript",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "plugins": ["simple-import-sort"],
+            "rules": {
+                "simple-import-sort/imports": "error",
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-explicit-any": "off",
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                        "argsIgnorePattern": "^_"
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nrwl/nx/javascript"],
+            "rules": {}
+        },
+        {
+            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+            "env": {
+                "jest": true
+            },
+            "rules": {}
+        }
+    ]
 }
