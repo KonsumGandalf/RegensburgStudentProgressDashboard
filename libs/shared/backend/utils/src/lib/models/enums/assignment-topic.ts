@@ -1,3 +1,8 @@
+/**
+ * Enum for assignment topics.
+ * @readonly
+ * @enum {string}
+ */
 export enum AssignmentTopic {
     FLASK = 'FLASK',
     IOT = 'IOT',

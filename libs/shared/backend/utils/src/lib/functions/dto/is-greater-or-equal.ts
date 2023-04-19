@@ -4,6 +4,12 @@ import {
     ValidationOptions,
 } from 'class-validator';
 
+/**
+ * Decorator that checks if a property is greater than or equal to another property's value.
+ * @param property - The name of the property to compare the decorated property to.
+ * @param validationOptions - Additional validation options.
+ * @returns A decorator function that registers the 'isGreaterOrEqual' validator with the class's metadata.
+ */
 export function IsGreaterOrEqual(
     property: string,
     validationOptions?: ValidationOptions

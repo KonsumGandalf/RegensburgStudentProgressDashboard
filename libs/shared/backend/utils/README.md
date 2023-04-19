@@ -1,5 +1,5 @@
 # shared-backend-utils
 
-This commit adds a RepositoryMock class to the project for simulating the behavior of a TypeORM repository in tests.
-The RepositoryMock class can be used as a substitute for the actual repository in tests, allowing for isolated and
-predictable testing of the application's database interactions.
+This utility library provides common models used throughout the application along with helper functions.
+Consistent naming conventions and SOLID principles are used in the library to ensure readability and ease of use.
+Thorough documentation is included to make it easy for other developers to utilize the library in their projects.
