@@ -14,7 +14,25 @@
                         "depConstraints": [
                             {
                                 "sourceTag": "type:app",
-                                "onlyDependOnLibsWithTags": ["*"]
+                                "onlyDependOnLibsWithTags": [
+                                    "type:feature",
+                                    "type:util-feature",
+                                    "type:util"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:feature",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:util-feature",
+                                    "type:util"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:util-feature",
+                                "onlyDependOnLibsWithTags": [
+                                    "type:util",
+                                    "type:util-feature"
+                                ]
                             },
                             {
                                 "sourceTag": "type:util",
@@ -25,9 +43,16 @@
                                 "onlyDependOnLibsWithTags": ["domain:shared"]
                             },
                             {
-                                "sourceTag": "domain:grade",
+                                "sourceTag": "domain:challenge",
                                 "onlyDependOnLibsWithTag": [
-                                    "domain:grade",
+                                    "domain:challenge",
+                                    "domain:shared"
+                                ]
+                            },
+                            {
+                                "sourceTag": "domain:user",
+                                "onlyDependOnLibsWithTag": [
+                                    "domain:user",
                                     "domain:shared"
                                 ]
                             },
@@ -50,7 +75,6 @@
             "plugins": ["simple-import-sort"],
             "rules": {
                 "simple-import-sort/imports": "error",
-                "no-unused-vars": "off",
                 "@typescript-eslint/no-explicit-any": "off",
                 "@typescript-eslint/no-unused-vars": [
                     "error",

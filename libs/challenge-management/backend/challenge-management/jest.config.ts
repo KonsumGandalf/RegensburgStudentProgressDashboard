@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-    displayName: 'grade-backend-challenge',
+    displayName: 'challenge-management-backend-challenge-management',
     preset: '../../../../jest.preset.js',
     testEnvironment: 'node',
     transform: {
@@ -10,5 +10,6 @@ export default {
         ],
     },
     moduleFileExtensions: ['ts', 'js', 'html'],
-    coverageDirectory: '../../../../coverage/libs/grade/backend/challenge',
+    coverageDirectory:
+        '../../../../coverage/libs/challenge-management/backend/challenge-management',
 };

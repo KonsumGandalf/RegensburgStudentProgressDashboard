@@ -9,6 +9,18 @@ export interface IAppEnvironment {
     APP_PORT: string;
 
     /**
+     * The number of saltRounds used for hashing
+     * @type {string}
+     */
+    AUTH_SALT_ROUNDS: string;
+
+    /**
+     * The secret key for jwt
+     * @type {string}
+     */
+    AUTH_SECRET_OR_KEY: string;
+
+    /**
      * The host that the application should use.
      * @type {string}
      */

@@ -15,8 +15,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@rspd/grade/backend/challenge": [
-                "libs/grade/backend/challenge/src/index.ts"
+            "@rspd/auth/backend/auth": ["libs/auth/backend/auth/src/index.ts"],
+            "@rspd/challenge-management/backend/challenge-management": [
+                "libs/challenge-management/backend/challenge-management/src/index.ts"
             ],
             "@rspd/grade/backend/github": [
                 "libs/grade/backend/github/src/index.ts"
@@ -26,7 +27,8 @@
             ],
             "@rspd/shared/backend/utils": [
                 "libs/shared/backend/utils/src/index.ts"
-            ]
+            ],
+            "@rspd/user/backend/user": ["libs/user/backend/user/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

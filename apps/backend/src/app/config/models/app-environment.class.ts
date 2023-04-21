@@ -1,6 +1,5 @@
+import { HostEnum } from '@rspd/shared/backend/utils';
 import { IsEnum, IsNumber, IsString } from 'class-validator';
-
-import { HostEnum } from './host.enum';
 
 /**
  * An interface describing the environment variables used by the application.
@@ -8,10 +7,24 @@ import { HostEnum } from './host.enum';
 export class AppEnvironment {
     /**
      * The port number that the application should listen on.
-     * @type {string}
+     * @type {number}
      */
     @IsNumber()
     APP_PORT: number;
+
+    /**
+     * The number of saltRounds used for hashing
+     * @type {string}
+     */
+    @IsNumber()
+    AUTH_SALT_ROUNDS: number;
+
+    /**
+     * The secret key for jwt
+     * @type {string}
+     */
+    @IsString()
+    AUTH_SECRET_OR_KEY: string;
 
     /**
      * The host address that the application should use.
