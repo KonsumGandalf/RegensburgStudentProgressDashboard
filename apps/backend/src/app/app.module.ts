@@ -2,10 +2,10 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_PIPE, RouterModule } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RspdAuthModule } from '@rspd/auth/backend/auth';
 import { RspdGradeModule } from '@rspd/challenge-management/backend/challenge-management';
 import { AppConfig } from '@rspd/shared/backend/utils';
-import { RspdUserModule } from '@rspd/user/backend/user';
+import { RspdAuthModule } from '@rspd/user/backend/user-authentication';
+import { RspdUserModule } from '@rspd/user/backend/user-management';
 
 import { ConfigUtils } from './config/util/config.utils';
 

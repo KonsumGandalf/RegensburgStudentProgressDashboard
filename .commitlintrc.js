@@ -15,6 +15,8 @@ module.exports = {
                 'grade-backend-github',
                 'shared-backend-test-util',
                 'shared-backend-utils',
+                'user-backend-user-management',
+                'user-backend-user-authentication',
             ],
         ],
     },

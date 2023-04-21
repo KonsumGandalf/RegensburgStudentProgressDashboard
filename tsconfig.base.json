@@ -15,7 +15,6 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@rspd/auth/backend/auth": ["libs/auth/backend/auth/src/index.ts"],
             "@rspd/challenge-management/backend/challenge-management": [
                 "libs/challenge-management/backend/challenge-management/src/index.ts"
             ],
@@ -28,7 +27,12 @@
             "@rspd/shared/backend/utils": [
                 "libs/shared/backend/utils/src/index.ts"
             ],
-            "@rspd/user/backend/user": ["libs/user/backend/user/src/index.ts"]
+            "@rspd/user/backend/user-authentication": [
+                "libs/user/backend/user-authentication/src/index.ts"
+            ],
+            "@rspd/user/backend/user-management": [
+                "libs/user/backend/user-management/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]
