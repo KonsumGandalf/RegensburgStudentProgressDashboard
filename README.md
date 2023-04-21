@@ -117,9 +117,9 @@ nx serve frontend
 
 ### Backend
 
-| Name                      | Path                                                         | Description                               |
-| ------------------------- | ------------------------------------------------------------ | ----------------------------------------- |
-| `grade-backend-challenge` | [libs/grade/backend/challenge](libs/grade/backend/challenge) | Challenge library for tutors and students |
+| Name                                                | Path                                                                                                             | Description                                    |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `challenge-management-backend-challenge-management` | [libs/challenge-management/backend/challenge-management](libs/challenge-management/backend/challenge-management) | Allows tutors the update and create challenges |
 
 ## Shared
 

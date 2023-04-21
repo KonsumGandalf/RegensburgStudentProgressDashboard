@@ -1,8 +1,8 @@
 import {
     AssignmentTopic,
     AssignmentType,
-    IsGreaterOrEqual,
-    IsSmallerOrEqual,
+    IsGreaterOrEqualValidator,
+    IsSmallerOrEqualValidator,
 } from '@rspd/shared/backend/utils';
 import {
     IsEnum,
@@ -64,7 +64,7 @@ export class AssignmentDto {
      */
     @IsInt()
     @Min(1)
-    @IsSmallerOrEqual('minPassedTests', {
+    @IsSmallerOrEqualValidator('minPassedTests', {
         message:
             'The total amount of tests must be greater than the minimum amount of passing tests',
     })
@@ -77,7 +77,7 @@ export class AssignmentDto {
      */
     @IsInt()
     @Max(10)
-    @IsGreaterOrEqual('minPassedTests', {
+    @IsGreaterOrEqualValidator('minPassedTests', {
         message:
             'The total amount of tests must be greater than the minimum amount of passing tests',
     })

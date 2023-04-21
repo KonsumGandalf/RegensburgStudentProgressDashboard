@@ -1,21 +1,23 @@
 {
-    "name": "grade-backend-challenge",
+    "name": "challenge-management-backend-challenge-management",
     "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "libs/grade/backend/challenge/src",
+    "sourceRoot": "libs/challenge-management/backend/challenge-management/src",
     "projectType": "library",
     "targets": {
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["libs/grade/backend/challenge/**/*.ts"]
+                "lintFilePatterns": [
+                    "libs/challenge-management/backend/challenge-management/**/*.ts"
+                ]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "libs/grade/backend/challenge/jest.config.ts",
+                "jestConfig": "libs/challenge-management/backend/challenge-management/jest.config.ts",
                 "passWithNoTests": true
             },
             "configurations": {
@@ -26,5 +28,5 @@
             }
         }
     },
-    "tags": ["kind:backend", "domain:grade", "type:util"]
+    "tags": ["kind:backend", "domain:challenge", "type:feature"]
 }

@@ -59,7 +59,7 @@ export class ChallengeService {
     /**
      * Retrieves a challenge by its ID.
      * @param {string} id - The ID of the challenge to retrieve.
-     * @param {boolean} [withAssignments=true] - Whether or not to include the assignments associated with the challenge.
+     * @param {boolean} [withAssignments=true] - Whether to include the assignments associated with the challenge.
      * @returns {Promise<Challenge>} A Promise that resolves with the retrieved challenge.
      * @throws {NoContentException} Thrown if no challenge object with the given ID was found.
      */

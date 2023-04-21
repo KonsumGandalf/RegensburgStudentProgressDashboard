@@ -1,7 +1,7 @@
+import { AppConfig } from '@rspd/shared/backend/utils';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
 
-import { AppConfig } from '../models/app-config.class';
 import { AppEnvironment } from '../models/app-environment.class';
 import { IAppEnvironment } from '../models/app-environment.interface';
 
@@ -39,6 +39,10 @@ export abstract class ConfigUtils {
                 username: environment.MOODLE_USER,
                 password: environment.MOODLE_PASSWORD,
                 service: environment.MOODLE_SERVICE,
+            },
+            auth: {
+                secretOrKey: environment.AUTH_SECRET_OR_KEY,
+                saltRounds: environment.AUTH_SALT_ROUNDS,
             },
         } as AppConfig);
     }

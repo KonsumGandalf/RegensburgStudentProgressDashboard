@@ -1,1 +1,1 @@
-export * from './dto/public-api';
+export * from './validators/public-api';
