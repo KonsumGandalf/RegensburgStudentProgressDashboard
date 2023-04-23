@@ -1,7 +1,3 @@
 # user-backend-common-models
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test user-backend-common-models` to execute the unit tests via [Jest](https://jestjs.io).
+A library containing common data models used across the user backend domain.

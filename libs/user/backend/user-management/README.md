@@ -1,7 +1,4 @@
 # user-backend-user-management
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test user-backend-user-management` to execute the unit tests via [Jest](https://jestjs.io).
+A user management module for the backend of an application, allowing CRUD operations on user accounts, as well as
+authentication and authorization features.
