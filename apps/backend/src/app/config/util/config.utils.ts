@@ -27,6 +27,7 @@ export abstract class ConfigUtils {
     private static _createConfig(environment: AppEnvironment): AppConfig {
         return plainToInstance(AppConfig, {
             port: environment.APP_PORT || 3333,
+            url: environment.APP_URL,
             host: environment.APP_HOST || 'localhost',
             postgresDB: {
                 host: environment.POSTGRES_HOST || 'localhost',
@@ -43,6 +44,13 @@ export abstract class ConfigUtils {
             auth: {
                 secretOrKey: environment.AUTH_SECRET_OR_KEY,
                 saltRounds: environment.AUTH_SALT_ROUNDS,
+            },
+            email: {
+                host: environment.EMAIL_HOST,
+                port: environment.EMAIL_PORT,
+                user: environment.EMAIL_USER,
+                password: environment.EMAIL_PASSWORD,
+                service: environment.EMAIL_SERVICE,
             },
         } as AppConfig);
     }

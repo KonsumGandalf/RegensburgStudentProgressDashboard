@@ -27,8 +27,14 @@
             "@rspd/shared/backend/utils": [
                 "libs/shared/backend/utils/src/index.ts"
             ],
+            "@rspd/user/backend/common-models": [
+                "libs/user/backend/common-models/src/index.ts"
+            ],
             "@rspd/user/backend/user-authentication": [
                 "libs/user/backend/user-authentication/src/index.ts"
+            ],
+            "@rspd/user/backend/user-mail-management": [
+                "libs/user/backend/user-mail-management/src/index.ts"
             ],
             "@rspd/user/backend/user-management": [
                 "libs/user/backend/user-management/src/index.ts"

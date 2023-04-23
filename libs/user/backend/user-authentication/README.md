@@ -1,7 +1,5 @@
 # user-backend-user-authentication
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test user-backend-user-authentication` to execute the unit tests via [Jest](https://jestjs.io).
+This backend API provides user authentication functionality. Users can register and log in to access restricted parts of
+the application. The API also includes email confirmation, where users receive a confirmation link with a JWT token upon
+registration. The confirmation page verifies the token and marks the user's email as confirmed.

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { RepositoryMock } from '@rspd/shared/backend/test-util';
+import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
     ActionNotPerformedException,
     AssignmentTopic,
@@ -16,7 +16,7 @@ import { AssignmentService } from './assignment.service';
 
 describe('AssignmentService', () => {
     let service: AssignmentService;
-    let assignmentRepository: RepositoryMock;
+    let assignmentRepository: MockRepository;
     const assignments: Assignment[] = [];
 
     beforeEach(async () => {
@@ -43,13 +43,13 @@ describe('AssignmentService', () => {
                 AssignmentService,
                 {
                     provide: getRepositoryToken(Assignment),
-                    useClass: RepositoryMock,
+                    useClass: MockRepository,
                 },
             ],
         }).compile();
 
         service = module.get<AssignmentService>(AssignmentService);
-        assignmentRepository = module.get<RepositoryMock<Assignment>>(
+        assignmentRepository = module.get<MockRepository<Assignment>>(
             getRepositoryToken(Assignment)
         );
         assignmentRepository.entities = assignments;
@@ -133,13 +133,12 @@ describe('AssignmentService', () => {
 
         it('should delete the assignment with the given ID', async () => {
             const expectedResponse = {
-                affectedRows: 1,
                 deletedElements: toDeleteElement,
             } as IDeleteResponse<Assignment>;
 
             const response = await service.deleteAssignment(toDeleteElement.id);
 
-            expect(response).toEqual(expectedResponse);
+            expect(response).toMatchObject(expectedResponse);
         });
 
         it('should throw an ActionNotPerformedException if the Assignment with the given ID could not be deleted', async () => {

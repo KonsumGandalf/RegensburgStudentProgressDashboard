@@ -13,6 +13,13 @@ export class AppEnvironment {
     APP_PORT: number;
 
     /**
+     * The url of the application.
+     * @type {URL}
+     */
+    @IsString()
+    APP_URL: string;
+
+    /**
      * The number of saltRounds used for hashing
      * @type {string}
      */
@@ -88,4 +95,58 @@ export class AppEnvironment {
      */
     @IsString()
     MOODLE_SERVICE: string;
+
+    /**
+     * The client id for the `Regensburg Student Progress Dashboard` application on GitHub.
+     * @type {string}
+     */
+    @IsString()
+    GITHUB_OAUTH_CLIENT_ID: string;
+
+    /**
+     * The client ID used to authenticate with the GitHub API.
+     *
+     * @type {string}
+     */
+    @IsString()
+    GITHUB_OAUTH_CLIENT_SECRET: string;
+
+    /** The email server host.
+     *
+     * @type {string}
+     */
+    @IsString()
+    EMAIL_HOST: string;
+
+    /**
+     * The email server port.
+     *
+     * @type {number}
+     */
+    @IsNumber()
+    EMAIL_PORT: number;
+
+    /**
+     * The email account username.
+     *
+     * @type {string}
+     */
+    @IsString()
+    EMAIL_USER: string;
+
+    /**
+     * The email account password.
+     *
+     * @type {string}
+     */
+    @IsString()
+    EMAIL_PASSWORD: string;
+
+    /**
+     * The email service provider (e.g. Gmail, Yahoo).
+     *
+     * @type {string}
+     */
+    @IsString()
+    EMAIL_SERVICE: string;
 }

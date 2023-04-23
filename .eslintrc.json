@@ -17,26 +17,36 @@
                                 "onlyDependOnLibsWithTags": [
                                     "type:feature",
                                     "type:util-feature",
-                                    "type:util"
+                                    "type:util",
+                                    "type:common-model"
                                 ]
                             },
                             {
                                 "sourceTag": "type:feature",
                                 "onlyDependOnLibsWithTags": [
                                     "type:util-feature",
-                                    "type:util"
+                                    "type:util",
+                                    "type:common-model"
                                 ]
                             },
                             {
                                 "sourceTag": "type:util-feature",
                                 "onlyDependOnLibsWithTags": [
                                     "type:util",
-                                    "type:util-feature"
+                                    "type:util-feature",
+                                    "type:common-model"
                                 ]
                             },
                             {
                                 "sourceTag": "type:util",
-                                "onlyDependOnLibsWithTags": ["type:util"]
+                                "onlyDependOnLibsWithTags": [
+                                    "type:util",
+                                    "type:common-model"
+                                ]
+                            },
+                            {
+                                "sourceTag": "type:common-model",
+                                "onlyDependOnLibsWithTags": []
                             },
                             {
                                 "sourceTag": "domain:shared",
@@ -75,13 +85,7 @@
             "plugins": ["simple-import-sort"],
             "rules": {
                 "simple-import-sort/imports": "error",
-                "@typescript-eslint/no-explicit-any": "off",
-                "@typescript-eslint/no-unused-vars": [
-                    "error",
-                    {
-                        "argsIgnorePattern": "^_"
-                    }
-                ]
+                "@typescript-eslint/no-explicit-any": "off"
             }
         },
         {
