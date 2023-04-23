@@ -18,9 +18,6 @@
             "@rspd/challenge-management/backend/challenge-management": [
                 "libs/challenge-management/backend/challenge-management/src/index.ts"
             ],
-            "@rspd/grade/backend/github": [
-                "libs/grade/backend/github/src/index.ts"
-            ],
             "@rspd/shared/backend/test-util": [
                 "libs/shared/backend/test-util/src/index.ts"
             ],

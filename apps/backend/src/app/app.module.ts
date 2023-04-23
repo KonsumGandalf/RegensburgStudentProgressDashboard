@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_PIPE, RouterModule } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RspdGradeModule } from '@rspd/challenge-management/backend/challenge-management';
-import { RspdGithubModule } from '@rspd/grade/backend/github';
+// import { RspdGithubModule } from '@rspd/grade/backend/github';
 import { AppConfig } from '@rspd/shared/backend/utils';
 import { RspdAuthModule } from '@rspd/user/backend/user-authentication';
 import { RspdUserMailManagementModule } from '@rspd/user/backend/user-mail-management';
@@ -63,7 +63,6 @@ import { ConfigUtils } from './config/util/config.utils';
         RspdUserModule,
         RspdGradeModule,
         RspdAuthModule,
-        RspdGithubModule,
     ],
     providers: [
         {
