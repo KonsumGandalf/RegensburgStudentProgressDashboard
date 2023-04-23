@@ -1,5 +1,7 @@
-import { BaseEntity } from '@rspd/shared/backend/utils';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { BaseEntity, GithubUser, UserRole } from '@rspd/shared/backend/utils';
+import { Email } from '@rspd/user/backend/common-models';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { IComplexUser } from '../interfaces/complex-user.interface';
 
@@ -11,14 +13,6 @@ import { IComplexUser } from '../interfaces/complex-user.interface';
  */
 @Entity()
 export class User extends BaseEntity implements IComplexUser {
-    /**
-     * The primary email address of the user.
-     *
-     * @type {string}
-     */
-    @PrimaryColumn()
-    email: string;
-
     /**
      * The primary username of the user.
      *
@@ -50,4 +44,28 @@ export class User extends BaseEntity implements IComplexUser {
      */
     @Column()
     hashedPassword: string;
+
+    /**
+     * The account of the linked user
+     *
+     * @type {GithubUser}
+     */
+    @OneToOne(() => GithubUser)
+    @JoinColumn()
+    githubUser: GithubUser;
+
+    /**
+     * The email linked to the account
+     *
+     * @type {Email}
+     */
+    @OneToOne(() => Email)
+    @JoinColumn()
+    email: Email;
+
+    /**
+     * The user roles available in the system.
+     */
+    @Column({ type: 'enum', enum: UserRole, default: UserRole.STUDENT })
+    role: UserRole;
 }

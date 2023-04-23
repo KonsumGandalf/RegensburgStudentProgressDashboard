@@ -28,5 +28,5 @@
             }
         }
     },
-    "tags": ["type:util-feature", "kind:backend", "domain:shared"]
+    "tags": ["type:util-feature", "kind:backend", "domain:user"]
 }

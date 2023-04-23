@@ -1,4 +1,5 @@
-import { IUser } from '@rspd/shared/backend/utils';
+import { UserRole } from '@rspd/shared/backend/utils';
+import { IEmail, IUser } from '@rspd/user/backend/common-models';
 
 /**
  * Represents a user interface
@@ -7,11 +8,25 @@ import { IUser } from '@rspd/shared/backend/utils';
  */
 export interface IComplexUser extends IUser {
     /**
-     * The primary email address of the user.
+     * The id of a user
      *
      * @type {string}
      */
-    email: string;
+    id: string;
+
+    /**
+     * The email address of the user.
+     *
+     * @type {Email}
+     */
+    email: IEmail;
+
+    /**
+     * The primary username of the user.
+     *
+     * @type {string}
+     */
+    username: string;
 
     /**
      * The first name of the user.
@@ -33,4 +48,9 @@ export interface IComplexUser extends IUser {
      * @type {string}
      */
     hashedPassword: string;
+
+    /**
+     * The user roles available in the system.
+     */
+    role: UserRole;
 }

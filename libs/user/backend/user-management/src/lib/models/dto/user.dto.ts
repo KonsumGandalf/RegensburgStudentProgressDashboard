@@ -11,7 +11,7 @@ export class UserDto {
     @IsString()
     @IsEmail()
     @IsAllowEmailDomain()
-    @MaxLength(32)
+    @MaxLength(64)
     email: string;
 
     @IsString()
