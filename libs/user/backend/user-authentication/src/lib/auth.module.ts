@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { IAppConfig } from '@rspd/shared/backend/utils';
 import { JwtStrategy } from '@rspd/shared/backend/utils';
+import { RspdUserMailManagementModule } from '@rspd/user/backend/user-mail-management';
 import { RspdUserModule } from '@rspd/user/backend/user-management';
 
 import { AuthController } from './controller/auth.controller';
@@ -13,6 +14,7 @@ import { LocalStrategy } from './strategies/local.strategy';
 @Module({
     imports: [
         RspdUserModule,
+        RspdUserMailManagementModule,
         PassportModule.register({ session: true }),
         JwtModule.registerAsync({
             imports: [ConfigModule],

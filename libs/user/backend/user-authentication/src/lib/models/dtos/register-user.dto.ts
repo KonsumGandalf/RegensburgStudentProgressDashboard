@@ -1,4 +1,4 @@
-import { IsAllowEmailDomain } from '@rspd/shared/backend/utils';
+import { IsAllowEmailDomain } from '@rspd/user/backend/common-models';
 import {
     IsEmail,
     IsString,
@@ -11,7 +11,7 @@ export class RegisterUserDto {
     @IsString()
     @IsEmail()
     @IsAllowEmailDomain()
-    @MaxLength(32)
+    @MaxLength(64)
     email: string;
 
     @IsString()
