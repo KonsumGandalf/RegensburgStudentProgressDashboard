@@ -16,9 +16,9 @@ export class ActionNotPerformedException extends NotFoundException {
      */
     constructor(
         objectType: ActionObjectType,
-        id: number,
+        id: number | string,
         action: ActionExceptionType
     ) {
-        super(`${objectType} object with id:${id} could not be ${action}`);
+        super(`${objectType} object ${id} could not be ${action}`);
     }
 }

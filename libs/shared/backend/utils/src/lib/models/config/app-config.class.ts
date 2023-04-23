@@ -1,8 +1,10 @@
 import { Type } from 'class-transformer';
-import { IsEnum, IsNumber, ValidateNested } from 'class-validator';
+import { IsEnum, IsNumber, IsString, ValidateNested } from 'class-validator';
 
 import { IAppConfig } from './app-config.interface';
 import { AuthConfig } from './auth-config.class';
+import { EmailConfig } from './email-config.class';
+import { GithubConfig } from './github-config.class';
 import { HostEnum } from './host.enum';
 import { MoodleConfig } from './moodle-config.class';
 import { PostgresConfig } from './postgres-config.class';
@@ -17,6 +19,13 @@ export class AppConfig implements IAppConfig {
      */
     @IsNumber()
     port: number;
+
+    /**
+     * The url of the application.
+     * @type {URL}
+     */
+    @IsString()
+    url: string;
 
     /**
      * The host address that the application should use.
@@ -48,4 +57,20 @@ export class AppConfig implements IAppConfig {
     @ValidateNested()
     @Type(() => MoodleConfig)
     moodle: MoodleConfig;
+
+    /**
+     * Configuration class for the Regensburg Student Progress Dashboard GitHub API integration.
+     * type {GithubConfig}
+     */
+    @ValidateNested()
+    @Type(() => GithubConfig)
+    github: GithubConfig;
+
+    /**
+     * The configuration for connecting to the Email service.
+     * @type {EmailConfig}
+     */
+    @ValidateNested()
+    @Type(() => EmailConfig)
+    email: EmailConfig;
 }

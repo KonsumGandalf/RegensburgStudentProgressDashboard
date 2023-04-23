@@ -1,4 +1,5 @@
 import { AuthConfig } from './auth-config.class';
+import { EmailConfig } from './email-config.class';
 import { HostEnum } from './host.enum';
 import { MoodleConfig } from './moodle-config.class';
 import { PostgresConfig } from './postgres-config.class';
@@ -9,6 +10,12 @@ export interface IAppConfig {
      * @type {number}
      */
     port: number;
+
+    /**
+     * The url of the application.
+     * @type {string}
+     */
+    url: string;
 
     /**
      * The host address that the application should use.
@@ -33,4 +40,10 @@ export interface IAppConfig {
      * @type {MoodleConfig}
      */
     moodle: MoodleConfig;
+
+    /**
+     * The configuration for connecting to the Email service.
+     * @type {EmailConfig}
+     */
+    email: EmailConfig;
 }

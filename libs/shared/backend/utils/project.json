@@ -26,5 +26,5 @@
             }
         }
     },
-    "tags": ["kind:backend", "type:util", "domain:shared"]
+    "tags": ["kind:backend", "type:common-model", "main:shared"]
 }
