@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { RepositoryMock } from '@rspd/shared/backend/test-util';
+import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
     ActionNotPerformedException,
     AssignmentTopic,
@@ -18,10 +18,10 @@ import { ChallengeService } from './challenge.service';
 
 describe('ChallengeService', () => {
     let service: ChallengeService;
-    let challengeRepository: RepositoryMock;
+    let challengeRepository: MockRepository;
     let testChallenge: Challenge;
     let challenges: Challenge[];
-    let assignmentsRepository: RepositoryMock;
+    let assignmentsRepository: MockRepository;
     let assignments: Assignment[];
 
     beforeEach(async () => {
@@ -68,11 +68,11 @@ describe('ChallengeService', () => {
                 AssignmentService,
                 {
                     provide: getRepositoryToken(Challenge),
-                    useClass: RepositoryMock,
+                    useClass: MockRepository,
                 },
                 {
                     provide: getRepositoryToken(Assignment),
-                    useClass: RepositoryMock,
+                    useClass: MockRepository,
                 },
             ],
         }).compile();

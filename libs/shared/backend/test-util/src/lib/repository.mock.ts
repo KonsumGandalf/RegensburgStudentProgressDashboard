@@ -19,7 +19,7 @@ class MockEntity extends BaseEntity {
     }
 }
 
-export class RepositoryMock<Entity extends MockEntity = MockEntity>
+export class MockRepository<Entity extends MockEntity = MockEntity>
     implements
         Pick<
             Repository<Entity>,

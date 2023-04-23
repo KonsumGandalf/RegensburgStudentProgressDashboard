@@ -1,6 +1,20 @@
-import { Body, Controller, Delete, Get, Param, Put } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Put,
+    UseGuards,
+} from '@nestjs/common';
 import { ApiFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { IDeleteResponse } from '@rspd/shared/backend/utils';
+import {
+    IDeleteResponse,
+    JwtAuthGuard,
+    Role,
+    RoleGuard,
+    UserRole,
+} from '@rspd/shared/backend/utils';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
 import { Assignment } from '../models/entities/assignment.entity';
@@ -11,6 +25,8 @@ import { AssignmentService } from '../services/assignment.service';
  */
 @Controller('assignment')
 @ApiTags('assignment')
+@Role(UserRole.TUTOR)
+@UseGuards(JwtAuthGuard, RoleGuard)
 export class AssignmentController {
     constructor(private readonly _assignmentService: AssignmentService) {}
 

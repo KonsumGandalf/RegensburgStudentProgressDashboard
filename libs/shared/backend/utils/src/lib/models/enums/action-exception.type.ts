@@ -13,4 +13,9 @@ export enum ActionExceptionType {
      * Exception thrown when a delete action fails to be performed.
      */
     DELETE = 'deleted',
+
+    /**
+     * Exception thrown when a create action fails to be performed.
+     */
+    CREATE = 'create',
 }

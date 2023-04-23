@@ -6,6 +6,7 @@ import {
     Param,
     Post,
     Put,
+    UseGuards,
 } from '@nestjs/common';
 import {
     ApiCreatedResponse,
@@ -13,7 +14,13 @@ import {
     ApiOkResponse,
     ApiTags,
 } from '@nestjs/swagger';
-import { IDeleteResponse } from '@rspd/shared/backend/utils';
+import {
+    IDeleteResponse,
+    JwtAuthGuard,
+    Role,
+    RoleGuard,
+    UserRole,
+} from '@rspd/shared/backend/utils';
 
 import { ChallengeDto } from '../models/dto/challenge.dto';
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
@@ -22,6 +29,8 @@ import { ChallengeService } from '../services/challenge.service';
 
 @Controller()
 @ApiTags('challenge')
+@Role(UserRole.TUTOR)
+@UseGuards(JwtAuthGuard, RoleGuard)
 export class ChallengeController {
     constructor(private readonly _challengeService: ChallengeService) {}
 

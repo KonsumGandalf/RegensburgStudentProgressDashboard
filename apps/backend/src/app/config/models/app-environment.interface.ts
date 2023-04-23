@@ -9,6 +9,12 @@ export interface IAppEnvironment {
     APP_PORT: string;
 
     /**
+     * The url of the application.
+     * @type {string}
+     */
+    APP_URL: string;
+
+    /**
      * The number of saltRounds used for hashing
      * @type {string}
      */
@@ -73,4 +79,51 @@ export interface IAppEnvironment {
      * @type {string}
      */
     MOODLE_SERVICE: string;
+
+    /**
+     * The client id for the `Regensburg Student Progress Dashboard` application on GitHub.
+     * @type {string}
+     */
+    GITHUB_OAUTH_CLIENT_ID: string;
+
+    /**
+     * The client ID used to authenticate with the GitHub API.
+     *
+     * @type {string}
+     */
+    GITHUB_OAUTH_CLIENT_SECRET: string;
+
+    /** The email server host.
+     *
+     * @type {string}
+     */
+    EMAIL_HOST: string;
+
+    /**
+     * The email server port.
+     *
+     * @type {string}
+     */
+    EMAIL_PORT: string;
+
+    /**
+     * The email account username.
+     *
+     * @type {string}
+     */
+    EMAIL_USER: string;
+
+    /**
+     * The email account password.
+     *
+     * @type {string}
+     */
+    EMAIL_PASSWORD: string;
+
+    /**
+     * The email service provider (e.g. Gmail, Yahoo).
+     *
+     * @type {string}
+     */
+    EMAIL_SERVICE: string;
 }

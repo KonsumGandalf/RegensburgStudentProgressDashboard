@@ -130,6 +130,17 @@ nx serve frontend
 | `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
 | `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
 
+## User
+
+### Backend
+
+| Name                                | Path                                                                             | Description                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `user-backend-common-models`        | [libs/user/backend/common-models](libs/user/backend/common-models)               | User-related data models for the backend.                                                          |
+| `user-backend-user-authentication`  | [libs/user/backend/user-authentication](libs/user/backend/user-authentication)   | It provides user authentication functionality for a backend application.                           |
+| `user-backend-user-mail-management` | [libs/user/backend/user-mail-management](libs/user/backend/user-mail-management) | Manages email confirmation and access control.                                                     |
+| `user-backend-user-management`      | [libs/user/backend/user-management](libs/user/backend/user-management)           | Provides authentication and authorization functionalities for user management in a backend system. |
+
 <!-- CONTACT -->
 
 ## Contact
