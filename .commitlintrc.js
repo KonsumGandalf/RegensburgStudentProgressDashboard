@@ -11,6 +11,7 @@ module.exports = {
                 'uml',
                 'base-application',
                 'devops',
+                'user-backend-github-authorization',
                 'student-submissions-backend-common-models',
                 'student-submissions-backend-submission-management',
                 'student-submissions-backend-github-submissions',
