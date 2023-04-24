@@ -46,7 +46,9 @@
                             },
                             {
                                 "sourceTag": "type:common-model",
-                                "onlyDependOnLibsWithTags": []
+                                "onlyDependOnLibsWithTags": [
+                                    "type:common-model"
+                                ]
                             },
                             {
                                 "sourceTag": "domain:shared",
@@ -56,7 +58,16 @@
                                 "sourceTag": "domain:challenge",
                                 "onlyDependOnLibsWithTag": [
                                     "domain:challenge",
-                                    "domain:shared"
+                                    "domain:shared",
+                                    "domain:user"
+                                ]
+                            },
+                            {
+                                "sourceTag": "domain:submission",
+                                "onlyDependOnLibsWithTag": [
+                                    "domain:submission",
+                                    "domain:shared",
+                                    "domain:user"
                                 ]
                             },
                             {
@@ -64,6 +75,13 @@
                                 "onlyDependOnLibsWithTag": [
                                     "domain:user",
                                     "domain:shared"
+                                ]
+                            },
+                            {
+                                "sourceTag": "domain:github",
+                                "onlyDependOnLibWithTag": [
+                                    "domain:shared",
+                                    "domain:github"
                                 ]
                             },
                             {

@@ -15,6 +15,7 @@ module.exports = {
                 'student-submissions-backend-submission-management',
                 'student-submissions-backend-github-submissions',
                 'challenge-management-backend-challenge-management',
+                'challenge-management-backend-common-models',
                 'shared-backend-test-util',
                 'shared-backend-utils',
                 'user-backend-common-models',
