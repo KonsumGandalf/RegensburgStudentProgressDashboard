@@ -1,4 +1,4 @@
-import { IComplexUser } from '@rspd/user/backend/user-management';
+import { IComplexUser } from '@rspd/user/backend/common-models';
 
 /**
  * An interface representing an authenticated user, including their user object and password.

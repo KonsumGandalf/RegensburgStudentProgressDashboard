@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DuplicateSourceException } from '@rspd/shared/backend/utils';
+import { IComplexUser, User } from '@rspd/user/backend/common-models';
 import { Repository } from 'typeorm';
-
-import { User } from '../models/entities/user.entity';
-import { IComplexUser } from '../models/interfaces/complex-user.interface';
 
 @Injectable()
 export class UserService {

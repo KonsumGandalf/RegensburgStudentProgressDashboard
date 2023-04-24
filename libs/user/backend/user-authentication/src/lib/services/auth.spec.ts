@@ -4,13 +4,9 @@ import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { MockConfigService } from '@rspd/shared/backend/test-util';
 import { AuthConfig } from '@rspd/shared/backend/utils';
-import { Email } from '@rspd/user/backend/common-models';
+import { Email, IComplexUser, User } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import {
-    IComplexUser,
-    User,
-    UserService,
-} from '@rspd/user/backend/user-management';
+import { UserService } from '@rspd/user/backend/user-management';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';

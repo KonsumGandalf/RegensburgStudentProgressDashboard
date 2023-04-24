@@ -7,9 +7,9 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { IAppConfig } from '@rspd/shared/backend/utils';
-import { IEmail, IUser } from '@rspd/user/backend/common-models';
+import { IComplexUser, IEmail, IUser } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import { IComplexUser, UserService } from '@rspd/user/backend/user-management';
+import { UserService } from '@rspd/user/backend/user-management';
 import * as bcrypt from 'bcrypt';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';

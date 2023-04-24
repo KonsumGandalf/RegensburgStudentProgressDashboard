@@ -3,10 +3,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import { DuplicateSourceException } from '@rspd/shared/backend/utils';
-import { Email } from '@rspd/user/backend/common-models';
+import { Email, IComplexUser, User } from '@rspd/user/backend/common-models';
 
-import { User } from '../models/entities/user.entity';
-import { IComplexUser } from '../models/interfaces/complex-user.interface';
 import { UserService } from './user.service';
 
 describe('UserService', () => {
