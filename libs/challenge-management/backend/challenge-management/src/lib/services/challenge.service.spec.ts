@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { Assignment } from '@rspd/challenge-management/backend/common-models';
+import { Challenge } from '@rspd/challenge-management/backend/common-models';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
     ActionNotPerformedException,
@@ -11,8 +13,6 @@ import {
 } from '@rspd/shared/backend/utils';
 
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
-import { Assignment } from '../models/entities/assignment.entity';
-import { Challenge } from '../models/entities/challenge.entity';
 import { AssignmentService } from './assignment.service';
 import { ChallengeService } from './challenge.service';
 

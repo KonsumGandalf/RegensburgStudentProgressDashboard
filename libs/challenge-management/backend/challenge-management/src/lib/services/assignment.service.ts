@@ -1,4 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
+import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import {
     ActionNotPerformedException,
     ActionObjectType,
@@ -9,7 +10,6 @@ import { ActionExceptionType } from '@rspd/shared/backend/utils';
 import { Repository } from 'typeorm';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
-import { Assignment } from '../models/entities/assignment.entity';
 
 /**
  * Service for handling Assignment-related operations.

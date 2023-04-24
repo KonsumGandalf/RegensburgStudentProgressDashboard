@@ -14,6 +14,7 @@ import {
     ApiOkResponse,
     ApiTags,
 } from '@nestjs/swagger';
+import { Challenge } from '@rspd/challenge-management/backend/common-models';
 import {
     IDeleteResponse,
     JwtAuthGuard,
@@ -24,7 +25,6 @@ import {
 
 import { ChallengeDto } from '../models/dto/challenge.dto';
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
-import { Challenge } from '../models/entities/challenge.entity';
 import { ChallengeService } from '../services/challenge.service';
 
 @Controller()

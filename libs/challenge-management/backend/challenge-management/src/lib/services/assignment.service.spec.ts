@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
     ActionNotPerformedException,
@@ -11,7 +12,6 @@ import {
 } from '@rspd/shared/backend/utils';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
-import { Assignment } from '../models/entities/assignment.entity';
 import { AssignmentService } from './assignment.service';
 
 describe('AssignmentService', () => {

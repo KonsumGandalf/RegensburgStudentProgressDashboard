@@ -8,6 +8,7 @@ import {
     UseGuards,
 } from '@nestjs/common';
 import { ApiFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import {
     IDeleteResponse,
     JwtAuthGuard,
@@ -17,7 +18,6 @@ import {
 } from '@rspd/shared/backend/utils';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
-import { Assignment } from '../models/entities/assignment.entity';
 import { AssignmentService } from '../services/assignment.service';
 
 /**
