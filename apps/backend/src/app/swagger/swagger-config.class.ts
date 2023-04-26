@@ -5,21 +5,20 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 const { version } = require('../../../../../package.json');
 
 export const registerSwagger = (app: INestApplication) => {
-    const swaggerConfig = new DocumentBuilder()
-        .setTitle('Rspd Api')
-        .setDescription(
-            'The api is constructed to communicate with the services of github and moodle ' +
-                'which helps students and tutors to control progress and keep track of grades .'
-        )
-        .setVersion(version)
-        .setLicense('MIT', 'http://mit.org')
-        .addTag(
-            'GITHUB',
-            'all associated entry points are used by github to share new test results from student repositories'
-        )
-        .build();
+	const swaggerConfig = new DocumentBuilder()
+		.setTitle('Rspd Api')
+		.setDescription(
+			'The api is constructed to communicate with the services of github and moodle ' +
+				'which helps students and tutors to control progress and keep track of grades .',
+		)
+		.setVersion(version)
+		.setLicense('MIT', 'http://mit.org')
+		.addBearerAuth()
+		.addTag('challenge', 'allows CRUD actions for Tutors')
+		.addTag('assignment', 'allows CRUD actions for Tutors')
+		.build();
 
-    const document = SwaggerModule.createDocument(app, swaggerConfig);
+	const document = SwaggerModule.createDocument(app, swaggerConfig);
 
-    SwaggerModule.setup('swagger', app, document);
+	SwaggerModule.setup('swagger', app, document);
 };
