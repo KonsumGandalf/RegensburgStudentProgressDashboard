@@ -1,26 +1,29 @@
 import { Type } from 'class-transformer';
-import { IsEnum, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { IsEnum, IsOptional, ValidateNested } from 'class-validator';
 
 import { TestOutcome } from '../enums/test-outcome.enum';
+import { CallDto } from './call.dto';
 
-export class GradTestDto {
-    @IsEnum(TestOutcome)
-    outcome: TestOutcome;
+/**
+ * Represents a test case with an outcome and an optional call object.
+ */
+export class TestDto {
+	/**
+	 * Enum representing the possible outcomes of a test.
+	 *
+	 * @enum {TestOutcome}
+	 */
+	@IsEnum(TestOutcome)
+	outcome: TestOutcome;
 
-    @ValidateNested()
-    @Type(() => CrashDto)
-    call: CallDto;
-}
-
-export class CallDto {
-    @IsOptional()
-    @ValidateNested()
-    @Type(() => CrashDto)
-    crash: CrashDto;
-}
-
-export class CrashDto {
-    @IsOptional()
-    @IsString()
-    message: string;
+	/**
+	 * An optional call object associated with the test.
+	 *
+	 * @type {CallDto}
+	 * @memberof TestDto
+	 */
+	@IsOptional()
+	@ValidateNested()
+	@Type(() => CallDto)
+	call?: CallDto;
 }

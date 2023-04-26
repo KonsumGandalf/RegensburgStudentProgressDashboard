@@ -1,1 +1,1 @@
-export * from './lib/grade-backend-github.module';
+export * from './lib/github-submission.module';

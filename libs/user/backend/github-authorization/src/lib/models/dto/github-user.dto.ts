@@ -1,13 +1,24 @@
 import { IsString } from 'class-validator';
-import { Column } from 'typeorm';
 
+/**
+ * Data transfer object for a Github user.
+ */
 export class GithubUserDto {
-    @IsString()
-    username: string;
+	/**
+	 * The username of the Github user.
+	 */
+	@IsString()
+	username: string;
 
-    @IsString()
-    nodeId: string;
+	/**
+	 * The node ID of the Github user.
+	 */
+	@IsString()
+	nodeId: string;
 
-    @IsString()
-    avatarUrl: string;
+	/**
+	 * The URL of the avatar image of the Github user.
+	 */
+	@IsString()
+	avatarUrl: string;
 }

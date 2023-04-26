@@ -1,4 +1,5 @@
 import { Challenge } from '@rspd/challenge-management/backend/common-models';
+import { UserRole } from '@rspd/shared/backend/utils';
 import { ChildEntity, JoinColumn, OneToMany } from 'typeorm';
 
 import { User } from './user.entity';
@@ -10,15 +11,15 @@ import { User } from './user.entity';
  *
  * @extends {User}
  */
-@ChildEntity()
+@ChildEntity(UserRole.TUTOR)
 export class Tutor extends User {
-    /**
-     * The challenges created by the tutors
-     *
-     * @type {Challenge[]}
-     * @memberof Challenge
-     */
-    @OneToMany(() => Challenge, (challenge: Challenge) => challenge.tutor)
-    @JoinColumn()
-    challenges: Challenge[];
+	/**
+	 * The challenges created by the tutors
+	 *
+	 * @type {Challenge[]}
+	 * @memberof Challenge
+	 */
+	@OneToMany(() => Challenge, (challenge: Challenge) => challenge.tutor)
+	@JoinColumn()
+	challenges: Challenge[];
 }
