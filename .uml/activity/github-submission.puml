@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Submit Data;
+if (is actor or assignment invalid?) then (yes)
+end
+else (yes)
+    if (submission already exists?) then (yes)
+        :Create SubmissionEntity;
+    else (no)
+        :Update SubmissionEntity;
+    endif
+endif
+while (is data of tests available?)
+    if (submission already exists?) then (no)
+        if (is test result correct?) then (yes)
+                :Create TestEntity;
+            else (no)
+            endif
+    else (yes)
+        :Update TestEntity;
+    endif
+endwhile
+stop
+
+@enduml
