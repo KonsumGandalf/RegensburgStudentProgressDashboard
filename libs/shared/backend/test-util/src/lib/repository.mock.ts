@@ -52,8 +52,16 @@ export class MockRepository<Entity extends MockEntity = MockEntity>
 			return Promise.all(entity.map((v) => this.save(v, options))) as Promise<T & Entity>;
 		}
 
+		let foundElement = {};
+		if (entity.id) {
+			foundElement = this.entities.filter((item) => entity.id !== item.id);
+			if (Array.isArray(foundElement)) {
+				foundElement = foundElement[0];
+			}
+		}
 		const saved = {
 			id: v4(),
+			...foundElement,
 			...entity,
 		} as Entity;
 		this.entities.push(saved);
