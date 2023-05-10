@@ -15,8 +15,7 @@ import { UserMailService } from './services/user-mail.service';
 		MailerModule.forRootAsync({
 			imports: [ConfigModule],
 			useFactory: async (configService: ConfigService<IAppConfig>) => {
-				const emailConfig = configService.get('email', { infer: true });
-				console.log(emailConfig);
+				configService.get('email', { infer: true });
 
 				return {
 					transport: {

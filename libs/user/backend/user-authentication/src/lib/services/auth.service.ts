@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { IAppConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import { TutorService } from '@rspd/user/backend/user-management';
+import { TutorService, UserService } from '@rspd/user/backend/user-management';
 import { StudentService } from '@rspd/user/backend/user-management';
 import * as bcrypt from 'bcrypt';
 
@@ -24,6 +24,7 @@ export class AuthService {
 	 *
 	 * @param _studentService
 	 * @param _tutorService
+	 * @param _userService
 	 * @param {UserMailService} _emailService - The user mail service.
 	 * @param {ConfigService<IAppConfig>} _configService - The config service.
 	 * @param {JwtService} _jwtService - The JSON web token service.
@@ -31,6 +32,7 @@ export class AuthService {
 	constructor(
 		private readonly _studentService: StudentService,
 		private readonly _tutorService: TutorService,
+		private readonly _userService: UserService,
 		private readonly _emailService: UserMailService,
 		private readonly _configService: ConfigService<IAppConfig>,
 		private readonly _jwtService: JwtService,
@@ -39,10 +41,9 @@ export class AuthService {
 	/**
 	 * Registers a new user.
 	 *
-	 * @param {Regi,sterUserDto} user - The user to register.
+	 * @param {RegisterUserDto} user - The user to register.
 	 * @returns {Promise<IResponseAuthentication>} The registered user.
 	 * @throws {DuplicateSourceException} If the username or email already exists.
-	 * @throws {ConflictException} If the password and confirmPassword fields do not match.
 	 * @throws {Error} If any other error occurs.
 	 */
 	async register(user: RegisterUserDto): Promise<IResponseAuthentication> {
@@ -83,7 +84,7 @@ export class AuthService {
 	 * @throws {NotFoundException} If the user is not found.
 	 */
 	async validateUserCredentials(userDto: LoginUserDto): Promise<IAuthUser | null> {
-		const user = await this._studentService.findUserByUsername(userDto.username);
+		const user = await this._userService.findUserByUsername(userDto.username);
 		if (!user) {
 			throw new NotFoundException('User not found');
 		}
@@ -106,7 +107,7 @@ export class AuthService {
 			access_token: this._jwtService.sign({
 				username: user.username,
 				id: user.id,
-				role: (await this._studentService.findOneById(user.id)).role,
+				role: (await this._userService.findOneById(user.id)).role,
 			} as IUser),
 		};
 	}
@@ -121,7 +122,7 @@ export class AuthService {
 	async requestConfirmationMail(value: string) {
 		const email = value.includes('@')
 			? value
-			: (await this._studentService.findUserByUsername(value)).email.email;
+			: (await this._userService.findUserByUsername(value)).email.email;
 
 		if (!email) {
 			throw new NotFoundException('No valid value for email was found!');

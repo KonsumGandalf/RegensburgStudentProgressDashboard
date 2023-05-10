@@ -6,7 +6,7 @@ import { MockConfigService } from '@rspd/shared/backend/test-util';
 import { AuthConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, Mail, Student, User } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import { StudentService, TutorService } from '@rspd/user/backend/user-management';
+import { StudentService, TutorService, UserService } from '@rspd/user/backend/user-management';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
@@ -15,8 +15,8 @@ import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
 	let authService: AuthService;
+	let userService: UserService;
 	let studentService: StudentService;
-	let tutorService: TutorService;
 	let emailService: UserMailService;
 	let configService: MockConfigService<AuthConfig>;
 
@@ -45,10 +45,15 @@ describe('AuthService', () => {
 					},
 				},
 				{
+					provide: UserService,
+					useValue: {
+						findUserByUsername: jest.fn().mockImplementation((arg: any) => arg),
+					},
+				},
+				{
 					provide: StudentService,
 					useValue: {
 						create: jest.fn().mockImplementation((arg: any) => arg),
-						findUserByUsername: jest.fn().mockImplementation((arg: any) => arg),
 					},
 				},
 				{
@@ -70,8 +75,8 @@ describe('AuthService', () => {
 
 		authService = module.get(AuthService);
 		emailService = module.get(UserMailService);
+		userService = module.get(UserService);
 		studentService = module.get(StudentService);
-		tutorService = module.get(TutorService);
 	});
 
 	it('should check if the authService is defined', () => {
@@ -84,8 +89,8 @@ describe('AuthService', () => {
 			const user: RegisterUserDto = {
 				firstName: 'John',
 				lastName: 'Doe',
-				email: 'johndoe@example.com',
-				username: 'johndoe',
+				email: 'test-user@example.com',
+				username: 'test-user',
 				password: 'secret',
 			};
 			const hash = 'hashed-password';
@@ -144,13 +149,13 @@ describe('AuthService', () => {
 				} as unknown as User,
 				password,
 			};
-			jest.spyOn(studentService, 'findUserByUsername').mockResolvedValueOnce(
+			jest.spyOn(userService, 'findUserByUsername').mockResolvedValueOnce(
 				user.user as Student,
 			);
 
 			const result = await authService.validateUserCredentials(userDto);
 
-			expect(studentService.findUserByUsername).toHaveBeenCalledWith(username);
+			expect(userService.findUserByUsername).toHaveBeenCalledWith(username);
 			expect(result).toEqual(user);
 		});
 
@@ -158,35 +163,35 @@ describe('AuthService', () => {
 			const username = 'testuser';
 			const password = 'password';
 			const userDto: LoginUserDto = { username, password };
-			jest.spyOn(studentService, 'findUserByUsername').mockResolvedValueOnce(null);
+			jest.spyOn(userService, 'findUserByUsername').mockResolvedValueOnce(null);
 
 			await expect(authService.validateUserCredentials(userDto)).rejects.toThrowError(
 				NotFoundException,
 			);
-			expect(studentService.findUserByUsername).toHaveBeenCalledWith(username);
+			expect(userService.findUserByUsername).toHaveBeenCalledWith(username);
 		});
 	});
 
 	describe('requestConfirmationMail', () => {
 		it('should throw NotFoundException if no email is found', async () => {
 			const findUserByUsernameSpy = jest
-				.spyOn(studentService, 'findUserByUsername')
+				.spyOn(userService, 'findUserByUsername')
 				.mockResolvedValueOnce({
 					email: {
 						email: null,
 					} as Mail,
 				} as Student);
 
-			await expect(authService.requestConfirmationMail('johndoe')).rejects.toThrow(
+			await expect(authService.requestConfirmationMail('test-user')).rejects.toThrow(
 				NotFoundException,
 			);
-			expect(findUserByUsernameSpy).toHaveBeenCalledWith('johndoe');
+			expect(findUserByUsernameSpy).toHaveBeenCalledWith('test-user');
 		});
 
 		it('should call emailService.sendConfirmationMail with the email and token', async () => {
-			const email = 'johndoe@example.com';
+			const email = 'test-user@example.com';
 
-			jest.spyOn(studentService, 'findUserByUsername').mockResolvedValueOnce({
+			jest.spyOn(userService, 'findUserByUsername').mockResolvedValueOnce({
 				email: {
 					email: email,
 				} as Mail,
