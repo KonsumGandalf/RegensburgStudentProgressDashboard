@@ -1,6 +1,7 @@
+import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import { BaseEntity } from '@rspd/shared/backend/utils';
 import { Student } from '@rspd/user/backend/common-models';
-import { Column, Entity, ManyToOne, TableInheritance } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, TableInheritance } from 'typeorm';
 
 /**
  * Represents a Submission entity.
@@ -16,8 +17,6 @@ export class Submission extends BaseEntity {
 	 *
 	 * @type {number}
 	 */
-	// @Column({ type: 'int2', default: 0 })
-	// attempts: number;
 
 	@Column({ type: 'real' })
 	completionPercentage: number;
@@ -28,5 +27,18 @@ export class Submission extends BaseEntity {
 	 * @type {Student}
 	 */
 	@ManyToOne(() => Student, (student: Student) => student.submissions)
+	@JoinColumn()
 	student: Student;
+
+	/**
+	 * The number of submission a user has done
+	 *
+	 * @type {Student}
+	 */
+	@Column({ type: 'int4', default: 1 })
+	numberOfSubmissions: number;
+
+	@ManyToOne(() => Assignment, (assignment: Assignment) => assignment.submissions)
+	@JoinColumn()
+	assignment: Assignment;
 }
