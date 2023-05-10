@@ -9,9 +9,9 @@ import { AssignmentService } from './services/assignment.service';
 import { ChallengeService } from './services/challenge.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Challenge, Assignment])],
-    controllers: [ChallengeController, AssignmentController],
-    providers: [ChallengeService, AssignmentService],
-    exports: [],
+	imports: [TypeOrmModule.forFeature([Challenge, Assignment])],
+	controllers: [ChallengeController, AssignmentController],
+	providers: [ChallengeService, AssignmentService],
+	exports: [RspdChallengeManagementModule, AssignmentService],
 })
-export class RspdGradeModule {}
+export class RspdChallengeManagementModule {}

@@ -127,7 +127,7 @@ describe('ChallengeService', () => {
 		});
 	});
 
-	describe('updateC,hallenge', () => {
+	describe('updateChallenge', () => {
 		it('should update the challenge with the given ID', async () => {
 			const toUpdateElement = testChallenge;
 			toUpdateElement.targetedCompletionDate = new Date();

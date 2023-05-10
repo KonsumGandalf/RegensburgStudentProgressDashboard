@@ -10,13 +10,14 @@ import {
 	IDeleteResponse,
 	NoContentException,
 } from '@rspd/shared/backend/utils';
+import { Like } from 'typeorm';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
 import { AssignmentService } from './assignment.service';
 
 describe('AssignmentService', () => {
 	let service: AssignmentService;
-	let assignmentRepository: MockRepository;
+	let assignmentRepository: MockRepository<Assignment>;
 	const assignments: Assignment[] = [];
 
 	beforeEach(async () => {
@@ -66,7 +67,7 @@ describe('AssignmentService', () => {
 				tutorsUrl: new URL(faker.internet.url()),
 				minPassedTests: faker.datatype.number({ min: 5, max: 15 }),
 				totalTests: faker.datatype.number({ min: 10, max: 20 }),
-			} as AssignmentDto;
+			} as unknown as AssignmentDto;
 
 			const createdAssignment = await service.create({
 				...assignmentDto,

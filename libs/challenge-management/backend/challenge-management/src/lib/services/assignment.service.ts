@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import { GenericRepositoryService, IDeleteResponse } from '@rspd/shared/backend/utils';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 
 import { AssignmentDto } from '../models/dto/assignment.dto';
 
@@ -43,6 +43,21 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 	 */
 	async getAssignmentById(id: string): Promise<Assignment> {
 		return super.findOneById(id);
+	}
+
+	/**
+	 * Get an Assignment by a substring of the repositoryUrl.
+	 *
+	 * @param repositoryUrl - The URL of the Assignment.
+	 * @returns A Promise that resolves to the Assignment.
+	 * @throws {NoContentException} if no assignment was found for the corresponding id
+	 */
+	async getAssignmentByRepositoryUrl(repositoryUrl: string): Promise<Assignment> {
+		return super.findOptions({
+			where: {
+				repositoryUrl: Like(`${repositoryUrl}%`),
+			},
+		});
 	}
 
 	/**
