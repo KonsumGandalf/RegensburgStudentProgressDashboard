@@ -1,7 +1,5 @@
 # user-backend-github-authorization
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test user-backend-github-authorization` to execute the unit tests via [Jest](https://jestjs.io).
+This library handles GitHub authorization and saves an access token for a user in a secure manner.
+The token can be used to make authorized API requests on behalf of the user.
+The library provides an easy-to-use interface for obtaining and storing the token.
