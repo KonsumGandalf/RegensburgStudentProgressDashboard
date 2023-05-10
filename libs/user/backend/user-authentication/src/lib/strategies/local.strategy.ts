@@ -1,6 +1,6 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { IComplexUser } from '@rspd/user/backend/user-management';
+import { IComplexUser } from '@rspd/user/backend/common-models';
 import * as bcrypt from 'bcrypt';
 import { Strategy } from 'passport-local';
 

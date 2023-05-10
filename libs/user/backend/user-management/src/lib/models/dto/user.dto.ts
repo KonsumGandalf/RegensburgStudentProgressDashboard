@@ -1,4 +1,4 @@
-import { IsAllowEmailDomain } from '@rspd/shared/backend/utils';
+import { IsAllowEmailDomain } from '@rspd/user/backend/common-models';
 import {
     IsEmail,
     IsString,

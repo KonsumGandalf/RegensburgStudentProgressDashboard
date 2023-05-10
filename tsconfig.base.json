@@ -1,42 +1,49 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "rootDir": ".",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "es2015",
-        "module": "esnext",
-        "lib": ["es2017", "dom"],
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "@rspd/challenge-management/backend/challenge-management": [
-                "libs/challenge-management/backend/challenge-management/src/index.ts"
-            ],
-            "@rspd/shared/backend/test-util": [
-                "libs/shared/backend/test-util/src/index.ts"
-            ],
-            "@rspd/shared/backend/utils": [
-                "libs/shared/backend/utils/src/index.ts"
-            ],
-            "@rspd/user/backend/common-models": [
-                "libs/user/backend/common-models/src/index.ts"
-            ],
-            "@rspd/user/backend/user-authentication": [
-                "libs/user/backend/user-authentication/src/index.ts"
-            ],
-            "@rspd/user/backend/user-mail-management": [
-                "libs/user/backend/user-mail-management/src/index.ts"
-            ],
-            "@rspd/user/backend/user-management": [
-                "libs/user/backend/user-management/src/index.ts"
-            ]
-        }
-    },
-    "exclude": ["node_modules", "tmp"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": ["es2017", "dom"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@rspd/challenge-management/backend/challenge-management": [
+				"libs/challenge-management/backend/challenge-management/src/index.ts"
+			],
+			"@rspd/challenge-management/backend/common-models": [
+				"libs/challenge-management/backend/common-models/src/index.ts"
+			],
+			"@rspd/shared/backend/test-util": ["libs/shared/backend/test-util/src/index.ts"],
+			"@rspd/shared/backend/utils": ["libs/shared/backend/utils/src/index.ts"],
+			"@rspd/student-submissions/backend/common-models": [
+				"libs/student-submissions/backend/common-models/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/github-submissions": [
+				"libs/student-submissions/backend/github-submissions/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/submission-management": [
+				"libs/student-submissions/backend/submission-management/src/index.ts"
+			],
+			"@rspd/user/backend/common-models": ["libs/user/backend/common-models/src/index.ts"],
+			"@rspd/user/backend/github-authorization": [
+				"libs/user/backend/github-authorization/src/index.ts"
+			],
+			"@rspd/user/backend/user-authentication": [
+				"libs/user/backend/user-authentication/src/index.ts"
+			],
+			"@rspd/user/backend/user-mail-management": [
+				"libs/user/backend/user-mail-management/src/index.ts"
+			],
+			"@rspd/user/backend/user-management": ["libs/user/backend/user-management/src/index.ts"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
 }

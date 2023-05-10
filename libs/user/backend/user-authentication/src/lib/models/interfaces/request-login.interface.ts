@@ -1,4 +1,4 @@
-import { IComplexUser } from '@rspd/user/backend/user-management';
+import { IComplexUser } from '@rspd/user/backend/common-models';
 
 /**
  * Interface for the request object used in login requests.

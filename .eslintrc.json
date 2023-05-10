@@ -1,104 +1,112 @@
 {
-    "root": true,
-    "ignorePatterns": ["**/*"],
-    "plugins": ["@nrwl/nx"],
-    "overrides": [
-        {
-            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-            "rules": {
-                "@nrwl/nx/enforce-module-boundaries": [
-                    "error",
-                    {
-                        "enforceBuildableLibDependency": true,
-                        "allow": [],
-                        "depConstraints": [
-                            {
-                                "sourceTag": "type:app",
-                                "onlyDependOnLibsWithTags": [
-                                    "type:feature",
-                                    "type:util-feature",
-                                    "type:util",
-                                    "type:common-model"
-                                ]
-                            },
-                            {
-                                "sourceTag": "type:feature",
-                                "onlyDependOnLibsWithTags": [
-                                    "type:util-feature",
-                                    "type:util",
-                                    "type:common-model"
-                                ]
-                            },
-                            {
-                                "sourceTag": "type:util-feature",
-                                "onlyDependOnLibsWithTags": [
-                                    "type:util",
-                                    "type:util-feature",
-                                    "type:common-model"
-                                ]
-                            },
-                            {
-                                "sourceTag": "type:util",
-                                "onlyDependOnLibsWithTags": [
-                                    "type:util",
-                                    "type:common-model"
-                                ]
-                            },
-                            {
-                                "sourceTag": "type:common-model",
-                                "onlyDependOnLibsWithTags": []
-                            },
-                            {
-                                "sourceTag": "domain:shared",
-                                "onlyDependOnLibsWithTags": ["domain:shared"]
-                            },
-                            {
-                                "sourceTag": "domain:challenge",
-                                "onlyDependOnLibsWithTag": [
-                                    "domain:challenge",
-                                    "domain:shared"
-                                ]
-                            },
-                            {
-                                "sourceTag": "domain:user",
-                                "onlyDependOnLibsWithTag": [
-                                    "domain:user",
-                                    "domain:shared"
-                                ]
-                            },
-                            {
-                                "sourceTag": "kind:backend",
-                                "onlyDependOnLibsWithTag": ["kind:backend"]
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            "files": ["*.ts", "*.tsx"],
-            "extends": [
-                "plugin:@nrwl/nx/typescript",
-                "plugin:@typescript-eslint/eslint-recommended",
-                "plugin:@typescript-eslint/recommended"
-            ],
-            "plugins": ["simple-import-sort"],
-            "rules": {
-                "simple-import-sort/imports": "error",
-                "@typescript-eslint/no-explicit-any": "off"
-            }
-        },
-        {
-            "files": ["*.js", "*.jsx"],
-            "extends": ["plugin:@nrwl/nx/javascript"],
-            "rules": {}
-        },
-        {
-            "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-            "env": {
-                "jest": true
-            },
-            "rules": {}
-        }
-    ]
+	"root": true,
+	"ignorePatterns": ["**/*"],
+	"plugins": ["@nrwl/nx"],
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+			"rules": {
+				"@nrwl/nx/enforce-module-boundaries": [
+					"error",
+					{
+						"enforceBuildableLibDependency": true,
+						"allow": [],
+						"depConstraints": [
+							{
+								"sourceTag": "type:app",
+								"onlyDependOnLibsWithTags": [
+									"type:feature",
+									"type:util-feature",
+									"type:util",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:feature",
+								"onlyDependOnLibsWithTags": [
+									"type:util-feature",
+									"type:util",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:util-feature",
+								"onlyDependOnLibsWithTags": [
+									"type:util",
+									"type:util-feature",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:util",
+								"onlyDependOnLibsWithTags": ["type:util", "type:common-model"]
+							},
+							{
+								"sourceTag": "type:common-model",
+								"onlyDependOnLibsWithTags": ["type:common-model"]
+							},
+							{
+								"sourceTag": "domain:shared",
+								"onlyDependOnLibsWithTags": ["domain:shared"]
+							},
+							{
+								"sourceTag": "domain:challenge",
+								"onlyDependOnLibsWithTag": [
+									"domain:challenge",
+									"domain:shared",
+									"domain:user"
+								]
+							},
+							{
+								"sourceTag": "domain:submission",
+								"onlyDependOnLibsWithTag": [
+									"domain:challenge",
+									"domain:submission",
+									"domain:shared",
+									"domain:user"
+								]
+							},
+							{
+								"sourceTag": "domain:user",
+								"onlyDependOnLibsWithTag": ["domain:user", "domain:shared"]
+							},
+							{
+								"sourceTag": "domain:github",
+								"onlyDependOnLibWithTag": ["domain:shared", "domain:github"]
+							},
+							{
+								"sourceTag": "kind:backend",
+								"onlyDependOnLibsWithTag": ["kind:backend"]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"files": ["*.ts", "*.tsx"],
+			"extends": [
+				"plugin:@nrwl/nx/typescript",
+				"plugin:@typescript-eslint/eslint-recommended",
+				"plugin:@typescript-eslint/recommended"
+			],
+			"plugins": ["simple-import-sort"],
+			"rules": {
+				"simple-import-sort/imports": "error",
+				"@typescript-eslint/no-explicit-any": "off"
+			}
+		},
+		{
+			"files": ["*.js", "*.jsx"],
+			"extends": ["plugin:@nrwl/nx/javascript"],
+			"rules": {}
+		},
+		{
+			"files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+			"env": {
+				"jest": true
+			},
+			"rules": {}
+		}
+	]
 }

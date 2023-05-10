@@ -113,7 +113,7 @@ nx serve frontend
 
 # Domains
 
-## Grade
+## Challenge Management
 
 ### Backend
 
@@ -130,6 +130,16 @@ nx serve frontend
 | `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
 | `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
 
+## Submission-Management
+
+### Backend
+
+| Name                                               | Path                                                                                                             | Description                                             |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `student-submission-backend-common-models`         | [libs\student-submissions\backend\common-models](libs\student-submissions\backend\common-models)                 | Student-submission-related data models for the backend. |
+| `student-submission-backend-github-submissions`    | [libs\student-submissions\backend\github-submissions](libs\student-submissions\backend\github-submissions)       | GitHub submission handling for student submissions.     |
+| `student-submission-backend-submission-management` | [libs\student-submissions\backend\submission-management](libs\student-submissions\backend\submission-management) | Manages student submissions.                            |
+
 ## User
 
 ### Backend
@@ -137,6 +147,7 @@ nx serve frontend
 | Name                                | Path                                                                             | Description                                                                                        |
 | ----------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `user-backend-common-models`        | [libs/user/backend/common-models](libs/user/backend/common-models)               | User-related data models for the backend.                                                          |
+| `user-backend-github-authorization` | [libs/user/backend/github-authorization](libs/user/backend/github-authorization) | Handles GitHub authorization and saves an access token for a user.                                 |
 | `user-backend-user-authentication`  | [libs/user/backend/user-authentication](libs/user/backend/user-authentication)   | It provides user authentication functionality for a backend application.                           |
 | `user-backend-user-mail-management` | [libs/user/backend/user-mail-management](libs/user/backend/user-mail-management) | Manages email confirmation and access control.                                                     |
 | `user-backend-user-management`      | [libs/user/backend/user-management](libs/user/backend/user-management)           | Provides authentication and authorization functionalities for user management in a backend system. |
