@@ -113,7 +113,7 @@ nx serve frontend
 
 # Domains
 
-## Grade
+## Challenge Management
 
 ### Backend
 
@@ -129,6 +129,16 @@ nx serve frontend
 | --------------------------- | -------------------------------------------------------------- | --------------------------------------------------------- |
 | `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
 | `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
+
+## Submission-Management
+
+### Backend
+
+| Name                                               | Path                                                                                                             | Description                                             |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `student-submission-backend-common-models`         | [libs\student-submissions\backend\common-models](libs\student-submissions\backend\common-models)                 | Student-submission-related data models for the backend. |
+| `student-submission-backend-github-submissions`    | [libs\student-submissions\backend\github-submissions](libs\student-submissions\backend\github-submissions)       | GitHub submission handling for student submissions.     |
+| `student-submission-backend-submission-management` | [libs\student-submissions\backend\submission-management](libs\student-submissions\backend\submission-management) | Manages student submissions.                            |
 
 ## User
 
