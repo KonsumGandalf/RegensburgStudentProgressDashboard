@@ -6,4 +6,5 @@ export * from './exceptions/public-api';
 export * from './guards/public-api';
 export * from './interfaces/public-api';
 export * from './strategies/public-api';
+export * from './token/public-api';
 export * from './validators/public-api';
