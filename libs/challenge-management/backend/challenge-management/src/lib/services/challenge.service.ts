@@ -15,11 +15,6 @@ import { AssignmentService } from './assignment.service';
 
 /**
  * A service class for handling CRUD operations for Challenge entities.
- *
- * @class
- * @constructor
- * @param {Repository<Challenge>} _challengeRepo - A repository for managing Challenge entities.
- * @param {Repository<Assignment>} _assignmentRepo - A repository for managing Assignment entities.
  */
 export class ChallengeService extends GenericRepositoryService<Challenge> {
 	constructor(
@@ -44,7 +39,7 @@ export class ChallengeService extends GenericRepositoryService<Challenge> {
 
 		await Promise.all(
 			challengeDto.assignments.map(async (assignment: AssignmentDto) => {
-				return this._assignmentService.createAssignment(challenge.id, assignment);
+				return this._assignmentService.createAssignment(challenge, assignment);
 			}),
 		);
 
@@ -108,5 +103,34 @@ export class ChallengeService extends GenericRepositoryService<Challenge> {
 			...updateElement,
 			...challengeDto,
 		});
+	}
+
+	/**
+	 * Retrieves a challenge by its ID with all corresponding entity connections.
+	 *
+	 * @param {string} id - The ID of the challenge.
+	 * @returns {Promise<Challenge>} A Promise that resolves to the retrieved challenge.
+	 */
+	async getChallengeEagerly(id: string): Promise<Challenge> {
+		return await this.findOptions({
+			where: {
+				id,
+			},
+			relations: ['assignments', 'tutor', 'submissions'],
+		});
+	}
+
+	/**
+	 * Retrieves a challenge by the ID of one of its assignments.
+	 *
+	 * @param {string} assignmentId - The ID of the assignment.
+	 * @returns {Promise<Challenge>} A Promise that resolves to the retrieved challenge.
+	 */
+	async getChallengeByAssignmentId(assignmentId: string): Promise<Challenge> {
+		return await this._challengeRepo
+			.createQueryBuilder('challenge')
+			.leftJoinAndSelect('challenge.assignments', 'assignment')
+			.where('assignment.id = :id', { id: assignmentId })
+			.getOne();
 	}
 }

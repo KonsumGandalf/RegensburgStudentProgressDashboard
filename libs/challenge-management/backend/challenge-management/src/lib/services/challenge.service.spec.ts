@@ -12,6 +12,7 @@ import {
 	IDeleteResponse,
 } from '@rspd/shared/backend/utils';
 
+import { AssignmentDto } from '../models/dto/assignment.dto';
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
 import { AssignmentService } from './assignment.service';
 import { ChallengeService } from './challenge.service';
@@ -80,7 +81,15 @@ describe('ChallengeService', () => {
 
 	describe('createChallenge', () => {
 		it('should create and return the saved challenge entity', async () => {
-			const challengeDto: CreateChallengeDto = { ...testChallenge };
+			const fakeAssignmentDto = {
+				...testChallenge.assignments[0],
+				displayName: testChallenge.assignments[0].name,
+			} as AssignmentDto;
+
+			const challengeDto: CreateChallengeDto = {
+				...testChallenge,
+				assignments: [fakeAssignmentDto],
+			};
 			const createdChallenge = await service.createChallengeAndAssignments(challengeDto);
 
 			expect(createdChallenge.name).toEqual(testChallenge.name);
@@ -145,5 +154,33 @@ describe('ChallengeService', () => {
 				ActionNotPerformedException,
 			);
 		});
+	});
+
+	describe('getChallengeEagerly', () => {
+		it(
+			'should return the challenge of the given id with the Relations to ' +
+				'`AssignmentSubmission`, `Tutor` and `Submission`',
+			async () => {
+				const fakeChallenge = {
+					...challenges[0],
+					assignments: [
+						{
+							id: 'random-id',
+						},
+					],
+					tutor: {
+						id: 'random-id-2',
+					},
+				} as Challenge;
+				const functionSpy = jest
+					.spyOn(service, 'findOptions')
+					.mockResolvedValueOnce(fakeChallenge);
+
+				const receivedChallenge = await service.getChallengeEagerly(fakeChallenge.id);
+
+				expect(functionSpy).toHaveBeenCalledTimes(1);
+				expect(receivedChallenge).toEqual(receivedChallenge);
+			},
+		);
 	});
 });

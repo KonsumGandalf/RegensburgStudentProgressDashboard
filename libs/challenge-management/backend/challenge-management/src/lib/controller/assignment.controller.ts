@@ -24,14 +24,14 @@ export class AssignmentController {
 	constructor(private readonly _assignmentService: AssignmentService) {}
 
 	/**
-	 * Retrieve an assignment by ID
-	 * @param id The ID of the assignment to retrieve
+	 * Retrieve an assignment by unique name
+	 * @param name The Name of the assignment to retrieve
 	 * @returns The assignment matching the ID
 	 */
-	@Get(':id')
+	@Get(':name')
 	@ApiFoundResponse({ description: 'Assignment was found', type: Assignment })
-	async getAssignment(@Param('id') id: string): Promise<Assignment> {
-		return this._assignmentService.getAssignmentById(id);
+	async getAssignment(@Param('name') name: string): Promise<Assignment> {
+		return this._assignmentService.getAssignmentByName(name);
 	}
 
 	/**
