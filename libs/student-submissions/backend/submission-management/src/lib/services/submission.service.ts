@@ -1,25 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-	AppConfig,
-	GenericRepositoryService,
-	IResourceOwnerChecker,
-} from '@rspd/shared/backend/utils';
-import { Submission } from '@rspd/student-submissions/backend/common-models';
-import { UserService } from '@rspd/user/backend/user-management';
+import { GenericRepositoryService, IResourceOwnerChecker } from '@rspd/shared/backend/utils';
+import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class SubmissionService
-	extends GenericRepositoryService<Submission>
+	extends GenericRepositoryService<AssignmentSubmission>
 	implements IResourceOwnerChecker
 {
 	constructor(
-		private readonly _configService: ConfigService<AppConfig>,
-		private readonly _userService: UserService,
-		@InjectRepository(Submission)
-		private readonly _githubSubmissionRepo: Repository<Submission>,
+		@InjectRepository(AssignmentSubmission)
+		private readonly _githubSubmissionRepo: Repository<AssignmentSubmission>,
 	) {
 		super(_githubSubmissionRepo);
 	}
@@ -32,8 +24,8 @@ export class SubmissionService
 		return submission.student.username === username;
 	}
 
-	async find(id: string): Promise<Submission> {
-		return await this._githubSubmissionRepo.findOne({
+	async find(id: string): Promise<AssignmentSubmission> {
+		return await super.findOptions({
 			where: {
 				id,
 			},

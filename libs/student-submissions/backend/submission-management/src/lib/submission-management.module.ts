@@ -1,22 +1,34 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
 import { RESOURCE_PROVIDER_TOKEN, ResourceProvider } from '@rspd/shared/backend/utils';
-import { Submission } from '@rspd/student-submissions/backend/common-models';
-import { RspdUserModule } from '@rspd/user/backend/user-management';
+import {
+	AssignmentSubmission,
+	ChallengeSubmission,
+} from '@rspd/student-submissions/backend/common-models';
 
-import { SubmissionController } from './controller/submission.controller';
+import { AssignmentSubmissionService } from './services/assignment-submission.service';
+import { ChallengeSubmissionService } from './services/challenge-submission.service';
 import { SubmissionService } from './services/submission.service';
 
 @Module({
-	imports: [RspdUserModule, TypeOrmModule.forFeature([Submission])],
-	controllers: [SubmissionController],
+	imports: [
+		RspdChallengeManagementModule,
+		TypeOrmModule.forFeature([AssignmentSubmission, ChallengeSubmission]),
+	],
+	controllers: [],
 	providers: [
-		SubmissionService,
 		{
 			useClass: SubmissionService,
 			provide: RESOURCE_PROVIDER_TOKEN(ResourceProvider.SUBMISSION),
 		},
+		ChallengeSubmissionService,
+		AssignmentSubmissionService,
 	],
-	exports: [RspdSubmissionManagementModule],
+	exports: [
+		RspdSubmissionManagementModule,
+		AssignmentSubmissionService,
+		ChallengeSubmissionService,
+	],
 })
 export class RspdSubmissionManagementModule {}
