@@ -6,12 +6,19 @@ start
 if (is actor or assignment invalid?) then (yes)
 end
 else (yes)
-    if (submission already exists?) then (yes)
-        :Create SubmissionEntity;
+    if (assignmentSubmission already exists?) then (yes)
+        :Create AssignmentSubmissionEntity;
     else (no)
-        :Update SubmissionEntity;
+        :Update AssignmentSubmissionEntity;
     endif
 endif
+fork
+if (challengeSubmission already exists?) then (yes)
+    :Create ChallengeSubmissionEntity;
+else (no)
+    :Update  ChallengeSubmissionEntity;
+endif
+fork again
 while (is data of tests available?)
     if (submission already exists?) then (no)
         if (is test result correct?) then (yes)
@@ -22,6 +29,7 @@ while (is data of tests available?)
         :Update TestEntity;
     endif
 endwhile
+end fork
 stop
 
 @enduml
