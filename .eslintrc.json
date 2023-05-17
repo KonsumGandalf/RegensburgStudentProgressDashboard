@@ -15,6 +15,16 @@
 							{
 								"sourceTag": "type:app",
 								"onlyDependOnLibsWithTags": [
+									"type:master-feature",
+									"type:feature",
+									"type:util-feature",
+									"type:util",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:master-feature",
+								"onlyDependOnLibsWithTags": [
 									"type:feature",
 									"type:util-feature",
 									"type:util",
@@ -24,6 +34,7 @@
 							{
 								"sourceTag": "type:feature",
 								"onlyDependOnLibsWithTags": [
+									"type:feature",
 									"type:util-feature",
 									"type:util",
 									"type:common-model"
@@ -69,10 +80,6 @@
 							{
 								"sourceTag": "domain:user",
 								"onlyDependOnLibsWithTag": ["domain:user", "domain:shared"]
-							},
-							{
-								"sourceTag": "domain:github",
-								"onlyDependOnLibWithTag": ["domain:shared", "domain:github"]
 							},
 							{
 								"sourceTag": "kind:backend",

@@ -29,6 +29,9 @@
 			"@rspd/student-submissions/backend/github-submissions": [
 				"libs/student-submissions/backend/github-submissions/src/index.ts"
 			],
+			"@rspd/student-submissions/backend/submission-insights": [
+				"libs/student-submissions/backend/submission-insights/src/index.ts"
+			],
 			"@rspd/student-submissions/backend/submission-management": [
 				"libs/student-submissions/backend/submission-management/src/index.ts"
 			],

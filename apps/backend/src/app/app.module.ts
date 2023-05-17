@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
 import { AppConfig } from '@rspd/shared/backend/utils';
 import { RspdGithubSubmissionModule } from '@rspd/student-submissions/backend/github-submissions';
+import { RspdSubmissionInsightsModule } from '@rspd/student-submissions/backend/submission-insights';
 import { RspdSubmissionManagementModule } from '@rspd/student-submissions/backend/submission-management';
 import { RspdGithubAuthorizationModule } from '@rspd/user/backend/github-authorization';
 import { RspdAuthModule } from '@rspd/user/backend/user-authentication';
@@ -12,6 +13,7 @@ import { RspdUserMailManagementModule } from '@rspd/user/backend/user-mail-manag
 import { RspdUserModule } from '@rspd/user/backend/user-management';
 
 import { ConfigUtils } from './config/util/config.utils';
+import { backendRoutes } from './routing/routes';
 
 @Module({
 	imports: [
@@ -38,33 +40,6 @@ import { ConfigUtils } from './config/util/config.utils';
 			},
 		}),
 
-		RouterModule.register([
-			{
-				path: '/mail',
-				module: RspdUserMailManagementModule,
-			},
-			{
-				path: '/challenge',
-				module: RspdChallengeManagementModule,
-			},
-			{
-				path: '/user',
-				module: RspdUserModule,
-			},
-			{
-				path: '/auth',
-				module: RspdAuthModule,
-			},
-			{
-				path: '/submission',
-				module: RspdSubmissionManagementModule,
-			},
-			{
-				path: '/github',
-				module: RspdGithubSubmissionModule,
-			},
-		]),
-
 		RspdUserMailManagementModule,
 		RspdUserModule,
 		RspdChallengeManagementModule,
@@ -72,6 +47,9 @@ import { ConfigUtils } from './config/util/config.utils';
 		RspdSubmissionManagementModule,
 		RspdGithubSubmissionModule,
 		RspdGithubAuthorizationModule,
+		RspdSubmissionInsightsModule,
+
+		RouterModule.register(backendRoutes),
 	],
 	providers: [
 		{
