@@ -6,10 +6,10 @@ import { IComplexUser } from '@rspd/user/backend/common-models';
  * @interface
  */
 export interface IRequestLogin {
-    /**
-     * User object containing information about the logged in user.
-     *
-     * @type {IComplexUser}
-     */
-    user: IComplexUser;
+	/**
+	 * User object containing information about the logged in user.
+	 *
+	 * @type {IComplexUser}
+	 */
+	user: Pick<IComplexUser, 'username' | 'id' | 'role'>;
 }

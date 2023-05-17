@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GenericRepositoryService } from '@rspd/shared/backend/utils';
-import { IComplexUser, IEmail, User } from '@rspd/user/backend/common-models';
+import { GenericRepositoryService, UserRole } from '@rspd/shared/backend/utils';
+import { IComplexUser, IEmail, Student, User } from '@rspd/user/backend/common-models';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -51,6 +51,14 @@ export class UserService<UserType extends User = User> extends GenericRepository
 		return await super.findOptions({
 			where: { id },
 			relations: ['email'],
+		});
+	}
+
+	async findAllStudents(): Promise<User[]> {
+		return await this.findOptionsMany({
+			where: {
+				role: UserRole.STUDENT,
+			} as Student,
 		});
 	}
 }
