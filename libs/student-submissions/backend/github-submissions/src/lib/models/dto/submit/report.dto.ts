@@ -1,8 +1,8 @@
 import { Type } from 'class-transformer';
 import { IsString, ValidateNested } from 'class-validator';
 
-import { IsValidOrgin } from '../validators/is-valid-orgin.validator';
-import { SubmissionDto } from './submission.dto';
+import { IsValidOrigin } from '../../validators/is-valid-orgin.validator';
+import { GithubSubmissionDto } from './github-submission.dto';
 
 /**
  * Data transfer object for a report.
@@ -11,11 +11,11 @@ export class ReportDto {
 	/**
 	 * Submission details.
 	 *
-	 * @type {SubmissionDto}
+	 * @type {GithubSubmissionDto}
 	 */
 	@ValidateNested()
-	@Type(() => SubmissionDto)
-	submission: SubmissionDto;
+	@Type(() => GithubSubmissionDto)
+	submission: GithubSubmissionDto;
 
 	/**
 	 * Repository name.
@@ -43,6 +43,6 @@ export class ReportDto {
 	 * @example git://github.com/OTH-Digital-Skills/lab-04-mario-angie_123
 	 */
 	@IsString()
-	@IsValidOrgin()
+	@IsValidOrigin()
 	repositoryUrl: string;
 }

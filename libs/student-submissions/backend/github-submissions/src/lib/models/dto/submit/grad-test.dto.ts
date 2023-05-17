@@ -1,7 +1,7 @@
+import { TestOutcome } from '@rspd/student-submissions/backend/common-models';
 import { Type } from 'class-transformer';
 import { IsEnum, IsOptional, ValidateNested } from 'class-validator';
 
-import { TestOutcome } from '../enums/test-outcome.enum';
 import { CallDto } from './call.dto';
 
 /**

@@ -1,1 +1,1 @@
-export * from './lib/github-submission.module';
+export * from './lib/public-api';

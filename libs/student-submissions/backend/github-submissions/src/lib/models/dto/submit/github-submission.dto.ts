@@ -7,7 +7,7 @@ import { GradeSummaryDto } from './grade-summary.dto';
 /**
  * DTO for a submission.
  */
-export class SubmissionDto {
+export class GithubSubmissionDto {
 	/**
 	 * Nested DTO for a grade summary.
 	 */
