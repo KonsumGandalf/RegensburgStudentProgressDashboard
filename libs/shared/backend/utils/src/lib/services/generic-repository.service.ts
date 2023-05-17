@@ -127,7 +127,6 @@ export abstract class GenericRepositoryService<Entity extends BaseEntity, IEntit
 			this._repository.create({
 				...entity,
 				...item,
-				id: id,
 			} as Entity),
 		);
 	}

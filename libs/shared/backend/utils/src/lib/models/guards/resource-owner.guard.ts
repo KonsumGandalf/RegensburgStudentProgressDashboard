@@ -5,7 +5,7 @@ import {
 	Inject,
 	Injectable,
 } from '@nestjs/common';
-import { IUser } from '@rspd/user/backend/common-models';
+import { IRequestLogin, IUser } from '@rspd/user/backend/common-models';
 import { Observable } from 'rxjs';
 
 import { ResourceProvider } from '../enums/resource-provider.enum';
@@ -13,6 +13,9 @@ import { UserRole } from '../enums/user-role.enum';
 import { IResourceOwnerChecker } from '../interfaces/resource-owner-checker.interface';
 import { RESOURCE_PROVIDER_TOKEN } from '../token/resource-provider.token';
 
+/**
+ * Guard ensures that a resource can just be requested by its owner or a tutor
+ */
 @Injectable()
 export class ResourceOwnerGuard implements CanActivate {
 	constructor(
@@ -23,19 +26,17 @@ export class ResourceOwnerGuard implements CanActivate {
 	canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
 		const request = context.switchToHttp().getRequest();
 		const resourceId = request.params.id;
-		const user = request.user as IUser;
+		const { role, username } = (request as IRequestLogin).user;
 
-		if (user.role === UserRole.TUTOR) {
+		if (role === UserRole.TUTOR) {
 			return true;
 		}
 
-		return this._resourceOwnerChecker
-			.checkOwnership(resourceId, user.username)
-			.then((result) => {
-				if (!result) {
-					throw new ForbiddenException('You are not authorized to access this resource');
-				}
-				return true;
-			});
+		return this._resourceOwnerChecker.checkOwnership(resourceId, username).then((result) => {
+			if (!result) {
+				throw new ForbiddenException('You are not authorized to access this resource');
+			}
+			return true;
+		});
 	}
 }
