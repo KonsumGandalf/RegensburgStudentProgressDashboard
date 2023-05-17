@@ -35,6 +35,9 @@
 			"@rspd/student-submissions/backend/submission-management": [
 				"libs/student-submissions/backend/submission-management/src/index.ts"
 			],
+			"@rspd/student-submissions/common/models": [
+				"libs/student-submissions/common/models/src/index.ts"
+			],
 			"@rspd/user/backend/common-models": ["libs/user/backend/common-models/src/index.ts"],
 			"@rspd/user/backend/github-authorization": [
 				"libs/user/backend/github-authorization/src/index.ts"

@@ -1,0 +1,16 @@
+{
+	"name": "student-submissions-common-models",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/student-submissions/common/models/src",
+	"projectType": "library",
+	"targets": {
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["libs/student-submissions/common/models/**/*.ts"]
+			}
+		}
+	},
+	"tags": ["kind:common", "type:common-model", "domain:submission"]
+}
