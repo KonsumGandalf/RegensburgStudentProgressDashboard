@@ -1,5 +1,6 @@
 import { GithubUser, UserRole } from '@rspd/shared/backend/utils';
-import { Submission } from '@rspd/student-submissions/backend/common-models';
+import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
+import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
 import { ChildEntity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 import { User } from './user.entity';
@@ -25,10 +26,20 @@ export class Student extends User {
 	/**
 	 * The submissions made by the student
 	 *
-	 * @type {Submission[]}
+	 * @type {AssignmentSubmission[]}
 	 * @memberof Student
 	 */
-	@OneToMany(() => Submission, (submission: Submission) => submission.student)
+	@OneToMany(() => AssignmentSubmission, (submission: AssignmentSubmission) => submission.student)
 	@JoinColumn()
-	submissions: Submission[];
+	assignmentSubmissions: AssignmentSubmission[];
+
+	/**
+	 * The submissions which are target a challenge and summarized single assignmentSubmissions
+	 *
+	 * @type {ChallengeSubmission[]}
+	 * @memberof Student
+	 */
+	@OneToMany(() => ChallengeSubmission, (submission: ChallengeSubmission) => submission.student)
+	@JoinColumn()
+	challengeSubmissions: ChallengeSubmission[];
 }

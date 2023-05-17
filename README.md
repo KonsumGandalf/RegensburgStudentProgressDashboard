@@ -117,9 +117,10 @@ nx serve frontend
 
 ### Backend
 
-| Name                                                | Path                                                                                                             | Description                                    |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `challenge-management-backend-challenge-management` | [libs/challenge-management/backend/challenge-management](libs/challenge-management/backend/challenge-management) | Allows tutors the update and create challenges |
+| Name                                                | Path                                                                                                             | Description                                               |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `challenge-management-backend-challenge-management` | [libs/challenge-management/backend/challenge-management](libs/challenge-management/backend/challenge-management) | Allows tutors the update and create challenges            |
+| `challenge-management-backend-common-models`        | [libs/challenge-management/backend/common-models](libs/challenge-management/backend/common-models)               | Challenge-management-related data models for the backend. |
 
 ## Shared
 
@@ -130,15 +131,22 @@ nx serve frontend
 | `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
 | `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
 
-## Submission-Management
+## Student-Submissions
 
 ### Backend
 
-| Name                                               | Path                                                                                                             | Description                                             |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `student-submission-backend-common-models`         | [libs\student-submissions\backend\common-models](libs\student-submissions\backend\common-models)                 | Student-submission-related data models for the backend. |
-| `student-submission-backend-github-submissions`    | [libs\student-submissions\backend\github-submissions](libs\student-submissions\backend\github-submissions)       | GitHub submission handling for student submissions.     |
-| `student-submission-backend-submission-management` | [libs\student-submissions\backend\submission-management](libs\student-submissions\backend\submission-management) | Manages student submissions.                            |
+| Name                                               | Path                                                                                                             | Description                                                      |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `student-submission-backend-common-models`         | [libs\student-submissions\backend\common-models](libs\student-submissions\backend\common-models)                 | Student-submission-related data models for the backend.          |
+| `student-submission-backend-github-submissions`    | [libs\student-submissions\backend\github-submissions](libs\student-submissions\backend\github-submissions)       | GitHub submission handling for student submissions.              |
+| `student-submission-backend-submission-insights`   | [libs\student-submissions\backend\submission-insights](libs\student-submissions\backend\submission-insights)     | Allows the frontend to request the state of student submissions. |
+| `student-submission-backend-submission-management` | [libs\student-submissions\backend\submission-management](libs\student-submissions\backend\submission-management) | Manages student submissions.                                     |
+
+### Common
+
+| Name                               | Path                                                                             | Description                                                                  |
+| ---------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `student-submission-common-models` | [libs\student-submissions\common\models](libs\student-submissions\common\models) | Common models used in the student submission domain by the front and backend |
 
 ## User
 

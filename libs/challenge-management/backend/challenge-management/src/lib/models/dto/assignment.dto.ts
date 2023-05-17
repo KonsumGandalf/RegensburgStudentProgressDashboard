@@ -4,6 +4,7 @@ import {
 	IsGreaterOrEqualValidator,
 	IsSmallerOrEqualValidator,
 } from '@rspd/shared/backend/utils';
+import { Transform } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, IsString, IsUrl, Max, Min } from 'class-validator';
 
 /**
@@ -24,7 +25,8 @@ export class AssignmentDto {
 	 * @example lab-04-mario
 	 */
 	@IsString()
-	name: string;
+	@Transform(({ value }) => value.trim())
+	displayName: string;
 
 	/**
 	 * The topics of the assignment.

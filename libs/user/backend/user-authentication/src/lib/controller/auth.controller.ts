@@ -2,12 +2,11 @@ import { Body, Controller, Get, Param, Post, Request, UseGuards } from '@nestjs/
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard, Role, RoleGuard, UserRole } from '@rspd/shared/backend/utils';
 import { IEmail, IUser } from '@rspd/user/backend/common-models';
+import { IRequestLogin } from '@rspd/user/backend/common-models';
 
-import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
 import { LocalAuthGuard } from '../models/guards/local-auth.guard';
 import { IAuthJwt } from '../models/interfaces/auth-jwt.interface';
-import { IRequestLogin } from '../models/interfaces/request-login.interface';
 import { IResponseAuthentication } from '../models/interfaces/response-login.interfaces';
 import { AuthService } from '../services/auth.service';
 
@@ -43,10 +42,7 @@ export class AuthController {
 	 */
 	@UseGuards(LocalAuthGuard)
 	@Post('login')
-	async login(
-		@Body() loginDto: LoginUserDto,
-		@Request() request: IRequestLogin,
-	): Promise<IResponseAuthentication> {
+	async login(@Request() request: IRequestLogin): Promise<IResponseAuthentication> {
 		return await this._authService.login({
 			username: request.user.username,
 			id: request.user.id,

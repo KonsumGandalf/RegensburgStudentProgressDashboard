@@ -1,1 +1,1 @@
-export * from './lib/submission-management.module';
+export * from './lib/public-api';

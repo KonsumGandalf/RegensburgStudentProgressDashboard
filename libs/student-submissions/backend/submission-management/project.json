@@ -28,5 +28,5 @@
 			}
 		}
 	},
-	"tags": ["kind:backend", "type:feature", "domain:submission"]
+	"tags": ["kind:backend", "type:util-feature", "domain:submission"]
 }

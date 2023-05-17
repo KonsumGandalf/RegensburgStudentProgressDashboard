@@ -1,5 +1,6 @@
 import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import { BaseEntity } from '@rspd/shared/backend/utils';
+import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
 import { Tutor } from '@rspd/user/backend/common-models';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
@@ -13,6 +14,7 @@ import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 export class Challenge extends BaseEntity {
 	/**
 	 * The name of the challenge.
+	 *
 	 * @member {string}
 	 */
 	@Column()
@@ -40,4 +42,15 @@ export class Challenge extends BaseEntity {
 	 */
 	@ManyToOne(() => Tutor, (tutor: Tutor) => tutor.challenges)
 	tutor: Tutor;
+
+	/**
+	 * The challenge submission which states if a submission has been completed
+	 *
+	 * @type {Assignment[]}
+	 */
+	@OneToMany(
+		() => ChallengeSubmission,
+		(challengeSubmission: ChallengeSubmission) => challengeSubmission.challenge,
+	)
+	submissions: ChallengeSubmission[];
 }

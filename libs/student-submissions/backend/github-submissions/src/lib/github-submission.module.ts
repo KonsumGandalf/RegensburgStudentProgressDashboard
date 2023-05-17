@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
+import { GithubTest } from '@rspd/student-submissions/backend/common-models';
+import { GithubSubmission } from '@rspd/student-submissions/backend/common-models';
+import { RspdSubmissionManagementModule } from '@rspd/student-submissions/backend/submission-management';
 import { RspdUserModule } from '@rspd/user/backend/user-management';
 
 import { GithubSubmissionController } from './controller/github-submission.controller';
-import { GithubSubmission } from './models/entities/github-submission.entity';
-import { GithubTest } from './models/entities/github-test.entity';
 import { GithubSubmissionService } from './services/github-submission.service';
 import { GithubTestService } from './services/github-test.service';
 
@@ -14,10 +15,11 @@ import { GithubTestService } from './services/github-test.service';
 		RspdUserModule,
 		RspdChallengeManagementModule,
 		TypeOrmModule.forFeature([GithubSubmission, GithubTest]),
+		RspdSubmissionManagementModule,
 	],
 	controllers: [GithubSubmissionController],
 	providers: [GithubSubmissionService, GithubTestService],
-	exports: [RspdGithubSubmissionModule],
+	exports: [RspdGithubSubmissionModule, GithubTestService, GithubSubmissionService],
 })
 export class RspdGithubSubmissionModule {}
 

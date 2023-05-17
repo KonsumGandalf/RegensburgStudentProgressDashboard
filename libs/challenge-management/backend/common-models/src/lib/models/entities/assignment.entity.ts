@@ -1,5 +1,5 @@
 import { AssignmentTopic, AssignmentType, BaseEntity } from '@rspd/shared/backend/utils';
-import { Submission } from '@rspd/student-submissions/backend/common-models';
+import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
 import { Challenge } from './challenge.entity';
@@ -12,11 +12,18 @@ import { Challenge } from './challenge.entity';
 @Entity()
 export class Assignment extends BaseEntity {
 	/**
-	 * The name of the assignment.
+	 * The unique name of the assignment.
+	 * @type {string}
+	 */
+	@Column({ unique: true })
+	name: string;
+
+	/**
+	 * The name of the assignment which is displayed
 	 * @type {string}
 	 */
 	@Column()
-	name: string;
+	displayName: string;
 
 	/**
 	 * The type of the assignment.
@@ -57,6 +64,7 @@ export class Assignment extends BaseEntity {
 
 	/**
 	 * The URL of the tutors for the assignment.
+	 *
 	 * @type {URL}
 	 *
 	 * @example https://reader.tutors.dev/
@@ -66,6 +74,7 @@ export class Assignment extends BaseEntity {
 
 	/**
 	 * The minimum number of tests that must pass for the assignment to be considered successful.
+	 *
 	 * @type {number}
 	 */
 	@Column({ type: 'smallint' })
@@ -73,11 +82,20 @@ export class Assignment extends BaseEntity {
 
 	/**
 	 * The total number of tests for the assignment.
+	 *
 	 * @type {number}
 	 */
 	@Column({ type: 'smallint' })
 	totalTests: number;
 
-	@OneToMany(() => Submission, (submission: Submission) => submission.assignment)
-	submissions: Submission[];
+	/**
+	 * The submissions associated with the assignment
+	 *
+	 * @type {AssignmentSubmission[]}
+	 */
+	@OneToMany(
+		() => AssignmentSubmission,
+		(submission: AssignmentSubmission) => submission.assignment,
+	)
+	submissions: AssignmentSubmission[];
 }

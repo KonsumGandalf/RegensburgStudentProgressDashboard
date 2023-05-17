@@ -1,5 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Assignment } from '@rspd/challenge-management/backend/common-models';
+import { Assignment, Challenge } from '@rspd/challenge-management/backend/common-models';
 import { GenericRepositoryService, IDeleteResponse } from '@rspd/shared/backend/utils';
 import { Like, Repository } from 'typeorm';
 
@@ -20,18 +20,26 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 		super(_assignmentRepo);
 	}
 
+	getDisplayAndUniqueName(name: string) {
+		return {
+			name: name.trim().replace(' ', '-').toLowerCase(),
+			displayName: name.trim(),
+		};
+	}
+
 	/**
 	 * Creates a new assignment for a given challenge.
 	 *
-	 * @param {string} challengeId - The id of the challenge for which the assignment is created.
+	 * @param challenge
 	 * @param {AssignmentDto} assignment - The assignment object to create.
 	 * @returns {Promise<Assignment>} The created assignment object.
 	 */
-	async createAssignment(challengeId: string, assignment: AssignmentDto) {
+	async createAssignment(challenge: Challenge, assignment: AssignmentDto): Promise<Assignment> {
 		return await super.create({
 			...assignment,
-			challengeId,
-		});
+			challenge,
+			...this.getDisplayAndUniqueName(assignment.displayName),
+		} as Assignment);
 	}
 
 	/**
@@ -46,6 +54,21 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 	}
 
 	/**
+	 * Get an Assignment by unique name.
+	 *
+	 * @param name - The unique name of the Assignment.
+	 * @returns A Promise that resolves to the Assignment.
+	 * @throws {NoContentException} if no assignment was found for the corresponding id
+	 */
+	async getAssignmentByName(name: string): Promise<Assignment> {
+		return super.findOptions({
+			where: {
+				name: name,
+			},
+		});
+	}
+
+	/**
 	 * Get an Assignment by a substring of the repositoryUrl.
 	 *
 	 * @param repositoryUrl - The URL of the Assignment.
@@ -53,10 +76,11 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 	 * @throws {NoContentException} if no assignment was found for the corresponding id
 	 */
 	async getAssignmentByRepositoryUrl(repositoryUrl: string): Promise<Assignment> {
-		return super.findOptions({
+		return this.findOptions({
 			where: {
-				repositoryUrl: Like(`${repositoryUrl}%`),
+				repositoryUrl,
 			},
+			relations: ['challenge'],
 		});
 	}
 
@@ -92,6 +116,24 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 	 * @throws {ActionNotPerformedException} - If the assignment with the given ID was not found.
 	 */
 	async updateAssignment(id: string, assignment: AssignmentDto): Promise<Assignment> {
-		return await super.update(id, assignment);
+		return await super.update(id, {
+			...assignment,
+			...this.getDisplayAndUniqueName(assignment.displayName),
+		} as Assignment);
+	}
+
+	/**
+	 * Returns the challenge which is associated with the Assigment
+	 *
+	 * @param id - The ID of the Assignment.
+	 * @returns A Promise that resolves to found Challenge.
+	 */
+	async getChallengeByAssignmentId(id: string): Promise<Challenge> {
+		return await this.findOptions({
+			where: {
+				id,
+			},
+			relations: ['challenge'],
+		}).then((assignment) => assignment.challenge);
 	}
 }
