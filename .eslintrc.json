@@ -83,7 +83,15 @@
 							},
 							{
 								"sourceTag": "kind:backend",
-								"onlyDependOnLibsWithTag": ["kind:backend"]
+								"onlyDependOnLibsWithTag": ["kind:backend", "kind:common"]
+							},
+							{
+								"sourceTag": "kind:frontend",
+								"onlyDependOnLibsWithTag": ["kind:frontend", "kind:common"]
+							},
+							{
+								"sourceTag": "kind:common",
+								"onlyDependOnLibsWithTag": ["kind:common"]
 							}
 						]
 					}
