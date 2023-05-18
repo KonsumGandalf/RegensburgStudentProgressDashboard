@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_PIPE, RouterModule } from '@nestjs/core';
@@ -39,6 +40,7 @@ import { backendRoutes } from './routing/routes';
 				};
 			},
 		}),
+		CacheModule.register({ isGlobal: true }),
 
 		RspdUserMailManagementModule,
 		RspdUserModule,

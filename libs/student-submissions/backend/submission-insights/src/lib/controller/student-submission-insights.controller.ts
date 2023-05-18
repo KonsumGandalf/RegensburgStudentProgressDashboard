@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Request, UseGuards } from '@nestjs/common';
+import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
+import { Controller, Get, Param, Request, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@rspd/shared/backend/utils';
 import { IAssignmentDetail, IChallengesOverview } from '@rspd/student-submissions/common/models';
@@ -20,6 +21,8 @@ export class StudentSubmissionInsightsController {
 	 * @param request - The request object containing user information.
 	 * @returns The challenge overview.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('absolute-progress-overview')
 	async getAbsoluteProgressOverview(@Request() request: IRequestLogin) {
@@ -32,6 +35,8 @@ export class StudentSubmissionInsightsController {
 	 * @param request - The request object containing user information.
 	 * @returns The challenge overview.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('challenge-overview')
 	async getChallengeOverview(@Request() request: IRequestLogin): Promise<IChallengesOverview> {
@@ -46,6 +51,8 @@ export class StudentSubmissionInsightsController {
 	 * @param name - The name of the assignment.
 	 * @returns The assignment submission details.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('assignments/:name')
 	async getAssignmentSubmissionDetails(
