@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+|Student|
+start
+:Submit Data;
+|Tutor|
+:Rates Submission;
+|Student|
+fork
+if (Does student actively loads page) then (yes)
+|System|
+    :Request new data for this student from moodle;
+else (no)
+endif
+fork again
+while(Is it monday to friday between 9am and 5am?) then(yes)
+:Request new data for all students from moodle;
+note right: every 30 minutes
+endwhile
+end fork
+stop
+
+@enduml
