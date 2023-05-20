@@ -2,10 +2,14 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_PIPE, RouterModule } from '@nestjs/core';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
+import { RspdMoodleManagementModule } from '@rspd/moodle-management/backend/moodle-management';
+import { RspdMoodleRequestHandlerModule } from '@rspd/moodle-management/backend/moodle-request-handler';
 import { AppConfig } from '@rspd/shared/backend/utils';
 import { RspdGithubSubmissionModule } from '@rspd/student-submissions/backend/github-submissions';
+import { RspdMoodleSubmissionModule } from '@rspd/student-submissions/backend/moodle-submissions';
 import { RspdSubmissionInsightsModule } from '@rspd/student-submissions/backend/submission-insights';
 import { RspdSubmissionManagementModule } from '@rspd/student-submissions/backend/submission-management';
 import { RspdGithubAuthorizationModule } from '@rspd/user/backend/github-authorization';
@@ -41,6 +45,7 @@ import { backendRoutes } from './routing/routes';
 			},
 		}),
 		CacheModule.register({ isGlobal: true }),
+		ScheduleModule.forRoot(),
 
 		RspdUserMailManagementModule,
 		RspdUserModule,
@@ -50,6 +55,9 @@ import { backendRoutes } from './routing/routes';
 		RspdGithubSubmissionModule,
 		RspdGithubAuthorizationModule,
 		RspdSubmissionInsightsModule,
+		RspdMoodleManagementModule,
+		RspdMoodleRequestHandlerModule,
+		RspdMoodleSubmissionModule,
 
 		RouterModule.register(backendRoutes),
 	],

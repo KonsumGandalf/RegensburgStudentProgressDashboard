@@ -21,6 +21,12 @@
 			"@rspd/challenge-management/backend/common-models": [
 				"libs/challenge-management/backend/common-models/src/index.ts"
 			],
+			"@rspd/moodle-management/backend/moodle-management": [
+				"libs/moodle-management/backend/moodle-management/src/index.ts"
+			],
+			"@rspd/moodle-management/backend/moodle-request-handler": [
+				"libs/moodle-management/backend/moodle-request-handler/src/index.ts"
+			],
 			"@rspd/shared/backend/test-util": ["libs/shared/backend/test-util/src/index.ts"],
 			"@rspd/shared/backend/utils": ["libs/shared/backend/utils/src/index.ts"],
 			"@rspd/student-submissions/backend/common-models": [
@@ -28,6 +34,9 @@
 			],
 			"@rspd/student-submissions/backend/github-submissions": [
 				"libs/student-submissions/backend/github-submissions/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/moodle-submissions": [
+				"libs/student-submissions/backend/moodle-submissions/src/index.ts"
 			],
 			"@rspd/student-submissions/backend/submission-insights": [
 				"libs/student-submissions/backend/submission-insights/src/index.ts"

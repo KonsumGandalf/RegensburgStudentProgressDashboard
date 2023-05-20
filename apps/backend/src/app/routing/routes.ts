@@ -1,6 +1,7 @@
 import { RouteTree } from '@nestjs/core';
 import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
 import { RspdGithubSubmissionModule } from '@rspd/student-submissions/backend/github-submissions';
+import { RspdMoodleSubmissionModule } from '@rspd/student-submissions/backend/moodle-submissions';
 import { RspdSubmissionInsightsModule } from '@rspd/student-submissions/backend/submission-insights';
 import { RspdSubmissionManagementModule } from '@rspd/student-submissions/backend/submission-management';
 import { RspdAuthModule } from '@rspd/user/backend/user-authentication';
@@ -37,5 +38,9 @@ export const backendRoutes: RouteTree[] = [
 	{
 		path: '/github',
 		module: RspdGithubSubmissionModule,
+	},
+	{
+		path: 'submission-moodle',
+		module: RspdMoodleSubmissionModule,
 	},
 ];

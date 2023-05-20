@@ -78,6 +78,15 @@
 								]
 							},
 							{
+								"sourceTag": "domain:auth",
+								"onlyDependOnLibsWithTag": [
+									"domain:auth",
+									"domain:user",
+									"domain:shared",
+									"domain:moodle"
+								]
+							},
+							{
 								"sourceTag": "domain:user",
 								"onlyDependOnLibsWithTag": ["domain:user", "domain:shared"]
 							},
