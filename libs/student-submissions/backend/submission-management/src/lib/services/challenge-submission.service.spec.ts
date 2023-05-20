@@ -13,7 +13,6 @@ import {
 	ChallengeSubmission,
 	SubmissionState,
 } from '@rspd/student-submissions/backend/common-models';
-import { Student } from '@rspd/user/backend/common-models';
 
 import { ChallengeSubmissionService } from './challenge-submission.service';
 

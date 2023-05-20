@@ -15,8 +15,6 @@ import {
 import { SubmissionState } from '@rspd/student-submissions/backend/common-models';
 import { In, Repository } from 'typeorm';
 
-import { AssignmentSubmissionService } from './assignment-submission.service';
-
 @Injectable()
 export class ChallengeSubmissionService
 	extends GenericRepositoryService<ChallengeSubmission>

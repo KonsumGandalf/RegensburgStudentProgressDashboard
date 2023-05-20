@@ -1,11 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GenericRepositoryService } from '@rspd/shared/backend/utils';
-import {
-	AssignmentSubmission,
-	GithubSubmission,
-	GithubTest,
-} from '@rspd/student-submissions/backend/common-models';
+import { AssignmentSubmission, GithubTest } from '@rspd/student-submissions/backend/common-models';
 import { TestOutcome } from '@rspd/student-submissions/backend/common-models';
 import { Repository } from 'typeorm';
 
@@ -77,7 +73,7 @@ export class GithubTestService extends GenericRepositoryService<GithubTest> {
 		return updatedTests as GithubTest[];
 	}
 
-	async getSolvedUserTests(username: string) {
+	async getSolvedUserTests(username: string): Promise<GithubTest[]> {
 		return await super.findOptionsMany({
 			where: {
 				submission: {

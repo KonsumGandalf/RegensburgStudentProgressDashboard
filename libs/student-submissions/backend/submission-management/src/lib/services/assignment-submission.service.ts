@@ -46,9 +46,12 @@ export class AssignmentSubmissionService
 	 * Retrieves all assignment submissions that are completely solved.
 	 * @returns A Promise that resolves to an array of AssignmentSubmission entities.
 	 */
-	async getAllSolvedSubmissions(): Promise<AssignmentSubmission[]> {
+	async getAllSolvedSubmissions(assignmentName: string): Promise<AssignmentSubmission[]> {
 		return await this.findOptionsMany({
 			where: {
+				assignment: {
+					name: assignmentName,
+				},
 				completionState: In([SubmissionState.Solved, SubmissionState.CompletelySolved]),
 			},
 			relations: ['student'],

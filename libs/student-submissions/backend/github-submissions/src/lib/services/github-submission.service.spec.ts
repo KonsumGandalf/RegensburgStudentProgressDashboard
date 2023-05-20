@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { AssignmentService } from '@rspd/challenge-management/backend/challenge-management';
-import { Assignment } from '@rspd/challenge-management/backend/common-models';
+import { GithubAssignmentService } from '@rspd/challenge-management/backend/challenge-management';
+import { GithubAssignment } from '@rspd/challenge-management/backend/common-models';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
 	GithubSubmission,
@@ -26,11 +26,11 @@ describe('GithubTestService', () => {
 	let fakeSubmission: GithubSubmission;
 	let githubSubmissionRepository: MockRepository<GithubSubmission>;
 	let fakeStudent: Student;
-	let fakeAssignment: Assignment;
+	let fakeAssignment: GithubAssignment;
 	let report: ReportDto;
 	let correctTestsDto: TestDto[];
 	let fakeUserService: UserService;
-	let fakeAssignmentService: AssignmentService;
+	let fakeGithubAssignmentService: GithubAssignmentService;
 	let fakeGithubTestService: GithubTestService;
 	let fakeChallengeSubmissionService: ChallengeSubmissionService;
 
@@ -44,7 +44,7 @@ describe('GithubTestService', () => {
 			repositoryUrl: 'git://github.com/OTH-Digital-Skills/lab-04-mario-angie_123',
 			minPassedTests: 2,
 			totalTests: 3,
-		} as Assignment;
+		} as GithubAssignment;
 
 		submissions = [];
 		for (let i = 0; i < 3; i++) {
@@ -138,7 +138,7 @@ describe('GithubTestService', () => {
 					},
 				},
 				{
-					provide: AssignmentService,
+					provide: GithubAssignmentService,
 					useValue: {
 						getAssignmentByRepositoryUrl: jest
 							.fn()
@@ -152,7 +152,7 @@ describe('GithubTestService', () => {
 		githubSubmissionRepository.entities = submissions;
 
 		fakeUserService = module.get(UserService);
-		fakeAssignmentService = module.get(AssignmentService);
+		fakeGithubAssignmentService = module.get(GithubAssignmentService);
 		fakeGithubTestService = module.get(GithubTestService);
 		fakeChallengeSubmissionService = module.get(ChallengeSubmissionService);
 	});
@@ -169,7 +169,10 @@ describe('GithubTestService', () => {
 
 			jest.spyOn(fakeUserService, 'findUserByUsername');
 
-			const assignmentSpy = jest.spyOn(fakeAssignmentService, 'getAssignmentByRepositoryUrl');
+			const assignmentSpy = jest.spyOn(
+				fakeGithubAssignmentService,
+				'getAssignmentByRepositoryUrl',
+			);
 
 			const undefinedResult = await service.createOrUpdateSubmissionWithTests(report);
 
@@ -232,7 +235,6 @@ describe('GithubTestService', () => {
 			report.submission.tests = correctTestsDto;
 			jest.spyOn(service, 'findOptions').mockResolvedValueOnce(fakeSubmission);
 			const updateSpy = jest.spyOn(service, 'update');
-			// await service.createOrUpdateAssignmentSubmission(fakeStudent, fakeAssignment, report);
 			const submission = await service.createOrUpdateAssignmentSubmission(
 				fakeStudent,
 				fakeAssignment,

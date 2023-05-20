@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AssignmentService } from '@rspd/challenge-management/backend/challenge-management';
-import { Assignment } from '@rspd/challenge-management/backend/common-models';
+import { GithubAssignmentService } from '@rspd/challenge-management/backend/challenge-management';
+import { GithubAssignment } from '@rspd/challenge-management/backend/common-models';
 import { GenericRepositoryService } from '@rspd/shared/backend/utils';
 import {
 	GithubSubmission,
@@ -27,7 +27,7 @@ import { GithubTestService } from './github-test.service';
 export class GithubSubmissionService extends GenericRepositoryService<GithubSubmission> {
 	constructor(
 		private readonly _userService: UserService,
-		private readonly _assignmentService: AssignmentService,
+		private readonly _assignmentService: GithubAssignmentService,
 		private readonly _githubTestService: GithubTestService,
 		private readonly _challengeSubmissionService: ChallengeSubmissionService,
 		@InjectRepository(GithubSubmission)
@@ -45,6 +45,7 @@ export class GithubSubmissionService extends GenericRepositoryService<GithubSubm
 		const studentEntity = (await this._userService.findUserByUsername(report.actor)) as Student;
 
 		const formattedUrl = report.repositoryUrl.replace(`-${report.actor}`, '');
+		console.log(formattedUrl);
 		const assigmentEntity = await this._assignmentService.getAssignmentByRepositoryUrl(
 			formattedUrl,
 		);
@@ -107,7 +108,7 @@ export class GithubSubmissionService extends GenericRepositoryService<GithubSubm
 	 */
 	async createOrUpdateAssignmentSubmission(
 		student: Student,
-		assignment: Assignment,
+		assignment: GithubAssignment,
 		report: ReportDto,
 	): Promise<GithubSubmission> {
 		const foundSubmission = await this.findOptions({

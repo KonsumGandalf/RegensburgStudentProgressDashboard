@@ -26,7 +26,7 @@ export interface IAssignmentDetail extends IAssignmentOverview {
 	/**
 	 * The URL for the submission platform f.e. Moodle or GitHub
 	 */
-	submissionPlatformUrl: URL;
+	repositoryUrl: URL;
 
 	/**
 	 * The type of the assignment.

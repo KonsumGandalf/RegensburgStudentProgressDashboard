@@ -1,4 +1,6 @@
-import { ChildEntity, Column, JoinColumn, OneToMany } from 'typeorm';
+import { GithubAssignment } from '@rspd/challenge-management/backend/common-models';
+import { AssignmentType } from '@rspd/shared/backend/utils';
+import { ChildEntity, Column, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { AssignmentSubmission } from './assignment-submission.entity';
 import { GithubTest } from './github-test.entity';
@@ -6,8 +8,17 @@ import { GithubTest } from './github-test.entity';
 /**
  * Extends the Submission class to include tests and duration of the grading process
  */
-@ChildEntity()
+@ChildEntity(AssignmentType.GITHUB)
 export class GithubSubmission extends AssignmentSubmission {
+	/**
+	 * The assignment a submissions is done for.
+	 *
+	 * @type {GithubAssignment}
+	 */
+	@ManyToOne(() => GithubAssignment, (assignment: GithubAssignment) => assignment.submissions)
+	@JoinColumn()
+	assignment: GithubAssignment;
+
 	/**
 	 * References the GithubTests which were performed in one iteration of the grading process
 	 */

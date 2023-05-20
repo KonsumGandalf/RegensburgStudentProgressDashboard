@@ -3,16 +3,20 @@ import {
 	AssignmentService,
 	ChallengeService,
 } from '@rspd/challenge-management/backend/challenge-management';
-import { Assignment } from '@rspd/challenge-management/backend/common-models';
+import {
+	GithubAssignment,
+	UnionAssignment,
+} from '@rspd/challenge-management/backend/common-models';
 import { AssignmentType } from '@rspd/shared/backend/utils';
 import {
 	AssignmentSubmission,
 	ChallengeSubmission,
 	SubmissionState,
-	TestOutcome,
 } from '@rspd/student-submissions/backend/common-models';
-import { GithubTestService } from '@rspd/student-submissions/backend/github-submissions';
-import { GithubSubmissionService } from '@rspd/student-submissions/backend/github-submissions';
+import {
+	GithubSubmissionService,
+	GithubTestService,
+} from '@rspd/student-submissions/backend/github-submissions';
 import {
 	AssignmentSubmissionService,
 	ChallengeSubmissionService,
@@ -23,6 +27,7 @@ import {
 	IAssignmentOverview,
 	IChallengesOverview,
 	IChallengeSubmissionOverview,
+	IScoreOf,
 } from '@rspd/student-submissions/common/models';
 import { UserService } from '@rspd/user/backend/user-management';
 
@@ -49,13 +54,17 @@ export class StudentSubmissionInsightsService {
 	 */
 	async getAbsoluteProgressOverview(username: string): Promise<IAbsoluteProgressOverview> {
 		const allChallenges = await this._challengesService.findAll();
-		const allAssignments = await this._assignmentService.findAll();
-		const numberOfAllTest = allAssignments.reduce(
-			(totalValue: number, currentValue: Assignment) => {
-				return totalValue + currentValue.totalTests;
+		const allAssignments = await this._assignmentService.findAllAssignments();
+		const numberOfAllTests = allAssignments.reduce(
+			(totalValue: number, currentValue: UnionAssignment) => {
+				if (currentValue?.type == AssignmentType.GITHUB) {
+					return totalValue + (currentValue as GithubAssignment).totalTests;
+				}
+				return totalValue + 1;
 			},
 			0,
 		);
+
 		const userSolvedChallenges = await this._challengeSubmissionService.getUserSolvedElements(
 			username,
 		);
@@ -63,11 +72,18 @@ export class StudentSubmissionInsightsService {
 		const userSolvedAssignments = await this._assignmentSubmissionService.getUserSolvedElements(
 			username,
 		);
-		const userSolvedTests = await this._githubTestService.getSolvedUserTests(username);
+
+		const userSolvedGithubTests = await this._githubTestService
+			.getSolvedUserTests(username)
+			.then((ele) => ele.length);
+		const userSolvedMoodleTests = userSolvedAssignments.filter(
+			(submission) => submission instanceof AssignmentSubmission,
+		).length;
+		const numberOfSolvedTests = userSolvedGithubTests + userSolvedMoodleTests;
 		return {
 			test: {
-				all: numberOfAllTest,
-				solved: userSolvedTests.length,
+				all: numberOfAllTests,
+				solved: numberOfSolvedTests,
 			},
 			assignment: {
 				all: allAssignments.length,
@@ -103,17 +119,22 @@ export class StudentSubmissionInsightsService {
 				const foundChallengeSubmission = userChallengeSubmissions.find(
 					(submission) => submission.challenge.id == challenge.id,
 				);
-				const numberOfSolvedChallenges = foundChallengeSubmission?.submissions?.filter(
-					(submission) => submission.completionState == SubmissionState.Solved,
-				).length;
+
+				let assignmentSubmissions: IAssignmentOverview[] = undefined;
+				let numberOfSolvedChallenges = 0;
+				if (foundChallengeSubmission) {
+					numberOfSolvedChallenges = foundChallengeSubmission.submissions?.filter(
+						(submission) => submission.completionState == SubmissionState.Solved,
+					).length;
+				}
 
 				const promiseAssignmentSubmissions = challenge.assignments.map(async (assignment) =>
 					this.getAssignmentRelatedInformation(assignment, foundChallengeSubmission),
 				);
 
-				const assignmentSubmissions: IAssignmentOverview[] = await Promise.all(
-					promiseAssignmentSubmissions,
-				);
+				assignmentSubmissions = await Promise.all(promiseAssignmentSubmissions);
+				assignmentSubmissions.sort((a, b) => +a.id - +b.id);
+
 				return {
 					name: challenge.name,
 					targetedCompletionDate: challenge.targetedCompletionDate,
@@ -121,9 +142,9 @@ export class StudentSubmissionInsightsService {
 						foundChallengeSubmission?.completionState || SubmissionState.Unsolved,
 					challengeScore: {
 						all: challenge.assignments.length,
-						solved: numberOfSolvedChallenges || 0,
+						solved: numberOfSolvedChallenges,
 					},
-					assignments: assignmentSubmissions.sort((a, b) => +a.id - +b.id),
+					assignments: assignmentSubmissions,
 				} as IChallengeSubmissionOverview;
 			}),
 		);
@@ -141,15 +162,12 @@ export class StudentSubmissionInsightsService {
 	 * @returns A Promise that resolves to an object containing the assignment details.
 	 */
 	async getAssignmentRelatedInformation(
-		assignment: Assignment,
+		assignment: UnionAssignment,
 		foundChallengeSubmission: ChallengeSubmission,
 	): Promise<IAssignmentOverview> {
 		const assignmentSubmission = foundChallengeSubmission?.submissions?.find(
 			(submission) => submission.assignment.id == assignment.id,
 		);
-		const numberOfSolvedTests = assignmentSubmission
-			? await this._githubTestService.getNumberOfSolvedTests(assignmentSubmission.id)
-			: 0;
 
 		return {
 			id: assignment.id,
@@ -157,10 +175,7 @@ export class StudentSubmissionInsightsService {
 			displayName: assignment.displayName,
 			topics: assignment.topics,
 			completionState: assignmentSubmission?.completionState || SubmissionState.Unsolved,
-			assignmentScore: {
-				all: assignment.totalTests,
-				solved: numberOfSolvedTests,
-			},
+			assignmentScore: await this.getAssignmentScore(assignment, assignmentSubmission),
 		};
 	}
 
@@ -177,43 +192,45 @@ export class StudentSubmissionInsightsService {
 	): Promise<IAssignmentDetail> {
 		const promiseAllStudents = this._userService.findAllStudents();
 		const promiseSolvedSubmissions =
-			this._assignmentSubmissionService.getAllSolvedSubmissions();
+			this._assignmentSubmissionService.getAllSolvedSubmissions(assignmentName);
+		const promiseAssignment = this._assignmentService.getAssignmentByName(assignmentName);
 		const promiseAssignmentSubmission = this._assignmentSubmissionService.getSubmissionOfUser(
 			username,
 			assignmentName,
 		);
 
-		const [solvedSubmissions, assignmentSubmission, allStudents] = await Promise.all([
-			promiseSolvedSubmissions,
-			promiseAssignmentSubmission,
-			promiseAllStudents,
-		]);
+		const [solvedSubmissions, assignmentSubmission, assignment, allStudents] =
+			await Promise.all([
+				promiseSolvedSubmissions,
+				promiseAssignmentSubmission,
+				promiseAssignment,
+				promiseAllStudents,
+			]);
 
 		let assignmentInformation = {
-			id: assignmentSubmission.assignment.id,
-			name: assignmentSubmission.assignment.name,
-			displayName: assignmentSubmission.assignment.displayName,
-			topics: assignmentSubmission.assignment.topics,
-			assignmentType: assignmentSubmission.assignment.type,
-			tutorsUrl: assignmentSubmission.assignment.tutorsUrl,
-			submissionPlatformUrl: new URL(assignmentSubmission.assignment.repositoryUrl),
-			completionState: assignmentSubmission.completionState,
+			id: assignment.id,
+			name: assignment.name,
+			displayName: assignment.displayName,
+			topics: assignment.topics,
+			assignmentType: assignment.type,
+			tutorsUrl: assignment.tutorsUrl,
+			repositoryUrl: new URL(assignment.repositoryUrl),
+			completionState: assignmentSubmission?.completionState || SubmissionState.Unsolved,
 		} as IAssignmentDetail;
 
-		if (assignmentInformation.assignmentType == AssignmentType.GITHUB) {
+		if (assignmentInformation.assignmentType == AssignmentType.GITHUB && assignmentSubmission) {
 			assignmentInformation = await this.addGithubInformation(
 				assignmentInformation,
+				assignment,
 				assignmentSubmission,
 			);
 		}
 
-		const challengeSubmission = await this._challengesService.getChallengeByAssignmentId(
-			assignmentSubmission.id,
-		);
+		const challenge = await this._challengesService.getChallengeByAssignmentId(assignment.id);
 
 		return {
 			...assignmentInformation,
-			targetedCompletionDate: challengeSubmission.targetedCompletionDate,
+			targetedCompletionDate: challenge.targetedCompletionDate,
 			allStudents: {
 				all: allStudents.length,
 				solved: solvedSubmissions.length,
@@ -226,10 +243,12 @@ export class StudentSubmissionInsightsService {
 	 *
 	 * @param assignmentInformation The assignment details object.
 	 * @param assignmentSubmission The assignment submission.
+	 * @param assignment
 	 * @returns A Promise that resolves to the assignment details object with added GitHub information.
 	 */
 	async addGithubInformation(
 		assignmentInformation: IAssignmentDetail,
+		assignment: UnionAssignment,
 		assignmentSubmission: AssignmentSubmission,
 	): Promise<IAssignmentDetail> {
 		const githubTests = await this._githubSubmissionService.getTestsOfSubmission(
@@ -237,11 +256,32 @@ export class StudentSubmissionInsightsService {
 		);
 		return {
 			...assignmentInformation,
-			assignmentScore: {
-				all: assignmentSubmission.assignment.totalTests,
-				solved: githubTests.filter((test) => test.outcome == TestOutcome.PASSED).length,
-			},
+			assignmentScore: await this.getAssignmentScore(assignment, assignmentSubmission),
 			tests: githubTests,
+		};
+	}
+
+	async getAssignmentScore(
+		assignment: UnionAssignment,
+		assignmentSubmission: AssignmentSubmission,
+	): Promise<IScoreOf> {
+		let numberOfSolvedTests = 0;
+		if (assignmentSubmission) {
+			if (assignment.type == AssignmentType.GITHUB) {
+				numberOfSolvedTests = await this._githubTestService.getNumberOfSolvedTests(
+					assignmentSubmission.id,
+				);
+			} else {
+				if (assignmentSubmission.completionState != SubmissionState.Unsolved) {
+					numberOfSolvedTests++;
+				}
+			}
+		}
+		const allTests = assignment instanceof GithubAssignment ? assignment.totalTests : 1;
+
+		return {
+			all: allTests,
+			solved: numberOfSolvedTests,
 		};
 	}
 }
