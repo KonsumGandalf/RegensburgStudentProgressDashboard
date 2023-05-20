@@ -1,7 +1,5 @@
 import { Transform } from 'class-transformer';
 import { IsDate, IsString, MinDate } from 'class-validator';
-import * as postgres from 'postgres';
-import value = postgres.toPascal.value;
 
 /**
  * Data transfer object for representing a challenge.

@@ -4,6 +4,8 @@ import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-mo
 import { Tutor } from '@rspd/user/backend/common-models';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 
+import { UnionAssignment } from '../types/union-assignment.type';
+
 /**
  * Represents a challenge that a user can complete.
  * @class
@@ -33,7 +35,7 @@ export class Challenge extends BaseEntity {
 	 * @type {Assignment[]}
 	 */
 	@OneToMany(() => Assignment, (assignment) => assignment.challenge)
-	assignments: Assignment[];
+	assignments: UnionAssignment[];
 
 	/**
 	 * The tutor who created this challenge.

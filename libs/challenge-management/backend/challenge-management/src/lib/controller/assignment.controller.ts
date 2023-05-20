@@ -9,7 +9,8 @@ import {
 	UserRole,
 } from '@rspd/shared/backend/utils';
 
-import { AssignmentDto } from '../models/dto/assignment.dto';
+import { GithubAssignmentDto } from '../models/dto/github-assignment.dto';
+import { MoodleAssignmentDto } from '../models/dto/moodle-assignment.dto';
 import { AssignmentService } from '../services/assignment.service';
 
 /**
@@ -55,7 +56,7 @@ export class AssignmentController {
 	@ApiOkResponse({ description: 'Assignment was updated', type: Assignment })
 	async updateAssignment(
 		@Param('id') id: string,
-		@Body() assignment: AssignmentDto,
+		@Body() assignment: MoodleAssignmentDto | GithubAssignmentDto,
 	): Promise<Assignment> {
 		return this._assignmentService.updateAssignment(id, assignment);
 	}

@@ -1,6 +1,6 @@
 import { AssignmentTopic, AssignmentType, BaseEntity } from '@rspd/shared/backend/utils';
 import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, TableInheritance } from 'typeorm';
 
 import { Challenge } from './challenge.entity';
 
@@ -10,6 +10,7 @@ import { Challenge } from './challenge.entity';
  * @extends BaseEntity
  */
 @Entity()
+@TableInheritance({ column: 'type' })
 export class Assignment extends BaseEntity {
 	/**
 	 * The unique name of the assignment.
@@ -71,22 +72,6 @@ export class Assignment extends BaseEntity {
 	 */
 	@Column({ type: 'varchar' })
 	tutorsUrl: URL;
-
-	/**
-	 * The minimum number of tests that must pass for the assignment to be considered successful.
-	 *
-	 * @type {number}
-	 */
-	@Column({ type: 'smallint' })
-	minPassedTests: number;
-
-	/**
-	 * The total number of tests for the assignment.
-	 *
-	 * @type {number}
-	 */
-	@Column({ type: 'smallint' })
-	totalTests: number;
 
 	/**
 	 * The submissions associated with the assignment
