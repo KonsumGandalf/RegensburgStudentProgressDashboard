@@ -28,7 +28,7 @@ module.exports = {
 				'user-backend-user-authentication',
 				'user-backend-user-mail-management',
 				'user-backend-user-management',
-				'user-backend'
+				'user-backend',
 			],
 		],
 	},
