@@ -1,7 +1,7 @@
 import { GithubUser, UserRole } from '@rspd/shared/backend/utils';
 import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
 import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
-import { ChildEntity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import { ChildEntity, Column, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 import { User } from './user.entity';
 
@@ -42,4 +42,10 @@ export class Student extends User {
 	@OneToMany(() => ChallengeSubmission, (submission: ChallengeSubmission) => submission.student)
 	@JoinColumn()
 	challengeSubmissions: ChallengeSubmission[];
+
+	/**
+	 * The external id of a user in the Moodle
+	 */
+	@Column({ nullable: true })
+	moodleId?: number;
 }

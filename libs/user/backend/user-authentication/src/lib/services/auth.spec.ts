@@ -2,6 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
 import { MockConfigService } from '@rspd/shared/backend/test-util';
 import { AuthConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, Mail, Student, User } from '@rspd/user/backend/common-models';
@@ -68,6 +69,16 @@ describe('AuthService', () => {
 						sendConfirmationMail: jest.fn().mockImplementation((arg: any) => arg),
 						confirmMail: jest.fn().mockImplementation((arg: any) => arg),
 						create: jest.fn().mockImplementation((arg: any) => arg),
+					},
+				},
+				{
+					provide: MoodleManagementService,
+					useValue: {
+						getUserByEmail: jest.fn().mockImplementation((arg: any) => {
+							return {
+								id: 1,
+							};
+						}),
 					},
 				},
 			],

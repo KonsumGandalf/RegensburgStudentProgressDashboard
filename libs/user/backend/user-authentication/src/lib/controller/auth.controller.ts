@@ -27,7 +27,7 @@ export class AuthController {
 	 * @param {RegisterUserDto} userDto - User registration details.
 	 * @returns {Promise<IResponseAuthentication>} Promise resolving to a response object containing a JWT token.
 	 */
-	@Post('/register')
+	@Post('register')
 	async register(@Body() userDto: RegisterUserDto): Promise<IResponseAuthentication> {
 		return await this._authService.register(userDto);
 	}
@@ -83,8 +83,8 @@ export class AuthController {
 	 * @param {string} token - Email confirmation token.
 	 * @returns {Promise<IEmail>} Promise resolving to an email object.
 	 */
-	@Get('confirmation-mail/:id')
-	async confirmMail(@Param('id') token: string): Promise<IEmail> {
+	@Get('confirmation-mail/:token')
+	async confirmMail(@Param('token') token: string): Promise<IEmail> {
 		return await this._authService.confirmMail(token);
 	}
 }

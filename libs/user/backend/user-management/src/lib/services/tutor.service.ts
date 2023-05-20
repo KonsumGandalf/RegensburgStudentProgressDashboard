@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Tutor, User } from '@rspd/user/backend/common-models';
+import { Tutor } from '@rspd/user/backend/common-models';
 import { Repository } from 'typeorm';
 
 import { UserService } from './user.service';
