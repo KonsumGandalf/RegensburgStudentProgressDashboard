@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
 import { IAppConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
@@ -28,6 +29,7 @@ export class AuthService {
 		private readonly _configService: ConfigService<IAppConfig>,
 		private readonly _jwtService: JwtService,
 		private readonly _moodleManagementService: MoodleManagementService,
+		private readonly _semesterService: SemesterService,
 	) {}
 
 	/**
@@ -54,10 +56,12 @@ export class AuthService {
 					hashedPassword: hash,
 				} as unknown as Tutor);
 			} else {
+				const currentSemester = await this._semesterService.getCurrentSemester();
 				userEntity = await this._studentService.create({
 					...user,
 					email: emailEntity,
 					hashedPassword: hash,
+					semester: currentSemester,
 				} as unknown as Student);
 			}
 

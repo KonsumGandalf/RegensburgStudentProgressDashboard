@@ -5,6 +5,7 @@ import { APP_PIPE, RouterModule } from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RspdChallengeManagementModule } from '@rspd/challenge-management/backend/challenge-management';
+import { RspdSemesterManagementModule } from '@rspd/challenge-management/backend/semester-management';
 import { RspdMoodleManagementModule } from '@rspd/moodle-management/backend/moodle-management';
 import { RspdMoodleRequestHandlerModule } from '@rspd/moodle-management/backend/moodle-request-handler';
 import { AppConfig } from '@rspd/shared/backend/utils';
@@ -58,6 +59,7 @@ import { backendRoutes } from './routing/routes';
 		RspdMoodleManagementModule,
 		RspdMoodleRequestHandlerModule,
 		RspdMoodleSubmissionModule,
+		RspdSemesterManagementModule,
 
 		RouterModule.register(backendRoutes),
 	],

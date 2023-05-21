@@ -35,4 +35,13 @@ export class StudentService extends UserService<Student> {
 		}).then((user) => user.id);
 		return await this.update(userId, { moodleId: moodleId } as Student);
 	}
+
+	async getStudentEagerly(username: string): Promise<Student> {
+		return await this.findOptions({
+			where: {
+				username: username,
+			} as Student,
+			relations: ['githubUser', 'semester', 'email'],
+		});
+	}
 }

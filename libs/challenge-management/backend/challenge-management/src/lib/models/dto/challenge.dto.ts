@@ -14,6 +14,13 @@ export class ChallengeDto {
 	name: string;
 
 	/**
+	 * The name of the semester of the challenge.
+	 * @type {string}
+	 */
+	@IsString()
+	semesterName: string;
+
+	/**
 	 * The date when the challenge is targeted to be completed.
 	 * @type {Date}
 	 * @param {string|Date} value - The value of the property being validated.

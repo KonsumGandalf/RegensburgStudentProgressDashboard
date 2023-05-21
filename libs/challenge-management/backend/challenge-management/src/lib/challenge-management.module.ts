@@ -6,7 +6,9 @@ import {
 	GithubAssignment,
 	MoodleAssignment,
 } from '@rspd/challenge-management/backend/common-models';
+import { RspdSemesterManagementModule } from '@rspd/challenge-management/backend/semester-management';
 import { RspdMoodleManagementModule } from '@rspd/moodle-management/backend/moodle-management';
+import { RspdUserModule } from '@rspd/user/backend/user-management';
 
 import { AssignmentController } from './controller/assignment.controller';
 import { ChallengeController } from './controller/challenge.controller';
@@ -17,7 +19,9 @@ import { MoodleAssignmentService } from './services/moodle-assignment.service';
 
 @Module({
 	imports: [
+		RspdUserModule,
 		RspdMoodleManagementModule,
+		RspdSemesterManagementModule,
 		TypeOrmModule.forFeature([Challenge, Assignment, GithubAssignment, MoodleAssignment]),
 	],
 	controllers: [ChallengeController, AssignmentController],

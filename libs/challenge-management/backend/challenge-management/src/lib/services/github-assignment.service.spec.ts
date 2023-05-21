@@ -2,7 +2,12 @@ import { faker } from '@faker-js/faker';
 import { ConflictException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Challenge, GithubAssignment } from '@rspd/challenge-management/backend/common-models';
+import {
+	Challenge,
+	GithubAssignment,
+	Semester,
+} from '@rspd/challenge-management/backend/common-models';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import { AssignmentTopic, AssignmentType } from '@rspd/shared/backend/utils';
 
@@ -13,8 +18,14 @@ describe('GithubAssignmentService', () => {
 	let service: GithubAssignmentService;
 	let assignmentRepository: MockRepository<GithubAssignment>;
 	const assignments: GithubAssignment[] = [];
+	let fakeSemester: Semester;
 
 	beforeEach(async () => {
+		fakeSemester = {
+			id: 'random-semester',
+			start: new Date(),
+		} as Semester;
+
 		for (let i = 0; i < 2; i++) {
 			const testAssignment = {
 				id: faker.datatype.number({ min: 0, max: 200 }).toString(),
@@ -25,6 +36,9 @@ describe('GithubAssignmentService', () => {
 				tutorsUrl: new URL(faker.internet.url()),
 				minPassedTests: faker.datatype.number({ min: 5, max: 15 }),
 				totalTests: faker.datatype.number({ min: 10, max: 20 }),
+				challenge: {
+					semester: fakeSemester,
+				},
 			} as GithubAssignment;
 			assignments.push(testAssignment);
 		}
@@ -35,6 +49,12 @@ describe('GithubAssignmentService', () => {
 				{
 					provide: getRepositoryToken(GithubAssignment),
 					useClass: MockRepository,
+				},
+				{
+					provide: SemesterService,
+					useValue: {
+						getCurrentSemester: jest.fn().mockResolvedValue(fakeSemester),
+					},
 				},
 			],
 		}).compile();

@@ -1,7 +1,8 @@
+import { Semester } from '@rspd/challenge-management/backend/common-models';
 import { GithubUser, UserRole } from '@rspd/shared/backend/utils';
 import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
 import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
-import { ChildEntity, Column, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import { ChildEntity, Column, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 
 import { User } from './user.entity';
 
@@ -48,4 +49,10 @@ export class Student extends User {
 	 */
 	@Column({ nullable: true })
 	moodleId?: number;
+
+	/**
+	 * The assigned semester of the student
+	 */
+	@ManyToOne(() => Semester, (semester: Semester) => semester.students)
+	semester: Semester;
 }

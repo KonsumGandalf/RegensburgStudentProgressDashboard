@@ -2,6 +2,7 @@ import { NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
 import { MockConfigService } from '@rspd/shared/backend/test-util';
 import { AuthConfig } from '@rspd/shared/backend/utils';
@@ -78,6 +79,15 @@ describe('AuthService', () => {
 							return {
 								id: 1,
 							};
+						}),
+					},
+				},
+				{
+					provide: SemesterService,
+					useValue: {
+						getCurrentSemester: jest.fn().mockResolvedValue({
+							start: new Date('2023-09-01'),
+							end: new Date('2024-03-01'),
 						}),
 					},
 				},

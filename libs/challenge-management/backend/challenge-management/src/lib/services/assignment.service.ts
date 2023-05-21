@@ -140,10 +140,16 @@ export class AssignmentService extends GenericRepositoryService<Assignment> {
 		}
 	}
 
-	async findAllAssignments(): Promise<UnionAssignment[]> {
-		return [
-			...(await this._githubAssignmentService.findAll()),
-			...(await this._moodleAssignmentService.findAll()),
-		];
+	async findAllAssignments(semesterName: string): Promise<UnionAssignment[]> {
+		return this.findOptionsMany({
+			where: {
+				challenge: {
+					semester: {
+						name: semesterName,
+					},
+				},
+			} as Assignment,
+			relations: ['challenge', 'challenge.semester'],
+		});
 	}
 }

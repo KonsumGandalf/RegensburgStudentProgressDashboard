@@ -1,10 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import {
-	AssignmentService,
-	ChallengeService,
-} from '@rspd/challenge-management/backend/challenge-management';
+import { AssignmentService } from '@rspd/challenge-management/backend/challenge-management';
+import { ChallengeService } from '@rspd/challenge-management/backend/challenge-management';
 import { Challenge } from '@rspd/challenge-management/backend/common-models';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import { addIfNotContained } from '@rspd/shared/backend/utils';
@@ -130,6 +128,7 @@ describe('ChallengeService', () => {
 		it('should return a challengeSubmission for the given challengeId', async () => {
 			const submission = await service.getChallengeSubmissionByUserAssignmentId(
 				fakeChallenge.id,
+				fakeUsername,
 			);
 			expect(submission).toEqual(fakeSubmission);
 		});

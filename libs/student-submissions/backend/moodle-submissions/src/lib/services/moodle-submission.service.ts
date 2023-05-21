@@ -7,8 +7,8 @@ import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-
 import { GenericRepositoryService } from '@rspd/shared/backend/utils';
 import { MoodleSubmission, SubmissionState } from '@rspd/student-submissions/backend/common-models';
 import { ChallengeSubmissionService } from '@rspd/student-submissions/backend/submission-management';
-import { Student, User } from '@rspd/user/backend/common-models';
-import { StudentService, UserService } from '@rspd/user/backend/user-management';
+import { Student } from '@rspd/user/backend/common-models';
+import { StudentService } from '@rspd/user/backend/user-management';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -25,11 +25,10 @@ export class MoodleSubmissionService extends GenericRepositoryService<MoodleSubm
 	}
 
 	/**
-	 * Cron job to update all assignments at a scheduled interval.
+	 * Updates all assignments of all users with the correlating grades of Moodle.
 	 * The cron expression is set to run every 10 minutes between 7 AM and 8 PM, Monday to Friday.
 	 */
-
-	@Cron('* */10 7-20 * * 1-5')
+	@Cron('* */5 7-20 * * 1-5')
 	async updateAllAssignments(): Promise<void> {
 		const assignments = await this._moodleAssignmentService.findAll();
 		const students = await this._studentService.findAll();
@@ -40,16 +39,28 @@ export class MoodleSubmissionService extends GenericRepositoryService<MoodleSubm
 				return acc;
 			}, new Map<number, number>());
 
-			await this._moodleManagementService
-				.getAllAssignmentsGradesOfUsers(assignment.moodleAssignmentId, userGradeMap)
-				.then((ele) =>
-					ele.forEach((value, key) => {
-						const student = students.find((student) => student.moodleId == key);
-						if (student) {
-							this.createOrUpdateAssignment(assignment, student, value);
-						}
-					}),
+			const assignmentGrades =
+				await this._moodleManagementService.getAllAssignmentsGradesOfUsers(
+					assignment.moodleAssignmentId,
+					userGradeMap,
 				);
+
+			await Promise.all(
+				Array.from(assignmentGrades.entries()).map(async ([key, value]) => {
+					const student = students.find((student) => student.moodleId == key);
+
+					if (student) {
+						const moodleSubmission = await this.createOrUpdateAssignment(
+							assignment,
+							student,
+							value,
+						);
+						await this._challengeSubmissionService.createOrUpdateChallengeSubmission(
+							moodleSubmission,
+						);
+					}
+				}),
+			);
 		}
 	}
 
@@ -64,7 +75,7 @@ export class MoodleSubmissionService extends GenericRepositoryService<MoodleSubm
 		assignment: MoodleAssignment,
 		student: Student,
 		submissionState: SubmissionState,
-	): Promise<void> {
+	): Promise<MoodleSubmission> {
 		const foundSubmission = await this.findOptions({
 			where: {
 				assignment: {
@@ -77,7 +88,7 @@ export class MoodleSubmissionService extends GenericRepositoryService<MoodleSubm
 			relations: ['student', 'assignment', 'challengeSubmission'],
 		});
 		if (foundSubmission) {
-			await this.update(foundSubmission.id, {
+			return await this.update(foundSubmission.id, {
 				...foundSubmission,
 				completionState: submissionState,
 			} as MoodleSubmission);
@@ -85,8 +96,9 @@ export class MoodleSubmissionService extends GenericRepositoryService<MoodleSubm
 			const challengeSubmission =
 				await this._challengeSubmissionService.getChallengeSubmissionByUserAssignmentId(
 					assignment.id,
+					student.username,
 				);
-			await this.create({
+			return await this.create({
 				completionState: submissionState,
 				student: student,
 				assignment: assignment,

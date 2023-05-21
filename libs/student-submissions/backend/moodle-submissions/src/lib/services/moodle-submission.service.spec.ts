@@ -91,6 +91,7 @@ describe('MoodleSubmissionService', () => {
 							.mockImplementation((id) =>
 								fakeChallengeSubmissions.find((submission) => submission.id == id),
 							),
+						createOrUpdateChallengeSubmission: jest.fn().mockImplementation(),
 					},
 				},
 				{

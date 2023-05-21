@@ -9,6 +9,7 @@ import {
 	Challenge,
 	GithubAssignment,
 	MoodleAssignment,
+	Semester,
 } from '@rspd/challenge-management/backend/common-models';
 import { AssignmentTopic, AssignmentType } from '@rspd/shared/backend/utils';
 import {
@@ -34,35 +35,58 @@ import {
 	IChallengeSubmissionOverview,
 } from '@rspd/student-submissions/common/models';
 import { Student, User } from '@rspd/user/backend/common-models';
-import { UserService } from '@rspd/user/backend/user-management';
+import { StudentService, UserService } from '@rspd/user/backend/user-management';
 
 import { StudentSubmissionInsightsService } from './student-submission-insights.service';
 
 describe('StudentSubmissionInsightsService', () => {
 	let service: StudentSubmissionInsightsService;
-	let userService: UserService;
+	let studentService: StudentService;
 	let assignmentSubmissionService: AssignmentSubmissionService;
 	let challengesService: ChallengeService;
 	let challengeSubmissionService: ChallengeSubmissionService;
-	let assignmentService: ChallengeSubmissionService;
+	let assignmentService: AssignmentService;
 	let githubTestService: GithubTestService;
 	let fakeTests: GithubTest[];
 	let fakeAssignmentSubmissions: AssignmentSubmission[];
 	let fakeChallengeSubmission: ChallengeSubmission;
-	let fakeUser: User[];
-	let fakeChallenge: Challenge;
+	let fakeStudents: Student[];
+	let fakeSemester: Semester[];
+	let fakeChallenges: Challenge[];
 
 	beforeEach(async () => {
-		fakeChallenge = {
-			id: 'random-challenge',
-			name: faker.name.fullName(),
-			targetedCompletionDate: faker.date.future(),
-		} as Challenge;
+		fakeSemester = [
+			{
+				name: 'WS-2023',
+				start: new Date('2022-09-01'),
+				end: new Date('2023-03-01'),
+			} as Semester,
+			{
+				name: 'WS-2024',
+				start: new Date('2023-09-01'),
+				end: new Date('2024-03-01'),
+			} as Semester,
+		];
+
+		fakeChallenges = [
+			{
+				id: 'random-challenge',
+				name: faker.name.fullName(),
+				targetedCompletionDate: faker.date.future(),
+				semester: fakeSemester[0],
+			} as Challenge,
+			{
+				id: 'random-challenge',
+				name: faker.name.fullName(),
+				targetedCompletionDate: faker.date.future(),
+				semester: fakeSemester[1],
+			} as Challenge,
+		];
 
 		const assignmentTemplate = {
 				id: '1',
 				name: 'Assignment 1',
-				challenge: fakeChallenge,
+				challenge: fakeChallenges[0],
 				displayName: 'Assignment 1 Display Name',
 				topics: [AssignmentTopic.PYTHON, AssignmentTopic.IOT],
 				tutorsUrl: new URL('git://github.com/OTH-Digital-Skills'),
@@ -73,6 +97,7 @@ describe('StudentSubmissionInsightsService', () => {
 					...assignmentTemplate,
 					type: AssignmentType.GITHUB,
 					minPassedTests: 2,
+					topics: [AssignmentTopic.PYTHON],
 					totalTests: 1,
 				} as GithubAssignment,
 				{
@@ -81,17 +106,24 @@ describe('StudentSubmissionInsightsService', () => {
 					name: 'Assignment 2',
 					type: AssignmentType.MOODLE,
 					moodleAssignmentId: 1,
+					topics: [AssignmentTopic.ROBOTIC],
 					moodleCourseId: 1,
 				} as MoodleAssignment,
 			];
 
-		fakeChallenge.assignments = fakeAssignments;
+		fakeChallenges[0].assignments = fakeAssignments;
 
-		fakeUser = [
+		fakeStudents = [
 			{
 				id: 'random-user',
 				username: faker.internet.userName(),
-			} as User,
+				semester: fakeSemester[0],
+			} as Student,
+			{
+				id: 'random-user-2',
+				username: faker.internet.userName(),
+				semester: fakeSemester[0],
+			} as Student,
 		];
 
 		fakeTests = [];
@@ -106,8 +138,8 @@ describe('StudentSubmissionInsightsService', () => {
 
 		fakeChallengeSubmission = {
 			id: 'random-challenge-submission',
-			challenge: fakeChallenge,
-			student: fakeUser[0] as Student,
+			challenge: fakeChallenges[0],
+			student: fakeStudents[0] as Student,
 			completionState: SubmissionState.Unsolved,
 		} as ChallengeSubmission;
 
@@ -195,11 +227,17 @@ describe('StudentSubmissionInsightsService', () => {
 				{
 					provide: ChallengeService,
 					useValue: {
-						findAll: jest.fn().mockImplementation(async () => [fakeChallenge]),
-						findOptionsMany: jest.fn().mockResolvedValue([fakeChallenge]),
+						getChallengesOfSemester: jest
+							.fn()
+							.mockImplementation(async (semesterName) =>
+								fakeChallenges.filter(
+									(challenge) => challenge.semester.name == semesterName,
+								),
+							),
+						findOptionsMany: jest.fn().mockResolvedValue(fakeChallenges),
 						getChallengeByAssignmentId: jest
 							.fn()
-							.mockImplementation(async () => fakeChallenge),
+							.mockImplementation(async () => fakeChallenges[0]),
 					},
 				},
 				{
@@ -216,10 +254,14 @@ describe('StudentSubmissionInsightsService', () => {
 					},
 				},
 				{
-					provide: UserService,
+					provide: StudentService,
 					useValue: {
-						find: jest.fn().mockImplementation(async () => []),
-						findAllStudents: jest.fn().mockResolvedValueOnce([fakeUser]),
+						getStudentEagerly: jest
+							.fn()
+							.mockImplementation(async (username) =>
+								fakeStudents.find((user) => user.username == username),
+							),
+						findAll: jest.fn().mockResolvedValueOnce(fakeStudents),
 					},
 				},
 			],
@@ -228,7 +270,7 @@ describe('StudentSubmissionInsightsService', () => {
 		service = module.get(StudentSubmissionInsightsService);
 		assignmentSubmissionService = module.get(AssignmentSubmissionService);
 		challengesService = module.get(ChallengeService);
-		userService = module.get(UserService);
+		studentService = module.get(StudentService);
 		githubTestService = module.get(GithubTestService);
 		challengeSubmissionService = module.get(ChallengeSubmissionService);
 		assignmentService = module.get(AssignmentService);
@@ -241,7 +283,7 @@ describe('StudentSubmissionInsightsService', () => {
 	describe('getAbsoluteProgressOverview', () => {
 		it('should delegate the requests to the different services correctly', async () => {
 			const absoluteProgressOverview = await service.getAbsoluteProgressOverview(
-				'testUsername',
+				fakeStudents[0].username,
 			);
 			expect(absoluteProgressOverview).toEqual({
 				assignment: { all: 2, solved: 2 },
@@ -253,9 +295,9 @@ describe('StudentSubmissionInsightsService', () => {
 
 	describe('getChallengeOverview', () => {
 		it('should return an empty array in case no challenge is found', async () => {
-			jest.spyOn(challengesService, 'findOptionsMany').mockResolvedValueOnce([]);
+			jest.spyOn(challengesService, 'getChallengesOfSemester').mockResolvedValueOnce([]);
 
-			const response = await service.getChallengeOverview('test-user');
+			const response = await service.getChallengeOverview(fakeStudents[0].username);
 
 			expect(response).toMatchObject({
 				challenges: [],
@@ -263,15 +305,15 @@ describe('StudentSubmissionInsightsService', () => {
 		});
 
 		it('should return overview information and delegate the requests to the different services correctly', async () => {
-			const response = await service.getChallengeOverview(fakeUser[0].username);
+			const response = await service.getChallengeOverview(fakeStudents[0].username);
 
-			expect(challengesService.findOptionsMany).toHaveBeenCalledTimes(1);
+			expect(challengesService.getChallengesOfSemester).toHaveBeenCalledTimes(1);
 			expect(challengeSubmissionService.getUserChallengeSubmissions).toHaveBeenCalledTimes(1);
 			expect(response).toMatchObject({
 				challenges: [
 					{
-						name: fakeChallenge.name,
-						targetedCompletionDate: fakeChallenge.targetedCompletionDate,
+						name: fakeChallenges[0].name,
+						targetedCompletionDate: fakeChallenges[0].targetedCompletionDate,
 						completionState: SubmissionState.Unsolved,
 						challengeScore: {
 							all: 2,
@@ -309,6 +351,7 @@ describe('StudentSubmissionInsightsService', () => {
 			const result = await service.getAssignmentRelatedInformation(
 				assignment,
 				fakeChallengeSubmission,
+				fakeStudents[0].username,
 			);
 
 			expect(githubTestService.getNumberOfSolvedTests).toHaveBeenCalledTimes(0);
@@ -326,19 +369,43 @@ describe('StudentSubmissionInsightsService', () => {
 		});
 	});
 
+	describe('getTopicProgress', () => {
+		it('should return the solution percentage for all AssignmentTopics correctly', async () => {
+			const assignments = fakeChallenges[0].assignments;
+			assignments.push({
+				id: '3',
+				topics: [AssignmentTopic.ROBOTIC],
+			} as Assignment);
+			jest.spyOn(assignmentService, 'findAllAssignments').mockResolvedValue(assignments);
+
+			const result = await service.getTopicProgress(fakeStudents[0].username);
+			expect(result).toMatchObject(
+				new Map([
+					['FLASK', 0],
+					['IOT', 0],
+					['PYTHON', 1],
+					['ROBOTIC', 0.5],
+					['SQL', 0],
+					['SCRATCH', 0],
+					['WEB', 0],
+				]),
+			);
+		});
+	});
+
 	describe('getAssignmentSubmissionDetails', () => {
 		let user: User;
 		let assignment: Assignment;
 		let expectedResult;
 		beforeEach(() => {
-			user = fakeUser[0];
+			user = fakeStudents[0];
 		});
 
 		it('should return all information of a moodle assignment', async () => {
 			assignment = fakeAssignmentSubmissions[1].assignment;
 			expectedResult = {
 				allStudents: {
-					all: 1,
+					all: 2,
 					solved: 1,
 				},
 				assignmentType: AssignmentType.MOODLE,
@@ -346,7 +413,7 @@ describe('StudentSubmissionInsightsService', () => {
 				id: '2',
 				name: 'Assignment 2',
 				repositoryUrl: new URL('git://github.com/OTH-Digital-Skills'),
-				topics: ['PYTHON', 'IOT'],
+				topics: ['ROBOTIC'],
 				tutorsUrl: new URL('git://github.com/OTH-Digital-Skills'),
 			} as IAssignmentDetail;
 
@@ -355,7 +422,7 @@ describe('StudentSubmissionInsightsService', () => {
 				assignment.name,
 			);
 
-			expect(userService.findAllStudents).toHaveBeenCalledTimes(1);
+			expect(studentService.findAll).toHaveBeenCalledTimes(1);
 			expect(assignmentSubmissionService.getAllSolvedSubmissions).toHaveBeenCalledTimes(1);
 			expect(assignmentSubmissionService.getSubmissionOfUser).toHaveBeenCalledTimes(1);
 			expect(challengesService.getChallengeByAssignmentId).toHaveBeenCalledTimes(1);
@@ -367,7 +434,7 @@ describe('StudentSubmissionInsightsService', () => {
 			assignment = fakeAssignmentSubmissions[0].assignment;
 			expectedResult = {
 				allStudents: {
-					all: 1,
+					all: 2,
 					solved: 0,
 				},
 				assignmentType: AssignmentType.GITHUB,
@@ -375,7 +442,7 @@ describe('StudentSubmissionInsightsService', () => {
 				id: '1',
 				name: 'Assignment 1',
 				repositoryUrl: new URL('git://github.com/OTH-Digital-Skills'),
-				topics: ['PYTHON', 'IOT'],
+				topics: ['PYTHON'],
 				tutorsUrl: new URL('git://github.com/OTH-Digital-Skills'),
 			} as IAssignmentDetail;
 
@@ -384,7 +451,7 @@ describe('StudentSubmissionInsightsService', () => {
 				assignment.name,
 			);
 
-			expect(userService.findAllStudents).toHaveBeenCalledTimes(1);
+			expect(studentService.findAll).toHaveBeenCalledTimes(1);
 			expect(assignmentSubmissionService.getAllSolvedSubmissions).toHaveBeenCalledTimes(1);
 			expect(assignmentSubmissionService.getSubmissionOfUser).toHaveBeenCalledTimes(1);
 			expect(challengesService.getChallengeByAssignmentId).toHaveBeenCalledTimes(1);

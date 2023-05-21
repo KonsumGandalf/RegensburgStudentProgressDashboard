@@ -45,7 +45,6 @@ export class GithubSubmissionService extends GenericRepositoryService<GithubSubm
 		const studentEntity = (await this._userService.findUserByUsername(report.actor)) as Student;
 
 		const formattedUrl = report.repositoryUrl.replace(`-${report.actor}`, '');
-		console.log(formattedUrl);
 		const assigmentEntity = await this._assignmentService.getAssignmentByRepositoryUrl(
 			formattedUrl,
 		);

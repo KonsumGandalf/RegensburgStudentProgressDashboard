@@ -7,8 +7,10 @@ import {
 	Challenge,
 	GithubAssignment,
 	MoodleAssignment,
+	Semester,
 	UnionAssignment,
 } from '@rspd/challenge-management/backend/common-models';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
 	ActionNotPerformedException,
@@ -16,6 +18,8 @@ import {
 	AssignmentType,
 	IDeleteResponse,
 } from '@rspd/shared/backend/utils';
+import { Tutor } from '@rspd/user/backend/common-models';
+import { TutorService } from '@rspd/user/backend/user-management';
 
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
 import { GithubAssignmentDto } from '../models/dto/github-assignment.dto';
@@ -32,8 +36,20 @@ describe('ChallengeService', () => {
 	let challenges: Challenge[];
 	let assignmentsRepository: MockRepository;
 	let assignments: UnionAssignment[];
+	let fakeTutor: Tutor;
+	let fakeSemester: Semester;
 
 	beforeEach(async () => {
+		fakeTutor = {
+			id: '1',
+		} as Tutor;
+
+		fakeSemester = {
+			name: 'WS-2023',
+			start: new Date('2022-09-01'),
+			end: new Date('2023-03-01'),
+		} as Semester;
+
 		challenges = [];
 		assignments = [];
 		for (let i = 0; i < 2; i++) {
@@ -41,6 +57,7 @@ describe('ChallengeService', () => {
 				id: faker.datatype.number({ min: 0, max: 200 }).toString(),
 				name: faker.lorem.words(faker.datatype.number({ min: 1, max: 3 })),
 				assignments: [],
+				semester: fakeSemester,
 			} as Challenge;
 
 			const assignmentTemplate = {
@@ -97,6 +114,18 @@ describe('ChallengeService', () => {
 						updateAssignment: jest.fn().mockImplementation((args) => args),
 					},
 				},
+				{
+					provide: TutorService,
+					useValue: {
+						findOneById: jest.fn().mockResolvedValue(fakeTutor),
+					},
+				},
+				{
+					provide: SemesterService,
+					useValue: {
+						findByName: jest.fn().mockResolvedValue(fakeSemester),
+					},
+				},
 			],
 		}).compile();
 
@@ -125,9 +154,13 @@ describe('ChallengeService', () => {
 
 			const challengeDto: CreateChallengeDto = {
 				...testChallenge,
+				semesterName: fakeSemester.name,
 				assignments: [fakeGithubAssignmentDto, fakeMoodleAssignmentDto],
 			};
-			const createdChallenge = await service.createChallengeAndAssignments(challengeDto);
+			const createdChallenge = await service.createChallengeAndAssignments(
+				challengeDto,
+				fakeTutor.username,
+			);
 
 			expect(createdChallenge.name).toEqual(testChallenge.name);
 			expect(createdChallenge.targetedCompletionDate).toEqual(

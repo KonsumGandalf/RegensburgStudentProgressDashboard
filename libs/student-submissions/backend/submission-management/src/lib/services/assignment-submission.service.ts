@@ -31,7 +31,7 @@ export class AssignmentSubmissionService
 	 * @param username The username of the user.
 	 * @returns A Promise that resolves to an array of AssignmentSubmission entities.
 	 */
-	async getUserSolvedElements(username: string): Promise<AssignmentSubmission[]> {
+	async getUserSolvedElements(username: string) {
 		return await this.findOptionsMany({
 			where: {
 				student: {
@@ -39,6 +39,7 @@ export class AssignmentSubmissionService
 				},
 				completionState: In([SubmissionState.Solved, SubmissionState.CompletelySolved]),
 			},
+			relations: ['assignment'],
 		});
 	}
 

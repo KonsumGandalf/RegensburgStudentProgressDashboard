@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Challenge } from '@rspd/challenge-management/backend/common-models';
 import { GithubAssignment } from '@rspd/challenge-management/backend/common-models';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { GenericRepositoryService } from '@rspd/shared/backend/utils';
 import { Repository } from 'typeorm';
 
@@ -13,6 +14,7 @@ export class GithubAssignmentService extends GenericRepositoryService<GithubAssi
 	constructor(
 		@InjectRepository(GithubAssignment)
 		private readonly _assignmentRepo: Repository<GithubAssignment>,
+		private readonly _semesterService: SemesterService,
 	) {
 		super(_assignmentRepo);
 	}
@@ -43,11 +45,17 @@ export class GithubAssignmentService extends GenericRepositoryService<GithubAssi
 	 * @throws {NoContentException} if no assignment was found for the corresponding id
 	 */
 	async getAssignmentByRepositoryUrl(repositoryUrl: string): Promise<GithubAssignment> {
-		return this.findOptions({
+		const currentSemester = await this._semesterService.getCurrentSemester();
+		return await this.findOptions({
 			where: {
 				repositoryUrl,
-			},
-			relations: ['challenge'],
+				challenge: {
+					semester: {
+						id: currentSemester.id,
+					},
+				},
+			} as GithubAssignment,
+			relations: ['challenge', 'challenge.semester'],
 		});
 	}
 

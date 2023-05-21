@@ -13,6 +13,7 @@ module.exports = {
 				'devops',
 				'challenge-management-backend-challenge-management',
 				'challenge-management-backend-common-models',
+				'challenge-management-backend-semester-management',
 				'challenge-management-backend',
 				'student-submissions-backend-common-models',
 				'moodle-management-backend-moodle-management',

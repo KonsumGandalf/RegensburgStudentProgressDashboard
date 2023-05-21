@@ -4,10 +4,11 @@ import {
 	ChallengeService,
 } from '@rspd/challenge-management/backend/challenge-management';
 import {
+	Assignment,
 	GithubAssignment,
 	UnionAssignment,
 } from '@rspd/challenge-management/backend/common-models';
-import { AssignmentType } from '@rspd/shared/backend/utils';
+import { AssignmentTopic, AssignmentType } from '@rspd/shared/backend/utils';
 import {
 	AssignmentSubmission,
 	ChallengeSubmission,
@@ -29,7 +30,7 @@ import {
 	IChallengeSubmissionOverview,
 	IScoreOf,
 } from '@rspd/student-submissions/common/models';
-import { UserService } from '@rspd/user/backend/user-management';
+import { StudentService } from '@rspd/user/backend/user-management';
 
 /**
  * Service for retrieving insights and information about student submissions.
@@ -43,7 +44,7 @@ export class StudentSubmissionInsightsService {
 		private readonly _githubSubmissionService: GithubSubmissionService,
 		private readonly _challengesService: ChallengeService,
 		private readonly _assignmentService: AssignmentService,
-		private readonly _userService: UserService,
+		private readonly _studentService: StudentService,
 	) {}
 
 	/**
@@ -53,8 +54,13 @@ export class StudentSubmissionInsightsService {
 	 * @returns A Promise that resolves to an object containing the absolute progress overview.
 	 */
 	async getAbsoluteProgressOverview(username: string): Promise<IAbsoluteProgressOverview> {
-		const allChallenges = await this._challengesService.findAll();
-		const allAssignments = await this._assignmentService.findAllAssignments();
+		const student = await this._studentService.getStudentEagerly(username);
+		const allChallenges = await this._challengesService.getChallengesOfSemester(
+			student.semester.name,
+		);
+		const allAssignments: Assignment[] = allChallenges.flatMap(
+			(challenge) => challenge.assignments,
+		);
 		const numberOfAllTests = allAssignments.reduce(
 			(totalValue: number, currentValue: UnionAssignment) => {
 				if (currentValue?.type == AssignmentType.GITHUB) {
@@ -97,15 +103,59 @@ export class StudentSubmissionInsightsService {
 	}
 
 	/**
+	 * Calculates the progress for every AssignmentTopic for a user
+	 *
+	 * @param username - The username of the Student requesting the progress
+	 * @returns A Promise that resolves to an object containing a score for each AssignmentTopic.
+	 */
+	async getTopicProgress(username: string): Promise<Partial<Record<AssignmentTopic, number>>> {
+		const student = await this._studentService.getStudentEagerly(username);
+		const allAssignments = await this._assignmentService.findAllAssignments(
+			student.semester.name,
+		);
+		const userSolvedAssignments = await this._assignmentSubmissionService.getUserSolvedElements(
+			username,
+		);
+
+		const topicProgressMap: Map<AssignmentTopic, number> = new Map(
+			Object.values(AssignmentTopic).map((topic: AssignmentTopic) => [topic, 0]),
+		);
+
+		Object.values(AssignmentTopic).forEach((topic: AssignmentTopic) => {
+			const allTopicAssignments = allAssignments.filter((assignment) =>
+				assignment.topics.includes(topic),
+			);
+			const allSolvedAssignments = userSolvedAssignments.filter((submission) =>
+				submission.assignment.topics.includes(topic),
+			);
+
+			const numberOfTopicAssignment =
+				Array.isArray(allTopicAssignments) && allTopicAssignments.length > 0
+					? allTopicAssignments.length
+					: 1;
+			const numberOfSolvedAssignments = Array.isArray(allSolvedAssignments)
+				? allSolvedAssignments.length
+				: 0;
+			topicProgressMap.set(
+				topic,
+				+(numberOfSolvedAssignments / numberOfTopicAssignment).toFixed(2),
+			);
+		});
+
+		return Object.fromEntries(topicProgressMap);
+	}
+
+	/**
 	 * Retrieves an overview for all challenges for the requesting user.
 	 *
 	 * @param username The username of the user.
 	 * @returns A Promise that resolves to an object containing the challenge overview.
 	 */
 	async getChallengeOverview(username: string): Promise<IChallengesOverview> {
-		const allChallengesPromise = this._challengesService.findOptionsMany({
-			relations: ['assignments'],
-		});
+		const student = await this._studentService.getStudentEagerly(username);
+		const allChallengesPromise = this._challengesService.getChallengesOfSemester(
+			student.semester.name,
+		);
 		const userChallengeSubmissionsPromise =
 			this._challengeSubmissionService.getUserChallengeSubmissions(username);
 
@@ -113,7 +163,6 @@ export class StudentSubmissionInsightsService {
 			allChallengesPromise,
 			userChallengeSubmissionsPromise,
 		]);
-
 		const results: IChallengeSubmissionOverview[] = await Promise.all(
 			allChallenges.map(async (challenge) => {
 				const foundChallengeSubmission = userChallengeSubmissions.find(
@@ -123,13 +172,23 @@ export class StudentSubmissionInsightsService {
 				let assignmentSubmissions: IAssignmentOverview[] = undefined;
 				let numberOfSolvedChallenges = 0;
 				if (foundChallengeSubmission) {
-					numberOfSolvedChallenges = foundChallengeSubmission.submissions?.filter(
-						(submission) => submission.completionState == SubmissionState.Solved,
-					).length;
+					numberOfSolvedChallenges = foundChallengeSubmission.submissions?.reduce(
+						(count: number, assignmentSubmission: AssignmentSubmission) => {
+							if (assignmentSubmission.completionState != SubmissionState.Unsolved) {
+								return count + 1;
+							}
+							return count;
+						},
+						0,
+					);
 				}
 
 				const promiseAssignmentSubmissions = challenge.assignments.map(async (assignment) =>
-					this.getAssignmentRelatedInformation(assignment, foundChallengeSubmission),
+					this.getAssignmentRelatedInformation(
+						assignment,
+						foundChallengeSubmission,
+						username,
+					),
 				);
 
 				assignmentSubmissions = await Promise.all(promiseAssignmentSubmissions);
@@ -159,11 +218,13 @@ export class StudentSubmissionInsightsService {
 	 *
 	 * @param assignment The assignment entity
 	 * @param foundChallengeSubmission The name of the assignment.
+	 * @param username
 	 * @returns A Promise that resolves to an object containing the assignment details.
 	 */
 	async getAssignmentRelatedInformation(
 		assignment: UnionAssignment,
 		foundChallengeSubmission: ChallengeSubmission,
+		username: string,
 	): Promise<IAssignmentOverview> {
 		const assignmentSubmission = foundChallengeSubmission?.submissions?.find(
 			(submission) => submission.assignment.id == assignment.id,
@@ -190,7 +251,7 @@ export class StudentSubmissionInsightsService {
 		username: string,
 		assignmentName: string,
 	): Promise<IAssignmentDetail> {
-		const promiseAllStudents = this._userService.findAllStudents();
+		const promiseAllStudents = this._studentService.findAll();
 		const promiseSolvedSubmissions =
 			this._assignmentSubmissionService.getAllSolvedSubmissions(assignmentName);
 		const promiseAssignment = this._assignmentService.getAssignmentByName(assignmentName);

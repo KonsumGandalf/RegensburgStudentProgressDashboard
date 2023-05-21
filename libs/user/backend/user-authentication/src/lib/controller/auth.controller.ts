@@ -4,20 +4,19 @@ import { JwtAuthGuard, Role, RoleGuard, UserRole } from '@rspd/shared/backend/ut
 import { IEmail, IUser } from '@rspd/user/backend/common-models';
 import { IRequestLogin } from '@rspd/user/backend/common-models';
 
+import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
 import { LocalAuthGuard } from '../models/guards/local-auth.guard';
 import { IAuthJwt } from '../models/interfaces/auth-jwt.interface';
 import { IResponseAuthentication } from '../models/interfaces/response-login.interfaces';
 import { AuthService } from '../services/auth.service';
 
+/**
+ * Controller for handling authentication related requests.
+ */
 @ApiTags('auth')
 @Controller()
 export class AuthController {
-	/**
-	 * Constructor for the AuthController class.
-	 * @constructor
-	 * @param {AuthService} _authService - Instance of the AuthService.
-	 */
 	constructor(private readonly _authService: AuthService) {}
 
 	/**
@@ -38,11 +37,15 @@ export class AuthController {
 	 * @function
 	 * @param {LoginUserDto} request - Requirements for the user to login, however this is used by the LocalAuthGuard, this is mainly named for Swagger Documentation purposes!
 	 * @param {IRequestLogin} request - User authentication details.
+	 * @param userDto
 	 * @returns {Promise<IResponseAuthentication>} Promise resolving to a response object containing a JWT token.
 	 */
 	@UseGuards(LocalAuthGuard)
 	@Post('login')
-	async login(@Request() request: IRequestLogin): Promise<IResponseAuthentication> {
+	async login(
+		@Request() request: IRequestLogin,
+		@Body() userDto: LoginUserDto,
+	): Promise<IResponseAuthentication> {
 		return await this._authService.login({
 			username: request.user.username,
 			id: request.user.id,

@@ -2,9 +2,10 @@ import { Assignment } from '@rspd/challenge-management/backend/common-models';
 import { BaseEntity } from '@rspd/shared/backend/utils';
 import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
 import { Tutor } from '@rspd/user/backend/common-models';
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { UnionAssignment } from '../types/union-assignment.type';
+import { Semester } from './semester.entity';
 
 /**
  * Represents a challenge that a user can complete.
@@ -43,6 +44,7 @@ export class Challenge extends BaseEntity {
 	 * @type {Tutor}
 	 */
 	@ManyToOne(() => Tutor, (tutor: Tutor) => tutor.challenges)
+	@JoinColumn()
 	tutor: Tutor;
 
 	/**
@@ -54,5 +56,10 @@ export class Challenge extends BaseEntity {
 		() => ChallengeSubmission,
 		(challengeSubmission: ChallengeSubmission) => challengeSubmission.challenge,
 	)
+	@JoinColumn()
 	submissions: ChallengeSubmission[];
+
+	@ManyToOne(() => Semester, (semester: Semester) => semester.challenges)
+	@JoinColumn()
+	semester: Semester;
 }

@@ -21,6 +21,9 @@
 			"@rspd/challenge-management/backend/common-models": [
 				"libs/challenge-management/backend/common-models/src/index.ts"
 			],
+			"@rspd/challenge-management/backend/semester-management": [
+				"libs/challenge-management/backend/semester-management/src/index.ts"
+			],
 			"@rspd/moodle-management/backend/moodle-management": [
 				"libs/moodle-management/backend/moodle-management/src/index.ts"
 			],

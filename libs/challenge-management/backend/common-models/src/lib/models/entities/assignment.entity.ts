@@ -1,6 +1,6 @@
 import { AssignmentTopic, AssignmentType, BaseEntity } from '@rspd/shared/backend/utils';
 import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
-import { Column, Entity, ManyToOne, OneToMany, TableInheritance } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, TableInheritance } from 'typeorm';
 
 import { Challenge } from './challenge.entity';
 
@@ -76,11 +76,12 @@ export class Assignment extends BaseEntity {
 	/**
 	 * The submissions associated with the assignment
 	 *
-	 * @type {AssignmentSubmission[]}
+	 * @type {UnionAssignment[]}
 	 */
 	@OneToMany(
 		() => AssignmentSubmission,
 		(submission: AssignmentSubmission) => submission.assignment,
 	)
+	@JoinColumn()
 	submissions: AssignmentSubmission[];
 }

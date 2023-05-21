@@ -1,5 +1,9 @@
 import { AssignmentType } from '@rspd/shared/backend/utils';
-import { ChildEntity, Column } from 'typeorm';
+import {
+	GithubSubmission,
+	MoodleSubmission,
+} from '@rspd/student-submissions/backend/common-models';
+import { ChildEntity, Column, JoinColumn, OneToMany } from 'typeorm';
 
 import { Assignment } from './assignment.entity';
 
@@ -10,4 +14,13 @@ export class MoodleAssignment extends Assignment {
 
 	@Column()
 	moodleAssignmentId: number;
+
+	/**
+	 * The submissions associated with the assignment
+	 *
+	 * @type {UnionAssignment[]}
+	 */
+	@OneToMany(() => MoodleSubmission, (submission: MoodleSubmission) => submission.assignment)
+	@JoinColumn()
+	submissions: MoodleSubmission[];
 }

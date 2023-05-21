@@ -1,4 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	Param,
+	Post,
+	Put,
+	Request,
+	UseGuards,
+} from '@nestjs/common';
 import {
 	ApiBearerAuth,
 	ApiCreatedResponse,
@@ -14,6 +24,7 @@ import {
 	RoleGuard,
 	UserRole,
 } from '@rspd/shared/backend/utils';
+import { IRequestLogin } from '@rspd/user/backend/common-models';
 
 import { ChallengeDto } from '../models/dto/challenge.dto';
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
@@ -30,12 +41,16 @@ export class ChallengeController {
 	/**
 	 * Creates a new challenge with its assignments
 	 * @param {CreateChallengeDto} challenge - The challenge data
+	 * @param request
 	 * @returns {Promise<Challenge>} The created challenge with its assignments
 	 */
 	@Post()
 	@ApiCreatedResponse({ description: 'Challenge was created' })
-	async createChallenge(@Body() challenge: CreateChallengeDto): Promise<Challenge> {
-		return this._challengeService.createChallengeAndAssignments(challenge);
+	async createChallenge(
+		@Body() challenge: CreateChallengeDto,
+		@Request() request: IRequestLogin,
+	): Promise<Challenge> {
+		return this._challengeService.createChallengeAndAssignments(challenge, request.user.id);
 	}
 
 	/**

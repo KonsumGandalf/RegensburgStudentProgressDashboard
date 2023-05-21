@@ -121,6 +121,7 @@ nx serve frontend
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `challenge-management-backend-challenge-management` | [libs/challenge-management/backend/challenge-management](libs/challenge-management/backend/challenge-management) | Allows tutors the update and create challenges            |
 | `challenge-management-backend-common-models`        | [libs/challenge-management/backend/common-models](libs/challenge-management/backend/common-models)               | Challenge-management-related data models for the backend. |
+| `challenge-management-backend-semester-management`  | [libs/challenge-management/backend/semester-management](libs/challenge-management/backend/semester-management)   | Allows to set the start and end of a semester.            |
 
 ## Moodle Management
 
