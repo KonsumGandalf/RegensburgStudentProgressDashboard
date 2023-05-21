@@ -26,4 +26,22 @@ export class StudentService extends UserService<Student> {
 	async createStudent(user: Student): Promise<Student> {
 		return await super.create(user, [{ email: user.email }, { username: user.username }]);
 	}
+
+	async addMoodleIdToStudent(moodleId: number, email: string): Promise<Student> {
+		const userId = await this.findOptions({
+			where: {
+				email,
+			},
+		}).then((user) => user.id);
+		return await this.update(userId, { moodleId: moodleId } as Student);
+	}
+
+	async getStudentEagerly(username: string): Promise<Student> {
+		return await this.findOptions({
+			where: {
+				username: username,
+			} as Student,
+			relations: ['githubUser', 'semester', 'email'],
+		});
+	}
 }

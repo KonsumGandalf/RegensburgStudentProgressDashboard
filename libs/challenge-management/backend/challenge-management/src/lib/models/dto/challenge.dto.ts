@@ -1,7 +1,5 @@
 import { Transform } from 'class-transformer';
 import { IsDate, IsString, MinDate } from 'class-validator';
-import * as postgres from 'postgres';
-import value = postgres.toPascal.value;
 
 /**
  * Data transfer object for representing a challenge.
@@ -14,6 +12,13 @@ export class ChallengeDto {
 	@IsString()
 	@Transform(({ value }) => value.trim())
 	name: string;
+
+	/**
+	 * The name of the semester of the challenge.
+	 * @type {string}
+	 */
+	@IsString()
+	semesterName: string;
 
 	/**
 	 * The date when the challenge is targeted to be completed.

@@ -1,7 +1,6 @@
 import { Challenge } from '@rspd/challenge-management/backend/common-models';
-import { BaseEntity } from '@rspd/shared/backend/utils';
 import { Student } from '@rspd/user/backend/common-models';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { AssignmentSubmission } from './assignment-submission.entity';
 import { BaseSubmission } from './base-submission.entity';

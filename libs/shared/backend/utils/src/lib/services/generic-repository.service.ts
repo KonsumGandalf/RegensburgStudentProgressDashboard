@@ -91,15 +91,10 @@ export abstract class GenericRepositoryService<Entity extends BaseEntity, IEntit
 	public async findOptionsMany(
 		options: Pick<FindManyOptions, 'where' | 'relations'>,
 	): Promise<Entity[]> {
-		const response = await this._repository.find({
+		return await this._repository.find({
 			where: options.where,
 			relations: options.relations,
 		});
-
-		if (response === undefined || response.length === 0) {
-			throw new NoContentException(`No objects were found for search options'.`);
-		}
-		return response;
 	}
 
 	/**

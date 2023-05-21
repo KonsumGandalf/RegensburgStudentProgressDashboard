@@ -16,6 +16,13 @@ export const registerSwagger = (app: INestApplication) => {
 		.addBearerAuth()
 		.addTag('challenge', 'allows CRUD actions for Tutors')
 		.addTag('assignment', 'allows CRUD actions for Tutors')
+		.addTag('auth', 'Controller for handling authentication related requests.')
+		.addTag('github-submission', 'Controller for handling GitHub submissions.')
+		.addTag('moodle-submission', 'Controller for handling Moodle submission-related endpoints.')
+		.addTag(
+			'student-submission',
+			'Controller for requesting insight information about the students progress in challenges.',
+		)
 		.build();
 
 	const document = SwaggerModule.createDocument(app, swaggerConfig);

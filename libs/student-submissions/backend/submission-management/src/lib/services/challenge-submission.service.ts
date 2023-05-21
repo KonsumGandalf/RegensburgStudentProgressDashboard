@@ -15,8 +15,6 @@ import {
 import { SubmissionState } from '@rspd/student-submissions/backend/common-models';
 import { In, Repository } from 'typeorm';
 
-import { AssignmentSubmissionService } from './assignment-submission.service';
-
 @Injectable()
 export class ChallengeSubmissionService
 	extends GenericRepositoryService<ChallengeSubmission>
@@ -31,12 +29,18 @@ export class ChallengeSubmissionService
 		super(_challengeSubmissionRepository);
 	}
 
-	async getChallengeSubmissionByUserAssignmentId(id: string): Promise<ChallengeSubmission> {
+	async getChallengeSubmissionByUserAssignmentId(
+		id: string,
+		username: string,
+	): Promise<ChallengeSubmission> {
 		const challenge = await this._assignmentService.getChallengeByAssignmentId(id);
 		return await this._challengeSubmissionRepository.findOne({
 			where: {
 				challenge: {
 					id: challenge.id,
+				},
+				student: {
+					username: username,
 				},
 			},
 			relations: ['student', 'submissions', 'challenge'],
@@ -61,7 +65,13 @@ export class ChallengeSubmissionService
 					username: username,
 				},
 			},
-			relations: ['challenge', 'student', 'submissions'],
+			relations: [
+				'challenge',
+				'student',
+				'submissions',
+				'challenge.assignments',
+				'challenge.submissions',
+			],
 		});
 		return await Promise.all(
 			submissions.map(async (submission: ChallengeSubmission) => {
@@ -102,6 +112,7 @@ export class ChallengeSubmissionService
 	async createOrUpdateChallengeSubmission(assignmentSubmission: AssignmentSubmission) {
 		const challengeSubmission = await this.getChallengeSubmissionByUserAssignmentId(
 			assignmentSubmission.assignment.id,
+			assignmentSubmission.student.username,
 		);
 		if (!challengeSubmission) {
 			return await this.create({
@@ -121,23 +132,19 @@ export class ChallengeSubmissionService
 		challengeSubmission: ChallengeSubmission,
 		assignmentSubmission: AssignmentSubmission,
 	) {
-		const solvedCount =
-			challengeSubmission.submissions.reduce(
-				(count: number, assignmentSubmission: AssignmentSubmission) => {
-					if (
-						assignmentSubmission.completionState ==
-						(SubmissionState.Solved || SubmissionState.CompletelySolved)
-					) {
-						return count + 1;
-					}
-					return count;
-				},
-				0,
-			) +
-			(assignmentSubmission.completionState ==
-			(SubmissionState.Solved || SubmissionState.CompletelySolved)
-				? 1
-				: 0);
+		const submissions = addIfNotContained(
+			challengeSubmission.submissions,
+			assignmentSubmission,
+		);
+		const solvedCount = submissions.reduce(
+			(count: number, assignmentSubmission: AssignmentSubmission) => {
+				if (assignmentSubmission.completionState != SubmissionState.Unsolved) {
+					return count + 1;
+				}
+				return count;
+			},
+			0,
+		);
 		const toBeSolvedCount = await this._challengeService
 			.getChallengeEagerly(challengeSubmission.challenge.id)
 			.then((item) => item.assignments.length);
@@ -145,7 +152,7 @@ export class ChallengeSubmissionService
 		const updatedSubmission = {
 			...challengeSubmission,
 			completionState: submissionStateCalculator(solvedCount, toBeSolvedCount),
-			submissions: addIfNotContained(challengeSubmission.submissions, assignmentSubmission),
+			submissions: submissions,
 		} as ChallengeSubmission;
 		await super.update(challengeSubmission.id, updatedSubmission);
 		return updatedSubmission;

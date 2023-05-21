@@ -2,20 +2,26 @@ import { faker } from '@faker-js/faker';
 import { ConflictException, NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Assignment, Challenge } from '@rspd/challenge-management/backend/common-models';
-import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
-	AssignmentTopic,
-	AssignmentType,
-	IDeleteResponse,
-	NoContentException,
-} from '@rspd/shared/backend/utils';
+	Assignment,
+	Challenge,
+	GithubAssignment,
+	MoodleAssignment,
+} from '@rspd/challenge-management/backend/common-models';
+import { MockRepository } from '@rspd/shared/backend/test-util';
+import { AssignmentTopic, AssignmentType, IDeleteResponse } from '@rspd/shared/backend/utils';
 
-import { AssignmentDto } from '../models/dto/assignment.dto';
+import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
+import { GithubAssignmentDto } from '../models/dto/github-assignment.dto';
+import { MoodleAssignmentDto } from '../models/dto/moodle-assignment.dto';
 import { AssignmentService } from './assignment.service';
+import { GithubAssignmentService } from './github-assignment.service';
+import { MoodleAssignmentService } from './moodle-assignment.service';
 
 describe('AssignmentService', () => {
 	let service: AssignmentService;
+	let moodleAssignmentService: MoodleAssignmentService;
+	let githubAssignmentService: GithubAssignmentService;
 	let assignmentRepository: MockRepository<Assignment>;
 	const assignments: Assignment[] = [];
 
@@ -26,11 +32,9 @@ describe('AssignmentService', () => {
 				name: faker.lorem.words(faker.datatype.number({ min: 1, max: 3 })),
 				type: faker.helpers.arrayElement(Object.values(AssignmentType)),
 				topics: [faker.helpers.arrayElement(Object.values(AssignmentTopic))],
-				repositoryUrl: faker.internet.url(),
-				tutorsUrl: faker.internet.url(),
-				minPassedTests: faker.datatype.number({ min: 5, max: 15 }),
-				totalTests: faker.datatype.number({ min: 10, max: 20 }),
-			} as unknown as Assignment;
+				repositoryUrl: faker.internet.url().toString(),
+				tutorsUrl: new URL(faker.internet.url()),
+			} as Assignment;
 			assignments.push(testAssignment);
 		}
 
@@ -41,10 +45,26 @@ describe('AssignmentService', () => {
 					provide: getRepositoryToken(Assignment),
 					useClass: MockRepository,
 				},
+				{
+					provide: MoodleAssignmentService,
+					useValue: {
+						createAssignment: jest.fn().mockImplementation((args) => args),
+						updateAssignment: jest.fn().mockImplementation((args) => args),
+					},
+				},
+				{
+					provide: GithubAssignmentService,
+					useValue: {
+						createAssignment: jest.fn().mockImplementation((args) => args),
+						updateAssignment: jest.fn().mockImplementation((args) => args),
+					},
+				},
 			],
 		}).compile();
 
 		service = module.get<AssignmentService>(AssignmentService);
+		moodleAssignmentService = module.get(MoodleAssignmentService);
+		githubAssignmentService = module.get(GithubAssignmentService);
 		assignmentRepository = module.get<MockRepository<Assignment>>(
 			getRepositoryToken(Assignment),
 		);
@@ -53,31 +73,6 @@ describe('AssignmentService', () => {
 
 	it('should check if the service is defined', () => {
 		expect(service).toBeDefined();
-	});
-
-	describe('createAssignment', () => {
-		it('should create and return the saved assignment entity', async () => {
-			const challenge = {
-				id: 'challenge-id',
-			} as Challenge;
-			const assignmentDto: AssignmentDto = {
-				displayName: 'Mario 1',
-				type: faker.helpers.arrayElement(Object.values(AssignmentType)),
-				topics: [faker.helpers.arrayElement(Object.values(AssignmentTopic))],
-				repositoryUrl: new URL(faker.internet.url()).toString(),
-				tutorsUrl: new URL(faker.internet.url()),
-				minPassedTests: faker.datatype.number({ min: 5, max: 15 }),
-				totalTests: faker.datatype.number({ min: 10, max: 20 }),
-			} as AssignmentDto;
-
-			const createdAssignment = await service.createAssignment(challenge, assignmentDto);
-
-			expect(createdAssignment).toMatchObject({
-				...assignmentDto,
-				displayName: assignmentDto.displayName,
-				name: 'mario-1',
-			});
-		});
 	});
 
 	describe('getAssignmentByName', () => {
@@ -110,16 +105,6 @@ describe('AssignmentService', () => {
 		});
 	});
 
-	describe('getAssignmentByRepositoryUrl', () => {
-		it('should return the Assignment by the given repositoryUrl', async () => {
-			const assignment = await service.getAssignmentByRepositoryUrl(
-				assignments[0].repositoryUrl,
-			);
-
-			expect(assignment).toEqual(assignments[0]);
-		});
-	});
-
 	describe('getAssignmentByChallengeId', () => {
 		it('should return the Assignment with the given ID', async () => {
 			assignments[0].challengeId = 'true';
@@ -128,14 +113,6 @@ describe('AssignmentService', () => {
 			);
 
 			expect(foundAssignments).toEqual([assignments[0]]);
-		});
-
-		it('should throw an error if the Assignment with the given ID is not found', async () => {
-			const id = '201';
-
-			await expect(() => service.getAssignmentByChallengeId(id)).rejects.toThrow(
-				NoContentException,
-			);
 		});
 	});
 
@@ -162,37 +139,6 @@ describe('AssignmentService', () => {
 		});
 	});
 
-	describe('updateAssignment', () => {
-		let toUpdateElement: Assignment;
-		let updateDto: AssignmentDto;
-
-		beforeEach(() => {
-			toUpdateElement = assignments[0];
-			updateDto = {
-				...toUpdateElement,
-				displayName: 'Changed Name',
-				totalTests: 12,
-			} as AssignmentDto;
-			toUpdateElement.totalTests = 12;
-			toUpdateElement.displayName = 'Changed Name';
-			toUpdateElement.name = 'changed-name';
-		});
-
-		it('should update the assignment with the given ID', async () => {
-			const response = await service.updateAssignment(toUpdateElement.id, updateDto);
-
-			expect(response).toEqual(toUpdateElement);
-		});
-
-		it('should throw an `ConflictException` if the Assignment with the given ID could not be updated', async () => {
-			const id = '201';
-
-			await expect(() => service.updateAssignment(id, updateDto)).rejects.toThrow(
-				ConflictException,
-			);
-		});
-	});
-
 	describe('getChallengeByAssignmentId', () => {
 		it('should return the connected challenge of an assignment', async () => {
 			const fakeAssignment = {
@@ -212,16 +158,61 @@ describe('AssignmentService', () => {
 		});
 	});
 
-	describe('getDisplayAndUniqueName', () => {
-		it('should transform the name property correctly', async () => {
-			const testName = ' Test 923 ';
+	describe('updateAssignment', () => {
+		it('should forward the update to the GithubAssignmentService', async () => {
+			const fakeAssignment = {
+				id: 'test',
+				type: AssignmentType.GITHUB,
+			} as GithubAssignment;
 
-			const result = service.getDisplayAndUniqueName(testName);
+			const result = await service.updateAssignment(fakeAssignment.id, fakeAssignment);
 
-			expect(result).toEqual({
-				name: 'test-923',
-				displayName: 'Test 923',
-			});
+			expect(moodleAssignmentService.updateAssignment).toHaveBeenCalledTimes(0);
+			expect(githubAssignmentService.updateAssignment).toHaveBeenCalledTimes(1);
+			expect(result).toBeDefined();
+		});
+
+		it('should forward the update to the MoodleAssignmentService', async () => {
+			const fakeAssignment = {
+				id: 'test',
+				type: AssignmentType.MOODLE,
+			} as MoodleAssignment;
+
+			const result = await service.updateAssignment(fakeAssignment.id, fakeAssignment);
+
+			expect(moodleAssignmentService.updateAssignment).toHaveBeenCalledTimes(1);
+			expect(githubAssignmentService.updateAssignment).toHaveBeenCalledTimes(0);
+			expect(result).toBeDefined();
+		});
+	});
+
+	describe('createAssignment', () => {
+		it('should forward the update to the GithubAssignmentService', async () => {
+			const fakeAssignment = {
+				type: AssignmentType.GITHUB,
+			} as GithubAssignmentDto;
+			const challenge = {} as Challenge;
+			const challengeDto = {} as CreateChallengeDto;
+
+			const result = await service.createAssignment(challenge, fakeAssignment, challengeDto);
+
+			expect(moodleAssignmentService.createAssignment).toHaveBeenCalledTimes(0);
+			expect(githubAssignmentService.createAssignment).toHaveBeenCalledTimes(1);
+			expect(result).toBeDefined();
+		});
+
+		it('should forward the update to the MoodleAssignmentService', async () => {
+			const fakeAssignment = {
+				type: AssignmentType.MOODLE,
+			} as MoodleAssignmentDto;
+			const challenge = {} as Challenge;
+			const challengeDto = {} as CreateChallengeDto;
+
+			const result = await service.createAssignment(challenge, fakeAssignment, challengeDto);
+
+			expect(moodleAssignmentService.createAssignment).toHaveBeenCalledTimes(1);
+			expect(githubAssignmentService.createAssignment).toHaveBeenCalledTimes(0);
+			expect(result).toBeDefined();
 		});
 	});
 });

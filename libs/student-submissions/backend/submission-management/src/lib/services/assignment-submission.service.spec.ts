@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { ChallengeService } from '@rspd/challenge-management/backend/challenge-management';
+import { Semester } from '@rspd/challenge-management/backend/common-models';
 import { MockRepository } from '@rspd/shared/backend/test-util';
 import {
 	AssignmentSubmission,
@@ -16,8 +17,14 @@ describe('ChallengeService', () => {
 	let submissions: AssignmentSubmission[];
 	let fakeSubmission: AssignmentSubmission;
 	let fakeUsername: string;
+	let fakeSemester: Semester;
 
 	beforeEach(async () => {
+		fakeSemester = {
+			id: 'random-semester',
+			start: new Date(),
+		} as Semester;
+
 		submissions = [];
 		fakeUsername = faker.internet.userName();
 		for (let i = 0; i < 5; i++) {

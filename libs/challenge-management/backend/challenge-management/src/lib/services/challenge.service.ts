@@ -1,5 +1,7 @@
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Challenge } from '@rspd/challenge-management/backend/common-models';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import {
 	ActionExceptionType,
 	ActionNotPerformedException,
@@ -7,20 +9,23 @@ import {
 	GenericRepositoryService,
 	IDeleteResponse,
 } from '@rspd/shared/backend/utils';
+import { TutorService } from '@rspd/user/backend/user-management';
 import { Repository } from 'typeorm';
 
-import { AssignmentDto } from '../models/dto/assignment.dto';
 import { CreateChallengeDto } from '../models/dto/create-challenge.dto';
 import { AssignmentService } from './assignment.service';
 
 /**
  * A service class for handling CRUD operations for Challenge entities.
  */
+@Injectable()
 export class ChallengeService extends GenericRepositoryService<Challenge> {
 	constructor(
+		private readonly _assignmentService: AssignmentService,
+		private readonly _tutorService: TutorService,
+		private readonly _semesterService: SemesterService,
 		@InjectRepository(Challenge)
 		private readonly _challengeRepo: Repository<Challenge>,
-		private readonly _assignmentService: AssignmentService,
 	) {
 		super(_challengeRepo);
 	}
@@ -29,21 +34,31 @@ export class ChallengeService extends GenericRepositoryService<Challenge> {
 	 * Creates a new Challenge entity as well as the associated assignments with the given data.
 	 *
 	 * @param {CreateChallengeDto} challengeDto - The DTO representing the Challenge to create.
+	 * @param {string} id - The id of the tutor
 	 * @returns {Promise<Challenge>} - The created Challenge entity with its embedded assignments.
 	 */
-	async createChallengeAndAssignments(challengeDto: CreateChallengeDto): Promise<Challenge> {
-		const challenge = await super.create({
-			name: challengeDto.name,
+	async createChallengeAndAssignments(
+		challengeDto: CreateChallengeDto,
+		id: string,
+	): Promise<Challenge> {
+		const tutor = await this._tutorService.findOneById(id);
+		const semester = await this._semesterService.findByName(challengeDto.semesterName);
+		const challenge = await this.create({
+			name: challengeDto.name.toLowerCase(),
+			tutor: tutor,
+			semester: semester,
 			targetedCompletionDate: challengeDto.targetedCompletionDate,
-		});
-
+		} as Challenge);
 		await Promise.all(
-			challengeDto.assignments.map(async (assignment: AssignmentDto) => {
-				return this._assignmentService.createAssignment(challenge, assignment);
+			challengeDto.assignments.map(async (assignment) => {
+				return this._assignmentService.createAssignment(
+					challenge,
+					assignment,
+					challengeDto,
+				);
 			}),
 		);
-
-		return await this.getChallenge(challenge.id);
+		return this.getChallenge(challenge.id);
 	}
 
 	/**
@@ -132,5 +147,16 @@ export class ChallengeService extends GenericRepositoryService<Challenge> {
 			.leftJoinAndSelect('challenge.assignments', 'assignment')
 			.where('assignment.id = :id', { id: assignmentId })
 			.getOne();
+	}
+
+	async getChallengesOfSemester(semesterName: string): Promise<Challenge[]> {
+		return await this.findOptionsMany({
+			where: {
+				semester: {
+					name: semesterName,
+				},
+			} as Challenge,
+			relations: ['assignments', 'tutor', 'submissions'],
+		});
 	}
 }

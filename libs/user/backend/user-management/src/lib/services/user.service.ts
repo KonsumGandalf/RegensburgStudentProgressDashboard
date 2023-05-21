@@ -44,7 +44,6 @@ export class UserService<UserType extends User = User> extends GenericRepository
 	 * Finds a user by ID.
 	 * @async
 	 * @param {string} id - The ID of the user to search for.
-	 * @param {boolean} [relations=false] - Whether to include email relations.
 	 * @returns {Promise<IComplexUser>} The user object found by ID.
 	 */
 	async findUser(id: string) {

@@ -1,6 +1,8 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
+import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
 import { IAppConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
@@ -19,16 +21,6 @@ import { IVerificationToken } from '../models/interfaces/verfication-token-email
  */
 @Injectable()
 export class AuthService {
-	/**
-	 * Creates an instance of AuthService.
-	 *
-	 * @param _studentService
-	 * @param _tutorService
-	 * @param _userService
-	 * @param {UserMailService} _emailService - The user mail service.
-	 * @param {ConfigService<IAppConfig>} _configService - The config service.
-	 * @param {JwtService} _jwtService - The JSON web token service.
-	 */
 	constructor(
 		private readonly _studentService: StudentService,
 		private readonly _tutorService: TutorService,
@@ -36,6 +28,8 @@ export class AuthService {
 		private readonly _emailService: UserMailService,
 		private readonly _configService: ConfigService<IAppConfig>,
 		private readonly _jwtService: JwtService,
+		private readonly _moodleManagementService: MoodleManagementService,
+		private readonly _semesterService: SemesterService,
 	) {}
 
 	/**
@@ -62,10 +56,12 @@ export class AuthService {
 					hashedPassword: hash,
 				} as unknown as Tutor);
 			} else {
+				const currentSemester = await this._semesterService.getCurrentSemester();
 				userEntity = await this._studentService.create({
 					...user,
 					email: emailEntity,
 					hashedPassword: hash,
+					semester: currentSemester,
 				} as unknown as Student);
 			}
 
@@ -149,6 +145,11 @@ export class AuthService {
 			const payload = await this._jwtService.verify(token);
 
 			if (typeof payload === 'object' && 'email' in payload) {
+				const moodleId = await this._moodleManagementService
+					.getUserByEmail(payload.email)
+					.then((user) => user.id);
+				await this._studentService.addMoodleIdToStudent(moodleId, payload.email);
+
 				return this._emailService.setMailToConfirmed(payload.email);
 			}
 			throw new BadRequestException();

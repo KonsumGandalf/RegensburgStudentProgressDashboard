@@ -1,13 +1,14 @@
-import { Controller, Get, Param, Request, UseGuards } from '@nestjs/common';
+import { CacheInterceptor, CacheTTL } from '@nestjs/cache-manager';
+import { Controller, Get, Param, Request, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from '@rspd/shared/backend/utils';
+import { AssignmentTopic, JwtAuthGuard } from '@rspd/shared/backend/utils';
 import { IAssignmentDetail, IChallengesOverview } from '@rspd/student-submissions/common/models';
 import { IRequestLogin } from '@rspd/user/backend/common-models';
 
 import { StudentSubmissionInsightsService } from '../services/student-submission-insights.service';
 
 /**
- * Retrieves the challenge overview for a student.
+ * Controller for requesting insight information about the students progress in challenges.
  */
 @Controller()
 @ApiTags('student-submission')
@@ -20,6 +21,8 @@ export class StudentSubmissionInsightsController {
 	 * @param request - The request object containing user information.
 	 * @returns The challenge overview.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('absolute-progress-overview')
 	async getAbsoluteProgressOverview(@Request() request: IRequestLogin) {
@@ -32,6 +35,8 @@ export class StudentSubmissionInsightsController {
 	 * @param request - The request object containing user information.
 	 * @returns The challenge overview.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('challenge-overview')
 	async getChallengeOverview(@Request() request: IRequestLogin): Promise<IChallengesOverview> {
@@ -46,16 +51,33 @@ export class StudentSubmissionInsightsController {
 	 * @param name - The name of the assignment.
 	 * @returns The assignment submission details.
 	 */
+	@CacheTTL(20000)
+	@UseInterceptors(CacheInterceptor)
 	@UseGuards(JwtAuthGuard)
 	@Get('assignments/:name')
 	async getAssignmentSubmissionDetails(
 		@Request() request: IRequestLogin,
 		@Param('name') name: string,
 	): Promise<IAssignmentDetail> {
-		console.log(name);
 		return await this._submissionService.getAssignmentSubmissionDetails(
 			request.user.username,
 			name,
 		);
+	}
+
+	/**
+	 * Calculates the progress for every AssignmentTopic for a user
+	 *
+	 * @param request - The request object containing user information.
+	 * @returns A Promise that resolves to an object containing a score for each AssignmentTopic.
+	 */
+	@CacheTTL(5000)
+	@UseInterceptors(CacheInterceptor)
+	@UseGuards(JwtAuthGuard)
+	@Get('topic-progress')
+	async getTopicProgress(
+		@Request() request: IRequestLogin,
+	): Promise<Partial<Record<AssignmentTopic, number>>> {
+		return await this._submissionService.getTopicProgress(request.user.username);
 	}
 }

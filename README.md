@@ -121,6 +121,16 @@ nx serve frontend
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `challenge-management-backend-challenge-management` | [libs/challenge-management/backend/challenge-management](libs/challenge-management/backend/challenge-management) | Allows tutors the update and create challenges            |
 | `challenge-management-backend-common-models`        | [libs/challenge-management/backend/common-models](libs/challenge-management/backend/common-models)               | Challenge-management-related data models for the backend. |
+| `challenge-management-backend-semester-management`  | [libs/challenge-management/backend/semester-management](libs/challenge-management/backend/semester-management)   | Allows to set the start and end of a semester.            |
+
+## Moodle Management
+
+### Backend
+
+| Name                                               | Path                                                                                                           | Description                                                                       |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `moodle-management-backend-moodle-management`      | [libs/moodle-management/backend/moodle-management](libs/moodle-management/backend/moodle-management)           | Provides a set of commands and utilities for interacting with the Moodle platform |
+| `moodle-management-backend-moodle-request-handler` | [libs/moodle-management/backend/moodle-request-handler](libs/moodle-management/backend/moodle-request-handler) | Acting as a middleware for calling the moodle backend api.                        |
 
 ## Shared
 
@@ -139,6 +149,7 @@ nx serve frontend
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `student-submission-backend-common-models`         | [libs\student-submissions\backend\common-models](libs\student-submissions\backend\common-models)                 | Student-submission-related data models for the backend.          |
 | `student-submission-backend-github-submissions`    | [libs\student-submissions\backend\github-submissions](libs\student-submissions\backend\github-submissions)       | GitHub submission handling for student submissions.              |
+| `student-submission-backend-moodle-submissions`    | [libs\student-submissions\backend\moodle-submissions](libs\student-submissions\backend\moodle-submissions)       | Moodle submission handling for student submissions.              |
 | `student-submission-backend-submission-insights`   | [libs\student-submissions\backend\submission-insights](libs\student-submissions\backend\submission-insights)     | Allows the frontend to request the state of student submissions. |
 | `student-submission-backend-submission-management` | [libs\student-submissions\backend\submission-management](libs\student-submissions\backend\submission-management) | Manages student submissions.                                     |
 
