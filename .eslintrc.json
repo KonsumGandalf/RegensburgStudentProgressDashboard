@@ -126,6 +126,11 @@
 			"rules": {}
 		},
 		{
+			"files": ["*.scss"],
+			"extends": ["plugin:@nx/javascript"],
+			"rules": {}
+		},
+		{
 			"files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
 			"env": {
 				"jest": true

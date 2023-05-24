@@ -1,0 +1,59 @@
+@use 'sass:list';
+@use '../generic/colors' as *;
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+$font-family-monospace: list.join('Space Mono', $font-family-monospace);
+$font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/space-mono/space-mono-regular.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: italic;
+	font-weight: 400;
+	src: url('fonts/space-mono/space-mono-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: normal;
+	font-weight: 700;
+	src: url('fonts/space-mono/space-mono-bold.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: italic;
+	font-weight: 700;
+	src: url('fonts/space-mono/space-mono-bold-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Montserrat', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	src: url('fonts/montserrat/montserrat-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	src: url('fonts/montserrat/montserrat.ttf');
+}

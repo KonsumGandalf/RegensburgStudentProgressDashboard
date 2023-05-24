@@ -78,7 +78,7 @@ export class MockRepository<Entity extends MockEntity = MockEntity>
 			return null;
 		}
 
-		return entity;
+		return entity as Entity;
 	}
 
 	findOneBy(
@@ -128,7 +128,7 @@ export class MockRepository<Entity extends MockEntity = MockEntity>
 						}
 
 						return {
-							...entity,
+							...(entity as Entity),
 							...relationEntities,
 						};
 					}

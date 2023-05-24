@@ -1,4 +1,5 @@
 import { StorybookConfig } from '@storybook/angular';
+import { set } from 'lodash';
 
 const config: StorybookConfig = {
 	addons: ['@storybook/addon-essentials'],
@@ -15,6 +16,12 @@ const config: StorybookConfig = {
 		defaultName: 'Docs',
 	},
 	webpackFinal: async (config) => {
+		set(
+			config,
+			['resolve', 'alias', 'settings/vendors/bootstrap'],
+			'libs/shared/common/styles/src/scss/settings/vendors/_bootstrap.scss',
+		);
+
 		return config;
 	},
 };

@@ -55,7 +55,7 @@
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": "",
+					"data": "@use \"settings/vendors/bootstrap\";\r\n\r\np {\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    color: green;\r\n    font-family: bootstrap.$font-family-monospace;\r\n}\r\n",
 					"styleUrl": "./button.component.scss"
 				}
 			],
@@ -74,7 +74,7 @@
 				"deprecated": false,
 				"deprecationMessage": "",
 				"type": "object",
-				"defaultValue": "{\r\n\tdocs: {\r\n\t\tinlineStories: true\r\n\t},\r\n\tcontrol: {\r\n\t\texpanded: true\r\n\t}\r\n}"
+				"defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
 			},
 			{
 				"name": "Primary",
@@ -110,7 +110,7 @@
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "object",
-					"defaultValue": "{\r\n\tdocs: {\r\n\t\tinlineStories: true\r\n\t},\r\n\tcontrol: {\r\n\t\texpanded: true\r\n\t}\r\n}"
+					"defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
 				}
 			],
 			"libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts": [

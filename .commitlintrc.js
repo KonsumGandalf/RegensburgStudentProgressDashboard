@@ -30,7 +30,8 @@ module.exports = {
 				'user-backend-user-mail-management',
 				'user-backend-user-management',
 				'user-backend',
-				'shared-frontend-ui'
+				'shared-frontend-ui',
+				'shared-common-styles',
 			],
 		],
 	},

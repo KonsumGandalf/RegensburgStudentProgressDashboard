@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'rspd-style.scss';
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	color: red;
+	font-size: 2rem;
+	font-weight: 900;
+	font-family: $font-family-sans-serif;
+}
