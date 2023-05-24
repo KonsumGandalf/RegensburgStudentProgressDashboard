@@ -30,8 +30,17 @@
 			"@rspd/moodle-management/backend/moodle-request-handler": [
 				"libs/moodle-management/backend/moodle-request-handler/src/index.ts"
 			],
+			"@rspd/shared-frontend/storybook-host": [
+				"libs/shared-frontend/storybook-host/src/index.ts"
+			],
 			"@rspd/shared/backend/test-util": ["libs/shared/backend/test-util/src/index.ts"],
 			"@rspd/shared/backend/utils": ["libs/shared/backend/utils/src/index.ts"],
+			"@rspd/shared/common/styles": ["libs/shared/common/styles/src/index.ts"],
+			"@rspd/shared/frontend/environment": ["libs/shared/frontend/environment/src/index.ts"],
+			"@rspd/shared/frontend/storybook-host": [
+				"libs/shared/frontend/storybook-host/src/index.ts"
+			],
+			"@rspd/shared/frontend/ui/atoms": ["libs/shared/frontend/ui/atoms/src/index.ts"],
 			"@rspd/student-submissions/backend/common-models": [
 				"libs/student-submissions/backend/common-models/src/index.ts"
 			],

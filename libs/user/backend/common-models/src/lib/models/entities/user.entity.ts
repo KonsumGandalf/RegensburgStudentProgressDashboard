@@ -1,4 +1,4 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { BaseEntity, UserRole } from '@rspd/shared/backend/utils';
 import { Mail } from '@rspd/user/backend/common-models';
 import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, TableInheritance } from 'typeorm';

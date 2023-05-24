@@ -1,0 +1,9 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"emitDecoratorMetadata": true
+	},
+	"files": ["preview.ts"],
+	"exclude": ["../**/*.spec.ts"],
+	"include": ["../../ui/**/src/lib/**/*.stories.ts", "../../ui/**/src/lib/**/*.component.ts"]
+}
