@@ -4,7 +4,7 @@
 	"projectType": "application",
 	"prefix": "rspd",
 	"sourceRoot": "apps/frontend/src",
-	"tags": ["kind:frontend\"", "\"type:app"],
+	"tags": ["kind:frontend", "type:app"],
 	"targets": {
 		"build": {
 			"executor": "@angular-devkit/build-angular:browser",

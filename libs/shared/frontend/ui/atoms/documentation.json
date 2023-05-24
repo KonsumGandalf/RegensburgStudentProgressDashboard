@@ -1,0 +1,189 @@
+{
+	"pipes": [],
+	"interfaces": [],
+	"injectables": [],
+	"guards": [],
+	"interceptors": [],
+	"classes": [],
+	"directives": [],
+	"components": [
+		{
+			"name": "ButtonComponent",
+			"id": "component-ButtonComponent-13b253c03b03fe9f208982d5c2b1b9cbf7d9e8a4b4da625285dc016f720d955d1d62c48f3c60224a8371640082139f49c4203bc124fd3e847a266aa7ca84da8c",
+			"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.component.ts",
+			"encapsulation": [],
+			"entryComponents": [],
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "rspd-button",
+			"styleUrls": ["./button.component.scss"],
+			"styles": [],
+			"templateUrl": ["./button.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [
+				{
+					"name": "testInput",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"rawdescription": "\n\nTest input lol\n",
+					"description": "<p>Test input lol</p>\n",
+					"line": 19,
+					"type": "string",
+					"decorators": []
+				}
+			],
+			"outputsClass": [],
+			"propertiesClass": [],
+			"methodsClass": [],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [
+				{
+					"name": "CommonModule",
+					"type": "module"
+				}
+			],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\n@Component({\n\tselector: 'rspd-button',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.scss'],\n})\n/**\n * Test Button Component\n */\nexport class ButtonComponent {\n\t/**\n\t * Test input lol\n\t */\n\t@Input()\n\tpublic testInput?: string;\n}\n",
+			"assetsDirs": [],
+			"styleUrlsData": [
+				{
+					"data": "",
+					"styleUrl": "./button.component.scss"
+				}
+			],
+			"stylesData": "",
+			"templateData": "<p>button works!</p>\n"
+		}
+	],
+	"modules": [],
+	"miscellaneous": {
+		"variables": [
+			{
+				"name": "parameters",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/storybook-host/.storybook/preview.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "object",
+				"defaultValue": "{\r\n\tdocs: {\r\n\t\tinlineStories: true\r\n\t},\r\n\tcontrol: {\r\n\t\texpanded: true\r\n\t}\r\n}"
+			},
+			{
+				"name": "Primary",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "Template.bind({})"
+			},
+			{
+				"name": "Template",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story<ButtonComponent>",
+				"defaultValue": "(args: ButtonComponent) => ({\n\tcomponent: ButtonComponent,\n\tprops: args,\n})"
+			}
+		],
+		"functions": [],
+		"typealiases": [],
+		"enumerations": [],
+		"groupedVariables": {
+			"libs/shared/frontend/storybook-host/.storybook/preview.ts": [
+				{
+					"name": "parameters",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/storybook-host/.storybook/preview.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "object",
+					"defaultValue": "{\r\n\tdocs: {\r\n\t\tinlineStories: true\r\n\t},\r\n\tcontrol: {\r\n\t\texpanded: true\r\n\t}\r\n}"
+				}
+			],
+			"libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts": [
+				{
+					"name": "Primary",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "Template.bind({})"
+				},
+				{
+					"name": "Template",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story<ButtonComponent>",
+					"defaultValue": "(args: ButtonComponent) => ({\n\tcomponent: ButtonComponent,\n\tprops: args,\n})"
+				}
+			]
+		},
+		"groupedFunctions": {},
+		"groupedEnumerations": {},
+		"groupedTypeAliases": {}
+	},
+	"routes": [],
+	"coverage": {
+		"count": 12,
+		"status": "low",
+		"files": [
+			{
+				"filePath": "libs/shared/frontend/storybook-host/.storybook/preview.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "parameters",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "ButtonComponent",
+				"coveragePercent": 50,
+				"coverageCount": "1/2",
+				"status": "medium"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Primary",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Template",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			}
+		]
+	}
+}
