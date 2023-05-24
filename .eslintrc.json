@@ -127,7 +127,7 @@
 		},
 		{
 			"files": ["*.scss"],
-			"extends": ["plugin:@nx/javascript"],
+			"extends": ["stylelint"],
 			"rules": {}
 		},
 		{
