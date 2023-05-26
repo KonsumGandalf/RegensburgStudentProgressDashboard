@@ -32,6 +32,7 @@ module.exports = {
 				'user-backend',
 				'shared-frontend-ui',
 				'shared-common-styles',
+				'frontend',
 			],
 		],
 	},

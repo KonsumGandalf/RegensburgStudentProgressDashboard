@@ -1,7 +1,8 @@
 {
-	"name": "shared-common-styles",
+	"name": "shared-frontend-assets",
 	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/shared/common/styles/src",
+	"sourceRoot": "libs/shared/frontend/assets/src",
+	"prefix": "rspd",
 	"tags": ["kind:common", "domain:shared", "type:ui"],
 	"projectType": "library"
 }

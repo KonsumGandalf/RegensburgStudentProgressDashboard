@@ -8,15 +8,17 @@
 	"directives": [],
 	"components": [
 		{
-			"name": "ButtonComponent",
-			"id": "component-ButtonComponent-13b253c03b03fe9f208982d5c2b1b9cbf7d9e8a4b4da625285dc016f720d955d1d62c48f3c60224a8371640082139f49c4203bc124fd3e847a266aa7ca84da8c",
-			"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.component.ts",
-			"encapsulation": [],
+			"name": "RspdButtonComponent",
+			"id": "component-RspdButtonComponent-caa3ab9d7a57104dcc6c7771e82a52bc967ad76f40185cd323a6f7d997d36ec78288b2bc3eb71fd1f2de49177c4ca13324b2da8430cb25066ecaee39de90be48",
+			"file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.ts",
+			"changeDetection": "ChangeDetectionStrategy.OnPush",
+			"encapsulation": ["ViewEncapsulation.None"],
 			"entryComponents": [],
+			"host": {},
 			"inputs": [],
 			"outputs": [],
 			"providers": [],
-			"selector": "rspd-button",
+			"selector": "button[appearance], a[appearance]",
 			"styleUrls": ["./button.component.scss"],
 			"styles": [],
 			"templateUrl": ["./button.component.html"],
@@ -24,13 +26,136 @@
 			"hostDirectives": [],
 			"inputsClass": [
 				{
-					"name": "testInput",
+					"name": "appearance",
+					"defaultValue": "ButtonAppearance.FILLED",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"rawdescription": "\n\nTest input lol\n",
-					"description": "<p>Test input lol</p>\n",
-					"line": 19,
-					"type": "string",
+					"jsdoctags": [
+						{
+							"pos": 896,
+							"end": 961,
+							"flags": 8421376,
+							"modifierFlagsCache": 0,
+							"transformFlags": 0,
+							"kind": 344,
+							"tagName": {
+								"pos": 897,
+								"end": 902,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "param"
+							},
+							"comment": "<ul>\n<li>The type of appearance.</li>\n</ul>\n",
+							"typeExpression": {
+								"pos": 903,
+								"end": 921,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 312,
+								"type": {
+									"pos": 904,
+									"end": 920,
+									"flags": 8388608,
+									"modifierFlagsCache": 0,
+									"transformFlags": 1,
+									"kind": 180,
+									"typeName": {
+										"pos": 904,
+										"end": 920,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 0,
+										"kind": 79,
+										"escapedText": "ButtonAppearance"
+									}
+								}
+							},
+							"name": {
+								"pos": 922,
+								"end": 932,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "appearance"
+							},
+							"isNameFirst": false,
+							"isBracketed": false
+						}
+					],
+					"rawdescription": "\n\nSets the appearance of the button. The default appearance is filled.\n",
+					"description": "<p>Sets the appearance of the button. The default appearance is filled.</p>\n",
+					"line": 33,
+					"type": "ButtonAppearanceType",
+					"decorators": []
+				},
+				{
+					"name": "icon",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"jsdoctags": [
+						{
+							"pos": 1483,
+							"end": 1537,
+							"flags": 8421376,
+							"modifierFlagsCache": 0,
+							"transformFlags": 0,
+							"kind": 344,
+							"tagName": {
+								"pos": 1484,
+								"end": 1489,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "param"
+							},
+							"comment": "<ul>\n<li>The name of the icon.</li>\n</ul>\n",
+							"typeExpression": {
+								"pos": 1490,
+								"end": 1505,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 312,
+								"type": {
+									"pos": 1491,
+									"end": 1504,
+									"flags": 8388608,
+									"modifierFlagsCache": 0,
+									"transformFlags": 1,
+									"kind": 180,
+									"typeName": {
+										"pos": 1491,
+										"end": 1504,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 0,
+										"kind": 79,
+										"escapedText": "PhosphorIcons"
+									}
+								}
+							},
+							"name": {
+								"pos": 1506,
+								"end": 1510,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "icon"
+							},
+							"isNameFirst": false,
+							"isBracketed": false
+						}
+					],
+					"rawdescription": "\n\nAdds an icon to the button component\n",
+					"description": "<p>Adds an icon to the button component</p>\n",
+					"line": 55,
+					"type": "PhosphorIcons",
 					"decorators": []
 				}
 			],
@@ -39,33 +164,448 @@
 			"methodsClass": [],
 			"deprecated": false,
 			"deprecationMessage": "",
-			"hostBindings": [],
+			"hostBindings": [
+				{
+					"name": "class.a-rspd-button--filled",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 36,
+					"type": "boolean",
+					"decorators": []
+				},
+				{
+					"name": "class.a-rspd-button--outline",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 41,
+					"type": "boolean",
+					"decorators": []
+				},
+				{
+					"name": "class.a-rspd-button--shifted",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 46,
+					"type": "boolean",
+					"decorators": []
+				}
+			],
 			"hostListeners": [],
 			"standalone": true,
 			"imports": [
 				{
-					"name": "CommonModule",
-					"type": "module"
+					"name": "RspdIconComponent",
+					"type": "component"
+				},
+				{
+					"name": "NgIf"
 				}
 			],
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\n@Component({\n\tselector: 'rspd-button',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.scss'],\n})\n/**\n * Test Button Component\n */\nexport class ButtonComponent {\n\t/**\n\t * Test input lol\n\t */\n\t@Input()\n\tpublic testInput?: string;\n}\n",
+			"sourceCode": "import { NgIf } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { RspdIconComponent } from '../../icon/component/icon.component';\nimport { PhosphorIcons } from '../../icon/models/phosphor-icons';\nimport { ButtonAppearance, ButtonAppearanceType } from '../models/button-appearance';\n\n@Component({\n\t// eslint-disable-next-line @angular-eslint/component-selector\n\tselector: 'button[appearance], a[appearance]',\n\tstandalone: true,\n\ttemplateUrl: './button.component.html',\n\tstyleUrls: ['./button.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-button btn',\n\t},\n\timports: [RspdIconComponent, NgIf],\n})\nexport class RspdButtonComponent {\n\t/**\n\t * Sets the appearance of the button. The default appearance is filled.\n\t * @param {ButtonAppearance} appearance - The type of appearance.\n\t */\n\t@Input()\n\tappearance?: ButtonAppearanceType = ButtonAppearance.FILLED;\n\n\t@HostBinding('class.a-rspd-button--filled')\n\tget isFilled(): boolean {\n\t\treturn this.appearance === ButtonAppearance.FILLED;\n\t}\n\n\t@HostBinding('class.a-rspd-button--outline')\n\tget isOutline(): boolean {\n\t\treturn this.appearance === ButtonAppearance.OUTLINE;\n\t}\n\n\t@HostBinding('class.a-rspd-button--shifted')\n\tget isShifted(): boolean {\n\t\treturn this.appearance === ButtonAppearance.SHIFTED;\n\t}\n\n\t/**\n\t * Adds an icon to the button component\n\t * @param {PhosphorIcons} icon - The name of the icon.\n\t */\n\t@Input()\n\ticon?: PhosphorIcons;\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": "@use \"settings/vendors/bootstrap\";\r\n\r\np {\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n    color: green;\r\n    font-family: bootstrap.$font-family-monospace;\r\n}\r\n",
+					"data": "@use 'settings/generic/colors';\n@use 'settings/vendors/bootstrap';\n\n.a-rspd-button {\n    font-size: 1rem;\n    position: relative;\n    display: flex;\n    border: none;\n    cursor: pointer;\n    z-index: 2;\n    transition: all .2s;\n    text-transform: capitalize;\n\n    &.a-rspd-button__icon {\n        padding-right: 0.625rem;\n        display: flex;\n        margin: auto;\n        align-items:center;\n        justify-content:center;\n    }\n\n    &:disabled {\n        cursor: not-allowed;\n    }\n\n    &:active {\n        box-shadow: bootstrap.$box-shadow-md;\n    }\n\n    &.a-rspd-button--filled {\n        font-weight: bold;\n        background-color: colors.$grey-900;\n        color: colors.$themed-white;\n        border-radius: 0.625rem;\n        padding: 0.625rem 1rem;\n\n        &:hover {\n            background-color: colors.$grey-700;\n        }\n\n        &:active {\n            background-color: colors.$grey-800;\n        }\n\n        &:disabled {\n            background-color: colors.$grey-500;\n        }\n    }\n\n    &.a-rspd-button--outline, &.a-rspd-button--shifted {\n        font-family: bootstrap.$font-family-monospace;\n        padding: 0.625rem 2.5rem;\n        outline: 0.0625rem solid colors.$grey-900;\n        background-color: white;\n\n        &:disabled {\n            color: colors.$grey-400;\n            outline-color: colors.$grey-400;\n\n            &::after {\n                display: none;\n            }\n        }\n    }\n\n    &.a-rspd-button--outline {\n        &:hover, &:active {\n            background-color: colors.$grey-900;\n            color: colors.$themed-white;\n        }\n    }\n\n    &.a-rspd-button--shifted {\n\n        &::after {\n            content: \"\";\n            background-color: colors.$lavendel-400;\n            position: absolute;\n            top: 0.375rem;\n            left: 0.375rem;\n            width: 100%;\n            height: 100%;\n            z-index: -1;\n            transition: all .2s;\n        }\n\n        &:hover {\n            &::after {\n                top: 0;\n                left: 0;\n            }\n        }\n    }\n}\n",
 					"styleUrl": "./button.component.scss"
 				}
 			],
 			"stylesData": "",
-			"templateData": "<p>button works!</p>\n"
+			"accessors": {
+				"isFilled": {
+					"name": "isFilled",
+					"getSignature": {
+						"name": "isFilled",
+						"type": "boolean",
+						"returnType": "boolean",
+						"line": 36
+					}
+				},
+				"isOutline": {
+					"name": "isOutline",
+					"getSignature": {
+						"name": "isOutline",
+						"type": "boolean",
+						"returnType": "boolean",
+						"line": 41
+					}
+				},
+				"isShifted": {
+					"name": "isShifted",
+					"getSignature": {
+						"name": "isShifted",
+						"type": "boolean",
+						"returnType": "boolean",
+						"line": 46
+					}
+				}
+			},
+			"templateData": "<ng-container *ngIf=\"icon\">\n\t<div class='a-rspd-button a-rspd-button__icon'>\n\t\t<rspd-icon [appearance]=\"icon\" [color]='IconColor.WHITE' [size]='IconSize.SM'></rspd-icon>\n\t</div>\n</ng-container>\n<ng-content></ng-content>\n"
+		},
+		{
+			"name": "RspdIconComponent",
+			"id": "component-RspdIconComponent-3c2d046b44c5b2841a2d61bf1ceff2b143c93c6607e6cbd06f7a9e10523a08cc8b7c71af4f98701281ba69dcf2651aa6828c1f58fb24afc1cc1c67c40dc3f298",
+			"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.ts",
+			"changeDetection": "ChangeDetectionStrategy.OnPush",
+			"encapsulation": ["ViewEncapsulation.None"],
+			"entryComponents": [],
+			"host": {},
+			"inputs": [],
+			"outputs": [],
+			"providers": [],
+			"selector": "rspd-icon",
+			"styleUrls": ["./icon.component.scss"],
+			"styles": [],
+			"templateUrl": ["./icon.component.html"],
+			"viewProviders": [],
+			"hostDirectives": [],
+			"inputsClass": [
+				{
+					"name": "appearance",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"jsdoctags": [
+						{
+							"pos": 1121,
+							"end": 1190,
+							"flags": 8421376,
+							"modifierFlagsCache": 0,
+							"transformFlags": 0,
+							"kind": 344,
+							"tagName": {
+								"pos": 1122,
+								"end": 1127,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "param"
+							},
+							"comment": "<ul>\n<li>The name of the icon appearance.</li>\n</ul>\n",
+							"typeExpression": {
+								"pos": 1128,
+								"end": 1143,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 312,
+								"type": {
+									"pos": 1129,
+									"end": 1142,
+									"flags": 8388608,
+									"modifierFlagsCache": 0,
+									"transformFlags": 1,
+									"kind": 180,
+									"typeName": {
+										"pos": 1129,
+										"end": 1142,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 0,
+										"kind": 79,
+										"escapedText": "PhosphorIcons"
+									}
+								}
+							},
+							"name": {
+								"pos": 1144,
+								"end": 1152,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "iconName"
+							},
+							"isNameFirst": false,
+							"isBracketed": false
+						}
+					],
+					"rawdescription": "\n\nSets the appearance of the icon.\n",
+					"description": "<p>Sets the appearance of the icon.</p>\n",
+					"line": 54,
+					"type": "PhosphorIcons",
+					"decorators": []
+				},
+				{
+					"name": "color",
+					"defaultValue": "IconColor.BLACK",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"jsdoctags": [
+						{
+							"pos": 892,
+							"end": 911,
+							"flags": 8421376,
+							"modifierFlagsCache": 0,
+							"transformFlags": 0,
+							"kind": 347,
+							"tagName": {
+								"pos": 893,
+								"end": 897,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "type"
+							},
+							"comment": "",
+							"typeExpression": {
+								"pos": 898,
+								"end": 908,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 312,
+								"type": {
+									"pos": 899,
+									"end": 907,
+									"flags": 8388608,
+									"modifierFlagsCache": 0,
+									"transformFlags": 1,
+									"kind": 180,
+									"typeName": {
+										"pos": 899,
+										"end": 907,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 0,
+										"kind": 79,
+										"escapedText": "IconSize"
+									}
+								}
+							}
+						}
+					],
+					"rawdescription": "\n\nThe color of the icon. By default, it is black.\n",
+					"description": "<p>The color of the icon. By default, it is black.</p>\n",
+					"line": 42,
+					"type": "IconColor",
+					"decorators": []
+				},
+				{
+					"name": "size",
+					"defaultValue": "IconSize.MD",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"jsdoctags": [
+						{
+							"pos": 736,
+							"end": 755,
+							"flags": 8421376,
+							"modifierFlagsCache": 0,
+							"transformFlags": 0,
+							"kind": 347,
+							"tagName": {
+								"pos": 737,
+								"end": 741,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 79,
+								"escapedText": "type"
+							},
+							"comment": "",
+							"typeExpression": {
+								"pos": 742,
+								"end": 752,
+								"flags": 8421376,
+								"modifierFlagsCache": 0,
+								"transformFlags": 0,
+								"kind": 312,
+								"type": {
+									"pos": 743,
+									"end": 751,
+									"flags": 8388608,
+									"modifierFlagsCache": 0,
+									"transformFlags": 1,
+									"kind": 180,
+									"typeName": {
+										"pos": 743,
+										"end": 751,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 0,
+										"kind": 79,
+										"escapedText": "IconSize"
+									}
+								}
+							}
+						}
+					],
+					"rawdescription": "\n\nThe size of the icon. The default value is IconSize.md which is equal to 2rem.\n",
+					"description": "<p>The size of the icon. The default value is IconSize.md which is equal to 2rem.</p>\n",
+					"line": 35,
+					"type": "IconSize",
+					"decorators": []
+				}
+			],
+			"outputsClass": [],
+			"propertiesClass": [],
+			"methodsClass": [],
+			"deprecated": false,
+			"deprecationMessage": "",
+			"hostBindings": [
+				{
+					"name": "class",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 45,
+					"type": "string",
+					"decorators": []
+				}
+			],
+			"hostListeners": [],
+			"standalone": true,
+			"imports": [],
+			"description": "",
+			"rawdescription": "\n",
+			"type": "component",
+			"sourceCode": "import {\n\tChangeDetectionStrategy,\n\tComponent,\n\tElementRef,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { IconColor } from '../models/icon-color';\nimport { IconSize } from '../models/icon-size';\nimport { PhosphorIcons } from '../models/phosphor-icons';\n\n@Component({\n\tselector: 'rspd-icon',\n\tstandalone: true,\n\timports: [],\n\ttemplateUrl: './icon.component.html',\n\tstyleUrls: ['./icon.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-icon i',\n\t},\n})\nexport class RspdIconComponent {\n\tconstructor(private _element: ElementRef) {}\n\n\t/**\n\t * The size of the icon. The default value is IconSize.md which is equal to 2rem.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\t@HostBinding('style.--size')\n\tsize?: IconSize = IconSize.MD;\n\n\t/**\n\t * The color of the icon. By default, it is black.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\tcolor?: IconColor = IconColor.BLACK;\n\n\t@HostBinding('class')\n\tget isColored(): string {\n\t\treturn `a-rspd-icon--${this.color || IconColor.BLACK}`;\n\t}\n\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tset appearance(iconName: PhosphorIcons) {\n\t\tthis._element.nativeElement.innerHTML = iconName || PhosphorIcons.correct;\n\t}\n}\n",
+			"assetsDirs": [],
+			"styleUrlsData": [
+				{
+					"data": "@use 'settings/generic/colors';\r\n\r\n.a-rspd-icon {\r\n    overflow: hidden;\r\n    display: flex;\r\n\r\n    i {\r\n        font-size: var(--size);\r\n    }\r\n\r\n    img {\r\n        height: var(--size);\r\n        width: var(--size);\r\n    }\r\n\r\n    &.a-rspd-icon--themed-black {\r\n        color: colors.$themed-black;\r\n    }\r\n\r\n    &.a-rspd-icon--themed-white {\r\n        color: colors.$themed-white;\r\n    }\r\n}\r\n",
+					"styleUrl": "./icon.component.scss"
+				}
+			],
+			"stylesData": "",
+			"constructorObj": {
+				"name": "constructor",
+				"description": "",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"args": [
+					{
+						"name": "_element",
+						"type": "ElementRef",
+						"deprecated": false,
+						"deprecationMessage": ""
+					}
+				],
+				"line": 26,
+				"jsdoctags": [
+					{
+						"name": "_element",
+						"type": "ElementRef",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"tagName": {
+							"text": "param"
+						}
+					}
+				]
+			},
+			"accessors": {
+				"isColored": {
+					"name": "isColored",
+					"getSignature": {
+						"name": "isColored",
+						"type": "string",
+						"returnType": "string",
+						"line": 45
+					}
+				},
+				"appearance": {
+					"name": "appearance",
+					"setSignature": {
+						"name": "appearance",
+						"type": "void",
+						"deprecated": false,
+						"deprecationMessage": "",
+						"args": [
+							{
+								"name": "iconName",
+								"type": "PhosphorIcons",
+								"deprecated": false,
+								"deprecationMessage": ""
+							}
+						],
+						"returnType": "void",
+						"line": 54,
+						"rawdescription": "\n\nSets the appearance of the icon.\n",
+						"description": "<p>Sets the appearance of the icon.</p>\n",
+						"jsdoctags": [
+							{
+								"name": {
+									"pos": 1144,
+									"end": 1152,
+									"flags": 8421376,
+									"modifierFlagsCache": 0,
+									"transformFlags": 0,
+									"kind": 79,
+									"escapedText": "iconName"
+								},
+								"type": "PhosphorIcons",
+								"deprecated": false,
+								"deprecationMessage": "",
+								"tagName": {
+									"pos": 1122,
+									"end": 1127,
+									"flags": 8421376,
+									"modifierFlagsCache": 0,
+									"transformFlags": 0,
+									"kind": 79,
+									"escapedText": "param"
+								},
+								"comment": "<ul>\n<li>The name of the icon appearance.</li>\n</ul>\n",
+								"typeExpression": {
+									"pos": 1128,
+									"end": 1143,
+									"flags": 8421376,
+									"modifierFlagsCache": 0,
+									"transformFlags": 0,
+									"kind": 312,
+									"type": {
+										"pos": 1129,
+										"end": 1142,
+										"flags": 8388608,
+										"modifierFlagsCache": 0,
+										"transformFlags": 1,
+										"kind": 180,
+										"typeName": {
+											"pos": 1129,
+											"end": 1142,
+											"flags": 8388608,
+											"modifierFlagsCache": 0,
+											"transformFlags": 0,
+											"kind": 79,
+											"escapedText": "PhosphorIcons"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"templateData": "<ng-content></ng-content>\n"
 		}
 	],
 	"modules": [],
 	"miscellaneous": {
 		"variables": [
+			{
+				"name": "Default",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "Template.bind({})"
+			},
+			{
+				"name": "Icon",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "Template.bind({})"
+			},
 			{
 				"name": "parameters",
 				"ctype": "miscellaneous",
@@ -77,30 +617,114 @@
 				"defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
 			},
 			{
-				"name": "Primary",
+				"name": "phosphorIcons",
 				"ctype": "miscellaneous",
 				"subtype": "variable",
-				"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
 				"deprecated": false,
 				"deprecationMessage": "",
-				"type": "",
-				"defaultValue": "Template.bind({})"
+				"type": "object",
+				"defaultValue": "{\n\tedit: [PhosphorIcons.edit],\n\tlock: [PhosphorIcons.lock],\n\trandom: [PhosphorIcons.random],\n\tvisible: [PhosphorIcons.visible],\n\tdelete: [PhosphorIcons.delete],\n\tdate: [PhosphorIcons.date],\n\tadd: [PhosphorIcons.add],\n\tsave: [PhosphorIcons.save],\n\tincorrect: [PhosphorIcons.incorrect],\n\tcorrect: [PhosphorIcons.correct],\n}"
 			},
 			{
 				"name": "Template",
 				"ctype": "miscellaneous",
 				"subtype": "variable",
-				"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
 				"deprecated": false,
 				"deprecationMessage": "",
-				"type": "Story<ButtonComponent>",
-				"defaultValue": "(args: ButtonComponent) => ({\n\tcomponent: ButtonComponent,\n\tprops: args,\n})"
+				"type": "Story<RspdButtonComponent>",
+				"defaultValue": "(args) => ({\n\ttemplate: `<button [disabled]='disabled' [appearance]='appearance' [icon]='icon'>\n\t\t\t\t\t{{ label }}\n\t\t\t\t</button>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+			},
+			{
+				"name": "Template",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story<RspdIconComponent>",
+				"defaultValue": "(args) => ({\n\ttemplate: `<rspd-icon [appearance]='appearance' [color]='color' [size]='size'></rspd-icon>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+			},
+			{
+				"name": "topicIcons",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "object",
+				"defaultValue": "{\n\tjavascript: [TopicIcons.javascript],\n\trobot: [TopicIcons.robot],\n\tcloud: [TopicIcons.cloud],\n\tpython: [TopicIcons.python],\n\tsql: [TopicIcons.sql],\n\tscratch: [TopicIcons.scratch],\n}"
 			}
 		],
 		"functions": [],
 		"typealiases": [],
 		"enumerations": [],
 		"groupedVariables": {
+			"libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts": [
+				{
+					"name": "Default",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "Template.bind({})"
+				},
+				{
+					"name": "Template",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story<RspdButtonComponent>",
+					"defaultValue": "(args) => ({\n\ttemplate: `<button [disabled]='disabled' [appearance]='appearance' [icon]='icon'>\n\t\t\t\t\t{{ label }}\n\t\t\t\t</button>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				}
+			],
+			"libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts": [
+				{
+					"name": "Icon",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "Template.bind({})"
+				},
+				{
+					"name": "phosphorIcons",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "object",
+					"defaultValue": "{\n\tedit: [PhosphorIcons.edit],\n\tlock: [PhosphorIcons.lock],\n\trandom: [PhosphorIcons.random],\n\tvisible: [PhosphorIcons.visible],\n\tdelete: [PhosphorIcons.delete],\n\tdate: [PhosphorIcons.date],\n\tadd: [PhosphorIcons.add],\n\tsave: [PhosphorIcons.save],\n\tincorrect: [PhosphorIcons.incorrect],\n\tcorrect: [PhosphorIcons.correct],\n}"
+				},
+				{
+					"name": "Template",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story<RspdIconComponent>",
+					"defaultValue": "(args) => ({\n\ttemplate: `<rspd-icon [appearance]='appearance' [color]='color' [size]='size'></rspd-icon>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				},
+				{
+					"name": "topicIcons",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "object",
+					"defaultValue": "{\n\tjavascript: [TopicIcons.javascript],\n\trobot: [TopicIcons.robot],\n\tcloud: [TopicIcons.cloud],\n\tpython: [TopicIcons.python],\n\tsql: [TopicIcons.sql],\n\tscratch: [TopicIcons.scratch],\n}"
+				}
+			],
 			"libs/shared/frontend/storybook-host/.storybook/preview.ts": [
 				{
 					"name": "parameters",
@@ -112,28 +736,6 @@
 					"type": "object",
 					"defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
 				}
-			],
-			"libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts": [
-				{
-					"name": "Primary",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "",
-					"defaultValue": "Template.bind({})"
-				},
-				{
-					"name": "Template",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story<ButtonComponent>",
-					"defaultValue": "(args: ButtonComponent) => ({\n\tcomponent: ButtonComponent,\n\tprops: args,\n})"
-				}
 			]
 		},
 		"groupedFunctions": {},
@@ -142,7 +744,7 @@
 	},
 	"routes": [],
 	"coverage": {
-		"count": 12,
+		"count": 9,
 		"status": "low",
 		"files": [
 			{
@@ -156,26 +758,17 @@
 				"status": "low"
 			},
 			{
-				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.component.ts",
-				"type": "component",
-				"linktype": "component",
-				"name": "ButtonComponent",
-				"coveragePercent": 50,
-				"coverageCount": "1/2",
-				"status": "medium"
-			},
-			{
-				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
 				"type": "variable",
 				"linktype": "miscellaneous",
 				"linksubtype": "variable",
-				"name": "Primary",
+				"name": "Default",
 				"coveragePercent": 0,
 				"coverageCount": "0/1",
 				"status": "low"
 			},
 			{
-				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/button.stories.ts",
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts",
 				"type": "variable",
 				"linktype": "miscellaneous",
 				"linksubtype": "variable",
@@ -183,6 +776,64 @@
 				"coveragePercent": 0,
 				"coverageCount": "0/1",
 				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "RspdButtonComponent",
+				"coveragePercent": 33,
+				"coverageCount": "2/6",
+				"status": "medium"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Icon",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "phosphorIcons",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Template",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "topicIcons",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.ts",
+				"type": "component",
+				"linktype": "component",
+				"name": "RspdIconComponent",
+				"coveragePercent": 50,
+				"coverageCount": "3/6",
+				"status": "medium"
 			}
 		]
 	}

@@ -1,0 +1,23 @@
+@use 'settings/generic/colors';
+
+.a-rspd-icon {
+	overflow: hidden;
+	display: flex;
+
+	i {
+		font-size: var(--size);
+	}
+
+	img {
+		height: var(--size);
+		width: var(--size);
+	}
+
+	&.a-rspd-icon--themed-black {
+		color: colors.$themed-black;
+	}
+
+	&.a-rspd-icon--themed-white {
+		color: colors.$themed-white;
+	}
+}

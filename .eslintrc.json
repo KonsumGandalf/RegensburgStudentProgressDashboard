@@ -53,6 +53,10 @@
 								"onlyDependOnLibsWithTags": ["type:util", "type:common-model"]
 							},
 							{
+								"sourceTag": "type:ui",
+								"onlyDependOnLibsWithTags": []
+							},
+							{
 								"sourceTag": "type:common-model",
 								"onlyDependOnLibsWithTags": ["type:common-model"]
 							},
