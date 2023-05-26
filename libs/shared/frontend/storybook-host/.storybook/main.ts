@@ -2,7 +2,7 @@ import { StorybookConfig } from '@storybook/angular';
 import { set } from 'lodash';
 
 const config: StorybookConfig = {
-	addons: ['@storybook/addon-essentials'],
+	addons: ['@storybook/addon-essentials', '@storybook/preset-scss'],
 	framework: {
 		name: '@storybook/angular',
 		options: {},
@@ -15,13 +15,11 @@ const config: StorybookConfig = {
 		autodocs: true,
 		defaultName: 'Docs',
 	},
+	staticDirs: [
+		{ from: '../../assets/src/lib/svgs', to: '/assets/svgs' },
+		{ from: '../../assets/src/lib/fonts', to: '/assets/fonts' },
+	],
 	webpackFinal: async (config) => {
-		set(
-			config,
-			['resolve', 'alias', 'settings/vendors/bootstrap'],
-			'libs/shared/common/styles/src/scss/settings/vendors/_bootstrap.scss',
-		);
-
 		return config;
 	},
 };

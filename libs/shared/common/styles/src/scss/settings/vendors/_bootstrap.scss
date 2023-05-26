@@ -1,5 +1,5 @@
 @use 'sass:list';
-@use '../generic/colors' as *;
+@use '../generic/colors';
 
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
@@ -9,13 +9,14 @@
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
+$box-shadow-md: 0.125rem 0.25rem 0.5rem rgba($black, 0.15);
 
 @font-face {
 	font-display: swap;
 	font-family: 'Space Mono', monospace;
 	font-style: normal;
 	font-weight: 400;
-	src: url('fonts/space-mono/space-mono-regular.ttf');
+	src: url('/assets/fonts/space-mono/space-mono-regular.ttf');
 }
 
 @font-face {
@@ -23,7 +24,7 @@ $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
 	font-family: 'Space Mono', monospace;
 	font-style: italic;
 	font-weight: 400;
-	src: url('fonts/space-mono/space-mono-italic.ttf');
+	src: url('/assets/fonts/space-mono/space-mono-italic.ttf');
 }
 
 @font-face {
@@ -31,7 +32,7 @@ $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
 	font-family: 'Space Mono', monospace;
 	font-style: normal;
 	font-weight: 700;
-	src: url('fonts/space-mono/space-mono-bold.ttf');
+	src: url('/assets/fonts/space-mono/space-mono-bold.ttf');
 }
 
 @font-face {
@@ -39,7 +40,7 @@ $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
 	font-family: 'Space Mono', monospace;
 	font-style: italic;
 	font-weight: 700;
-	src: url('fonts/space-mono/space-mono-bold-italic.ttf');
+	src: url('/assets/fonts/space-mono/space-mono-bold-italic.ttf');
 }
 
 @font-face {
@@ -47,7 +48,7 @@ $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
 	font-family: 'Montserrat', sans-serif;
 	font-style: italic;
 	font-weight: 400;
-	src: url('fonts/montserrat/montserrat-italic.ttf');
+	src: url('/assets/fonts/montserrat/montserrat-italic.ttf');
 }
 
 @font-face {
@@ -55,5 +56,5 @@ $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
 	font-family: 'Montserrat', sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	src: url('fonts/montserrat/montserrat.ttf');
+	src: url('/assets/fonts/montserrat/montserrat.ttf');
 }
