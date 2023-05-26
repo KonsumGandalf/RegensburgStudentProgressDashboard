@@ -15,12 +15,26 @@
 				"main": "apps/frontend/src/main.ts",
 				"polyfills": ["zone.js"],
 				"tsConfig": "apps/frontend/tsconfig.app.json",
-				"assets": ["apps/frontend/src/favicon.ico", "apps/frontend/src/assets"],
+				"assets": [
+					"apps/frontend/src/favicon.ico",
+					"apps/frontend/src/assets",
+					{
+						"input": "libs/shared/frontend/assets/src/lib/fonts",
+						"glob": "**/*",
+						"output": "/assets/fonts"
+					},
+					{
+						"input": "libs/shared/frontend/assets/src/lib/svgs",
+						"glob": "**/*",
+						"output": "/assets/svgs"
+					}
+				],
 				"styles": ["apps/frontend/src/styles.scss"],
 				"scripts": [],
 				"stylePreprocessorOptions": {
 					"includePaths": [
-						"Z:\\programming_projects\\bachleor_thesis\\software\\temp\\rspd\\libs\\shared\\common\\styles\\src\\scss"
+						"libs/shared/common/styles/src/scss",
+						"libs/shared/frontend/assets/src/lib"
 					]
 				}
 			},
