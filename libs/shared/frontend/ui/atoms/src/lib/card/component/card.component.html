@@ -1,3 +1,6 @@
-<div class="a-rspd-button__body card-body">
+<ng-container *ngIf="icon">
+	<a-rspd-icon class="card-img-top" [appearance]="icon" [size]="'40%'"></a-rspd-icon>
+</ng-container>
+<div class="card-body a-rspd-button__body">
 	<ng-content></ng-content>
 </div>

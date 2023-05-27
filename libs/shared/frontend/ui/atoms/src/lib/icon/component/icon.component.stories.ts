@@ -32,6 +32,7 @@ export const phosphorIcons = {
 const othLogos = {
 	rsdsWhite: [OthLogos.RSPD_SIMPLE_BLACK],
 	rsdsBlack: [OthLogos.RSPD_SIMPLE_WHITE],
+	oth: [OthLogos.OTH],
 };
 
 const Template: Story<RspdIconComponent> = (args) => ({

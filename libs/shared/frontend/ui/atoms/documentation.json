@@ -246,7 +246,7 @@
 		},
 		{
 			"name": "RspdCardComponent",
-			"id": "component-RspdCardComponent-2f9d89275e0ff6d3444417ce0d442bc1bd4bea8519b0759fd48de312e57f9bc609796c4e15fe0a55313b4efb830c369790c45915124aa18e0ef7ed14411912e9",
+			"id": "component-RspdCardComponent-80457aad32c5441a5a5301b49ee702c3e804cb3c42227816378d201b08a550e04648d985a6088f14e362298ed3dc02aa2ffde7b704f5ebe42294ff72309cc064",
 			"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -269,15 +269,15 @@
 					"deprecationMessage": "",
 					"jsdoctags": [
 						{
-							"pos": 654,
-							"end": 723,
+							"pos": 659,
+							"end": 728,
 							"flags": 8421376,
 							"modifierFlagsCache": 0,
 							"transformFlags": 0,
 							"kind": 344,
 							"tagName": {
-								"pos": 655,
-								"end": 660,
+								"pos": 660,
+								"end": 665,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
@@ -286,22 +286,22 @@
 							},
 							"comment": "<ul>\n<li>The name of the icon appearance.</li>\n</ul>\n",
 							"typeExpression": {
-								"pos": 661,
-								"end": 676,
+								"pos": 666,
+								"end": 681,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
 								"kind": 312,
 								"type": {
-									"pos": 662,
-									"end": 675,
+									"pos": 667,
+									"end": 680,
 									"flags": 8388608,
 									"modifierFlagsCache": 0,
 									"transformFlags": 1,
 									"kind": 180,
 									"typeName": {
-										"pos": 662,
-										"end": 675,
+										"pos": 667,
+										"end": 680,
 										"flags": 8388608,
 										"modifierFlagsCache": 0,
 										"transformFlags": 0,
@@ -311,8 +311,8 @@
 								}
 							},
 							"name": {
-								"pos": 677,
-								"end": 685,
+								"pos": 682,
+								"end": 690,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
@@ -325,7 +325,7 @@
 					],
 					"rawdescription": "\n\nSets the appearance of the icon.\n",
 					"description": "<p>Sets the appearance of the icon.</p>\n",
-					"line": 28,
+					"line": 33,
 					"type": "CardAppearance",
 					"decorators": []
 				}
@@ -340,7 +340,7 @@
 					"name": "class.a-rspd-card--outlined",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 41,
+					"line": 46,
 					"type": "boolean",
 					"decorators": []
 				},
@@ -348,7 +348,7 @@
 					"name": "class.a-rspd-card--raised",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 31,
+					"line": 36,
 					"type": "boolean",
 					"decorators": []
 				},
@@ -356,7 +356,7 @@
 					"name": "class.a-rspd-card--solid",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 36,
+					"line": 41,
 					"type": "boolean",
 					"decorators": []
 				}
@@ -372,11 +372,11 @@
 			"description": "<p>Component for displaying a content inside a card</p>\n",
 			"rawdescription": "\n\nComponent for displaying a content inside a card\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';\n\nimport { CardAppearance } from '../models/card-appearance';\n\n/**\n * Component for displaying a content inside a card\n */\n@Component({\n\tselector: 'a-rspd-card',\n\tstandalone: true,\n\timports: [CommonModule],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\ttemplateUrl: './card.component.html',\n\tstyleUrls: ['./card.component.scss'],\n\thost: {\n\t\tclass: 'a-rspd-card card',\n\t},\n})\nexport class RspdCardComponent {\n\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tappearance: CardAppearance = CardAppearance.RAISED;\n\n\t@HostBinding('class.a-rspd-card--raised')\n\tget isRaised(): boolean {\n\t\treturn this.appearance === CardAppearance.RAISED;\n\t}\n\n\t@HostBinding('class.a-rspd-card--solid')\n\tget isSolid(): boolean {\n\t\treturn this.appearance === CardAppearance.SOLID;\n\t}\n\n\t@HostBinding('class.a-rspd-card--outlined')\n\tget isOutlined(): boolean {\n\t\treturn this.appearance === CardAppearance.OUTLINED;\n\t}\n}\n",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { CardAppearance } from '../models/card-appearance';\n\n/**\n * Component for displaying a content inside a card\n */\n@Component({\n\tselector: 'a-rspd-card',\n\tstandalone: true,\n\timports: [CommonModule],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\ttemplateUrl: './card.component.html',\n\tstyleUrls: ['./card.component.scss'],\n\thost: {\n\t\tclass: 'a-rspd-card card',\n\t},\n})\nexport class RspdCardComponent {\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tappearance: CardAppearance = CardAppearance.RAISED;\n\n\t@HostBinding('class.a-rspd-card--raised')\n\tget isRaised(): boolean {\n\t\treturn this.appearance === CardAppearance.RAISED;\n\t}\n\n\t@HostBinding('class.a-rspd-card--solid')\n\tget isSolid(): boolean {\n\t\treturn this.appearance === CardAppearance.SOLID;\n\t}\n\n\t@HostBinding('class.a-rspd-card--outlined')\n\tget isOutlined(): boolean {\n\t\treturn this.appearance === CardAppearance.OUTLINED;\n\t}\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": "@use 'settings/generic/padding';\r\n@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n@use 'settings/generic/margin';\r\n\r\n.a-rspd-card {\r\n    display: inline-flex;\r\n    background-color: white;\r\n    border-radius: bootstrap.$border-radius-sm;\r\n\r\n    .a-rspd-button__body {\r\n        padding: padding.$padding-x-sm;\r\n\r\n    }\r\n\r\n    &.a-rspd-card--raised {\r\n        box-shadow: bootstrap.$box-shadow;\r\n        border-radius: bootstrap.$border-radius-lg;\r\n    }\r\n\r\n    &.a-rspd-card--solid {\r\n        background-color: colors.$themed-white;\r\n    }\r\n\r\n    &.a-rspd-card--outlined {\r\n        border: 0.0625rem solid colors.$themed-black;\r\n    }\r\n\r\n}\r\n",
+					"data": "@use 'settings/generic/padding';\n@use 'settings/generic/colors';\n@use 'settings/vendors/bootstrap';\n@use 'settings/generic/typography';\n\n.a-rspd-card {\n\tdisplay: flex;\n\tbackground-color: white;\n\tjustify-content: center;\n\tborder-radius: bootstrap.$border-radius-sm;\n\n\t.a-rspd-button__header {\n\t}\n\n\t.a-rspd-button__body {\n\t\tdisplay: flex;\n\t\tpadding: padding.$padding-x-sm;\n\t\tjustify-content: center;\n\t}\n\n\t&.a-rspd-card--raised {\n\t\tbox-shadow: bootstrap.$box-shadow;\n\t\tborder-radius: bootstrap.$border-radius-lg;\n\t}\n\n\t&.a-rspd-card--solid {\n\t\tbackground-color: colors.$themed-white;\n\t}\n\n\t&.a-rspd-card--outlined {\n\t\tborder: 0.0625rem solid colors.$themed-black;\n\t}\n}\n",
 					"styleUrl": "./card.component.scss"
 				}
 			],
@@ -388,7 +388,7 @@
 						"name": "isRaised",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 31
+						"line": 36
 					}
 				},
 				"isSolid": {
@@ -397,7 +397,7 @@
 						"name": "isSolid",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 36
+						"line": 41
 					}
 				},
 				"isOutlined": {
@@ -406,15 +406,15 @@
 						"name": "isOutlined",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 41
+						"line": 46
 					}
 				}
 			},
-			"templateData": "<div class='a-rspd-button__body card-body'>\n\t<ng-content></ng-content>\n</div>\n"
+			"templateData": "<div class=\"card-header a-rspd-button__header\">test</div>\n<div class=\"card-body a-rspd-button__body\">\n\t<ng-content></ng-content>\n</div>\n"
 		},
 		{
 			"name": "RspdIconComponent",
-			"id": "component-RspdIconComponent-97584bacd8effb5b58071c607927c3c4f60cd013abd00770439a566b326eba6c0fba3dd39791dff98b44cd2ef7618e3dc8b8fbc324398d554ec91ff24e61e5e5",
+			"id": "component-RspdIconComponent-bc7310e2472340919e161faf689f0e9ab440acdc2297addd4c55bf534136ea71d721c8ecef9729cd6f976c7c740a09e6ebccd8833384824d1434d6f6ee1f1c86",
 			"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -630,7 +630,7 @@
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import {\n\tChangeDetectionStrategy,\n\tComponent,\n\tElementRef,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { IconColor } from '../models/icon-color';\nimport { IconSize } from '../models/icon-size';\nimport { PhosphorIcons } from '../models/phosphor-icons';\nimport { TopicIcons } from '../models/topic-icons';\n\n@Component({\n\tselector: 'a-rspd-icon',\n\tstandalone: true,\n\timports: [],\n\ttemplateUrl: './icon.component.html',\n\tstyleUrls: ['./icon.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-icon i',\n\t},\n})\nexport class RspdIconComponent {\n\tconstructor(private _element: ElementRef) {}\n\n\t/**\n\t * The size of the icon. The default value is IconSize.md which is equal to 2rem.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\t@HostBinding('style.--size')\n\tsize?: IconSize = IconSize.MD;\n\n\t/**\n\t * The color of the icon. By default, it is black.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\tcolor?: IconColor = IconColor.BLACK;\n\n\t@HostBinding('class')\n\tget isColored(): string {\n\t\treturn `a-rspd-icon--${this.color || IconColor.BLACK}`;\n\t}\n\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {TopicIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tset appearance(iconName: PhosphorIcons | TopicIcons) {\n\t\tthis._element.nativeElement.innerHTML = iconName || PhosphorIcons.correct;\n\t}\n}\n",
+			"sourceCode": "import {\n\tChangeDetectionStrategy,\n\tComponent,\n\tElementRef,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { IconColor } from '../models/icon-color';\nimport { IconSize } from '../models/icon-size';\nimport { PhosphorIcons } from '../models/phosphor-icons';\nimport { TopicIcons } from '../models/topic-icons';\n\n@Component({\n\tselector: 'a-rspd-icon',\n\tstandalone: true,\n\timports: [],\n\ttemplateUrl: './icon.component.html',\n\tstyleUrls: ['./icon.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-icon i',\n\t},\n})\nexport class RspdIconComponent {\n\tconstructor(private _element: ElementRef) {}\n\n\t/**\n\t * The size of the icon. The default value is IconSize.md which is equal to 2rem.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\t@HostBinding('style.--size')\n\tsize?: IconSize = IconSize.MD;\n\n\t/**\n\t * The color of the icon. By default, it is black.\n\t * @type {IconSize}\n\t */\n\t@Input()\n\tcolor?: IconColor = IconColor.BLACK;\n\n\t@HostBinding('class')\n\tget isColored(): string {\n\t\treturn `a-rspd-icon--${this.color || IconColor.BLACK}`;\n\t}\n\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {TopicIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tset appearance(iconName: PhosphorIcons | TopicIcons) {\n\t\tthis._element.nativeElement.innerHTML = iconName || PhosphorIcons.CORRECT;\n\t}\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
@@ -785,6 +785,16 @@
 				"defaultValue": "Template.bind({})"
 			},
 			{
+				"name": "othLogos",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "object",
+				"defaultValue": "{\n\trsdsWhite: [OthLogos.RSPD_SIMPLE_BLACK],\n\trsdsBlack: [OthLogos.RSPD_SIMPLE_WHITE],\n}"
+			},
+			{
 				"name": "parameters",
 				"ctype": "miscellaneous",
 				"subtype": "variable",
@@ -802,7 +812,7 @@
 				"deprecated": false,
 				"deprecationMessage": "",
 				"type": "object",
-				"defaultValue": "{\n\tedit: [PhosphorIcons.edit],\n\tlock: [PhosphorIcons.lock],\n\trandom: [PhosphorIcons.random],\n\tvisible: [PhosphorIcons.visible],\n\tdelete: [PhosphorIcons.delete],\n\tdate: [PhosphorIcons.date],\n\tadd: [PhosphorIcons.add],\n\tsave: [PhosphorIcons.save],\n\tincorrect: [PhosphorIcons.incorrect],\n\tcorrect: [PhosphorIcons.correct],\n}"
+				"defaultValue": "{\n\tedit: [PhosphorIcons.EDIT],\n\tlock: [PhosphorIcons.LOCK],\n\trandom: [PhosphorIcons.RANDOM],\n\tvisible: [PhosphorIcons.VISIBLE],\n\tdelete: [PhosphorIcons.DELETE],\n\tdate: [PhosphorIcons.DATE],\n\tadd: [PhosphorIcons.ADD],\n\tsave: [PhosphorIcons.SAVE],\n\tincorrect: [PhosphorIcons.INCORRECT],\n\tcorrect: [PhosphorIcons.CORRECT],\n}"
 			},
 			{
 				"name": "Template",
@@ -822,7 +832,7 @@
 				"deprecated": false,
 				"deprecationMessage": "",
 				"type": "Story<RspdCardComponent>",
-				"defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-card [appearance]='appearance'>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t</a-rspd-card>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				"defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-card style='min-height: 5rem' [appearance]='appearance'>\n\t\t\t\t</a-rspd-card>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
 			},
 			{
 				"name": "Template",
@@ -835,6 +845,16 @@
 				"defaultValue": "(args) => ({\n\ttemplate: `<rspd-icon [appearance]='appearance' [color]='color' [size]='size'></rspd-icon>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
 			},
 			{
+				"name": "TemplateWithContent",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story<RspdCardComponent>",
+				"defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-card [appearance]='appearance'>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t</a-rspd-card>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+			},
+			{
 				"name": "topicIcons",
 				"ctype": "miscellaneous",
 				"subtype": "variable",
@@ -842,7 +862,17 @@
 				"deprecated": false,
 				"deprecationMessage": "",
 				"type": "object",
-				"defaultValue": "{\n\tjavascript: [TopicIcons.javascript],\n\trobot: [TopicIcons.robot],\n\tcloud: [TopicIcons.cloud],\n\tpython: [TopicIcons.python],\n\tsql: [TopicIcons.sql],\n\tscratch: [TopicIcons.scratch],\n}"
+				"defaultValue": "{\n\tjavascript: [TopicIcons.JAVASCRIPT],\n\trobot: [TopicIcons.ROBOT],\n\tcloud: [TopicIcons.CLOUD],\n\tpython: [TopicIcons.PYTHON],\n\tsql: [TopicIcons.SQL],\n\tscratch: [TopicIcons.SCRATCH],\n}"
+			},
+			{
+				"name": "WithContent",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "TemplateWithContent.bind({})"
 			}
 		],
 		"functions": [],
@@ -890,7 +920,27 @@
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "Story<RspdCardComponent>",
+					"defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-card style='min-height: 5rem' [appearance]='appearance'>\n\t\t\t\t</a-rspd-card>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				},
+				{
+					"name": "TemplateWithContent",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story<RspdCardComponent>",
 					"defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-card [appearance]='appearance'>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\n\t\t\t\t</a-rspd-card>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				},
+				{
+					"name": "WithContent",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "TemplateWithContent.bind({})"
 				}
 			],
 			"libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts": [
@@ -905,6 +955,16 @@
 					"defaultValue": "Template.bind({})"
 				},
 				{
+					"name": "othLogos",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "object",
+					"defaultValue": "{\n\trsdsWhite: [OthLogos.RSPD_SIMPLE_BLACK],\n\trsdsBlack: [OthLogos.RSPD_SIMPLE_WHITE],\n}"
+				},
+				{
 					"name": "phosphorIcons",
 					"ctype": "miscellaneous",
 					"subtype": "variable",
@@ -912,7 +972,7 @@
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "object",
-					"defaultValue": "{\n\tedit: [PhosphorIcons.edit],\n\tlock: [PhosphorIcons.lock],\n\trandom: [PhosphorIcons.random],\n\tvisible: [PhosphorIcons.visible],\n\tdelete: [PhosphorIcons.delete],\n\tdate: [PhosphorIcons.date],\n\tadd: [PhosphorIcons.add],\n\tsave: [PhosphorIcons.save],\n\tincorrect: [PhosphorIcons.incorrect],\n\tcorrect: [PhosphorIcons.correct],\n}"
+					"defaultValue": "{\n\tedit: [PhosphorIcons.EDIT],\n\tlock: [PhosphorIcons.LOCK],\n\trandom: [PhosphorIcons.RANDOM],\n\tvisible: [PhosphorIcons.VISIBLE],\n\tdelete: [PhosphorIcons.DELETE],\n\tdate: [PhosphorIcons.DATE],\n\tadd: [PhosphorIcons.ADD],\n\tsave: [PhosphorIcons.SAVE],\n\tincorrect: [PhosphorIcons.INCORRECT],\n\tcorrect: [PhosphorIcons.CORRECT],\n}"
 				},
 				{
 					"name": "Template",
@@ -932,7 +992,7 @@
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "object",
-					"defaultValue": "{\n\tjavascript: [TopicIcons.javascript],\n\trobot: [TopicIcons.robot],\n\tcloud: [TopicIcons.cloud],\n\tpython: [TopicIcons.python],\n\tsql: [TopicIcons.sql],\n\tscratch: [TopicIcons.scratch],\n}"
+					"defaultValue": "{\n\tjavascript: [TopicIcons.JAVASCRIPT],\n\trobot: [TopicIcons.ROBOT],\n\tcloud: [TopicIcons.CLOUD],\n\tpython: [TopicIcons.PYTHON],\n\tsql: [TopicIcons.SQL],\n\tscratch: [TopicIcons.SCRATCH],\n}"
 				}
 			],
 			"libs/shared/frontend/storybook-host/.storybook/preview.ts": [
@@ -954,7 +1014,7 @@
 	},
 	"routes": [],
 	"coverage": {
-		"count": 10,
+		"count": 8,
 		"status": "low",
 		"files": [
 			{
@@ -1017,6 +1077,26 @@
 				"status": "low"
 			},
 			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "TemplateWithContent",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "WithContent",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
 				"filePath": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.ts",
 				"type": "component",
 				"linktype": "component",
@@ -1031,6 +1111,16 @@
 				"linktype": "miscellaneous",
 				"linksubtype": "variable",
 				"name": "Icon",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "othLogos",
 				"coveragePercent": 0,
 				"coverageCount": "0/1",
 				"status": "low"

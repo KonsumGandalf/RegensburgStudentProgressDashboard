@@ -9,6 +9,7 @@ import {
 
 import { IconColor } from '../models/icon-color';
 import { IconSize } from '../models/icon-size';
+import { OthLogos } from '../models/oth-logos';
 import { PhosphorIcons } from '../models/phosphor-icons';
 import { TopicIcons } from '../models/topic-icons';
 
@@ -33,7 +34,7 @@ export class RspdIconComponent {
 	 */
 	@Input()
 	@HostBinding('style.--size')
-	size?: IconSize = IconSize.MD;
+	size?: IconSize | string = IconSize.MD;
 
 	/**
 	 * The color of the icon. By default, it is black.
@@ -52,7 +53,7 @@ export class RspdIconComponent {
 	 * @param {TopicIcons} iconName - The name of the icon appearance.
 	 */
 	@Input()
-	set appearance(iconName: PhosphorIcons | TopicIcons) {
+	set appearance(iconName: PhosphorIcons | TopicIcons | OthLogos) {
 		this._element.nativeElement.innerHTML = iconName || PhosphorIcons.CORRECT;
 	}
 }

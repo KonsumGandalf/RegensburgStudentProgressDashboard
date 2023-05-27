@@ -7,6 +7,8 @@ import {
 	ViewEncapsulation,
 } from '@angular/core';
 
+import { RspdIconComponent } from '../../icon/component/icon.component';
+import { IconUnion } from '../../icon/models/icon-union';
 import { CardAppearance } from '../models/card-appearance';
 
 /**
@@ -15,7 +17,7 @@ import { CardAppearance } from '../models/card-appearance';
 @Component({
 	selector: 'a-rspd-card',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, RspdIconComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	encapsulation: ViewEncapsulation.None,
 	templateUrl: './card.component.html',
@@ -46,4 +48,11 @@ export class RspdCardComponent {
 	get isOutlined(): boolean {
 		return this.appearance === CardAppearance.OUTLINED;
 	}
+
+	/**
+	 * Adds an icon to the card in its header
+	 * @param {IconUnion} icon - The name of the icon.
+	 */
+	@Input()
+	icon?: IconUnion;
 }

@@ -3,13 +3,13 @@
 .a-rspd-icon {
 	overflow: hidden;
 	display: flex;
+	justify-content: center;
 
 	i {
 		font-size: var(--size);
 	}
 
 	img {
-		height: var(--size);
 		width: var(--size);
 	}
 
