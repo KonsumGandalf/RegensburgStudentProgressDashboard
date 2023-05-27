@@ -6,10 +6,12 @@
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/card';
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
-$box-shadow-md: 0.125rem 0.25rem 0.5rem rgba($black, 0.15);
+$display-font-family: list.join('Inter', $display-font-family);
+$display-font-weight: 200;
 
 @font-face {
 	font-display: swap;
@@ -57,4 +59,12 @@ $box-shadow-md: 0.125rem 0.25rem 0.5rem rgba($black, 0.15);
 	font-style: normal;
 	font-weight: 400;
 	src: url('/assets/fonts/montserrat/montserrat.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/assets/fonts/inter/inter.ttf');
 }

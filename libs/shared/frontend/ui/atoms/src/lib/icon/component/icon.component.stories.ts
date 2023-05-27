@@ -2,30 +2,37 @@ import { Meta, Story } from '@storybook/angular';
 
 import { IconColor } from '../models/icon-color';
 import { IconSize } from '../models/icon-size';
+import { OthLogos } from '../models/oth-logos';
 import { PhosphorIcons } from '../models/phosphor-icons';
 import { TopicIcons } from '../models/topic-icons';
 import { RspdIconComponent } from './icon.component';
 
 const topicIcons = {
-	javascript: [TopicIcons.javascript],
-	robot: [TopicIcons.robot],
-	cloud: [TopicIcons.cloud],
-	python: [TopicIcons.python],
-	sql: [TopicIcons.sql],
-	scratch: [TopicIcons.scratch],
+	javascript: [TopicIcons.JAVASCRIPT],
+	robot: [TopicIcons.ROBOT],
+	cloud: [TopicIcons.CLOUD],
+	python: [TopicIcons.PYTHON],
+	sql: [TopicIcons.SQL],
+	scratch: [TopicIcons.SCRATCH],
 };
 
 export const phosphorIcons = {
-	edit: [PhosphorIcons.edit],
-	lock: [PhosphorIcons.lock],
-	random: [PhosphorIcons.random],
-	visible: [PhosphorIcons.visible],
-	delete: [PhosphorIcons.delete],
-	date: [PhosphorIcons.date],
-	add: [PhosphorIcons.add],
-	save: [PhosphorIcons.save],
-	incorrect: [PhosphorIcons.incorrect],
-	correct: [PhosphorIcons.correct],
+	edit: [PhosphorIcons.EDIT],
+	lock: [PhosphorIcons.LOCK],
+	random: [PhosphorIcons.RANDOM],
+	visible: [PhosphorIcons.VISIBLE],
+	delete: [PhosphorIcons.DELETE],
+	date: [PhosphorIcons.DATE],
+	add: [PhosphorIcons.ADD],
+	save: [PhosphorIcons.SAVE],
+	incorrect: [PhosphorIcons.INCORRECT],
+	correct: [PhosphorIcons.CORRECT],
+};
+
+const othLogos = {
+	rsdsWhite: [OthLogos.RSPD_SIMPLE_BLACK],
+	rsdsBlack: [OthLogos.RSPD_SIMPLE_WHITE],
+	oth: [OthLogos.OTH],
 };
 
 const Template: Story<RspdIconComponent> = (args) => ({
@@ -51,6 +58,7 @@ export default {
 			options: {
 				...phosphorIcons,
 				...topicIcons,
+				...othLogos,
 			},
 		},
 		color: {
@@ -65,7 +73,7 @@ export default {
 	},
 	args: {
 		size: IconSize.MD,
-		appearance: PhosphorIcons.edit,
+		appearance: PhosphorIcons.EDIT,
 		color: IconColor.BLACK,
 	},
 } as Meta<RspdIconComponent>;

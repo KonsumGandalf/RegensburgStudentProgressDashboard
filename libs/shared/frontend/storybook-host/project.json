@@ -6,30 +6,6 @@
 	"tags": ["type:util", "domain:shared", "kind:frontend"],
 	"projectType": "library",
 	"targets": {
-		"test": {
-			"executor": "@nx/jest:jest",
-			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-			"options": {
-				"jestConfig": "libs/shared/frontend/storybook-host/jest.config.ts",
-				"passWithNoTests": true
-			},
-			"configurations": {
-				"ci": {
-					"ci": true,
-					"codeCoverage": true
-				}
-			}
-		},
-		"lint": {
-			"executor": "@nx/linter:eslint",
-			"outputs": ["{options.outputFile}"],
-			"options": {
-				"lintFilePatterns": [
-					"libs/shared/frontend/storybook-host/**/*.ts",
-					"libs/shared/frontend/storybook-host/**/*.html"
-				]
-			}
-		},
 		"storybook": {
 			"executor": "@storybook/angular:start-storybook",
 			"options": {

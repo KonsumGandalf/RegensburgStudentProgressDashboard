@@ -1,0 +1,31 @@
+@use 'settings/generic/padding';
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+
+.a-rspd-card {
+	background-color: white;
+	border-radius: bootstrap.$border-radius-sm;
+	padding: padding.$padding-sm;
+
+	.a-rspd-button__header {
+		margin: auto;
+	}
+
+	.a-rspd-button__body {
+		display: flex;
+		justify-content: center;
+	}
+
+	&.a-rspd-card--raised {
+		box-shadow: bootstrap.$box-shadow;
+		border-radius: bootstrap.$border-radius-lg;
+	}
+
+	&.a-rspd-card--solid {
+		background-color: colors.$themed-white;
+	}
+
+	&.a-rspd-card--outlined {
+		border: 0.0625rem solid colors.$themed-black;
+	}
+}

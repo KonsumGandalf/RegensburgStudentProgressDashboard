@@ -2,7 +2,7 @@
  * Enum representing different button appearances.
  */
 export enum ButtonAppearance {
-	OUTLINE = 'outline',
+	OUTLINED = 'outlined',
 	FILLED = 'filled',
 	SHIFTED = 'shifted',
 }
