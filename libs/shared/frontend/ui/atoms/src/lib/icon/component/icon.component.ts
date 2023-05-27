@@ -53,6 +53,6 @@ export class RspdIconComponent {
 	 */
 	@Input()
 	set appearance(iconName: PhosphorIcons | TopicIcons) {
-		this._element.nativeElement.innerHTML = iconName || PhosphorIcons.correct;
+		this._element.nativeElement.innerHTML = iconName || PhosphorIcons.CORRECT;
 	}
 }

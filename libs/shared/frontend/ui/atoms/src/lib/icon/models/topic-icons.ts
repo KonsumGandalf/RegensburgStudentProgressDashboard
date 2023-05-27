@@ -1,8 +1,8 @@
 export enum TopicIcons {
-	javascript = `<img src='assets\\svgs\\javascript.svg'/>`,
-	robot = `<img src='assets\\svgs\\robot.svg'/>`,
-	cloud = `<img src='assets\\svgs\\cloud.svg'/>`,
-	python = `<img src='assets\\svgs\\python.svg'/>`,
-	scratch = `<img src='assets\\svgs\\scratch.svg'/>`,
-	sql = `<img src='assets\\svgs\\sql.svg'/>`,
+	JAVASCRIPT = `<img src='assets\\svgs\\javascript.svg'/>`,
+	ROBOT = `<img src='assets\\svgs\\robot.svg'/>`,
+	CLOUD = `<img src='assets\\svgs\\cloud.svg'/>`,
+	PYTHON = `<img src='assets\\svgs\\python.svg'/>`,
+	SCRATCH = `<img src='assets\\svgs\\scratch.svg'/>`,
+	SQL = `<img src='assets\\svgs\\sql.svg'/>`,
 }
