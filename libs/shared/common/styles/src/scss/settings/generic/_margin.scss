@@ -1,0 +1,36 @@
+$margin-lg: 8rem;
+$margin-md: 4rem;
+$margin-sm: 1.5rem;
+$margin-x-sm: 0.5rem;
+
+.margin-bottom-lg {
+	margin-bottom: $margin-lg;
+}
+
+.margin-bottom-md {
+	margin-bottom: $margin-md;
+}
+
+.margin-bottom-sm {
+	margin-bottom: $margin-sm;
+}
+
+.margin-bottom-x-sm {
+	margin-bottom: $margin-x-sm;
+}
+
+.margin-top-md {
+	margin-top: $margin-md;
+}
+
+.margin-top-x-sm {
+	margin-top: $margin-x-sm;
+}
+
+.margin-md {
+	margin: $margin-md;
+}
+
+.margin-sm {
+	margin: $margin-sm;
+}

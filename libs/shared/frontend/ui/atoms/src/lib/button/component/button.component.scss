@@ -1,5 +1,6 @@
 @use 'settings/generic/colors';
 @use 'settings/vendors/bootstrap';
+@use 'settings/generic/margin';
 
 .a-rspd-button {
 	font-size: 1rem;
@@ -10,6 +11,7 @@
 	z-index: 2;
 	transition: all 0.2s;
 	text-transform: capitalize;
+	margin: margin.$margin-x-sm;
 
 	&.a-rspd-button__icon {
 		padding-right: 0.625rem;
@@ -24,12 +26,12 @@
 	}
 
 	&:active {
-		box-shadow: bootstrap.$box-shadow-md;
+		box-shadow: bootstrap.$box-shadow;
 	}
 
 	&.a-rspd-button--filled {
 		font-weight: bold;
-		background-color: colors.$grey-900;
+		background-color: colors.$themed-black;
 		color: colors.$themed-white;
 		border-radius: 0.625rem;
 		padding: 0.625rem 1rem;
@@ -47,16 +49,17 @@
 		}
 	}
 
-	&.a-rspd-button--outline,
+	&.a-rspd-button--outlined,
 	&.a-rspd-button--shifted {
 		font-family: bootstrap.$font-family-monospace;
 		padding: 0.625rem 2.5rem;
-		outline: 0.0625rem solid colors.$grey-900;
+		outline: 0.0625rem solid colors.$themed-black;
 		background-color: white;
+		color: colors.$themed-black;
 
 		&:disabled {
 			color: colors.$grey-400;
-			outline-color: colors.$grey-400;
+			outlined-color: colors.$grey-400;
 
 			&::after {
 				display: none;
@@ -64,15 +67,17 @@
 		}
 	}
 
-	&.a-rspd-button--outline {
+	&.a-rspd-button--outlined {
 		&:hover,
 		&:active {
-			background-color: colors.$grey-900;
+			background-color: colors.$themed-black;
 			color: colors.$themed-white;
 		}
 	}
 
 	&.a-rspd-button--shifted {
+		margin: margin.$margin-sm;
+
 		&::after {
 			content: '';
 			background-color: colors.$lavendel-400;

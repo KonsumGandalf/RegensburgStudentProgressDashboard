@@ -6,10 +6,10 @@
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/card';
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
-$box-shadow-md: 0.125rem 0.25rem 0.5rem rgba($black, 0.15);
 
 @font-face {
 	font-display: swap;

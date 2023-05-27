@@ -10,9 +10,10 @@ import {
 import { IconColor } from '../models/icon-color';
 import { IconSize } from '../models/icon-size';
 import { PhosphorIcons } from '../models/phosphor-icons';
+import { TopicIcons } from '../models/topic-icons';
 
 @Component({
-	selector: 'rspd-icon',
+	selector: 'a-rspd-icon',
 	standalone: true,
 	imports: [],
 	templateUrl: './icon.component.html',
@@ -48,10 +49,10 @@ export class RspdIconComponent {
 
 	/**
 	 * Sets the appearance of the icon.
-	 * @param {PhosphorIcons} iconName - The name of the icon appearance.
+	 * @param {TopicIcons} iconName - The name of the icon appearance.
 	 */
 	@Input()
-	set appearance(iconName: PhosphorIcons) {
+	set appearance(iconName: PhosphorIcons | TopicIcons) {
 		this._element.nativeElement.innerHTML = iconName || PhosphorIcons.correct;
 	}
 }

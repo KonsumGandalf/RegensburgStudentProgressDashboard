@@ -13,7 +13,7 @@ import { ButtonAppearance, ButtonAppearanceType } from '../models/button-appeara
 
 @Component({
 	// eslint-disable-next-line @angular-eslint/component-selector
-	selector: 'button[appearance], a[appearance]',
+	selector: 'a-rspd-button, button[appearance], a[appearance]',
 	standalone: true,
 	templateUrl: './button.component.html',
 	styleUrls: ['./button.component.scss'],
@@ -37,9 +37,9 @@ export class RspdButtonComponent {
 		return this.appearance === ButtonAppearance.FILLED;
 	}
 
-	@HostBinding('class.a-rspd-button--outline')
-	get isOutline(): boolean {
-		return this.appearance === ButtonAppearance.OUTLINE;
+	@HostBinding('class.a-rspd-button--outlined')
+	get isOutlined(): boolean {
+		return this.appearance === ButtonAppearance.OUTLINED;
 	}
 
 	@HostBinding('class.a-rspd-button--shifted')
