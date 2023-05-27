@@ -1,8 +1,6 @@
 import { Meta, Story } from '@storybook/angular';
 
-import { CardAppearance } from '../../card/models/card-appearance';
-import { CardPadding } from '../../card/models/card-padding';
-import { TextField, TextFieldType } from '../models/text-field';
+import { TextField } from '../models/text-field';
 import { RspdInputComponent } from './input.component';
 
 const Template: Story<RspdInputComponent> = (args) => ({
