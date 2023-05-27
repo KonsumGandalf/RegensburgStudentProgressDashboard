@@ -1,6 +1,6 @@
-import { RspdButtonComponent } from '@rspd/shared/frontend/ui/atoms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 
+import { RspdButtonComponent } from '../../button/component/button.component';
 import { ButtonAppearance } from '../../button/models/button-appearance';
 import { OthLogos } from '../../icon/models/oth-logos';
 import { CardAppearance } from '../models/card-appearance';
