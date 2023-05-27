@@ -10,6 +10,7 @@ import {
 import { RspdIconComponent } from '../../icon/component/icon.component';
 import { IconUnion } from '../../icon/models/icon-union';
 import { CardAppearance } from '../models/card-appearance';
+import { CardPadding } from '../models/card-padding';
 
 /**
  * Component for displaying a content inside a card
@@ -33,6 +34,14 @@ export class RspdCardComponent {
 	 */
 	@Input()
 	appearance: CardAppearance = CardAppearance.RAISED;
+
+	/**
+	 * Sets the padding of the card.
+	 * @param {CardPadding} padding - The padding of the card.
+	 */
+	@Input()
+	@HostBinding('style.--card-padding')
+	padding: CardPadding = CardPadding.MD;
 
 	@HostBinding('class.a-rspd-card--raised')
 	get isRaised(): boolean {

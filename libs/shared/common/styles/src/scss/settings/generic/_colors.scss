@@ -1,3 +1,4 @@
+// grey colors
 $grey-900: rgb(17, 20, 23);
 $grey-800: rgba($grey-900, 0.8);
 $grey-700: rgba($grey-900, 0.7);
@@ -8,7 +9,19 @@ $grey-300: rgba($grey-900, 0.3);
 $grey-200: rgba($grey-900, 0.2);
 $grey-100: rgba($grey-900, 0.1);
 
+// main colors
 $themed-black: $grey-900;
 $themed-white: #f1f5f9;
 
-$lavendel-400: #8783fd;
+$primary-400: #8783fd;
+
+$secondary-400: #8dc3f9;
+
+// attribute or state based colors
+$outline: $grey-600;
+$disabled: $grey-500;
+
+// Rating colors
+$good: #22c55e;
+$medium: #ffd700;
+$bad: #ef4444;

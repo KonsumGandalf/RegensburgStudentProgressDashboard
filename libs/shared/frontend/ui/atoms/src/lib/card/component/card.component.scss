@@ -5,7 +5,7 @@
 .a-rspd-card {
 	background-color: white;
 	border-radius: bootstrap.$border-radius-sm;
-	padding: padding.$padding-sm;
+	padding: var(--card-padding);
 
 	.a-rspd-button__header {
 		margin: auto;
@@ -26,6 +26,6 @@
 	}
 
 	&.a-rspd-card--outlined {
-		border: 0.0625rem solid colors.$themed-black;
+		border: 0.0625rem solid colors.$outline;
 	}
 }
