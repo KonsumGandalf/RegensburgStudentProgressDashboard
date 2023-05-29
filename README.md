@@ -141,6 +141,16 @@ nx serve frontend
 | `shared-backend-test-utils` | [libs/shared/backend/test-util](libs/shared/backend/test-util) | Helps to test services for isolated DB interactions.      |
 | `shared-backend-utils`      | [libs/shared/backend/utils](libs/shared/backend/utils)         | Reusable utility library for common models and functions. |
 
+### Frontend
+
+| Name                             | Path                                                                       | Description                                                                                                  |
+| -------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `shared-frontend-assets`         | [libs/shared/frontend/assets](libs/shared/frontend/assets)                 | Collection of reusable assets for frontend development                                                       |
+| `shared-frontend-environment`    | [libs/shared/frontend/environment](libs/shared/frontend/environment)       | Configurations, and settings related to the frontend environment setup.                                      |
+| `shared-frontend-storybook-host` | [libs/shared/frontend/storybook-host](libs/shared/frontend/storybook-host) | Host all shared UI components for Storybook.                                                                 |
+| `shared-frontend-ui-atoms`       | [libs/shared/frontend/ui/atoms](libs/shared/frontend/ui/atoms)             | collection of atomic UI components that are designed to be highly reusable and independent.                  |
+| `shared-frontend-ui-organisms`   | [libs/shared/frontend/ui/organisms](libs/shared/frontend/ui/organisms)     | Collection of reusable UI components that represent complex and interconnected elements of a user interface. |
+
 ## Student-Submissions
 
 ### Backend
@@ -170,6 +180,15 @@ nx serve frontend
 | `user-backend-user-authentication`  | [libs/user/backend/user-authentication](libs/user/backend/user-authentication)   | It provides user authentication functionality for a backend application.                           |
 | `user-backend-user-mail-management` | [libs/user/backend/user-mail-management](libs/user/backend/user-mail-management) | Manages email confirmation and access control.                                                     |
 | `user-backend-user-management`      | [libs/user/backend/user-management](libs/user/backend/user-management)           | Provides authentication and authorization functionalities for user management in a backend system. |
+
+### Frontend
+
+| Name                                | Path                                                                             | Description                                                                         |
+| ----------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `user-frontend-auth`                | [libs/user/frontend/auth](libs/user/frontend/auth)                               | Utilities for managing the current user's authentication status.                    |
+| `user-frontend-domain`              | [libs/user/frontend/domain](libs/user/frontend/domain)                           | Utilities and abstractions for interacting with API repository.                     |
+| `user-frontend-identity-management` | [libs/user/frontend/identity-management](libs/user/frontend/identity-management) | Utilities for managing user identities and authentication in frontend applications. |
+| `user-frontend-user-shell`          | [libs/user/frontend/user-shell](libs/user/frontend/user-shell)                   | Provides a shell for building user-facing frontend applications.                    |
 
 <!-- CONTACT -->
 
