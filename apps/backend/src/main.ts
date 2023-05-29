@@ -27,6 +27,7 @@ async function bootstrap() {
 	const { httpAdapter } = app.get(HttpAdapterHost);
 	app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
 
+	app.enableCors();
 	await app.listen(port);
 	Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }

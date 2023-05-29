@@ -1,10 +1,11 @@
 import { IsAllowEmailDomain } from '@rspd/user/backend/common-models';
+import { IUserIntermediate } from '@rspd/user/common/models';
 import { IsEmail, IsString, IsStrongPassword, MaxLength, MinLength } from 'class-validator';
 
 /**
  * DTO for registering a new user
  */
-export class RegisterUserDto {
+export class RegisterUserDto implements IUserIntermediate {
 	/**
 	 * Email of the user
 	 *

@@ -8,12 +8,16 @@ import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
 import { TutorService, UserService } from '@rspd/user/backend/user-management';
 import { StudentService } from '@rspd/user/backend/user-management';
+import {
+	ICheckAvailability,
+	IResponseAuthentication,
+	IUserIntermediate,
+} from '@rspd/user/common/models';
 import * as bcrypt from 'bcrypt';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
 import { IAuthUser } from '../models/interfaces/auth-user.interface';
-import { IResponseAuthentication } from '../models/interfaces/response-login.interfaces';
 import { IVerificationToken } from '../models/interfaces/verfication-token-email.interface';
 
 /**
@@ -99,12 +103,15 @@ export class AuthService {
 	 * @returns {Promise<IResponseAuthentication>} The login response, containing the access token.
 	 */
 	async login(user: IUser): Promise<IResponseAuthentication> {
+		const tokenExpirationDate = new Date();
+		tokenExpirationDate.setMinutes(tokenExpirationDate.getMinutes() + 45);
 		return {
 			access_token: this._jwtService.sign({
 				username: user.username,
 				id: user.id,
 				role: (await this._userService.findOneById(user.id)).role,
 			} as IUser),
+			tokenExpirationDate,
 		};
 	}
 
@@ -159,5 +166,33 @@ export class AuthService {
 			}
 			throw new BadRequestException('Bad confirmation token');
 		}
+	}
+
+	async checkSourceAvailability(source: ICheckAvailability): Promise<boolean> {
+		let availability = false;
+		if (source.email) {
+			const mail = await this._emailService.findOptions({
+				where: { email: source.email },
+			});
+			if (source.confirmedMail) {
+				availability = mail.isEmailValidated;
+			} else {
+				availability = !!mail;
+			}
+		}
+		if (source.username) {
+			availability = !!(await this._userService.findUserByUsername(source.username));
+		}
+		return availability;
+	}
+
+	async getUser(username: string): Promise<IUserIntermediate> {
+		const response = await this._userService.findUserByUsername(username);
+		return {
+			email: response.email.email.toString(),
+			username: response.username,
+			firstName: response.firstName,
+			lastName: response.lastName,
+		};
 	}
 }

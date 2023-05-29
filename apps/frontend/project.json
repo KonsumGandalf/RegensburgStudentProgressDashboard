@@ -27,6 +27,11 @@
 						"input": "libs/shared/frontend/assets/src/lib/svgs",
 						"glob": "**/*",
 						"output": "/assets/svgs"
+					},
+					{
+						"input": "libs/user/frontend/identity-management/src/assets/i18n",
+						"glob": "**/*",
+						"output": "assets/i18n/user/identity-management"
 					}
 				],
 				"styles": ["apps/frontend/src/styles.scss"],

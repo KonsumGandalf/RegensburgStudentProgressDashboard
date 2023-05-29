@@ -17,6 +17,11 @@ export function moduleHttpLoaderFactory(http: HttpClient) {
 				moduleName: 'app.information',
 				pathTemplate: '{baseTranslateUrl}/app/information/{language}',
 			},
+			{
+				baseTranslateUrl,
+				moduleName: 'user.identity_management',
+				pathTemplate: '{baseTranslateUrl}/user/identity-management/{language}',
+			},
 		],
 	};
 

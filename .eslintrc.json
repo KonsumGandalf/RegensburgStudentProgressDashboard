@@ -37,7 +37,8 @@
 									"type:feature",
 									"type:util-feature",
 									"type:util",
-									"type:common-model"
+									"type:common-model",
+									"type:ui"
 								]
 							},
 							{
@@ -53,12 +54,47 @@
 								"onlyDependOnLibsWithTags": ["type:util", "type:common-model"]
 							},
 							{
-								"sourceTag": "type:ui",
-								"onlyDependOnLibsWithTags": []
-							},
-							{
 								"sourceTag": "type:common-model",
 								"onlyDependOnLibsWithTags": ["type:common-model"]
+							},
+							{
+								"sourceTag": "type:ui",
+								"onlyDependOnLibsWithTags": [
+									"type:ui",
+									"type:atom-ui",
+									"type:molecule-ui",
+									"type:organism-ui"
+								]
+							},
+							{
+								"sourceTag": "type:atom-ui",
+								"onlyDependOnLibsWithTag": ["type:ui"]
+							},
+							{
+								"sourceTag": "type:molecule-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atom-ui",
+									"type:molecule-ui"
+								]
+							},
+							{
+								"sourceTag": "type:organism-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atom-ui",
+									"type:molecule-ui",
+									"type:organism-ui"
+								]
+							},
+							{
+								"sourceTag": "type:page-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atom-ui",
+									"type:molecule-ui",
+									"type:organism-ui"
+								]
 							},
 							{
 								"sourceTag": "domain:shared",

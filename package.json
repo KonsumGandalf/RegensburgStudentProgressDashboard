@@ -57,6 +57,7 @@
 		"react-dom": "^18.2.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "^7.8.1",
+		"rxjs-spy": "^8.0.2",
 		"tslib": "^2.5.2",
 		"typeorm": "^0.3.16",
 		"zone.js": "~0.13.0"
