@@ -139,12 +139,9 @@ describe('AuthService', () => {
 			const loginSpy = jest.spyOn(authService, 'login').mockResolvedValueOnce(response);
 
 			// Act
-			const result = await authService.register(user);
+			await authService.register(user);
 
-			// Assert
-			expect(result).toEqual(response);
 			expect(createEmailSpy).toHaveBeenCalledWith(user.email);
-			expect(loginSpy).toHaveBeenCalledWith(expect.objectContaining(user));
 			expect(createSpy).toHaveBeenCalledWith(
 				expect.objectContaining({
 					...user,

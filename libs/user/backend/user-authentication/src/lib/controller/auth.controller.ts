@@ -28,10 +28,9 @@ export class AuthController {
 	 * @async
 	 * @function
 	 * @param {RegisterUserDto} userDto - User registration details.
-	 * @returns {Promise<IResponseAuthentication>} Promise resolving to a response object containing a JWT token.
 	 */
 	@Post('register')
-	async register(@Body() userDto: RegisterUserDto): Promise<IResponseAuthentication> {
+	async register(@Body() userDto: RegisterUserDto): Promise<void> {
 		return await this._authService.register(userDto);
 	}
 

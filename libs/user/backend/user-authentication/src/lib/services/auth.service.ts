@@ -40,11 +40,10 @@ export class AuthService {
 	 * Registers a new user.
 	 *
 	 * @param {RegisterUserDto} user - The user to register.
-	 * @returns {Promise<IResponseAuthentication>} The registered user.
 	 * @throws {DuplicateSourceException} If the username or email already exists.
 	 * @throws {Error} If any other error occurs.
 	 */
-	async register(user: RegisterUserDto): Promise<IResponseAuthentication> {
+	async register(user: RegisterUserDto): Promise<void> {
 		const saltRounds = this._configService.get('auth', {
 			infer: true,
 		}).saltRounds;
@@ -73,7 +72,7 @@ export class AuthService {
 		} catch (e) {
 			throw new Error(e);
 		}
-		return await this.login(userEntity);
+		return;
 	}
 
 	/**
@@ -105,6 +104,13 @@ export class AuthService {
 	async login(user: IUser): Promise<IResponseAuthentication> {
 		const tokenExpirationDate = new Date();
 		tokenExpirationDate.setMinutes(tokenExpirationDate.getMinutes() + 45);
+
+		const isEmailValidated = (await this._userService.findUserByUsername(user.username)).email
+			.isEmailValidated;
+		if (!isEmailValidated) {
+			await this.requestConfirmationMail(user.username);
+		}
+
 		return {
 			access_token: this._jwtService.sign({
 				username: user.username,
@@ -112,6 +118,7 @@ export class AuthService {
 				role: (await this._userService.findOneById(user.id)).role,
 			} as IUser),
 			tokenExpirationDate,
+			isEmailValidated,
 		};
 	}
 

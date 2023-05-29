@@ -4,4 +4,5 @@
 export interface IResponseAuthentication {
 	access_token: string;
 	tokenExpirationDate: Date;
+	isEmailValidated: boolean;
 }
