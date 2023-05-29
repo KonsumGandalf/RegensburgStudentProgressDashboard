@@ -1,11 +1,19 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';
+import {
+	ButtonAppearance,
+	IconSize,
+	IconUnion,
+	OthLogos,
+	PhosphorIcons,
+} from '@rspd/shared/frontend/ui/atoms';
 import { IUserIntermediate } from '@rspd/user/common/models';
 import { RegisterUserFacade } from '@rspd/user/frontend/domain';
+import { forkJoin, interval } from 'rxjs';
 
 import { formInformation } from '../../models/form-information';
+import { ICardInformation } from '../../models/interfaces/card-information.interface';
 import { AuthInputValidator } from '../../models/validators/auth-input.validator';
 
 @Component({
@@ -24,11 +32,15 @@ export class RspdRegisterComponent {
 		private readonly _router: Router,
 	) {}
 
-	isLoading = false;
 	formInformation = formInformation;
 	othLogo = OthLogos.OTH;
 	buttonAppearance = ButtonAppearance.SHIFTED;
 	minPasswordLength = 8;
+	cardInformation: ICardInformation = {
+		iconLogo: OthLogos.OTH,
+		isLoading: false,
+		iconSize: '100%',
+	};
 
 	registerForm: FormGroup = new FormGroup({
 		email: new FormControl(
@@ -60,18 +72,21 @@ export class RspdRegisterComponent {
 		if (!this.registerForm.valid) {
 			return;
 		}
-
-		this.isLoading = true;
-		this._registerUserFacade
-			.registerUser(this.registerForm.value as IUserIntermediate)
-			.subscribe(
-				(resData) => {
-					this._router.navigate(['/profile']);
-				},
-				(error) => {
-					console.log(error);
-				},
-			);
-		this.isLoading = false;
+		this.cardInformation = {
+			isLoading: true,
+			iconLogo: PhosphorIcons.EMAIL,
+			iconSize: IconSize.LG,
+		};
+		forkJoin(
+			interval(5000),
+			this._registerUserFacade.registerUser(this.registerForm.value as IUserIntermediate),
+		).subscribe(
+			() => {
+				this._router.navigate(['/login']);
+			},
+			(error) => {
+				console.log(error);
+			},
+		);
 	}
 }

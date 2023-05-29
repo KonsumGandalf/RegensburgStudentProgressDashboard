@@ -24,7 +24,7 @@ export class RegisterUserFacade extends GeneralUserFacade {
 		} as ICheckAvailability);
 	}
 
-	registerUser(registerUser: IUserIntermediate): Observable<IResponseAuthentication> {
+	registerUser(registerUser: IUserIntermediate): Observable<void> {
 		return this._userRepository.registerUser(registerUser);
 	}
 }

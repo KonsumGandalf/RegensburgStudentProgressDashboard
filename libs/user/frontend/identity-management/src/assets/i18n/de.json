@@ -20,6 +20,7 @@
 				"DISABLED_MAIL": "Eine neue Email kann ich nicht zugewiesen werden."
 			}
 		},
+		"CONFIRM_EMAIL": "Wir freuen uns, dass Sie sich angemeldet haben. Zuerst musst du dein Konto bestätigen, indem du auf den Link klickst, den wir dir an deine E-Mail-Adresse geschickt haben.",
 		"ACTION": {
 			"LOGIN": "Login",
 			"PROFILE": "Update das Profil",

@@ -20,6 +20,7 @@
 				"DISABLED_MAIL": "The email can not be reassigned"
 			}
 		},
+		"CONFIRM_EMAIL": "We're excited to have you get stared. First, you need to confirm your account by clicking the link we have send to your email address.",
 		"ACTION": {
 			"LOGIN": "Login",
 			"PROFILE": "Update Profile",

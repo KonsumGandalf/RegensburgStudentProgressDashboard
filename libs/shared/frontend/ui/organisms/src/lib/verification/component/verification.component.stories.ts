@@ -1,10 +1,10 @@
-import { OthLogos, othLogos } from '@rspd/shared/frontend/ui/atoms';
+import { IconSize, OthLogos, othLogos, phosphorIcons } from '@rspd/shared/frontend/ui/atoms';
 import { Meta, Story } from '@storybook/angular';
 
 import { RspdVerificationComponent } from './verification.component';
 
 const Template: Story<RspdVerificationComponent> = (args) => ({
-	template: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title'></o-rspd-verification>`,
+	template: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title' [size]='size' [isLoading]='isLoading'></o-rspd-verification>`,
 	props: {
 		...args,
 	},
@@ -20,6 +20,7 @@ export default {
 		headerLogo: {
 			control: { type: 'select' },
 			options: {
+				...phosphorIcons,
 				...othLogos,
 			},
 		},
@@ -31,9 +32,18 @@ export default {
 				disable: true,
 			},
 		},
+		isLoading: {
+			control: { type: 'boolean' },
+		},
+		size: {
+			control: { type: 'select' },
+			options: [...Object.values(IconSize), '100%'],
+		},
 	},
 	args: {
 		headerLogo: OthLogos.OTH,
 		title: 'Verification',
+		isLoading: false,
+		size: '100%',
 	},
 } as Meta<RspdVerificationComponent>;

@@ -44,20 +44,11 @@ export class UserRepository {
 			.pipe(map((response: boolean | undefined) => !!response));
 	}
 
-	registerUser(registerUser: IUserIntermediate): Observable<IResponseAuthentication> {
-		return this._httpClient
-			.post<IResponseAuthentication>(`${this._authRoute}/register`, registerUser)
-			.pipe(
-				tap((resData) => {
-					this._authService.handleAuthentication(resData);
-				}),
-			);
+	registerUser(registerUser: IUserIntermediate): Observable<void> {
+		return this._httpClient.post<void>(`${this._authRoute}/register`, registerUser);
 	}
 
 	loginUser(loginUser: ILoginUser): Observable<IResponseAuthentication> {
-		//{
-		//     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QtZGF2aWQiLCJpZCI6NSwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2ODUzNDc0MzgsImV4cCI6MTY4NTM1MDEzOH0.VVn9Wm2CQGcCAxCoHQ9A6F1Sn3O0fjTDc6mITHLBpS0"
-		// }
 		return this._httpClient
 			.post<IResponseAuthentication>(`${this._authRoute}/login`, loginUser)
 			.pipe(

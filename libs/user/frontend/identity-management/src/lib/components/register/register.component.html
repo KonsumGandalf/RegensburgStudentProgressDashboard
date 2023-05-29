@@ -1,7 +1,9 @@
 <div class="p-rspd-page__content">
 	<o-rspd-verification
-		[headerLogo]="othLogo"
-		[title]="'USER.IDENTITY_MANAGEMENT.AUTH.PAGE.REGISTER' | translate"
+		[headerLogo]="cardInformation.iconLogo"
+		[title]="'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate"
+		[isLoading]="cardInformation.isLoading"
+		[size]="cardInformation.iconSize"
 	>
 		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 			<div class="row">

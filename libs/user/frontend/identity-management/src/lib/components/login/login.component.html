@@ -1,51 +1,53 @@
 <div class="p-rspd-page__content">
-	<o-rspd-verification
-		[headerLogo]="othLogo"
-		[title]="'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate"
-		[isLoading]="isLoading"
-	>
-		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-			<div class="row">
-				<div class="col-sm">
-					<a-rspd-input
-						[label]="formInformation.username.name | translate"
-						[supportingText]="getErrorMsg('username', 'incorrect') | translate"
-					>
-						<input
-							class="a-rspd-input__input"
-							[placeholder]="formInformation.username.name | translate"
-							[name]="formInformation.username.controlName"
-							[id]="formInformation.username.controlName"
-							[type]="'text'"
-							formControlName="{{ formInformation.username.controlName }}"
-							required
-							autocomplete="on"
-						/>
-					</a-rspd-input>
+	<div class="p-rspd-page__content">
+		<o-rspd-verification
+			[headerLogo]="cardInformation.iconLogo"
+			[title]="'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate"
+		>
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+				<div class="row">
+					<div class="col-sm">
+						<a-rspd-input
+							[label]="formInformation.username.name | translate"
+							[supportingText]="getErrorMsg('username', 'incorrect') | translate"
+						>
+							<input
+								class="a-rspd-input__input"
+								[placeholder]="formInformation.username.name | translate"
+								[name]="formInformation.username.controlName"
+								[id]="formInformation.username.controlName"
+								[type]="'text'"
+								formControlName="{{ formInformation.username.controlName }}"
+								required
+								autocomplete="on"
+							/>
+						</a-rspd-input>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm">
-					<a-rspd-input
-						[label]="formInformation.password.name | translate"
-						[supportingText]="getErrorMsg('password', 'incorrect') | translate"
-					>
-						<input
-							class="a-rspd-input__input"
-							[placeholder]="formInformation.password.name | translate"
-							[name]="formInformation.password.controlName"
-							[id]="formInformation.password.controlName"
-							[type]="'password'"
-							formControlName="{{ formInformation.password.controlName }}"
-							required
-							autocomplete="on"
-						/>
-					</a-rspd-input>
+				<div class="row">
+					<div class="col-sm">
+						<a-rspd-input
+							[label]="formInformation.password.name | translate"
+							[supportingText]="getErrorMsg('password', 'incorrect') | translate"
+						>
+							<input
+								class="a-rspd-input__input"
+								[placeholder]="formInformation.password.name | translate"
+								[name]="formInformation.password.controlName"
+								[id]="formInformation.password.controlName"
+								[type]="'password'"
+								formControlName="{{ formInformation.password.controlName }}"
+								required
+								autocomplete="on"
+							/>
+						</a-rspd-input>
+					</div>
 				</div>
-			</div>
-			<button type="submit" [appearance]="buttonAppearance">
-				{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}
-			</button>
-		</form>
-	</o-rspd-verification>
+				<button type="submit" [appearance]="buttonAppearance">
+					{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}
+				</button>
+			</form>
+			<a-rspd-loading-indicator></a-rspd-loading-indicator>
+		</o-rspd-verification>
+	</div>
 </div>

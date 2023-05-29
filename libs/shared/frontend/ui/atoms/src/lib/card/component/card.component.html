@@ -1,6 +1,9 @@
-<ng-container *ngIf="icon">
-	<a-rspd-icon class="card-img-top" [appearance]="icon" [size]="'100%'"></a-rspd-icon>
-</ng-container>
-<div class="a-rspd-button__body">
-	<ng-content></ng-content>
+<div
+	class="a-rspd-card"
+	[class.a-rspd-card--front]="!isFlipped"
+	[class.a-rspd-card--back]="isFlipped"
+>
+	<div class="a-rspd-card__content">
+		<ng-content></ng-content>
+	</div>
 </div>

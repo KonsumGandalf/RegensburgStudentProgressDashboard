@@ -269,7 +269,7 @@
 		},
 		{
 			"name": "RspdCardComponent",
-			"id": "component-RspdCardComponent-1b63b017e8b382b810bca6ed49bb3d6ccc975839b20884961a5a684eb1c1a8d8277053dc30db42473069b963f66de628e304d27ed010815aa7afeca7a48e66bc",
+			"id": "component-RspdCardComponent-3ff6a24178a51afc734f0d4be28e4e683c0eea9260c3a4e15ebe89afd3fe4c5f5773d1915106bfa417b2fe743247fbe79bd917544393a0ff0c2456f714bce126",
 			"file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -358,15 +358,15 @@
 					"deprecationMessage": "",
 					"jsdoctags": [
 						{
-							"pos": 1625,
-							"end": 1675,
+							"pos": 1867,
+							"end": 1917,
 							"flags": 8421376,
 							"modifierFlagsCache": 0,
 							"transformFlags": 0,
 							"kind": 344,
 							"tagName": {
-								"pos": 1626,
-								"end": 1631,
+								"pos": 1868,
+								"end": 1873,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
@@ -375,22 +375,22 @@
 							},
 							"comment": "<ul>\n<li>The name of the icon.</li>\n</ul>\n",
 							"typeExpression": {
-								"pos": 1632,
-								"end": 1643,
+								"pos": 1874,
+								"end": 1885,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
 								"kind": 312,
 								"type": {
-									"pos": 1633,
-									"end": 1642,
+									"pos": 1875,
+									"end": 1884,
 									"flags": 8388608,
 									"modifierFlagsCache": 0,
 									"transformFlags": 1,
 									"kind": 180,
 									"typeName": {
-										"pos": 1633,
-										"end": 1642,
+										"pos": 1875,
+										"end": 1884,
 										"flags": 8388608,
 										"modifierFlagsCache": 0,
 										"transformFlags": 0,
@@ -400,8 +400,8 @@
 								}
 							},
 							"name": {
-								"pos": 1644,
-								"end": 1648,
+								"pos": 1886,
+								"end": 1890,
 								"flags": 8421376,
 								"modifierFlagsCache": 0,
 								"transformFlags": 0,
@@ -414,8 +414,17 @@
 					],
 					"rawdescription": "\n\nAdds an icon to the card in its header\n",
 					"description": "<p>Adds an icon to the card in its header</p>\n",
-					"line": 66,
+					"line": 82,
 					"type": "IconUnion",
+					"decorators": []
+				},
+				{
+					"name": "isFlipped",
+					"defaultValue": "false",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 48,
+					"type": "boolean",
 					"decorators": []
 				},
 				{
@@ -493,10 +502,26 @@
 			"deprecationMessage": "",
 			"hostBindings": [
 				{
+					"name": "class.a-rspd-card--back",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 56,
+					"type": "boolean",
+					"decorators": []
+				},
+				{
+					"name": "class.a-rspd-card--front",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"line": 51,
+					"type": "boolean",
+					"decorators": []
+				},
+				{
 					"name": "class.a-rspd-card--outlined",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 57,
+					"line": 71,
 					"type": "boolean",
 					"decorators": []
 				},
@@ -504,7 +529,7 @@
 					"name": "class.a-rspd-card--raised",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 47,
+					"line": 61,
 					"type": "boolean",
 					"decorators": []
 				},
@@ -512,7 +537,7 @@
 					"name": "class.a-rspd-card--solid",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 52,
+					"line": 66,
 					"type": "boolean",
 					"decorators": []
 				}
@@ -532,23 +557,41 @@
 			"description": "<p>Component for displaying a content inside a card</p>\n",
 			"rawdescription": "\n\nComponent for displaying a content inside a card\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { RspdIconComponent } from '../../icon/component/icon.component';\nimport { IconUnion } from '../../icon/models/icon-union';\nimport { CardAppearance } from '../models/card-appearance';\nimport { CardPadding } from '../models/card-padding';\n\n/**\n * Component for displaying a content inside a card\n */\n@Component({\n\tselector: 'a-rspd-card',\n\tstandalone: true,\n\timports: [CommonModule, RspdIconComponent],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\ttemplateUrl: './card.component.html',\n\tstyleUrls: ['./card.component.scss'],\n\thost: {\n\t\tclass: 'a-rspd-card card',\n\t},\n})\nexport class RspdCardComponent {\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tappearance: CardAppearance = CardAppearance.RAISED;\n\n\t/**\n\t * Sets the padding of the card.\n\t * @param {CardPadding} padding - The padding of the card.\n\t */\n\t@Input()\n\t@HostBinding('style.--card-padding')\n\tpadding: CardPadding = CardPadding.MD;\n\n\t@HostBinding('class.a-rspd-card--raised')\n\tget isRaised(): boolean {\n\t\treturn this.appearance === CardAppearance.RAISED;\n\t}\n\n\t@HostBinding('class.a-rspd-card--solid')\n\tget isSolid(): boolean {\n\t\treturn this.appearance === CardAppearance.SOLID;\n\t}\n\n\t@HostBinding('class.a-rspd-card--outlined')\n\tget isOutlined(): boolean {\n\t\treturn this.appearance === CardAppearance.OUTLINED;\n\t}\n\n\t/**\n\t * Adds an icon to the card in its header\n\t * @param {IconUnion} icon - The name of the icon.\n\t */\n\t@Input()\n\ticon?: IconUnion;\n}\n",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { RspdIconComponent } from '../../icon/component/icon.component';\nimport { IconUnion } from '../../icon/models/icon-union';\nimport { CardAppearance } from '../models/card-appearance';\nimport { CardPadding } from '../models/card-padding';\n\n/**\n * Component for displaying a content inside a card\n */\n@Component({\n\tselector: 'a-rspd-card',\n\tstandalone: true,\n\timports: [CommonModule, RspdIconComponent],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\ttemplateUrl: './card.component.html',\n\tstyleUrls: ['./card.component.scss'],\n\thost: {\n\t\tclass: 'a-rspd-card card',\n\t},\n})\nexport class RspdCardComponent {\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tappearance: CardAppearance = CardAppearance.RAISED;\n\n\t/**\n\t * Sets the padding of the card.\n\t * @param {CardPadding} padding - The padding of the card.\n\t */\n\t@Input()\n\t@HostBinding('style.--card-padding')\n\tpadding: CardPadding = CardPadding.MD;\n\n\n\t@Input()\n\tisFlipped = false;\n\n\t@HostBinding('class.a-rspd-card--front')\n\tget isFontDisplayed(): boolean {\n\t\treturn !this.isFlipped\n\t}\n\n\t@HostBinding('class.a-rspd-card--back')\n\tget isBackDisplayed(): boolean {\n\t\treturn this.isFlipped\n\t}\n\n\t@HostBinding('class.a-rspd-card--raised')\n\tget isRaised(): boolean {\n\t\treturn this.appearance === CardAppearance.RAISED;\n\t}\n\n\t@HostBinding('class.a-rspd-card--solid')\n\tget isSolid(): boolean {\n\t\treturn this.appearance === CardAppearance.SOLID;\n\t}\n\n\t@HostBinding('class.a-rspd-card--outlined')\n\tget isOutlined(): boolean {\n\t\treturn this.appearance === CardAppearance.OUTLINED;\n\t}\n\n\n\n\t/**\n\t * Adds an icon to the card in its header\n\t * @param {IconUnion} icon - The name of the icon.\n\t */\n\t@Input()\n\ticon?: IconUnion;\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": "@use 'settings/generic/padding';\n@use 'settings/generic/colors';\n@use 'settings/vendors/bootstrap';\n\n.a-rspd-card {\n\tdisplay: inline-block;\n\tbackground-color: bootstrap.$white;\n\tborder-radius: bootstrap.$border-radius-sm;\n\tpadding: var(--card-padding);\n\n\t.a-rspd-button__header {\n\t\tmargin: auto;\n\t}\n\n\t.a-rspd-button__body {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\tjustify-content: center;\n\t}\n\n\t&.a-rspd-card--raised {\n\t\tbox-shadow: bootstrap.$box-shadow;\n\t\tborder-radius: bootstrap.$border-radius-lg;\n\t}\n\n\t&.a-rspd-card--solid {\n\t\tbackground-color: colors.$themed-white;\n\t}\n\n\t&.a-rspd-card--outlined {\n\t\tborder: 0.0625rem solid colors.$outline;\n\t}\n}\n",
+					"data": "@use 'settings/generic/padding';\n@use 'settings/generic/colors';\n@use 'settings/vendors/bootstrap';\n\n.a-rspd-card {\n\tdisplay: inline-block;\n\tbackground-color: bootstrap.$white;\n\tborder-radius: bootstrap.$border-radius-sm;\n\tpadding: var(--card-padding);\n\ttransition: all .8s ease;\n\tbackface-visibility: hidden;\n\n\t.a-rspd-button__header {\n\t\tmargin: auto;\n\t}\n\n\t.a-rspd-button__body {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\tjustify-content: center;\n\t}\n\n\t&.a-rspd-card--raised {\n\t\tbox-shadow: bootstrap.$box-shadow;\n\t\tborder-radius: bootstrap.$border-radius-lg;\n\t}\n\n\t&.a-rspd-card--solid {\n\t\tbackground-color: colors.$themed-white;\n\t}\n\n\t&.a-rspd-card--outlined {\n\t\tborder: 0.0625rem solid colors.$outline;\n\t}\n\n\t.a-rspd-card--front {\n\t\ttransform: rotateY(0deg);\n\t}\n\n\t&.a-rspd-card--back {\n\t\ttransform: rotateY(180deg);\n\t\tbackface-visibility: visible;\n\t}\n\n\t&__back-content {\n\t\tdisplay: flex;\n\t\talign-items: center;\n\t\tjustify-content: center;\n\t\tflex-direction: column;\n\n\t\ti {\n\t\t\tfont-size: 48px;\n\t\t\tmargin-bottom: 16px;\n\t\t}\n\n\t\tp {\n\t\t\ttext-align: center;\n\t\t\tmargin-block: 3rem;\n\t\t\t\n\t\t\tfont-family: bootstrap.$font-family-monospace;\n\t\t}\n\t}\n\n}\n",
 					"styleUrl": "./card.component.scss"
 				}
 			],
 			"stylesData": "",
 			"accessors": {
+				"isFontDisplayed": {
+					"name": "isFontDisplayed",
+					"getSignature": {
+						"name": "isFontDisplayed",
+						"type": "boolean",
+						"returnType": "boolean",
+						"line": 51
+					}
+				},
+				"isBackDisplayed": {
+					"name": "isBackDisplayed",
+					"getSignature": {
+						"name": "isBackDisplayed",
+						"type": "boolean",
+						"returnType": "boolean",
+						"line": 56
+					}
+				},
 				"isRaised": {
 					"name": "isRaised",
 					"getSignature": {
 						"name": "isRaised",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 47
+						"line": 61
 					}
 				},
 				"isSolid": {
@@ -557,7 +600,7 @@
 						"name": "isSolid",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 52
+						"line": 66
 					}
 				},
 				"isOutlined": {
@@ -566,11 +609,11 @@
 						"name": "isOutlined",
 						"type": "boolean",
 						"returnType": "boolean",
-						"line": 57
+						"line": 71
 					}
 				}
 			},
-			"templateData": "<ng-container *ngIf=\"icon\">\n\t<a-rspd-icon class=\"card-img-top\" [appearance]=\"icon\" [size]=\"'100%'\"></a-rspd-icon>\n</ng-container>\n<div class=\"a-rspd-button__body\">\n\t<ng-content></ng-content>\n</div>\n"
+			"templateData": "\n<div class=\"a-rspd-card\" [class.a-rspd-card--front]=\"!isFlipped\" [class.a-rspd-card--back]=\"isFlipped\">\n\t<ng-container *ngIf=\"icon\">\n\t\t<a-rspd-icon class=\"card-img-top\" [appearance]=\"icon\" [size]=\"'100%'\"></a-rspd-icon>\n\t</ng-container>\n\t<div class=\"a-rspd-card__content\">\n\t\t<div *ngIf=\"!isLoading; then frontContent else backContent\"></div>\n\t\t<ng-template #frontContent>\n\t\t\t<ng-content></ng-content>\n\t\t</ng-template>\n\t\t<ng-template #backContent>\n\t\t\t<!-- Content for the back of the card -->\n\t\t</ng-template>\n\t</div>\n</div>\n"
 		},
 		{
 			"name": "RspdIconComponent",
@@ -1022,11 +1065,11 @@
 				}
 			],
 			"stylesData": "",
-			"templateData": "<ng-content></ng-content>\n<span class='a-rspd-input__label'> {{ supportingText ?? label }} </span>\n"
+			"templateData": "<ng-content></ng-content>\n<span class=\"a-rspd-input__label\"> {{ supportingText ?? label }} </span>\n"
 		},
 		{
 			"name": "RspdLoadingIndicatorComponent",
-			"id": "component-RspdLoadingIndicatorComponent-6f890f5760203c88687faa3a5d7a1c7dcd1cfaf20c7171b5638567695b44905badea5ded99f0e385fadd5d954e8dd148759882230c20466b934d364502f84229",
+			"id": "component-RspdLoadingIndicatorComponent-fd40013f47a96518aed6bf7ae7258e09643d4e95e85d2da0abb59853514d7321c37915ffd1d30a7cc78b2a227be4f458b81adfc0990d8ef49c28ae35705495f8",
 			"file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -1059,11 +1102,11 @@
 			"description": "<p>Component representing a loading indicator.</p>\n",
 			"rawdescription": "\n\nComponent representing a loading indicator.\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';\n\n/**\n * Component representing a loading indicator.\n */\n@Component({\n\tselector: 'a-rspd-loading-indicator',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './loading-indicator.component.html',\n\tstyleUrls: ['./loading-indicator.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-loading-indicator',\n\t},\n\tschemas: [ CUSTOM_ELEMENTS_SCHEMA ]\n})\nexport class RspdLoadingIndicatorComponent {}\n",
+			"sourceCode": "import '@material/web/linearprogress/linear-progress.js';\n\nimport { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tCUSTOM_ELEMENTS_SCHEMA,\n\tViewEncapsulation,\n} from '@angular/core';\n\n/**\n * Component representing a loading indicator.\n */\n@Component({\n\tselector: 'a-rspd-loading-indicator',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './loading-indicator.component.html',\n\tstyleUrls: ['./loading-indicator.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-loading-indicator',\n\t},\n\tschemas: [CUSTOM_ELEMENTS_SCHEMA],\n})\nexport class RspdLoadingIndicatorComponent {}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": "@use 'settings/generic/colors';\r\n\r\nmd-linear-progress {\r\n    --md-linear-progress-active-indicator-color: #{colors.$secondary-400};\r\n}\r\n",
+					"data": "@use 'settings/generic/colors';\n\nmd-linear-progress {\n\t--md-linear-progress-active-indicator-color: #{colors.$secondary-400};\n}\n",
 					"styleUrl": "./loading-indicator.component.scss"
 				}
 			],
@@ -1072,7 +1115,7 @@
 		},
 		{
 			"name": "RspdLoginComponent",
-			"id": "component-RspdLoginComponent-eb0f0d4bb9d7b23b3bd6e9af5dab42d5fc3c425628dc092705da12707f4ffe1987e596060c1f7f385d53bc8ab601d3f05fc1e974fd62db4299964ad736c3f5b4",
+			"id": "component-RspdLoginComponent-8ad70693876c0289c09e8efac182418439fec77665db0709bffdaa6df51533a1f460ddfb4f4ae2ae632c7cc966b28a0c276247eb4f058ba933b5ba2ef28c4dc2",
 			"file": "libs/user/frontend/identity-management/src/lib/components/login/login.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -1098,7 +1141,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 27
+					"line": 30
 				},
 				{
 					"name": "formInformation",
@@ -1108,7 +1151,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 25
+					"line": 28
 				},
 				{
 					"name": "isLoading",
@@ -1118,7 +1161,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 23
+					"line": 26
 				},
 				{
 					"name": "loginForm",
@@ -1128,7 +1171,7 @@
 					"type": "FormGroup",
 					"optional": false,
 					"description": "",
-					"line": 30
+					"line": 32
 				},
 				{
 					"name": "othLogo",
@@ -1138,7 +1181,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 26
+					"line": 29
 				}
 			],
 			"methodsClass": [
@@ -1161,7 +1204,7 @@
 					"optional": false,
 					"returnType": "string",
 					"typeParameters": [],
-					"line": 35,
+					"line": 37,
 					"deprecated": false,
 					"deprecationMessage": "",
 					"jsdoctags": [
@@ -1191,7 +1234,7 @@
 					"optional": false,
 					"returnType": "void",
 					"typeParameters": [],
-					"line": 39,
+					"line": 41,
 					"deprecated": false,
 					"deprecationMessage": ""
 				}
@@ -1205,11 +1248,11 @@
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { ILoginUser } from '@rspd/user/common/models';\nimport { LoginUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\n\n@Component({\n\tselector: 'o-rspd-login',\n\ttemplateUrl: './login.component.html',\n\tstyleUrls: ['./login.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-login',\n\t},\n})\nexport class RspdLoginComponent {\n\tconstructor(private readonly _loginUserFacade: LoginUserFacade, private readonly _router: Router) {}\n\n\tisLoading = false;\n\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\n\n\tloginForm: FormGroup = new FormGroup({\n\t\tusername: new FormControl(undefined, [Validators.required]),\n\t\tpassword: new FormControl(undefined, [Validators.required]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.loginForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.loginForm.valid) {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.isLoading = true;\n\t\tthis._loginUserFacade.loginUser(this.loginForm.value as ILoginUser).subscribe(\n\t\t\tresData => {\n\t\t\t\tthis._router.navigate(['/profile'])\n\t\t\t},\n\t\t\terror => {\n\t\t\t\tconsole.log(error);\n\t\t\t\tthis.loginForm.controls['username'].setErrors({'incorrect': 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN'});\n\t\t\t\tthis.loginForm.controls['password'].setErrors({'incorrect': 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN'});\n\t\t\t}\n\t\t)\n\t\tthis.isLoading = false;\n\n\t}\n}\n",
+			"sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { ILoginUser } from '@rspd/user/common/models';\nimport { LoginUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\n\n@Component({\n\tselector: 'o-rspd-login',\n\ttemplateUrl: './login.component.html',\n\tstyleUrls: ['./login.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-login',\n\t},\n})\nexport class RspdLoginComponent {\n\tconstructor(\n\t\tprivate readonly _loginUserFacade: LoginUserFacade,\n\t\tprivate readonly _router: Router,\n\t) {}\n\n\tisLoading = false;\n\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\n\tloginForm: FormGroup = new FormGroup({\n\t\tusername: new FormControl(undefined, [Validators.required]),\n\t\tpassword: new FormControl(undefined, [Validators.required]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.loginForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.loginForm.valid) {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.isLoading = true;\n\t\tthis._loginUserFacade.loginUser(this.loginForm.value as ILoginUser).subscribe(\n\t\t\t(resData) => {\n\t\t\t\tthis._router.navigate(['/profile']);\n\t\t\t},\n\t\t\t(error) => {\n\t\t\t\tconsole.log(error);\n\t\t\t\tthis.loginForm.controls['username'].setErrors({\n\t\t\t\t\tincorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN',\n\t\t\t\t});\n\t\t\t\tthis.loginForm.controls['password'].setErrors({\n\t\t\t\t\tincorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN',\n\t\t\t\t});\n\t\t\t},\n\t\t);\n\t\tthis.isLoading = false;\n\t}\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": ".o-rspd-login {\r\n\r\n}\r\n",
+					"data": ".o-rspd-login {\n    .p-rspd-page__content {\n        &.o-rspd-login__form--font{\n            display: none;\n        }\n    }\n}\n",
 					"styleUrl": "./login.component.scss"
 				}
 			],
@@ -1255,11 +1298,11 @@
 					}
 				]
 			},
-			"templateData": "<div class='p-rspd-page__content'>\n\t<o-rspd-verification [headerLogo]='othLogo'\n\t\t\t\t\t\t [title]='\"USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN\" | translate'\n\t\t\t\t\t\t [isLoading]='isLoading'>\n\t\t<form [formGroup]='loginForm' (ngSubmit)='onSubmit()'>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.username.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('username', 'incorrect') | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.username.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\tformControlName='{{formInformation.username.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('password', 'incorrect') | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[type]='\"password\"'\n\t\t\t\t\t\t\tformControlName='{{formInformation.password.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]='buttonAppearance'>{{\"USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN\" | translate}}</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n\n\n"
+			"templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification\n\t\t[headerLogo]=\"othLogo\"\n\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate\"\n\t>\n\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('username', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\n\t\t\t\t</button>\n\t\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
 		},
 		{
 			"name": "RspdProfileComponent",
-			"id": "component-RspdProfileComponent-360695c8f66ab70460a94f2e03537651495450613430c8b07d051467f8cbb855c4a24da5354a6c4a1ccc1d330ee6c4f4d95fb9ca4aedf11b0e0f214767e96518",
+			"id": "component-RspdProfileComponent-0f23d9bdeb56c36a7f532cb5605abe73227de0d970d434f44652050a93c5c46962e66045b2d0f90783692aa0bfc220ebb491c9baf30d440a77e8df2015fa484a",
 			"file": "libs/user/frontend/identity-management/src/lib/components/profile/profile.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -1285,7 +1328,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 43
+					"line": 58
 				},
 				{
 					"name": "formInformation",
@@ -1295,7 +1338,17 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 41
+					"line": 56
+				},
+				{
+					"name": "isLoading",
+					"defaultValue": "false",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"optional": false,
+					"description": "",
+					"line": 61
 				},
 				{
 					"name": "minPasswordLength",
@@ -1305,7 +1358,7 @@
 					"type": "number",
 					"optional": false,
 					"description": "",
-					"line": 44
+					"line": 59
 				},
 				{
 					"name": "othLogo",
@@ -1315,7 +1368,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 42
+					"line": 57
 				},
 				{
 					"name": "profileForm",
@@ -1324,7 +1377,7 @@
 					"type": "FormGroup",
 					"optional": false,
 					"description": "",
-					"line": 46
+					"line": 62
 				},
 				{
 					"name": "profileInformation",
@@ -1334,7 +1387,7 @@
 					"type": "WritableSignal<IUserIntermediate>",
 					"optional": false,
 					"description": "",
-					"line": 21
+					"line": 27
 				}
 			],
 			"methodsClass": [
@@ -1357,7 +1410,7 @@
 					"optional": false,
 					"returnType": "string",
 					"typeParameters": [],
-					"line": 48,
+					"line": 64,
 					"deprecated": false,
 					"deprecationMessage": "",
 					"jsdoctags": [
@@ -1387,7 +1440,7 @@
 					"optional": false,
 					"returnType": "void",
 					"typeParameters": [],
-					"line": 52,
+					"line": 68,
 					"deprecated": false,
 					"deprecationMessage": ""
 				}
@@ -1401,7 +1454,7 @@
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation, WritableSignal } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { ProfileUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-profile',\n\ttemplateUrl: './profile.component.html',\n\tstyleUrls: ['./profile.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-profile',\n\t},\n})\nexport class RspdProfileComponent {\n\tprofileInformation: WritableSignal<IUserIntermediate> = signal({} as IUserIntermediate) ;\n\n\tconstructor(private readonly _profileUserFacade: ProfileUserFacade) {\n\t\tthis.profileForm = new FormGroup({\n\t\t\temail: new FormControl(),\n\t\t\tfirstName: new FormControl(null, [Validators.required]),\n\t\t\tlastName: new FormControl(null, [Validators.required]),\n\t\t\tusername: new FormControl(null, [Validators.required], [AuthInputValidator.validateUsernameIsTaken(this._profileUserFacade)]),\n\t\t\tpassword: new FormControl(undefined, [AuthInputValidator.validPassword(this.minPasswordLength)]),\n\t\t\tconfirmPassword: new FormControl(undefined, [Validators.required, AuthInputValidator.validFieldMatch('password')]),\n\t\t});\n\n\t\tthis._profileUserFacade.requestUserInformation().subscribe(data => {\n\t\t\tthis.profileForm.get('email')?.setValue(data.email);\n\t\t\tthis.profileForm.get('firstName')?.setValue(data.firstName);\n\t\t\tthis.profileForm.get('lastName')?.setValue(data.lastName);\n\t\t\tthis.profileForm.get('username')?.setValue(data.username);\n\t\t});\n\t}\n\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\n\tprofileForm: FormGroup;\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.profileForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.profileForm.valid) {\n\t\t\treturn;\n\t\t}\n\t}\n}\n",
+			"sourceCode": "import {\n\tChangeDetectionStrategy,\n\tComponent,\n\tsignal,\n\tViewEncapsulation,\n\tWritableSignal,\n} from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { ProfileUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-profile',\n\ttemplateUrl: './profile.component.html',\n\tstyleUrls: ['./profile.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-profile',\n\t},\n})\nexport class RspdProfileComponent {\n\tprofileInformation: WritableSignal<IUserIntermediate> = signal({} as IUserIntermediate);\n\n\tconstructor(private readonly _profileUserFacade: ProfileUserFacade) {\n\t\tthis.profileForm = new FormGroup({\n\t\t\temail: new FormControl(),\n\t\t\tfirstName: new FormControl(null, [Validators.required]),\n\t\t\tlastName: new FormControl(null, [Validators.required]),\n\t\t\tusername: new FormControl(\n\t\t\t\tnull,\n\t\t\t\t[Validators.required],\n\t\t\t\t[AuthInputValidator.validateUsernameIsTaken(this._profileUserFacade)],\n\t\t\t),\n\t\t\tpassword: new FormControl(undefined, [\n\t\t\t\tAuthInputValidator.validPassword(this.minPasswordLength),\n\t\t\t]),\n\t\t\tconfirmPassword: new FormControl(undefined, [\n\t\t\t\tValidators.required,\n\t\t\t\tAuthInputValidator.validFieldMatch('password'),\n\t\t\t]),\n\t\t});\n\n\t\tthis._profileUserFacade.requestUserInformation().subscribe((data) => {\n\t\t\tthis.profileForm.get('email')?.setValue(data.email);\n\t\t\tthis.profileForm.get('firstName')?.setValue(data.firstName);\n\t\t\tthis.profileForm.get('lastName')?.setValue(data.lastName);\n\t\t\tthis.profileForm.get('username')?.setValue(data.username);\n\t\t});\n\t}\n\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\n\tisLoading = false;\n\tprofileForm: FormGroup;\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.profileForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.profileForm.valid) {\n\t\t\treturn;\n\t\t}\n\t}\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
@@ -1423,7 +1476,7 @@
 						"deprecationMessage": ""
 					}
 				],
-				"line": 21,
+				"line": 27,
 				"jsdoctags": [
 					{
 						"name": "_profileUserFacade",
@@ -1436,11 +1489,11 @@
 					}
 				]
 			},
-			"templateData": "<div class='p-rspd-page__content'>\n\t<o-rspd-verification [title]='\"USER.IDENTITY_MANAGEMENT.AUTH.PAGE.PROFILE\" | translate'>\n\t\t<form [formGroup]='profileForm' (ngSubmit)='onSubmit()'>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.firstName.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.firstName.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.firstName.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.firstName.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\t[minLength]='2'\n\t\t\t\t\t\t\t[maxLength]='20'\n\t\t\t\t\t\t\tformControlName='{{formInformation.firstName.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.lastName.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.lastName.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.lastName.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.lastName.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\t[minLength]='2'\n\t\t\t\t\t\t\t[maxLength]='20'\n\t\t\t\t\t\t\tformControlName='{{formInformation.lastName.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input [label]='formInformation.email.name | translate' [supportingText]='\"USER.IDENTITY_MANAGEMENT.AUTH.FORM.SUPPORTING_TEXT.DISABLED_MAIL\" | translate'>\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t[placeholder]='formInformation.email.name | translate'\n\t\t\t\t\t\t[name]='formInformation.email.controlName'\n\t\t\t\t\t\t[id]='formInformation.email.controlName'\n\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\tformControlName='{{formInformation.email.controlName}}'\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t[readonly]='true'\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.username.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.username.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\tformControlName='{{formInformation.username.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('password', 'invalidPassword')\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[type]='\"password\"'\n\t\t\t\t\t\t\t[minLength]='minPasswordLength'\n\t\t\t\t\t\t\tformControlName='{{formInformation.password.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.confirmPassword.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.confirmPassword.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.confirmPassword.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.confirmPassword.controlName'\n\t\t\t\t\t\t\t[type]='\"password\"'\n\t\t\t\t\t\t\t[minLength]='minPasswordLength'\n\t\t\t\t\t\t\tformControlName='{{formInformation.confirmPassword.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]='buttonAppearance'>{{\"USER.IDENTITY_MANAGEMENT.AUTH.ACTION.PROFILE\" | translate}}</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n\n\n"
+			"templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification [title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.PAGE.PROFILE' | translate\">\n\t\t<form [formGroup]=\"profileForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input\n\t\t\t\t\t[label]=\"formInformation.email.name | translate\"\n\t\t\t\t\t[supportingText]=\"\n\t\t\t\t\t\t'USER.IDENTITY_MANAGEMENT.AUTH.FORM.SUPPORTING_TEXT.DISABLED_MAIL'\n\t\t\t\t\t\t\t| translate\n\t\t\t\t\t\"\n\t\t\t\t>\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t[readonly]=\"true\"\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.PROFILE' | translate }}\n\t\t\t</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
 		},
 		{
 			"name": "RspdRegisterComponent",
-			"id": "component-RspdRegisterComponent-86fc5d123d9f80f3fd26be0825bdb87f7cb0c98f7685a6e8f43aebc2f6a9590421c9907a99ad082ab2a00fdaaf7ef835cdf6eac4ab6a2a9cd0292982928f23f9",
+			"id": "component-RspdRegisterComponent-197f9cd650bdcb68fe36302b84997f790fb372fdc1698e099edd100e3833a5d9cf58cfa4d65616970e9750591babc02de9d40e157b18e383ce91176657e725f6",
 			"file": "libs/user/frontend/identity-management/src/lib/components/register/register.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -1466,7 +1519,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 31
+					"line": 30
 				},
 				{
 					"name": "formInformation",
@@ -1476,7 +1529,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 29
+					"line": 28
 				},
 				{
 					"name": "isLoading",
@@ -1486,7 +1539,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 28
+					"line": 27
 				},
 				{
 					"name": "minPasswordLength",
@@ -1496,7 +1549,7 @@
 					"type": "number",
 					"optional": false,
 					"description": "",
-					"line": 32
+					"line": 31
 				},
 				{
 					"name": "othLogo",
@@ -1506,7 +1559,7 @@
 					"type": "",
 					"optional": false,
 					"description": "",
-					"line": 30
+					"line": 29
 				},
 				{
 					"name": "registerForm",
@@ -1516,7 +1569,7 @@
 					"type": "FormGroup",
 					"optional": false,
 					"description": "",
-					"line": 34
+					"line": 33
 				}
 			],
 			"methodsClass": [
@@ -1539,7 +1592,7 @@
 					"optional": false,
 					"returnType": "string",
 					"typeParameters": [],
-					"line": 56,
+					"line": 55,
 					"deprecated": false,
 					"deprecationMessage": "",
 					"jsdoctags": [
@@ -1569,7 +1622,7 @@
 					"optional": false,
 					"returnType": "void",
 					"typeParameters": [],
-					"line": 60,
+					"line": 59,
 					"deprecated": false,
 					"deprecationMessage": ""
 				}
@@ -1583,7 +1636,7 @@
 			"description": "",
 			"rawdescription": "\n",
 			"type": "component",
-			"sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { RegisterUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-register',\n\ttemplateUrl: './register.component.html',\n\tstyleUrls: ['./register.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-register',\n\t},\n})\nexport class RspdRegisterComponent {\n\tconstructor(\n\t\tprivate readonly _registerUserFacade: RegisterUserFacade,\n\t\tprivate readonly _router: Router) {\n\t}\n\n\n\tisLoading = false;\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\n\tregisterForm: FormGroup = new FormGroup({\n\t\temail: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required, Validators.email, AuthInputValidator.validateEmailDomain],\n\t\t\t[AuthInputValidator.validateEmailIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tfirstName: new FormControl(undefined, [Validators.required]),\n\t\tlastName: new FormControl(undefined, [Validators.required]),\n\t\tusername: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required],\n\t\t\t[AuthInputValidator.validateUsernameIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tpassword: new FormControl(undefined, [\n\t\t\tAuthInputValidator.validPassword(this.minPasswordLength),\n\t\t]),\n\t\tconfirmPassword: new FormControl(undefined, [\n\t\t\tValidators.required,\n\t\t\tAuthInputValidator.validFieldMatch('password'),\n\t\t]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.registerForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.registerForm.valid) {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.isLoading = true;\n\t\tthis._registerUserFacade.registerUser(this.registerForm.value as IUserIntermediate).subscribe(\n\t\t\tresData => {\n\t\t\t\tthis._router.navigate(['/profile']);\n\t\t\t},\n\t\t\terror => {\n\t\t\t\tconsole.log(error);\n\t\t\t},\n\t\t);\n\t\tthis.isLoading = false;\n\t}\n}\n",
+			"sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { RegisterUserFacade } from '@rspd/user/frontend/domain';\n\nimport { formInformation } from '../../models/form-information';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-register',\n\ttemplateUrl: './register.component.html',\n\tstyleUrls: ['./register.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-register',\n\t},\n})\nexport class RspdRegisterComponent {\n\tconstructor(\n\t\tprivate readonly _registerUserFacade: RegisterUserFacade,\n\t\tprivate readonly _router: Router,\n\t) {}\n\n\tisLoading = false;\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\n\tregisterForm: FormGroup = new FormGroup({\n\t\temail: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required, Validators.email, AuthInputValidator.validateEmailDomain],\n\t\t\t[AuthInputValidator.validateEmailIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tfirstName: new FormControl(undefined, [Validators.required]),\n\t\tlastName: new FormControl(undefined, [Validators.required]),\n\t\tusername: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required],\n\t\t\t[AuthInputValidator.validateUsernameIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tpassword: new FormControl(undefined, [\n\t\t\tAuthInputValidator.validPassword(this.minPasswordLength),\n\t\t]),\n\t\tconfirmPassword: new FormControl(undefined, [\n\t\t\tValidators.required,\n\t\t\tAuthInputValidator.validFieldMatch('password'),\n\t\t]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.registerForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.registerForm.valid) {\n\t\t\treturn;\n\t\t}\n\n\t\tthis.isLoading = true;\n\t\tthis._registerUserFacade\n\t\t\t.registerUser(this.registerForm.value as IUserIntermediate)\n\t\t\t.subscribe(\n\t\t\t\t() => {\n\t\t\t\t\tthis._router.navigate(['/login']);\n\t\t\t\t},\n\t\t\t\t(error) => {\n\t\t\t\t\tconsole.log(error);\n\t\t\t\t},\n\t\t\t);\n\t\tthis.isLoading = false;\n\t}\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
@@ -1633,11 +1686,11 @@
 					}
 				]
 			},
-			"templateData": "<div class='p-rspd-page__content'>\n\t<o-rspd-verification [headerLogo]='othLogo' [title]='\"USER.IDENTITY_MANAGEMENT.AUTH.PAGE.REGISTER\" | translate'>\n\t\t<form [formGroup]='registerForm' (ngSubmit)='onSubmit()'>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.firstName.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.firstName.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.firstName.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.firstName.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\t[minLength]='2'\n\t\t\t\t\t\t\t[maxLength]='20'\n\t\t\t\t\t\t\tformControlName='{{formInformation.firstName.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.lastName.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.lastName.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.lastName.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.lastName.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\t[minLength]='2'\n\t\t\t\t\t\t\t[maxLength]='20'\n\t\t\t\t\t\t\tformControlName='{{formInformation.lastName.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input [label]='formInformation.email.name | translate'>\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t[placeholder]='formInformation.email.name | translate'\n\t\t\t\t\t\t[name]='formInformation.email.controlName'\n\t\t\t\t\t\t[id]='formInformation.email.controlName'\n\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\tformControlName='{{formInformation.email.controlName}}'\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.username.name | translate'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.username.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.username.controlName'\n\t\t\t\t\t\t\t[type]='\"text\"'\n\t\t\t\t\t\t\tformControlName='{{formInformation.username.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('password', 'invalidPassword')\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.password.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.password.controlName'\n\t\t\t\t\t\t\t[type]='\"password\"'\n\t\t\t\t\t\t\t[minLength]='minPasswordLength'\n\t\t\t\t\t\t\tformControlName='{{formInformation.password.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]='formInformation.confirmPassword.name | translate'\n\t\t\t\t\t\t\t\t  [supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='formInformation.confirmPassword.name | translate'\n\t\t\t\t\t\t\t[name]='formInformation.confirmPassword.controlName'\n\t\t\t\t\t\t\t[id]='formInformation.confirmPassword.controlName'\n\t\t\t\t\t\t\t[type]='\"password\"'\n\t\t\t\t\t\t\t[minLength]='minPasswordLength'\n\t\t\t\t\t\t\tformControlName='{{formInformation.confirmPassword.controlName}}'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]='buttonAppearance'>{{\"USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER\" | translate}}</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n\n"
+			"templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification\n\t\t[headerLogo]=\"othLogo\"\n\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.PAGE.REGISTER' | translate\"\n\t>\n\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input [label]=\"formInformation.email.name | translate\">\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\n\t\t\t</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
 		},
 		{
 			"name": "RspdVerificationComponent",
-			"id": "component-RspdVerificationComponent-4fa2a88fdbfff0bbc98f36372ccfce3d0a9b6f3ae8867389fa81c637c2f30306e9669ae1befe29fdf39c8df641a872fddfc2341aff6b625d0fa863d528b665c5",
+			"id": "component-RspdVerificationComponent-657709a8f83ec83f848997e65d68962674c70ee542558b00de8ae31d3db757a7fda7ad0408f4d6bc2e042b167886e26ef3517768a94b0a4819adfc524b48a29e",
 			"file": "libs/shared/frontend/ui/organisms/src/lib/verification/component/verification.component.ts",
 			"changeDetection": "ChangeDetectionStrategy.OnPush",
 			"encapsulation": ["ViewEncapsulation.None"],
@@ -1657,7 +1710,7 @@
 					"name": "headerLogo",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 39,
+					"line": 50,
 					"type": "IconUnion",
 					"decorators": []
 				},
@@ -1666,7 +1719,7 @@
 					"defaultValue": "false",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 27,
+					"line": 39,
 					"type": "boolean",
 					"decorators": []
 				},
@@ -1674,25 +1727,13 @@
 					"name": "title",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 42,
+					"line": 53,
 					"type": "string",
 					"decorators": []
 				}
 			],
 			"outputsClass": [],
-			"propertiesClass": [
-				{
-					"name": "_buttonAppearance",
-					"defaultValue": "ButtonAppearance.SHIFTED",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "",
-					"optional": false,
-					"description": "",
-					"line": 24,
-					"modifierKind": [122]
-				}
-			],
+			"propertiesClass": [],
 			"methodsClass": [],
 			"deprecated": false,
 			"deprecationMessage": "",
@@ -1701,7 +1742,7 @@
 					"name": "style.--progressBarVisible",
 					"deprecated": false,
 					"deprecationMessage": "",
-					"line": 31,
+					"line": 42,
 					"type": "string",
 					"decorators": []
 				}
@@ -1724,16 +1765,20 @@
 				{
 					"name": "RspdLoadingIndicatorComponent",
 					"type": "component"
+				},
+				{
+					"name": "RspdIconComponent",
+					"type": "component"
 				}
 			],
-			"description": "",
-			"rawdescription": "\n",
+			"description": "<p>Component to display profile verification related data like Login</p>\n",
+			"rawdescription": "\n\nComponent to display profile verification related data like Login\n",
 			"type": "component",
-			"sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';\nimport {\n\tButtonAppearance,\n\tIconUnion,\n\tRspdButtonComponent,\n\tRspdCardComponent,\n\tRspdLoadingIndicatorComponent,\n} from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'o-rspd-verification',\n\tstandalone: true,\n\timports: [CommonModule, RspdCardComponent, RspdButtonComponent, RspdLoadingIndicatorComponent],\n\ttemplateUrl: './verification.component.html',\n\tstyleUrls: ['./verification.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'o-rspd-verification',\n\t},\n})\nexport class RspdVerificationComponent {\n\tprotected _buttonAppearance = ButtonAppearance.SHIFTED;\n\n\t@Input()\n\tisLoading = false;\n\n\n\t@HostBinding('style.--progressBarVisible')\n\tget isVisible(): string {\n\t\tif(this.isLoading) {\n\t\t\treturn 'visible';\n\t\t}\n\t\treturn 'hidden';\n\t}\n\n\t@Input()\n\theaderLogo?: IconUnion;\n\n\t@Input()\n\ttitle?: string;\n}\n",
+			"sourceCode": "import { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\nimport {\n\tIconUnion,\n\tRspdButtonComponent,\n\tRspdCardComponent, RspdIconComponent,\n\tRspdLoadingIndicatorComponent,\n} from '@rspd/shared/frontend/ui/atoms';\n\n/**\n * Component to display profile verification related data like Login\n */\n@Component({\n\tselector: 'o-rspd-verification',\n\tstandalone: true,\n\timports: [\n\t\tCommonModule,\n\t\tRspdCardComponent,\n\t\tRspdButtonComponent,\n\t\tRspdLoadingIndicatorComponent,\n\t\tRspdIconComponent,\n\t],\n\ttemplateUrl: './verification.component.html',\n\tstyleUrls: ['./verification.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'o-rspd-verification',\n\t},\n})\nexport class RspdVerificationComponent {\n\t@Input()\n\tisLoading = false;\n\n\t@HostBinding('style.--progressBarVisible')\n\tget isVisible(): string {\n\t\tif (this.isLoading) {\n\t\t\treturn 'visible';\n\t\t}\n\t\treturn 'hidden';\n\t}\n\n\t@Input()\n\theaderLogo?: IconUnion;\n\n\t@Input()\n\ttitle?: string;\n}\n",
 			"assetsDirs": [],
 			"styleUrlsData": [
 				{
-					"data": ".o-rspd-verification {\r\n\r\n    a-rspd-loading-indicator {\r\n        visibility: var(--progressBarVisible);\r\n    }\r\n}\r\n",
+					"data": ".o-rspd-verification {\n\ta-rspd-loading-indicator {\n\t\tvisibility: var(--progressBarVisible);\n\t}\n\n\ta-rspd-card {\n\n\t}\n}\n",
 					"styleUrl": "./verification.component.scss"
 				}
 			],
@@ -1745,11 +1790,11 @@
 						"name": "isVisible",
 						"type": "string",
 						"returnType": "string",
-						"line": 31
+						"line": 42
 					}
 				}
 			},
-			"templateData": "<a-rspd-card [icon]='headerLogo'>\n\t<h1 class='display-3'>{{ title }}</h1>\n\t<div class='o-rspd-verification__form'>\n\t\t<ng-content></ng-content>\n\t</div>\n\t<a-rspd-loading-indicator></a-rspd-loading-indicator>\n</a-rspd-card>\n"
+			"templateData": "<a-rspd-card [icon]=\"headerLogo\" [isFlipped]='isLoading'>\n\t<div *ngIf=\"!isLoading;then front else back\">here is ignored</div>\n\t<ng-template #front class=\"a-rspd-card__front-content\">\n\t\t<h1 class=\"display-3\">{{ title }}</h1>\n\t\t<ng-content></ng-content>\n\t</ng-template>\n\t<ng-template #back>\n\t\t<div class=\"a-rspd-card__back-content\">\n\t\t\t<p>Please verify your email address to complete the registration process.<br>\n\t\t\t\tYou must confirm your email before being able to login.\n\t\t\t</p>\n\n\t\t</div>\n\t</ng-template>\n</a-rspd-card>\n"
 		}
 	],
 	"modules": [],
@@ -1893,7 +1938,7 @@
 				"deprecated": false,
 				"deprecationMessage": "",
 				"type": "Story<RspdVerificationComponent>",
-				"defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title'></o-rspd-verification>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+				"defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title' [isLoading]='isLoading'></o-rspd-verification>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
 			},
 			{
 				"name": "Template",
@@ -2119,7 +2164,7 @@
 					"deprecated": false,
 					"deprecationMessage": "",
 					"type": "Story<RspdVerificationComponent>",
-					"defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title'></o-rspd-verification>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+					"defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-verification [headerLogo]='headerLogo' [title]='title' [isLoading]='isLoading'></o-rspd-verification>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
 				}
 			],
 			"libs/user/frontend/identity-management/src/lib/components/register/register.component.stories.ts": [
@@ -2270,9 +2315,9 @@
 				"type": "component",
 				"linktype": "component",
 				"name": "RspdCardComponent",
-				"coveragePercent": 57,
-				"coverageCount": "4/7",
-				"status": "good"
+				"coveragePercent": 40,
+				"coverageCount": "4/10",
+				"status": "medium"
 			},
 			{
 				"filePath": "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts",
@@ -2386,8 +2431,8 @@
 				"type": "component",
 				"linktype": "component",
 				"name": "RspdVerificationComponent",
-				"coveragePercent": 0,
-				"coverageCount": "0/6",
+				"coveragePercent": 20,
+				"coverageCount": "1/5",
 				"status": "low"
 			},
 			{
@@ -2405,7 +2450,7 @@
 				"linktype": "component",
 				"name": "RspdProfileComponent",
 				"coveragePercent": 0,
-				"coverageCount": "0/10",
+				"coverageCount": "0/11",
 				"status": "low"
 			},
 			{

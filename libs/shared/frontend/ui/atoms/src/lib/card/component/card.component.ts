@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 
 import { RspdIconComponent } from '../../icon/component/icon.component';
-import { IconUnion } from '../../icon/models/icon-union';
 import { CardAppearance } from '../models/card-appearance';
 import { CardPadding } from '../models/card-padding';
 
@@ -43,6 +42,19 @@ export class RspdCardComponent {
 	@HostBinding('style.--card-padding')
 	padding: CardPadding = CardPadding.MD;
 
+	@Input()
+	isFlipped = false;
+
+	@HostBinding('class.a-rspd-card--front')
+	get isFontDisplayed(): boolean {
+		return !this.isFlipped;
+	}
+
+	@HostBinding('class.a-rspd-card--back')
+	get isBackDisplayed(): boolean {
+		return this.isFlipped;
+	}
+
 	@HostBinding('class.a-rspd-card--raised')
 	get isRaised(): boolean {
 		return this.appearance === CardAppearance.RAISED;
@@ -57,11 +69,4 @@ export class RspdCardComponent {
 	get isOutlined(): boolean {
 		return this.appearance === CardAppearance.OUTLINED;
 	}
-
-	/**
-	 * Adds an icon to the card in its header
-	 * @param {IconUnion} icon - The name of the icon.
-	 */
-	@Input()
-	icon?: IconUnion;
 }

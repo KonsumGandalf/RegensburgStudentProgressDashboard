@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { RspdButtonComponent, RspdInputComponent } from '@rspd/shared/frontend/ui/atoms';
+import {
+	RspdButtonComponent,
+	RspdInputComponent,
+	RspdLoadingIndicatorComponent,
+} from '@rspd/shared/frontend/ui/atoms';
 import { RspdVerificationComponent } from '@rspd/shared/frontend/ui/organisms';
 
 import {
@@ -20,6 +24,7 @@ import {
 		RspdInputComponent,
 		RspdVerificationComponent,
 		RspdButtonComponent,
+		RspdLoadingIndicatorComponent,
 	],
 	declarations: [RspdRegisterComponent, RspdLoginComponent, RspdProfileComponent],
 	exports: [RspdRegisterComponent],

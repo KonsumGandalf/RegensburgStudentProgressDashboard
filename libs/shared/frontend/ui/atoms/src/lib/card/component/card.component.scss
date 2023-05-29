@@ -7,6 +7,8 @@
 	background-color: bootstrap.$white;
 	border-radius: bootstrap.$border-radius-sm;
 	padding: var(--card-padding);
+	transition: all 1.5s ease;
+	backface-visibility: hidden;
 
 	.a-rspd-button__header {
 		margin: auto;
@@ -29,5 +31,15 @@
 
 	&.a-rspd-card--outlined {
 		border: 0.0625rem solid colors.$outline;
+	}
+
+	&.a-rspd-card--front {
+		transform: rotateY(0deg);
+		backface-visibility: visible;
+	}
+
+	&.a-rspd-card--back {
+		transform: rotateY(180deg);
+		backface-visibility: visible;
 	}
 }
