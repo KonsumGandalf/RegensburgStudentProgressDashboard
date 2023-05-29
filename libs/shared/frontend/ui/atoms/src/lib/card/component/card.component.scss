@@ -3,7 +3,8 @@
 @use 'settings/vendors/bootstrap';
 
 .a-rspd-card {
-	background-color: white;
+	display: inline-block;
+	background-color: bootstrap.$white;
 	border-radius: bootstrap.$border-radius-sm;
 	padding: var(--card-padding);
 
@@ -13,6 +14,7 @@
 
 	.a-rspd-button__body {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 	}
 

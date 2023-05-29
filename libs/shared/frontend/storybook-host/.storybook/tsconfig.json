@@ -5,5 +5,10 @@
 	},
 	"files": ["preview.ts"],
 	"exclude": ["../**/*.spec.ts"],
-	"include": ["../../ui/**/src/lib/**/*.stories.ts", "../../ui/**/src/lib/**/*.component.ts"]
+	"include": [
+		"../../ui/**/src/lib/**/*.stories.ts",
+		"../../ui/**/src/lib/**/*.component.ts",
+		"../../../../user/frontend/**/src/lib/**/*.stories.ts",
+		"../../../../user/frontend/**/*.component.ts"
+	]
 }

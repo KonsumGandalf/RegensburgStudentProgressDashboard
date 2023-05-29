@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TextFieldType } from '../models/text-field';
@@ -13,6 +13,8 @@ import { TextFieldType } from '../models/text-field';
 	imports: [CommonModule, ReactiveFormsModule],
 	templateUrl: './input.component.html',
 	styleUrls: ['./input.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
 	host: {
 		class: 'a-rspd-input',
 	},
@@ -23,6 +25,12 @@ export class RspdInputComponent {
 	 */
 	@Input()
 	label?: string;
+
+	/**
+	 * The name of the form control needed for reactive forms
+	 */
+	@Input()
+	formControlName = '';
 
 	/**
 	 * The maximum length allowed for the input value.

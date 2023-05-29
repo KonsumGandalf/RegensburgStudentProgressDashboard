@@ -10,7 +10,10 @@ const config: StorybookConfig = {
 	core: {
 		builder: '@storybook/builder-webpack5',
 	},
-	stories: ['../../ui/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+	stories: [
+		'../../ui/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+		'../../../../user/frontend/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+	],
 	docs: {
 		autodocs: true,
 		defaultName: 'Docs',

@@ -7,6 +7,8 @@
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/utilities';
 @import 'bootstrap/scss/card';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/alert';
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);

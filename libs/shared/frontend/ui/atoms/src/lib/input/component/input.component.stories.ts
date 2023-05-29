@@ -5,20 +5,27 @@ import { RspdInputComponent } from './input.component';
 
 const Template: Story<RspdInputComponent> = (args) => ({
 	template: `<div style='width: 10rem'>
-			<a-rspd-input [label]='label' 
-			[maxLength]='maxLength' 
-			[minLength]='minLength'
-			[supportingText]='supportingText'
-			[pattern]='pattern'
-			/>
-		</div>`,
+					<a-rspd-input [label]='label' [supportingText]='supportingText'>
+						<input
+							class='a-rspd-input__input'
+							[placeholder]='label'
+							[name]='label'
+							[id]='label'
+							[type]='pattern'
+							[minLength]='minLength'
+							[maxLength]='maxLength'
+							required
+							autocomplete='on'
+							/>
+					</a-rspd-input>
+				</div>`,
 	props: {
 		...args,
 	},
 });
 
-export const Icon = Template.bind({});
-Icon.args = {};
+export const Default = Template.bind({});
+Default.args = {};
 
 export default {
 	title: 'Atoms/Input',
