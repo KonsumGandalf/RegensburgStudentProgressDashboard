@@ -1,0 +1,118 @@
+<div class="p-rspd-page__content">
+	<o-rspd-verification [title]="'USER.IDENTITY_MANAGEMENT.AUTH.PAGE.PROFILE' | translate">
+		<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+			<div class="row">
+				<div class="col-sm">
+					<a-rspd-input [label]="formInformation.firstName.name | translate">
+						<input
+							class="a-rspd-input__input"
+							[placeholder]="formInformation.firstName.name | translate"
+							[name]="formInformation.firstName.controlName"
+							[id]="formInformation.firstName.controlName"
+							[type]="'text'"
+							[minLength]="2"
+							[maxLength]="20"
+							formControlName="{{ formInformation.firstName.controlName }}"
+							required
+							autocomplete="on"
+						/>
+					</a-rspd-input>
+				</div>
+				<div class="col-sm">
+					<a-rspd-input [label]="formInformation.lastName.name | translate">
+						<input
+							class="a-rspd-input__input"
+							[placeholder]="formInformation.lastName.name | translate"
+							[name]="formInformation.lastName.controlName"
+							[id]="formInformation.lastName.controlName"
+							[type]="'text'"
+							[minLength]="2"
+							[maxLength]="20"
+							formControlName="{{ formInformation.lastName.controlName }}"
+							required
+							autocomplete="on"
+						/>
+					</a-rspd-input>
+				</div>
+			</div>
+			<div class="row">
+				<a-rspd-input
+					[label]="formInformation.email.name | translate"
+					[supportingText]="
+						'USER.IDENTITY_MANAGEMENT.AUTH.FORM.SUPPORTING_TEXT.DISABLED_MAIL'
+							| translate
+					"
+				>
+					<input
+						class="a-rspd-input__input"
+						[placeholder]="formInformation.email.name | translate"
+						[name]="formInformation.email.controlName"
+						[id]="formInformation.email.controlName"
+						[type]="'text'"
+						formControlName="{{ formInformation.email.controlName }}"
+						required
+						autocomplete="on"
+						[readonly]="true"
+					/>
+				</a-rspd-input>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<a-rspd-input [label]="formInformation.username.name | translate">
+						<input
+							class="a-rspd-input__input"
+							[placeholder]="formInformation.username.name | translate"
+							[name]="formInformation.username.controlName"
+							[id]="formInformation.username.controlName"
+							[type]="'text'"
+							formControlName="{{ formInformation.username.controlName }}"
+							required
+							autocomplete="on"
+						/>
+					</a-rspd-input>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<a-rspd-input
+						[label]="formInformation.password.name | translate"
+						[supportingText]="getErrorMsg('password', 'invalidPassword')"
+					>
+						<input
+							class="a-rspd-input__input"
+							[placeholder]="formInformation.password.name | translate"
+							[name]="formInformation.password.controlName"
+							[id]="formInformation.password.controlName"
+							[type]="'password'"
+							[minLength]="minPasswordLength"
+							formControlName="{{ formInformation.password.controlName }}"
+							required
+							autocomplete="on"
+						/>
+					</a-rspd-input>
+				</div>
+				<div class="col-sm">
+					<a-rspd-input
+						[label]="formInformation.confirmPassword.name | translate"
+						[supportingText]="getErrorMsg('confirmPassword', 'fieldsMismatched')"
+					>
+						<input
+							class="a-rspd-input__input"
+							[placeholder]="formInformation.confirmPassword.name | translate"
+							[name]="formInformation.confirmPassword.controlName"
+							[id]="formInformation.confirmPassword.controlName"
+							[type]="'password'"
+							[minLength]="minPasswordLength"
+							formControlName="{{ formInformation.confirmPassword.controlName }}"
+							required
+							autocomplete="on"
+						/>
+					</a-rspd-input>
+				</div>
+			</div>
+			<button type="submit" [appearance]="buttonAppearance">
+				{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.PROFILE' | translate }}
+			</button>
+		</form>
+	</o-rspd-verification>
+</div>

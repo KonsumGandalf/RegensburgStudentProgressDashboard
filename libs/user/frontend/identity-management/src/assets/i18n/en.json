@@ -1,0 +1,32 @@
+{
+	"AUTH": {
+		"PAGE": {
+			"LOGIN": "Login",
+			"PROFILE": "Profile",
+			"REGISTER": "Register"
+		},
+		"FORM": {
+			"LABEL": {
+				"FIRST_NAME": "First Name",
+				"LAST_NAME": "Last Name",
+				"OTH_EMAIL": "Oth Email Address",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRM_PASSWORD": "Confirm Password"
+			},
+			"HELPER_TEXT": {
+				"OTH_EMAIL": "The email needs to have the suffix of @st.oth-regensburg.de",
+				"USERNAME": "The username must be unique",
+				"DISABLED_MAIL": "The email can not be reassigned"
+			}
+		},
+		"ACTION": {
+			"LOGIN": "Login",
+			"PROFILE": "Update Profile",
+			"REGISTER": "Register"
+		},
+		"RESPONSE": {
+			"INVALID_LOGIN": "Username and Password are not matching"
+		}
+	}
+}

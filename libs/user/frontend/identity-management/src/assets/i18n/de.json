@@ -1,0 +1,32 @@
+{
+	"AUTH": {
+		"PAGE": {
+			"LOGIN": "Login",
+			"PROFILE": "Profil",
+			"REGISTER": "Registrierung"
+		},
+		"FORM": {
+			"LABEL": {
+				"FIRST_NAME": "Vorname",
+				"LAST_NAME": "Nachname",
+				"OTH_EMAIL": "Oth Email Adresse",
+				"USERNAME": "Username",
+				"PASSWORD": "Passwort",
+				"CONFIRM_PASSWORD": "Bestätige Passwort"
+			},
+			"SUPPORTING_TEXT": {
+				"OTH_EMAIL": "Die Email muss auf @st.oth-regensburg.de enden.",
+				"USERNAME": "Der Username muss einzigartig sein.",
+				"DISABLED_MAIL": "Eine neue Email kann ich nicht zugewiesen werden."
+			}
+		},
+		"ACTION": {
+			"LOGIN": "Login",
+			"PROFILE": "Update das Profil",
+			"REGISTER": "Registrierung"
+		},
+		"RESPONSE": {
+			"INVALID_LOGIN": "Benutzername und Passwort stimmen nicht überein"
+		}
+	}
+}
