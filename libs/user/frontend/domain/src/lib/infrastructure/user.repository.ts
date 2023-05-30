@@ -61,4 +61,14 @@ export class UserRepository {
 	requestUserInformation(): Observable<IUserIntermediate> {
 		return this._httpClient.get<IUserIntermediate>(`${this._authRoute}`);
 	}
+
+	updateUser(updateUser: IUserIntermediate): Observable<IResponseAuthentication> {
+		return this._httpClient
+			.put<IResponseAuthentication>(`${this._authRoute}/update`, updateUser)
+			.pipe(
+				tap((resData) => {
+					this._authService.handleAuthentication(resData);
+				}),
+			);
+	}
 }

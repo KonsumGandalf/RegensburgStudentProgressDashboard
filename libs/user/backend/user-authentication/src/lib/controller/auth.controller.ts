@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, Request, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard, Role, RoleGuard, UserRole } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser } from '@rspd/user/backend/common-models';
@@ -96,5 +96,14 @@ export class AuthController {
 	@Get('check')
 	async checkSourceAvailability(@Query() source: ICheckAvailability): Promise<boolean> {
 		return await this._authService.checkSourceAvailability(source);
+	}
+
+	@UseGuards(JwtAuthGuard)
+	@Put('update')
+	async updateUser(
+		@Request() req: IAuthJwt,
+		@Body() updateUserDto: RegisterUserDto,
+	): Promise<IResponseAuthentication> {
+		return await this._authService.updateUser(req.user.username, updateUserDto);
 	}
 }

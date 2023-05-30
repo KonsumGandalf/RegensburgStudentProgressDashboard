@@ -1,0 +1,15 @@
+@use '../settings/generic/colors';
+
+.labeled_link {
+	justify-content: center;
+	display: flex;
+
+	label {
+		display: flex;
+	}
+
+	a {
+		margin-left: 0.5rem;
+		color: colors.$secondary-400;
+	}
+}

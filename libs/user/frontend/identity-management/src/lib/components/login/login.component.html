@@ -46,6 +46,14 @@
 				<button type="submit" [appearance]="buttonAppearance">
 					{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}
 				</button>
+				<div class="labeled_link">
+					<label for="register">
+						{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_REGISTER' | translate }}
+					</label>
+					<a id="register" href="/register">
+						{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}
+					</a>
+				</div>
 			</form>
 			<a-rspd-loading-indicator></a-rspd-loading-indicator>
 		</o-rspd-verification>

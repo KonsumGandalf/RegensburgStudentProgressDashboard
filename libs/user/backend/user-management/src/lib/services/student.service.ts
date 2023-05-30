@@ -44,4 +44,16 @@ export class StudentService extends UserService<Student> {
 			relations: ['githubUser', 'semester', 'email'],
 		});
 	}
+
+	async updateStudent(id: string, updatedStudent: Student): Promise<Student> {
+		const foundStudent = await super.findUser(id);
+		console.log({
+			...foundStudent,
+			...updatedStudent,
+		});
+		return await super.update(id, {
+			...foundStudent,
+			...updatedStudent,
+		});
+	}
 }

@@ -26,4 +26,12 @@ export class TutorService extends UserService<Tutor> {
 	async createTutor(user: Tutor): Promise<Tutor> {
 		return await super.create(user, [{ email: user.email }, { username: user.username }]);
 	}
+
+	async updateTutor(id: string, updatedTutor: Tutor): Promise<Tutor> {
+		const foundTutor = await super.findUser(id);
+		return await super.update(id, {
+			...foundTutor,
+			...updatedTutor,
+		});
+	}
 }

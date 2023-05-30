@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -38,7 +38,7 @@ export class RspdRegisterComponent {
 	minPasswordLength = 8;
 	cardInformation: ICardInformation = {
 		iconLogo: OthLogos.OTH,
-		isLoading: false,
+		isLoading: signal(false),
 		iconSize: '100%',
 	};
 
@@ -73,7 +73,7 @@ export class RspdRegisterComponent {
 			return;
 		}
 		this.cardInformation = {
-			isLoading: true,
+			isLoading: signal(true),
 			iconLogo: PhosphorIcons.EMAIL,
 			iconSize: IconSize.LG,
 		};
@@ -85,6 +85,9 @@ export class RspdRegisterComponent {
 				this._router.navigate(['/login']);
 			},
 			(error) => {
+				this.registerForm.controls['username'].setErrors({
+					incorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.UNKNOWN_ERROR',
+				});
 				console.log(error);
 			},
 		);

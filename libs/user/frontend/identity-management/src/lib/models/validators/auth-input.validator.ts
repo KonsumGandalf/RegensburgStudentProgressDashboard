@@ -1,3 +1,4 @@
+import { signal, WritableSignal } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { allowedDomains } from '@rspd/user/common/models';
 import { GeneralUserFacade, RegisterUserFacade } from '@rspd/user/frontend/domain';
@@ -8,10 +9,11 @@ import { CONSTANTS } from '../auth-constants';
 export class AuthInputValidator {
 	static validateUsernameIsTaken(
 		registerUserFacade: GeneralUserFacade,
-		currentName?: string,
+		currentName: WritableSignal<string> = signal(''),
 	): AsyncValidatorFn {
 		return (control: AbstractControl): Observable<ValidationErrors | null> => {
-			if (control.value === currentName) {
+			console.log(control.value, currentName());
+			if (control.value === currentName()) {
 				return of(null);
 			}
 			return registerUserFacade.checkUsernameIsTaken(control.value).pipe(

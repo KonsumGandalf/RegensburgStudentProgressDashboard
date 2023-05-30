@@ -24,10 +24,14 @@
 		"ACTION": {
 			"LOGIN": "Login",
 			"PROFILE": "Update Profile",
-			"REGISTER": "Register"
+			"REGISTER": "Register",
+			"SWITCH_TO_REGISTER": "Don't have an account yet?",
+			"SWITCH_TO_LOGIN": "Already have an account?"
 		},
 		"RESPONSE": {
-			"INVALID_LOGIN": "Username and Password are not matching"
+			"INVALID_LOGIN": "Username and Password are not matching.",
+			"UNCONFIRMED_EMAIL": "The email was NOT confirmed yet! Check your email.",
+			"UNKNOWN_ERROR": "An Unknown Error occurred."
 		}
 	}
 }

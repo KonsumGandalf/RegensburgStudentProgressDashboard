@@ -2,7 +2,7 @@
 	<o-rspd-verification
 		[headerLogo]="cardInformation.iconLogo"
 		[title]="'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate"
-		[isLoading]="cardInformation.isLoading"
+		[isLoading]="cardInformation.isLoading()"
 		[size]="cardInformation.iconSize"
 	>
 		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -111,6 +111,14 @@
 			<button type="submit" [appearance]="buttonAppearance">
 				{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}
 			</button>
+			<div class="labeled_link">
+				<label for="register">
+					{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_LOGIN' | translate }}
+				</label>
+				<a id="register" href="/register">
+					{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}
+				</a>
+			</div>
 		</form>
 	</o-rspd-verification>
 </div>

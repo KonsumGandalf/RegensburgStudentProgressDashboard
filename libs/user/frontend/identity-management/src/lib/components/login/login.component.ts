@@ -1,10 +1,19 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	HostBinding,
+	signal,
+	ViewEncapsulation,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ButtonAppearance, OthLogos } from '@rspd/shared/frontend/ui/atoms';
 import { ILoginUser } from '@rspd/user/common/models';
+import { UnconfirmedMailError } from '@rspd/user/frontend/auth';
 import { LoginUserFacade } from '@rspd/user/frontend/domain';
+import { catchError, Observable, throwError } from 'rxjs';
 
 import { formInformation } from '../../models/form-information';
 import { ICardInformation } from '../../models/interfaces/card-information.interface';
@@ -39,7 +48,7 @@ export class RspdLoginComponent {
 	formInformation = formInformation;
 	cardInformation: ICardInformation = {
 		iconLogo: OthLogos.OTH,
-		isLoading: false,
+		isLoading: signal(false),
 		iconSize: '100%',
 	};
 	buttonAppearance = ButtonAppearance.SHIFTED;
@@ -55,7 +64,7 @@ export class RspdLoginComponent {
 
 	@HostBinding('style.--progressBarVisible')
 	get isVisible(): string {
-		if (this.cardInformation.isLoading) {
+		if (this.cardInformation.isLoading()) {
 			return 'visible';
 		}
 		return 'hidden';
@@ -66,20 +75,41 @@ export class RspdLoginComponent {
 			return;
 		}
 
-		this.cardInformation.isLoading = true;
-		this._loginUserFacade.loginUser(this.loginForm.value as ILoginUser).subscribe(
-			(resData) => {
-				this._router.navigate(['/profile']);
-			},
-			(error) => {
-				console.log(error);
-				this.loginForm.controls['username'].setErrors({
-					incorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN',
-				});
-				this.loginForm.controls['password'].setErrors({
-					incorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN',
-				});
-			},
-		);
+		this.cardInformation.isLoading.set(true);
+
+		this._loginUserFacade
+			.loginUser(this.loginForm.value as ILoginUser)
+			.pipe(
+				catchError((error: unknown): Observable<any> => {
+					if (error instanceof UnconfirmedMailError) {
+						return throwError(
+							() => 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.UNCONFIRMED_EMAIL',
+						);
+					} else if (error instanceof HttpErrorResponse) {
+						if (error.status === 401) {
+							return throwError(
+								() => 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.INVALID_LOGIN',
+							);
+						}
+					}
+
+					return throwError(() => 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.UNKNOWN_ERROR');
+				}),
+			)
+			.subscribe(
+				(resData) => {
+					this._router.navigate(['/profile']);
+				},
+				(error) => {
+					this.loginForm.controls['username'].setErrors({
+						incorrect: error,
+					});
+					this.loginForm.controls['password'].setErrors({
+						incorrect: error,
+					});
+
+					this.cardInformation.isLoading.set(false);
+				},
+			);
 	}
 }

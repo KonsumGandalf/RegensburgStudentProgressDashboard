@@ -3,11 +3,10 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
-import { IAppConfig } from '@rspd/shared/backend/utils';
+import { IAppConfig, UserRole } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import { TutorService, UserService } from '@rspd/user/backend/user-management';
-import { StudentService } from '@rspd/user/backend/user-management';
+import { StudentService, TutorService, UserService } from '@rspd/user/backend/user-management';
 import {
 	ICheckAvailability,
 	IResponseAuthentication,
@@ -201,5 +200,29 @@ export class AuthService {
 			firstName: response.firstName,
 			lastName: response.lastName,
 		};
+	}
+
+	async updateUser(username: string, userDto: RegisterUserDto): Promise<IResponseAuthentication> {
+		const foundUser = await this._userService.findUserByUsername(username);
+		const updatedUser: Partial<Student | Tutor> = {
+			firstName: userDto.firstName || foundUser.firstName,
+			lastName: userDto.lastName || foundUser.lastName,
+			username: userDto.username || foundUser.username,
+		} as Partial<Student | Tutor>;
+		console.log(updatedUser);
+		const saltRounds = this._configService.get('auth', {
+			infer: true,
+		}).saltRounds;
+		const hash = await bcrypt.hash(userDto.password, saltRounds);
+		if (foundUser.hashedPassword != hash) {
+			updatedUser.hashedPassword = hash;
+		}
+
+		const createdUser =
+			foundUser.role == UserRole.STUDENT
+				? await this._userService.update(foundUser.id, updatedUser as Student)
+				: await this._tutorService.update(foundUser.id, updatedUser as Tutor);
+
+		return await this.login(createdUser);
 	}
 }

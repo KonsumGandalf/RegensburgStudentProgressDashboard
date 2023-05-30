@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GenericRepositoryService, UserRole } from '@rspd/shared/backend/utils';
-import { IComplexUser, IEmail, Student, User } from '@rspd/user/backend/common-models';
+import { IComplexUser, IEmail, Student, Tutor, User } from '@rspd/user/backend/common-models';
 import { Repository } from 'typeorm';
 
 @Injectable()

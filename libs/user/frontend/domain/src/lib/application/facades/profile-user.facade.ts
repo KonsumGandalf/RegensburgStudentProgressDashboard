@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUserIntermediate } from '@rspd/user/common/models';
+import { IResponseAuthentication, IUserIntermediate } from '@rspd/user/common/models';
 import { Observable } from 'rxjs';
 
 import { UserRepository } from '../../infrastructure/user.repository';
@@ -16,5 +16,9 @@ export class ProfileUserFacade extends GeneralUserFacade {
 
 	requestUserInformation(): Observable<IUserIntermediate> {
 		return this._userRepository.requestUserInformation();
+	}
+
+	updateUser(updateUser: IUserIntermediate): Observable<IResponseAuthentication> {
+		return this._userRepository.updateUser(updateUser);
 	}
 }
