@@ -1,7 +1,5 @@
 # shared-frontend-environment
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test shared-frontend-environment` to execute the unit tests.
+This library is a collection of utilities, configurations, and settings related to the
+frontend environment setup. It provides a centralized and consistent approach to managing environment-specific
+variables, dependencies, and configurations across frontend projects.

@@ -3,17 +3,20 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { SemesterService } from '@rspd/challenge-management/backend/semester-management';
 import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
-import { IAppConfig } from '@rspd/shared/backend/utils';
+import { IAppConfig, UserRole } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
-import { TutorService, UserService } from '@rspd/user/backend/user-management';
-import { StudentService } from '@rspd/user/backend/user-management';
+import { StudentService, TutorService, UserService } from '@rspd/user/backend/user-management';
+import {
+	ICheckAvailability,
+	IResponseAuthentication,
+	IUserIntermediate,
+} from '@rspd/user/common/models';
 import * as bcrypt from 'bcrypt';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
 import { IAuthUser } from '../models/interfaces/auth-user.interface';
-import { IResponseAuthentication } from '../models/interfaces/response-login.interfaces';
 import { IVerificationToken } from '../models/interfaces/verfication-token-email.interface';
 
 /**
@@ -36,11 +39,10 @@ export class AuthService {
 	 * Registers a new user.
 	 *
 	 * @param {RegisterUserDto} user - The user to register.
-	 * @returns {Promise<IResponseAuthentication>} The registered user.
 	 * @throws {DuplicateSourceException} If the username or email already exists.
 	 * @throws {Error} If any other error occurs.
 	 */
-	async register(user: RegisterUserDto): Promise<IResponseAuthentication> {
+	async register(user: RegisterUserDto): Promise<void> {
 		const saltRounds = this._configService.get('auth', {
 			infer: true,
 		}).saltRounds;
@@ -69,7 +71,7 @@ export class AuthService {
 		} catch (e) {
 			throw new Error(e);
 		}
-		return await this.login(userEntity);
+		return;
 	}
 
 	/**
@@ -99,12 +101,23 @@ export class AuthService {
 	 * @returns {Promise<IResponseAuthentication>} The login response, containing the access token.
 	 */
 	async login(user: IUser): Promise<IResponseAuthentication> {
+		const tokenExpirationDate = new Date();
+		tokenExpirationDate.setMinutes(tokenExpirationDate.getMinutes() + 45);
+
+		const isEmailValidated = (await this._userService.findUserByUsername(user.username)).email
+			.isEmailValidated;
+		if (!isEmailValidated) {
+			await this.requestConfirmationMail(user.username);
+		}
+
 		return {
 			access_token: this._jwtService.sign({
 				username: user.username,
 				id: user.id,
 				role: (await this._userService.findOneById(user.id)).role,
 			} as IUser),
+			tokenExpirationDate,
+			isEmailValidated,
 		};
 	}
 
@@ -159,5 +172,57 @@ export class AuthService {
 			}
 			throw new BadRequestException('Bad confirmation token');
 		}
+	}
+
+	async checkSourceAvailability(source: ICheckAvailability): Promise<boolean> {
+		let availability = false;
+		if (source.email) {
+			const mail = await this._emailService.findOptions({
+				where: { email: source.email },
+			});
+			if (source.confirmedMail) {
+				availability = mail.isEmailValidated;
+			} else {
+				availability = !!mail;
+			}
+		}
+		if (source.username) {
+			availability = !!(await this._userService.findUserByUsername(source.username));
+		}
+		return availability;
+	}
+
+	async getUser(username: string): Promise<IUserIntermediate> {
+		const response = await this._userService.findUserByUsername(username);
+		return {
+			email: response.email.email.toString(),
+			username: response.username,
+			firstName: response.firstName,
+			lastName: response.lastName,
+		};
+	}
+
+	async updateUser(username: string, userDto: RegisterUserDto): Promise<IResponseAuthentication> {
+		const foundUser = await this._userService.findUserByUsername(username);
+		const updatedUser: Partial<Student | Tutor> = {
+			firstName: userDto.firstName || foundUser.firstName,
+			lastName: userDto.lastName || foundUser.lastName,
+			username: userDto.username || foundUser.username,
+		} as Partial<Student | Tutor>;
+		console.log(updatedUser);
+		const saltRounds = this._configService.get('auth', {
+			infer: true,
+		}).saltRounds;
+		const hash = await bcrypt.hash(userDto.password, saltRounds);
+		if (foundUser.hashedPassword != hash) {
+			updatedUser.hashedPassword = hash;
+		}
+
+		const createdUser =
+			foundUser.role == UserRole.STUDENT
+				? await this._userService.update(foundUser.id, updatedUser as Student)
+				: await this._tutorService.update(foundUser.id, updatedUser as Tutor);
+
+		return await this.login(createdUser);
 	}
 }

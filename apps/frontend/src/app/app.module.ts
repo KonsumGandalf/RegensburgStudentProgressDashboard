@@ -1,8 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { RspdEnvironmentModule } from '@rspd/shared/frontend/environment';
+import { TokenInterceptorService } from '@rspd/user/frontend/auth';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -22,5 +23,12 @@ import { AppTranslationModule } from './translation/translation.module';
 	],
 	declarations: [AppComponent],
 	bootstrap: [AppComponent],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: TokenInterceptorService,
+			multi: true,
+		},
+	],
 })
 export class AppModule {}

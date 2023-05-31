@@ -1,0 +1,5 @@
+@use 'settings/generic/colors';
+
+md-linear-progress {
+	--md-linear-progress-active-indicator-color: #{colors.$secondary-400};
+}

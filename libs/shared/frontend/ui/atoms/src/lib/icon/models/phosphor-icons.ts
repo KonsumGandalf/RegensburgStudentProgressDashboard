@@ -9,4 +9,19 @@ export enum PhosphorIcons {
 	SAVE = '<i class="ph ph-floppy-disk"></i>',
 	INCORRECT = '<i class="ph-fill ph-x-square"></i>',
 	CORRECT = '<i class="ph-fill ph-check-square"></i>',
+	EMAIL = '<i class="ph-fill ph-envelope-open"></i>',
 }
+
+export const phosphorIcons = {
+	edit: [PhosphorIcons.EDIT],
+	lock: [PhosphorIcons.LOCK],
+	random: [PhosphorIcons.RANDOM],
+	visible: [PhosphorIcons.VISIBLE],
+	delete: [PhosphorIcons.DELETE],
+	date: [PhosphorIcons.DATE],
+	add: [PhosphorIcons.ADD],
+	save: [PhosphorIcons.SAVE],
+	incorrect: [PhosphorIcons.INCORRECT],
+	correct: [PhosphorIcons.CORRECT],
+	email: [PhosphorIcons.EMAIL],
+};

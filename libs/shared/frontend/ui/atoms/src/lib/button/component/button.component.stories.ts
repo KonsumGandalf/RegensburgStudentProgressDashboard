@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/angular';
 
-import { phosphorIcons } from '../../icon/component/icon.component.stories';
+import { phosphorIcons } from '../../icon/models/phosphor-icons';
 import { ButtonAppearance } from '../models/button-appearance';
 import { RspdButtonComponent } from './button.component';
 

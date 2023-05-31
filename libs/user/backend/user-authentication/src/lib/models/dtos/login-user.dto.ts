@@ -1,9 +1,10 @@
+import { ILoginUser } from '@rspd/user/common/models';
 import { IsString, MaxLength, MinLength } from 'class-validator';
 
 /**
  * Data Transfer Object (DTO) for login user information.
  */
-export class LoginUserDto {
+export class LoginUserDto implements ILoginUser {
 	/**
 	 * The username of the user to login.
 	 * @example angie_123

@@ -1,6 +1,5 @@
+import { allowedDomains } from '@rspd/user/common/models';
 import { registerDecorator, ValidationOptions } from 'class-validator';
-
-const allowedDomains = ['st.oth-regensburg.de'];
 
 export function IsAllowEmailDomain(validationOptions?: ValidationOptions) {
 	return function (object: unknown, propertyName: string) {

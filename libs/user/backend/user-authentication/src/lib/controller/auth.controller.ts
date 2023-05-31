@@ -1,14 +1,18 @@
-import { Body, Controller, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, Request, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard, Role, RoleGuard, UserRole } from '@rspd/shared/backend/utils';
-import { IEmail, IUser } from '@rspd/user/backend/common-models';
+import { IComplexUser, IEmail, IUser } from '@rspd/user/backend/common-models';
 import { IRequestLogin } from '@rspd/user/backend/common-models';
+import {
+	ICheckAvailability,
+	IResponseAuthentication,
+	IUserIntermediate,
+} from '@rspd/user/common/models';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
 import { LocalAuthGuard } from '../models/guards/local-auth.guard';
 import { IAuthJwt } from '../models/interfaces/auth-jwt.interface';
-import { IResponseAuthentication } from '../models/interfaces/response-login.interfaces';
 import { AuthService } from '../services/auth.service';
 
 /**
@@ -24,10 +28,9 @@ export class AuthController {
 	 * @async
 	 * @function
 	 * @param {RegisterUserDto} userDto - User registration details.
-	 * @returns {Promise<IResponseAuthentication>} Promise resolving to a response object containing a JWT token.
 	 */
 	@Post('register')
-	async register(@Body() userDto: RegisterUserDto): Promise<IResponseAuthentication> {
+	async register(@Body() userDto: RegisterUserDto): Promise<void> {
 		return await this._authService.register(userDto);
 	}
 
@@ -59,11 +62,10 @@ export class AuthController {
 	 * @param {IAuthJwt} req - User authentication details.
 	 * @returns {Promise<IUser>} Promise resolving to the current logged-in user object.
 	 */
-	@Role(UserRole.TUTOR)
-	@UseGuards(JwtAuthGuard, RoleGuard)
-	@Get('whoami')
-	async whoami(@Request() req: IAuthJwt) {
-		return req.user;
+	@UseGuards(JwtAuthGuard)
+	@Get()
+	async getUser(@Request() req: IAuthJwt): Promise<IUserIntermediate> {
+		return await this._authService.getUser(req.user.username);
 	}
 
 	/**
@@ -89,5 +91,19 @@ export class AuthController {
 	@Get('confirmation-mail/:token')
 	async confirmMail(@Param('token') token: string): Promise<IEmail> {
 		return await this._authService.confirmMail(token);
+	}
+
+	@Get('check')
+	async checkSourceAvailability(@Query() source: ICheckAvailability): Promise<boolean> {
+		return await this._authService.checkSourceAvailability(source);
+	}
+
+	@UseGuards(JwtAuthGuard)
+	@Put('update')
+	async updateUser(
+		@Request() req: IAuthJwt,
+		@Body() updateUserDto: RegisterUserDto,
+	): Promise<IResponseAuthentication> {
+		return await this._authService.updateUser(req.user.username, updateUserDto);
 	}
 }

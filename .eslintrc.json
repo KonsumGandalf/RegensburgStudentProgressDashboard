@@ -15,11 +15,7 @@
 							{
 								"sourceTag": "type:app",
 								"onlyDependOnLibsWithTags": [
-									"type:master-feature",
-									"type:feature",
-									"type:util-feature",
-									"type:util",
-									"type:common-model"
+									"*"
 								]
 							},
 							{
@@ -37,7 +33,8 @@
 									"type:feature",
 									"type:util-feature",
 									"type:util",
-									"type:common-model"
+									"type:common-model",
+									"type:ui"
 								]
 							},
 							{
@@ -53,12 +50,47 @@
 								"onlyDependOnLibsWithTags": ["type:util", "type:common-model"]
 							},
 							{
-								"sourceTag": "type:ui",
-								"onlyDependOnLibsWithTags": []
-							},
-							{
 								"sourceTag": "type:common-model",
 								"onlyDependOnLibsWithTags": ["type:common-model"]
+							},
+							{
+								"sourceTag": "type:ui",
+								"onlyDependOnLibsWithTags": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
+							},
+							{
+								"sourceTag": "type:atoms-ui",
+								"onlyDependOnLibsWithTag": ["type:ui"]
+							},
+							{
+								"sourceTag": "type:molecules-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui"
+								]
+							},
+							{
+								"sourceTag": "type:organisms-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
+							},
+							{
+								"sourceTag": "type:page-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
 							},
 							{
 								"sourceTag": "domain:shared",

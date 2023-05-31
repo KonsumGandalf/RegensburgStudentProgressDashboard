@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 
 import { RspdIconComponent } from '../../icon/component/icon.component';
+import { IconColor } from '../../icon/models/icon-color';
+import { IconSize } from '../../icon/models/icon-size';
 import { PhosphorIcons } from '../../icon/models/phosphor-icons';
 import { ButtonAppearance, ButtonAppearanceType } from '../models/button-appearance';
 
@@ -25,6 +27,9 @@ import { ButtonAppearance, ButtonAppearanceType } from '../models/button-appeara
 	imports: [RspdIconComponent, NgIf],
 })
 export class RspdButtonComponent {
+	protected _iconColor = IconColor.WHITE;
+	protected _iconSize = IconSize.SM;
+
 	/**
 	 * Sets the appearance of the button. The default appearance is filled.
 	 * @param {ButtonAppearance} appearance - The type of appearance.

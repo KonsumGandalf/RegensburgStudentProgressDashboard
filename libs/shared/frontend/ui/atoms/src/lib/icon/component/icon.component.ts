@@ -9,9 +9,8 @@ import {
 
 import { IconColor } from '../models/icon-color';
 import { IconSize } from '../models/icon-size';
-import { OthLogos } from '../models/oth-logos';
+import { IconUnion } from '../models/icon-union';
 import { PhosphorIcons } from '../models/phosphor-icons';
-import { TopicIcons } from '../models/topic-icons';
 
 @Component({
 	selector: 'a-rspd-icon',
@@ -53,7 +52,7 @@ export class RspdIconComponent {
 	 * @param {TopicIcons} iconName - The name of the icon appearance.
 	 */
 	@Input()
-	set appearance(iconName: PhosphorIcons | TopicIcons | OthLogos) {
+	set appearance(iconName: IconUnion) {
 		this._element.nativeElement.innerHTML = iconName || PhosphorIcons.CORRECT;
 	}
 }

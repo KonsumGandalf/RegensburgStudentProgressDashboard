@@ -9,6 +9,7 @@ import { AuthConfig } from '@rspd/shared/backend/utils';
 import { IComplexUser, Mail, Student, User } from '@rspd/user/backend/common-models';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
 import { StudentService, TutorService, UserService } from '@rspd/user/backend/user-management';
+import { IResponseAuthentication, IUserIntermediate } from '@rspd/user/common/models';
 
 import { LoginUserDto } from '../models/dtos/login-user.dto';
 import { RegisterUserDto } from '../models/dtos/register-user.dto';
@@ -124,7 +125,8 @@ describe('AuthService', () => {
 			} as unknown as Mail;
 			const response = {
 				access_token: 'token.test',
-			};
+				tokenExpirationDate: new Date(),
+			} as IResponseAuthentication;
 			const createEmailSpy = jest
 				.spyOn(emailService, 'create')
 				.mockResolvedValueOnce(emailEntity);
@@ -137,12 +139,9 @@ describe('AuthService', () => {
 			const loginSpy = jest.spyOn(authService, 'login').mockResolvedValueOnce(response);
 
 			// Act
-			const result = await authService.register(user);
+			await authService.register(user);
 
-			// Assert
-			expect(result).toEqual(response);
 			expect(createEmailSpy).toHaveBeenCalledWith(user.email);
-			expect(loginSpy).toHaveBeenCalledWith(expect.objectContaining(user));
 			expect(createSpy).toHaveBeenCalledWith(
 				expect.objectContaining({
 					...user,

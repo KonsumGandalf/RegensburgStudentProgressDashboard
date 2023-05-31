@@ -2,8 +2,13 @@
 
 body {
 	margin: 0;
-	box-sizing: border-box;
 	color: $themed-black;
-	font-weight: 900;
+	font-weight: 400;
+	font-size: 1rem;
 	font-family: $font-family-sans-serif;
+	overflow: auto;
+}
+
+* {
+	box-sizing: border-box;
 }

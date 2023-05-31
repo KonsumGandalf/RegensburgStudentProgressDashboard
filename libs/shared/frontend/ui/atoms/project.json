@@ -2,8 +2,7 @@
 	"name": "shared-frontend-ui-atoms",
 	"$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
 	"sourceRoot": "libs/shared/frontend/ui/atoms/src",
-	"prefix": "rspd",
-	"tags": ["type:ui", "domain:shared", "kind:frontend"],
+	"prefix": "a-rspd",
 	"projectType": "library",
 	"targets": {
 		"test": {
@@ -30,5 +29,6 @@
 				]
 			}
 		}
-	}
+	},
+	"tags": ["type:atoms-ui", "type:ui", "domain:shared", "kind:frontend"]
 }

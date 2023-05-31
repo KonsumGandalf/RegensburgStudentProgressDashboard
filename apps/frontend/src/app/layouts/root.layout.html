@@ -1,3 +1,8 @@
-<div>{{ 'APP.INFORMATION.TITLE' | translate }}</div>
-<i class="ph-bold ph-airplane"></i>
-<img src="assets\svgs\sql.svg" />
+<header>
+	<m-rspd-nav-bar
+		(logoutTriggered)='logout()'
+		[navBarItems]='navBarItems'
+		[currentRoute]='currentRoute'
+		[username]='username'></m-rspd-nav-bar>
+</header>
+<router-outlet></router-outlet>

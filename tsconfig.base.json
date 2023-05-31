@@ -15,6 +15,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
+			"@rspd/auth/common/models": ["libs/auth/common/models/src/index.ts"],
 			"@rspd/challenge-management/backend/challenge-management": [
 				"libs/challenge-management/backend/challenge-management/src/index.ts"
 			],
@@ -42,6 +43,10 @@
 				"libs/shared/frontend/storybook-host/src/index.ts"
 			],
 			"@rspd/shared/frontend/ui/atoms": ["libs/shared/frontend/ui/atoms/src/index.ts"],
+			"@rspd/shared/frontend/ui/molecules": ["libs/shared/frontend/ui/molecules/src/index.ts"],
+			"@rspd/shared/frontend/ui/organisms": [
+				"libs/shared/frontend/ui/organisms/src/index.ts"
+			],
 			"@rspd/student-submissions/backend/common-models": [
 				"libs/student-submissions/backend/common-models/src/index.ts"
 			],
@@ -70,7 +75,16 @@
 			"@rspd/user/backend/user-mail-management": [
 				"libs/user/backend/user-mail-management/src/index.ts"
 			],
-			"@rspd/user/backend/user-management": ["libs/user/backend/user-management/src/index.ts"]
+			"@rspd/user/backend/user-management": [
+				"libs/user/backend/user-management/src/index.ts"
+			],
+			"@rspd/user/common/models": ["libs/user/common/models/src/index.ts"],
+			"@rspd/user/frontend/auth": ["libs/user/frontend/auth/src/index.ts"],
+			"@rspd/user/frontend/domain": ["libs/user/frontend/domain/src/index.ts"],
+			"@rspd/user/frontend/identity-management": [
+				"libs/user/frontend/identity-management/src/index.ts"
+			],
+			"@rspd/user/frontend/shell": ["libs/user/frontend/shell/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
