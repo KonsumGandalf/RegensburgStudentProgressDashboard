@@ -1,11 +1,11 @@
 import { Route } from '@angular/router';
+import { authGuard } from '@rspd/user/frontend/auth';
 import {
 	RspdLoginComponent,
 	RspdProfileComponent,
 	RspdRegisterComponent,
 } from '@rspd/user/frontend/identity-management';
 
-import { authGuard } from '../../../auth/src/lib/models/guards/auth.guard';
 import { RspdUserPage } from './page/user.page';
 
 /**

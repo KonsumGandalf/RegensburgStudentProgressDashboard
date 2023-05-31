@@ -19,14 +19,15 @@ export class AppRootLayout {
 	navBarItems = signal(ROUTES_AS_NAV_BAR_ITEMS);
 	username: Signal<string | undefined> = signal(undefined);
 	currentRoute = signal('');
-	
-	constructor(private router: Router, protected authService: AuthService) {
-		this.router.events.subscribe((event) => {
+
+	constructor(private _router: Router, protected authService: AuthService) {
+		this._router.events.subscribe((event) => {
 			if (event instanceof NavigationEnd) {
 				this.currentRoute.set(event.urlAfterRedirects);
 			}
 		});
 		this.username = computed(() => authService.user()?.username);
+		this.authService.autoLogin();
 	}
 
 	logout() {

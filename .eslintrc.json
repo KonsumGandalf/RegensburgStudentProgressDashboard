@@ -15,11 +15,7 @@
 							{
 								"sourceTag": "type:app",
 								"onlyDependOnLibsWithTags": [
-									"type:master-feature",
-									"type:feature",
-									"type:util-feature",
-									"type:util",
-									"type:common-model"
+									"*"
 								]
 							},
 							{
@@ -61,39 +57,39 @@
 								"sourceTag": "type:ui",
 								"onlyDependOnLibsWithTags": [
 									"type:ui",
-									"type:atom-ui",
-									"type:molecule-ui",
-									"type:organism-ui"
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
 								]
 							},
 							{
-								"sourceTag": "type:atom-ui",
+								"sourceTag": "type:atoms-ui",
 								"onlyDependOnLibsWithTag": ["type:ui"]
 							},
 							{
-								"sourceTag": "type:molecule-ui",
+								"sourceTag": "type:molecules-ui",
 								"onlyDependOnLibsWithTag": [
 									"type:ui",
-									"type:atom-ui",
-									"type:molecule-ui"
+									"type:atoms-ui",
+									"type:molecules-ui"
 								]
 							},
 							{
-								"sourceTag": "type:organism-ui",
+								"sourceTag": "type:organisms-ui",
 								"onlyDependOnLibsWithTag": [
 									"type:ui",
-									"type:atom-ui",
-									"type:molecule-ui",
-									"type:organism-ui"
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
 								]
 							},
 							{
 								"sourceTag": "type:page-ui",
 								"onlyDependOnLibsWithTag": [
 									"type:ui",
-									"type:atom-ui",
-									"type:molecule-ui",
-									"type:organism-ui"
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
 								]
 							},
 							{
