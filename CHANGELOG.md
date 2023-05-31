@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.2.0](https://github.com/KonsumGandalf/rsdp/compare/rsdp-v1.1.0...rsdp-v1.2.0) (2023-05-31)
+
+
+### Features
+
+* **base-application:** feat(base-application):  ([4055244](https://github.com/KonsumGandalf/rsdp/commit/4055244d3c98d135bf6a4294a54b5d7e4a168fdf)), closes [#35](https://github.com/KonsumGandalf/rsdp/issues/35)
+* **base-application:** feat(base-application):  ([d319304](https://github.com/KonsumGandalf/rsdp/commit/d31930414d702c94db9758994ce7d847a30acd72)), closes [#35](https://github.com/KonsumGandalf/rsdp/issues/35)
+* **base-application:** feat(base-application):  ([c7b4897](https://github.com/KonsumGandalf/rsdp/commit/c7b4897b779a1c0d8984051c197ebda61e41a3e8)), closes [#35](https://github.com/KonsumGandalf/rsdp/issues/35)
+* **base-application:** feat(base-application):  ([9e5e045](https://github.com/KonsumGandalf/rsdp/commit/9e5e04581f2b96aa489ead062f4f2775de9ce287))
+* **base-application:** feat(base-application):  ([d29f41a](https://github.com/KonsumGandalf/rsdp/commit/d29f41aee4020f2e5daa8cef94556deb835a44e1)), closes [#31](https://github.com/KonsumGandalf/rsdp/issues/31)
+* **base-application:** Integrate Frontend ([b89de96](https://github.com/KonsumGandalf/rsdp/commit/b89de9690911adadce1121a67b5f5227a88f5276))
+* **frontend:** feat(frontend):  ([7698a2c](https://github.com/KonsumGandalf/rsdp/commit/7698a2c8b725e28f7144dde01ab1236796126fb1))
+* **frontend:** feat(frontend):  ([ff1f96c](https://github.com/KonsumGandalf/rsdp/commit/ff1f96c9457daf4e792a0ee0be9a8def3a790ac0))
+* **frontend:** feat(frontend):  ([53f6f2c](https://github.com/KonsumGandalf/rsdp/commit/53f6f2ceb013296fc41d207241398957fc3a894c))
+* **shared-frontend-ui:** feat(shared-frontend-ui):  ([f7d9f97](https://github.com/KonsumGandalf/rsdp/commit/f7d9f97a09617e469b5cdfab1cd36b7652acb3c0)), closes [#35](https://github.com/KonsumGandalf/rsdp/issues/35)
+* **shared-frontend-ui:** feat(shared-frontend-ui):  ([dc3dfeb](https://github.com/KonsumGandalf/rsdp/commit/dc3dfebfa8bce34b59a020fa5fd8d8f58afc6032)), closes [#35](https://github.com/KonsumGandalf/rsdp/issues/35)
+* **shared-frontend-ui:** feat(shared-frontend-ui):  ([16874a1](https://github.com/KonsumGandalf/rsdp/commit/16874a1649585030cacfdd78ff368ffc4d9e1da7))
+* **shared-frontend-ui:** feat(shared-frontend-ui):  ([ccddd69](https://github.com/KonsumGandalf/rsdp/commit/ccddd69df2868a5d8743e96b17ad05ac1fb6a970)), closes [#31](https://github.com/KonsumGandalf/rsdp/issues/31)
+* **shared-frontend-ui:** add card component and adjust icon component ([0467916](https://github.com/KonsumGandalf/rsdp/commit/046791644fa654f6a2cb685220b1007deee68cd9))
+* **shared-frontend-ui:** add inter font as display font ([0846f3c](https://github.com/KonsumGandalf/rsdp/commit/0846f3c9137288c587f84d867214f5191c3c1819))
+* **shared-frontend-ui:** add more oth logos ([4b22294](https://github.com/KonsumGandalf/rsdp/commit/4b22294ca3c4e2c4f3590864ca61e59d61a543a8))
+* **shared-frontend-ui:** Adjust old components to new requirements ([5d3fbb5](https://github.com/KonsumGandalf/rsdp/commit/5d3fbb51c1732f8c02886f986b81dbd5f7d3c030))
+* **shared-frontend-ui:** Integrate Input Atom ([ebf1501](https://github.com/KonsumGandalf/rsdp/commit/ebf1501bccac709c2f1f930338ae93f60f72d6f4))
+* **shared-frontend-ui:** Integrate Material Web Components ([18a2427](https://github.com/KonsumGandalf/rsdp/commit/18a24270516d57c9a895dcc2d6ce0fd2f45e9c4e))
+* **user-backend-user-authentication:** feat(user-backend-user-authentication):  ([73cdd0a](https://github.com/KonsumGandalf/rsdp/commit/73cdd0ae033745af78878e14e5ecd4177504f99a))
+* **user-frontend-identity-management:** feat(user-frontend-identity-management):  ([fe1d791](https://github.com/KonsumGandalf/rsdp/commit/fe1d791fa46de6c0d9be726c0c94301c14b1d7d1))
+* **user-frontend-identity-management:** feat(user-frontend-identity-management):  ([e129383](https://github.com/KonsumGandalf/rsdp/commit/e129383b1f0d413fdfd65c7fe3bc0f56e4c12560))
+
+
+### Bug Fixes
+
+* **base-application:** fix(base-application):  ([13e6378](https://github.com/KonsumGandalf/rsdp/commit/13e63785be1c80cb54587cfc530f395c7d33d98b))
+* **base-application:** fix(base-application):  ([f30adbb](https://github.com/KonsumGandalf/rsdp/commit/f30adbbae50af1d8600a9469ca139f93be01de87))
+* **shared-frontend-ui:** enum entries to SNAKE_CASE ([5ac34d0](https://github.com/KonsumGandalf/rsdp/commit/5ac34d05b07966a751f602372f726e047d93b0cb))
+* **shared-frontend-ui:** lint and test errors ([2dae920](https://github.com/KonsumGandalf/rsdp/commit/2dae920253c81110375b491d7956e9cdd2b92e8a))
+* **shared-frontend-ui:** Remove unused imports ([fffddf7](https://github.com/KonsumGandalf/rsdp/commit/fffddf79c669c429afe6cbfd8118b712e3579f46))
+
 ## [1.1.0](https://github.com/KonsumGandalf/rsdp/compare/rsdp-v1.0.0...rsdp-v1.1.0) (2023-05-21)
 
 
