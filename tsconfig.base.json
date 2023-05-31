@@ -43,6 +43,7 @@
 				"libs/shared/frontend/storybook-host/src/index.ts"
 			],
 			"@rspd/shared/frontend/ui/atoms": ["libs/shared/frontend/ui/atoms/src/index.ts"],
+			"@rspd/shared/frontend/ui/molecules": ["libs/shared/frontend/ui/molecules/src/index.ts"],
 			"@rspd/shared/frontend/ui/organisms": [
 				"libs/shared/frontend/ui/organisms/src/index.ts"
 			],

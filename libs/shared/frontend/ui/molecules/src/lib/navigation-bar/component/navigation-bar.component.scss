@@ -1,0 +1,65 @@
+@use 'settings/generic/colors';
+@use 'settings/generic/padding';
+@use 'settings/vendors/bootstrap';
+
+.m-rspd-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    background-color: colors.$themed-white;
+    align-items: center;
+    margin-top: 0;
+
+    &.m-rspd-nav-bar__logo {
+        a-rspd-card {
+            padding: padding.$padding-x-sm;
+            background: linear-gradient(to right, colors.$secondary-400 50%, colors.$themed-white 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            align-items: center;
+            transition: all .5s ease-out;
+
+            &:hover {
+                background-position: left bottom;
+            }
+        }
+    }
+
+    a {
+        a-rspd-card {
+
+            img {
+                width: 6rem;
+            }
+        }
+
+    }
+
+    &.m-rspd-nav-bar__link-list {
+        display: flex;
+
+        .m-drop-menu {
+            font-family: bootstrap.$font-family-monospace;
+            font-size: 0.875rem;
+            color: colors.$themed-white;
+
+            .m-drop-menu__item {
+                padding: 0.5rem 0;
+                text-align: center;
+
+                &:active {
+                    background-color: colors.$secondary-400;
+                }
+            }
+        }
+    }
+
+    .m-rspd-nav-bar__item {
+        margin-left: 1rem;
+
+    }
+
+    &.m-rspd-nav-bar__link-list {
+
+    }
+}

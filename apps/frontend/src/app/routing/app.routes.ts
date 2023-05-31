@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { path } from '@angular-devkit/core';
 
 import { AppRootLayout } from '../layouts/root.layout';
 
@@ -16,3 +15,9 @@ export const APP_ROUTES: Routes = [
 		],
 	},
 ];
+
+export const ROUTES_AS_NAV_BAR_ITEMS = [
+	{ label: 'NAVIGATION.LINKS.HOME', routerLink: '/', active: false },
+	{ label: 'NAVIGATION.LINKS.OVERVIEW', routerLink: '/overview', active: false },
+	{ label: 'NAVIGATION.LINKS.CERTIFICATE', routerLink: '/certificate', active: false },
+]

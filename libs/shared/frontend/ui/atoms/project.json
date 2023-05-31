@@ -30,5 +30,5 @@
 			}
 		}
 	},
-	"tags": ["type:atom-ui", "type:ui", "domain:shared", "kind:frontend"]
+	"tags": ["type:atoms-ui", "type:ui", "domain:shared", "kind:frontend"]
 }

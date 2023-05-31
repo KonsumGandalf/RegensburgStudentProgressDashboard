@@ -1,7 +1,8 @@
 export class AuthUser {
 	constructor(
-		public readonly _access_token: string,
+		private readonly _access_token: string,
 		public readonly _tokenExpirationDate: Date,
+		public readonly username: string,
 	) {}
 
 	get access_token() {

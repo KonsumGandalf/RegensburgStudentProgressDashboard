@@ -1,15 +1,15 @@
 {
-	"name": "shared-frontend-ui-organisms",
+	"name": "shared-frontend-ui-molecules",
 	"$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
-	"sourceRoot": "libs/shared/frontend/ui/organisms/src",
-	"prefix": "o-rspd",
+	"sourceRoot": "libs/shared/frontend/ui/molecules/src",
+	"prefix": "rspd",
 	"projectType": "library",
 	"targets": {
 		"test": {
 			"executor": "@nx/jest:jest",
 			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
 			"options": {
-				"jestConfig": "libs/shared/frontend/ui/organisms/jest.config.ts",
+				"jestConfig": "libs/shared/frontend/ui/molecules/jest.config.ts",
 				"passWithNoTests": true
 			},
 			"configurations": {
@@ -24,11 +24,11 @@
 			"outputs": ["{options.outputFile}"],
 			"options": {
 				"lintFilePatterns": [
-					"libs/shared/frontend/ui/organisms/**/*.ts",
-					"libs/shared/frontend/ui/organisms/**/*.html"
+					"libs/shared/frontend/ui/molecules/**/*.ts",
+					"libs/shared/frontend/ui/molecules/**/*.html"
 				]
 			}
 		}
 	},
-	"tags": ["type:organisms-ui", "type:ui", "domain:shared", "kind:frontend"]
+	"tags": ["type:molecules-ui", "type:ui", "domain:shared", "kind:frontend"]
 }

@@ -40,7 +40,7 @@ export class RspdCardComponent {
 	 */
 	@Input()
 	@HostBinding('style.--card-padding')
-	padding: CardPadding = CardPadding.MD;
+	padding: CardPadding = CardPadding.SM;
 
 	@Input()
 	isFlipped = false;

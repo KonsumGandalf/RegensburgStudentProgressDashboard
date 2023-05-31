@@ -1,0 +1,8 @@
+<a class="a-rspd-tab"
+   [routerLink]="navBar?.routerLink ? navBar?.routerLink : null"
+   (click)="selectTab()">
+	<span class='a-rspd-tab a-rspd-tab__label'>
+		<ng-content></ng-content>
+	</span>
+	<span class="a-rspd-tab a-rspd-tab__underline"></span>
+</a>

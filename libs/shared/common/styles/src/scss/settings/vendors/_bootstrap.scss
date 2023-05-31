@@ -9,9 +9,13 @@
 @import 'bootstrap/scss/card';
 @import 'bootstrap/scss/grid';
 @import 'bootstrap/scss/alert';
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/dropdown";
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
+$font-family-inter: list.join('Inter', $font-family-sans-serif);
 $display-font-family: list.join('Inter', $display-font-family);
 $display-font-weight: 200;
 

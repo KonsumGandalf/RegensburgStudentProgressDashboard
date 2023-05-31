@@ -14,8 +14,8 @@ export function moduleHttpLoaderFactory(http: HttpClient) {
 		modules: [
 			{
 				baseTranslateUrl,
-				moduleName: 'app.information',
-				pathTemplate: '{baseTranslateUrl}/app/information/{language}',
+				moduleName: '',
+				pathTemplate: '{baseTranslateUrl}/{language}',
 			},
 			{
 				baseTranslateUrl,

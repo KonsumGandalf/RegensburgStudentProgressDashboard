@@ -1,0 +1,60 @@
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+
+.a-rspd-tab {
+    position: relative;
+    display: inline-block;
+    padding-inline: 0.5rem;
+
+    &.a-rspd-tab__label {
+        font-family: bootstrap.$font-family-monospace;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 1rem;
+        background-clip: text;
+        position: relative;
+        display: inline-block;
+
+        background: linear-gradient(to right, colors.$primary-400, colors.$primary-400 50%, colors.$themed-black 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: background-position 275ms ease;
+    }
+
+    &:hover {
+        .a-rspd-tab__underline {
+            transform: scaleX(1);
+        }
+    }
+
+    &.a-rspd-tab--active {
+
+        &:hover {
+            .a-rspd-tab__label {
+                &:hover {
+                    background-position: 0 100%;
+                }
+            }
+        }
+
+        .a-rspd-tab__underline {
+            transform: scaleX(1);
+            background-color: colors.$primary-400;
+        }
+    }
+
+    &.a-rspd-tab__underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.125rem;
+        background-color: colors.$themed-black;
+        transform: scaleX(0);
+        transform-origin: bottom;
+        transition: all 0.3s;
+    }
+}
+
