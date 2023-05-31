@@ -53,7 +53,7 @@ export class UserRepository {
 			.post<IResponseAuthentication>(`${this._authRoute}/login`, loginUser)
 			.pipe(
 				tap((resData) => {
-					this._authService.handleAuthentication(resData);
+					this._authService.handleAuthentication(resData, loginUser.username);
 				}),
 			);
 	}
@@ -67,7 +67,7 @@ export class UserRepository {
 			.put<IResponseAuthentication>(`${this._authRoute}/update`, updateUser)
 			.pipe(
 				tap((resData) => {
-					this._authService.handleAuthentication(resData);
+					this._authService.handleAuthentication(resData, updateUser.username);
 				}),
 			);
 	}

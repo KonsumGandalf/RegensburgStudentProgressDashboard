@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import {
 	RspdButtonComponent,
@@ -20,6 +21,7 @@ import {
 		CommonModule,
 		ReactiveFormsModule,
 		TranslateModule,
+		RouterLink,
 
 		RspdInputComponent,
 		RspdVerificationComponent,

@@ -21,20 +21,15 @@ export class TokenInterceptorService implements HttpInterceptor {
 	 * @returns {Observable<HttpEvent<any>>} The observable HTTP event.
 	 */
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		console.log('test');
-		return this.authService.user.pipe(
-			take(1),
-			exhaustMap((user: AuthUser) => {
-				if (!user || !user.access_token) {
-					return next.handle(request);
-				}
-				const modifiedRequest = request.clone({
-					setHeaders: {
-						Authorization: `Bearer ${user.access_token}`,
-					},
-				});
-				return next.handle(modifiedRequest);
-			}),
-		);
+		const user = this.authService.user();
+		if (!user || !user.access_token) {
+			return next.handle(request);
+		}
+		const modifiedRequest = request.clone({
+			setHeaders: {
+				Authorization: `Bearer ${user.access_token}`,
+			},
+		});
+		return next.handle(modifiedRequest);
 	}
 }

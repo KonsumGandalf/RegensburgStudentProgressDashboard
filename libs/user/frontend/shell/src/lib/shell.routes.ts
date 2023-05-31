@@ -5,6 +5,7 @@ import {
 	RspdRegisterComponent,
 } from '@rspd/user/frontend/identity-management';
 
+import { authGuard } from '../../../auth/src/lib/models/guards/auth.guard';
 import { RspdUserPage } from './page/user.page';
 
 /**
@@ -26,6 +27,7 @@ export const SHELL_ROUTES: Route[] = [
 			{
 				path: 'profile',
 				component: RspdProfileComponent,
+				canActivate: [authGuard]
 			},
 		],
 	},

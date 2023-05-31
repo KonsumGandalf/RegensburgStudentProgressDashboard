@@ -33,13 +33,12 @@ export class RspdRegisterComponent {
 	) {}
 
 	formInformation = formInformation;
-	othLogo = OthLogos.OTH;
 	buttonAppearance = ButtonAppearance.SHIFTED;
 	minPasswordLength = 8;
 	cardInformation: ICardInformation = {
 		iconLogo: OthLogos.OTH,
 		isLoading: signal(false),
-		iconSize: '100%',
+		iconSize: '70%',
 	};
 
 	registerForm: FormGroup = new FormGroup({
