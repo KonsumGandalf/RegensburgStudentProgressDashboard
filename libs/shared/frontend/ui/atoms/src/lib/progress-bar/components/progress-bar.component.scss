@@ -1,0 +1,18 @@
+@use 'settings/generic/colors';
+
+.progress {
+
+    .progress-bar {
+        padding: 1rem;
+        width: var(--progress-percentage)
+    }
+}
+
+.progress--completed {
+    .progress {
+
+        .progress-bar {
+            background-color: colors.$good !important;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<label class='label'>
+	{{ keyFigureInput.label }}
+</label>
+<div class='rating'>
+	<div class='rating__current'> {{ keyFigureInput.current }} </div>
+	<div *ngIf='keyFigureInput.total' class='rating__divider'>/</div>
+	<div *ngIf='keyFigureInput.total' class='rating__total'>{{ keyFigureInput.total }} </div>
+</div>

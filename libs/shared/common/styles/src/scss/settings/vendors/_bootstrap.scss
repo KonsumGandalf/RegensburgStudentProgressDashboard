@@ -12,6 +12,8 @@
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 @import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/progress";
 
 $font-family-monospace: list.join('Space Mono', $font-family-monospace);
 $font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);

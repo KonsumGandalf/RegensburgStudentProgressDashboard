@@ -8,6 +8,128 @@
     "directives": [],
     "components": [
         {
+            "name": "RspdAbsoluteDigitsComponent",
+            "id": "component-RspdAbsoluteDigitsComponent-747fbd2d9defae9ec7a5734a775436a011683f4aa7fa4690e32537e542657775b1548b47077224bc4c7626447b4a0503272c35939954a85b43a254664a443c9b",
+            "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "m-rspd-absolute-digits",
+            "styleUrls": [
+                "./absolute-digits.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./absolute-digits.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "absoluteDigits",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 19,
+                    "type": "IKeyFigure[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RspdKeyFigureComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';\nimport { IKeyFigure, RspdKeyFigureComponent } from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'm-rspd-absolute-digits',\n\tstandalone: true,\n\timports: [CommonModule, RspdKeyFigureComponent],\n\ttemplateUrl: './absolute-digits.component.html',\n\tstyleUrls: ['./absolute-digits.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'm-rspd-absolute-digits',\n\t},\n})\nexport class RspdAbsoluteDigitsComponent {\n\t@Input({required: true})\n\tabsoluteDigits!: IKeyFigure[];\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".m-rspd-absolute-digits {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n",
+                    "styleUrl": "./absolute-digits.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class='m-rspd-absolute-digits' *ngFor='let ele of absoluteDigits'>\n\t<a-rspd-key-figure [keyFigureInput]='ele'></a-rspd-key-figure>\n\t<div class='vr'></div>\n</div>\n"
+        },
+        {
+            "name": "RspdAssignmentOverviewComponent",
+            "id": "component-RspdAssignmentOverviewComponent-3f20e8ed6bf17980ee878c047f968a4948b2025edf9ea6e7a52bd73d2425b716671a5799af684a557213a68ce8ed0d8e321cabf43efd3143f5570a420aba7619",
+            "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "m-rspd-assignment-overview",
+            "styleUrls": [
+                "./assignment-overview.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./assignment-overview.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RspdCardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { RspdCardComponent } from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'm-rspd-assignment-overview',\n\tstandalone: true,\n\timports: [CommonModule, RspdCardComponent],\n\ttemplateUrl: './assignment-overview.component.html',\n\tstyleUrls: ['./assignment-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'm-rspd-assignment-overview',\n\t},\n})\nexport class RspdAssignmentOverviewComponent {\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./assignment-overview.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<a-rspd-card></a-rspd-card>\n"
+        },
+        {
             "name": "RspdButtonComponent",
             "id": "component-RspdButtonComponent-ef46c8f1112790514339a9babbd788ca9c9e1469b336bff9be974d80639fce48fd85b416ac080af901d1a120ff2cbae13bdab8ea7da40b52c929b248fc13b1d8",
             "file": "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.ts",
@@ -279,7 +401,7 @@
         },
         {
             "name": "RspdCardComponent",
-            "id": "component-RspdCardComponent-a83fd5f847afc5a70d81b3602dbcc49092e6dbf9f0531a6a858017d0601c03c341b4e981db47704cf689bffefb14c6b8018bccb1e19e6ca8a44f8c8edfa05321",
+            "id": "component-RspdCardComponent-2c825a841f979660c732923b39fd0c45d7bc89cf3df433860cb90cb0cd9137d8919c36060b4f9a759e6ad25fa26e8b56a3c777db6fe001abbc565fb635c39371",
             "file": "libs/shared/frontend/ui/atoms/src/lib/card/component/card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -308,15 +430,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 805,
-                            "end": 874,
+                            "pos": 836,
+                            "end": 906,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 344,
                             "tagName": {
-                                "pos": 806,
-                                "end": 811,
+                                "pos": 837,
+                                "end": 842,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -325,22 +447,22 @@
                             },
                             "comment": "<ul>\n<li>The name of the icon appearance.</li>\n</ul>\n",
                             "typeExpression": {
-                                "pos": 812,
-                                "end": 827,
+                                "pos": 843,
+                                "end": 858,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
                                 "kind": 312,
                                 "type": {
-                                    "pos": 813,
-                                    "end": 826,
+                                    "pos": 844,
+                                    "end": 857,
                                     "flags": 8388608,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 1,
                                     "kind": 180,
                                     "typeName": {
-                                        "pos": 813,
-                                        "end": 826,
+                                        "pos": 844,
+                                        "end": 857,
                                         "flags": 8388608,
                                         "modifierFlagsCache": 0,
                                         "transformFlags": 0,
@@ -350,8 +472,8 @@
                                 }
                             },
                             "name": {
-                                "pos": 828,
-                                "end": 836,
+                                "pos": 859,
+                                "end": 867,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -379,20 +501,20 @@
                 },
                 {
                     "name": "padding",
-                    "defaultValue": "CardPadding.MD",
+                    "defaultValue": "CardPadding.SM",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 984,
-                            "end": 1042,
+                            "pos": 1022,
+                            "end": 1081,
                             "flags": 8421376,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 344,
                             "tagName": {
-                                "pos": 985,
-                                "end": 990,
+                                "pos": 1023,
+                                "end": 1028,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -401,22 +523,22 @@
                             },
                             "comment": "<ul>\n<li>The padding of the card.</li>\n</ul>\n",
                             "typeExpression": {
-                                "pos": 991,
-                                "end": 1004,
+                                "pos": 1029,
+                                "end": 1042,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
                                 "kind": 312,
                                 "type": {
-                                    "pos": 992,
-                                    "end": 1003,
+                                    "pos": 1030,
+                                    "end": 1041,
                                     "flags": 8388608,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 1,
                                     "kind": 180,
                                     "typeName": {
-                                        "pos": 992,
-                                        "end": 1003,
+                                        "pos": 1030,
+                                        "end": 1041,
                                         "flags": 8388608,
                                         "modifierFlagsCache": 0,
                                         "transformFlags": 0,
@@ -426,8 +548,8 @@
                                 }
                             },
                             "name": {
-                                "pos": 1005,
-                                "end": 1012,
+                                "pos": 1043,
+                                "end": 1050,
                                 "flags": 8421376,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -507,7 +629,7 @@
             "description": "<p>Component for displaying a content inside a card</p>\n",
             "rawdescription": "\n\nComponent for displaying a content inside a card\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent,\n\tHostBinding,\n\tInput,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { RspdIconComponent } from '../../icon/component/icon.component';\nimport { CardAppearance } from '../models/card-appearance';\nimport { CardPadding } from '../models/card-padding';\n\n/**\n * Component for displaying a content inside a card\n */\n@Component({\n\tselector: 'a-rspd-card',\n\tstandalone: true,\n\timports: [CommonModule, RspdIconComponent],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\ttemplateUrl: './card.component.html',\n\tstyleUrls: ['./card.component.scss'],\n\thost: {\n\t\tclass: 'a-rspd-card card',\n\t},\n})\nexport class RspdCardComponent {\n\t/**\n\t * Sets the appearance of the icon.\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\n\t */\n\t@Input()\n\tappearance: CardAppearance = CardAppearance.RAISED;\n\n\t/**\n\t * Sets the padding of the card.\n\t * @param {CardPadding} padding - The padding of the card.\n\t */\n\t@Input()\n\t@HostBinding('style.--card-padding')\n\tpadding: CardPadding = CardPadding.MD;\n\n\t@Input()\n\tisFlipped = false;\n\n\t@HostBinding('class.a-rspd-card--front')\n\tget isFontDisplayed(): boolean {\n\t\treturn !this.isFlipped;\n\t}\n\n\t@HostBinding('class.a-rspd-card--back')\n\tget isBackDisplayed(): boolean {\n\t\treturn this.isFlipped;\n\t}\n\n\t@HostBinding('class.a-rspd-card--raised')\n\tget isRaised(): boolean {\n\t\treturn this.appearance === CardAppearance.RAISED;\n\t}\n\n\t@HostBinding('class.a-rspd-card--solid')\n\tget isSolid(): boolean {\n\t\treturn this.appearance === CardAppearance.SOLID;\n\t}\n\n\t@HostBinding('class.a-rspd-card--outlined')\n\tget isOutlined(): boolean {\n\t\treturn this.appearance === CardAppearance.OUTLINED;\n\t}\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport {\r\n\tChangeDetectionStrategy,\r\n\tComponent,\r\n\tHostBinding,\r\n\tInput,\r\n\tViewEncapsulation,\r\n} from '@angular/core';\r\n\r\nimport { RspdIconComponent } from '../../icon/component/icon.component';\r\nimport { CardAppearance } from '../models/card-appearance';\r\nimport { CardPadding } from '../models/card-padding';\r\n\r\n/**\r\n * Component for displaying a content inside a card\r\n */\r\n@Component({\r\n\tselector: 'a-rspd-card',\r\n\tstandalone: true,\r\n\timports: [CommonModule, RspdIconComponent],\r\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\r\n\tencapsulation: ViewEncapsulation.None,\r\n\ttemplateUrl: './card.component.html',\r\n\tstyleUrls: ['./card.component.scss'],\r\n\thost: {\r\n\t\tclass: 'a-rspd-card card',\r\n\t},\r\n})\r\nexport class RspdCardComponent {\r\n\t/**\r\n\t * Sets the appearance of the icon.\r\n\t * @param {PhosphorIcons} iconName - The name of the icon appearance.\r\n\t */\r\n\t@Input()\r\n\tappearance: CardAppearance = CardAppearance.RAISED;\r\n\r\n\t/**\r\n\t * Sets the padding of the card.\r\n\t * @param {CardPadding} padding - The padding of the card.\r\n\t */\r\n\t@Input()\r\n\t@HostBinding('style.--card-padding')\r\n\tpadding: CardPadding = CardPadding.SM;\r\n\r\n\t@Input()\r\n\tisFlipped = false;\r\n\r\n\t@HostBinding('class.a-rspd-card--front')\r\n\tget isFontDisplayed(): boolean {\r\n\t\treturn !this.isFlipped;\r\n\t}\r\n\r\n\t@HostBinding('class.a-rspd-card--back')\r\n\tget isBackDisplayed(): boolean {\r\n\t\treturn this.isFlipped;\r\n\t}\r\n\r\n\t@HostBinding('class.a-rspd-card--raised')\r\n\tget isRaised(): boolean {\r\n\t\treturn this.appearance === CardAppearance.RAISED;\r\n\t}\r\n\r\n\t@HostBinding('class.a-rspd-card--solid')\r\n\tget isSolid(): boolean {\r\n\t\treturn this.appearance === CardAppearance.SOLID;\r\n\t}\r\n\r\n\t@HostBinding('class.a-rspd-card--outlined')\r\n\tget isOutlined(): boolean {\r\n\t\treturn this.appearance === CardAppearance.OUTLINED;\r\n\t}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -564,6 +686,74 @@
                 }
             },
             "templateData": "<div\n\tclass=\"a-rspd-card\"\n\t[class.a-rspd-card--front]=\"!isFlipped\"\n\t[class.a-rspd-card--back]=\"isFlipped\"\n>\n\t<div class=\"a-rspd-card__content\">\n\t\t<ng-content></ng-content>\n\t</div>\n</div>\n"
+        },
+        {
+            "name": "RspdConnectGithubComponent",
+            "id": "component-RspdConnectGithubComponent-38a81c6a54ca8e418154b1115d4a83bc559439ea4e7380976365be5b327a800405db492ea4630828d23af9870b35009d6d1bda72239ef9cb185841cb1448448d",
+            "file": "libs/user/frontend/identity-management/src/lib/components/connect-github/connect-github.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "o-rspd-connect-github",
+            "styleUrls": [
+                "./connect-github.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./connect-github.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "githubIcon",
+                    "defaultValue": "PhosphorIcons.GITHUB",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "iconLogo",
+                    "defaultValue": "OthLogos.OTH",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { OthLogos, PhosphorIcons } from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'o-rspd-connect-github',\n\ttemplateUrl: './connect-github.component.html',\n\tstyleUrls: ['./connect-github.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-connect-github',\n\t},\n})\nexport class RspdConnectGithubComponent {\n\tgithubIcon = PhosphorIcons.GITHUB;\n\ticonLogo = OthLogos.OTH;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./connect-github.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"p-rspd-page__content\">\n\t<div class=\"p-rspd-page__content\">\n\t\t<o-rspd-verification\n\t\t\t[headerLogo]=\"iconLogo\"\n\t\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate\"\n\t\t>\n\t\t\t<div class='p'> {{ \t'USER.IDENTITY_MANAGEMENT.AUTH.FORM.SUPPORTING_TEXT.GITHUB_CONNECTION' | translate }} </div>\n\t\t\t<a-rspd-button [icon]='githubIcon'></a-rspd-button>\n\t\t</o-rspd-verification>\n\t</div>\n</div>\n\n"
         },
         {
             "name": "RspdIconComponent",
@@ -1030,6 +1220,71 @@
             "templateData": "<ng-content></ng-content>\n<span class=\"a-rspd-input__label\"> {{ supportingText ?? label }} </span>\n"
         },
         {
+            "name": "RspdKeyFigureComponent",
+            "id": "component-RspdKeyFigureComponent-0cdecf75bae55b86d4fc6a83491d7b8eb5aa1576ecafe90fee1264859df9ffba31c3283a25d79746c08ae60a1e059a489f2abe9512aa35408af01c2d8773ef50",
+            "file": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "a-rspd-key-figure",
+            "styleUrls": [
+                "./key-figure.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./key-figure.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "keyFigureInput",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 25,
+                    "type": "IKeyFigure",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgForOf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { NgForOf, NgIf } from '@angular/common';\nimport {\n\tChangeDetectionStrategy,\n\tComponent, Input,\n\tViewEncapsulation,\n} from '@angular/core';\n\nimport { IKeyFigure } from '../models/key-figure.interface';\n\n@Component({\n\t// eslint-disable-next-line @angular-eslint/component-selector\n\tselector: 'a-rspd-key-figure',\n\tstandalone: true,\n\ttemplateUrl: './key-figure.component.html',\n\tstyleUrls: ['./key-figure.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-key-figure',\n\t},\n\timports: [NgIf, NgForOf],\n})\nexport class RspdKeyFigureComponent {\n\t@Input({required: true})\n\tkeyFigureInput!: IKeyFigure;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'settings/generic/colors';\n@use 'settings/vendors/bootstrap';\n@use 'settings/generic/margin';\n\n.a-rspd-key-figure {\n\tdisplay: flex;\n    align-items: center;\n\tcolor: colors.$grey-300;\n\tpadding: 1rem 3rem;\n\n\n\t.label {\n\t\ttext-transform: uppercase;\n\t\tmargin-right: 2rem;\n\t\tfont-size: 0.75rem;\n\t\twidth: min-intrinsic;\n\t\twidth: -webkit-min-content;\n\t\twidth: -moz-min-content;\n\t\twidth: min-content;\n\t}\n\n\t.rating {\n\t\tdisplay: flex;\n\t\tfont-size: 2rem;\n\n\t\t.rating__divider {\n\t\t\tpadding-inline: 1rem;\n\t\t}\n\n\t\t.rating__current {\n\t\t\tcolor: colors.$themed-black;\n\t\t}\n\t\t.rating__total {\n\t\t}\n\t}\n\n\t&:active {\n\t\tbox-shadow: bootstrap.$box-shadow;\n\t}\n\n\n}\n",
+                    "styleUrl": "./key-figure.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<label class='label'>\n\t{{ keyFigureInput.label }}\n</label>\n<div class='rating'>\n\t<div class='rating__current'> {{ keyFigureInput.current }} </div>\n\t<div *ngIf='keyFigureInput.total' class='rating__divider'>/</div>\n\t<div *ngIf='keyFigureInput.total' class='rating__total'>{{ keyFigureInput.total }} </div>\n</div>\n"
+        },
+        {
             "name": "RspdLoadingIndicatorComponent",
             "id": "component-RspdLoadingIndicatorComponent-fd40013f47a96518aed6bf7ae7258e09643d4e95e85d2da0abb59853514d7321c37915ffd1d30a7cc78b2a227be4f458b81adfc0990d8ef49c28ae35705495f8",
             "file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.ts",
@@ -1282,11 +1537,11 @@
                     }
                 }
             },
-            "templateData": "<div class=\"p-rspd-page__content\">\n\t<div class=\"p-rspd-page__content\">\n\t\t<o-rspd-verification\n\t\t\t[headerLogo]=\"cardInformation.iconLogo\"\n\t\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate\"\n\t\t>\n\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('username', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\n\t\t\t\t</button>\n\t\t\t\t<div class=\"labeled_link\">\n\t\t\t\t\t<label for=\"register\">\n\t\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_REGISTER' | translate }}\n\t\t\t\t\t</label>\n\t\t\t\t\t<a id=\"register\" href=\"/register\">\n\t\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t\t<a-rspd-loading-indicator></a-rspd-loading-indicator>\n\t\t</o-rspd-verification>\n\t</div>\n</div>\n"
+            "templateData": "<div class=\"p-rspd-page__content\">\n\t<div class=\"p-rspd-page__content\">\n\t\t<o-rspd-verification\n\t\t\t[headerLogo]=\"cardInformation.iconLogo\"\n\t\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate\"\n\t\t>\n\t\t\t<form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('username', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'incorrect') | translate\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<input\n\t\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</a-rspd-input>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\n\t\t\t\t</button>\n\t\t\t\t<div class=\"labeled_link\">\n\t\t\t\t\t<label for=\"register\">\n\t\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_REGISTER' | translate }}\n\t\t\t\t\t</label>\n\t\t\t\t\t<a id=\"register\" routerLink=\"/register\">\n\t\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t\t<a-rspd-loading-indicator></a-rspd-loading-indicator>\n\t\t</o-rspd-verification>\n\t</div>\n</div>\n"
         },
         {
             "name": "RspdNavigationBarComponent",
-            "id": "component-RspdNavigationBarComponent-b48fcdb7dc7b49fa8f5ac27efc47fca2255051dae607e1ce82f97157c7e28fc1f19dd5c73550315b03ed30f62cb934939903817e189bcf433c6edcae69a57abd",
+            "id": "component-RspdNavigationBarComponent-a17405335474fb58872fe7f34b7b6c69e25aee938e22e9e9c8e89948e87f87ce8c658c09dc1c2152b162850c65290fd4e9de5c8ac1bb048f43ebeac3dc08fb11",
             "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -1307,60 +1562,90 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "currentRoute",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 59,
+                    "type": "Signal<string>",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "navBarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 62,
+                    "type": "WritableSignal<INavBarItem[]>",
+                    "decorators": []
+                },
+                {
+                    "name": "username",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "Signal<string | undefined>",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "logoutTriggered",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 65,
+                    "type": "EventEmitter<void>"
+                }
+            ],
             "propertiesClass": [
                 {
-                    "name": "activeNavItem",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 47
-                },
-                {
-                    "name": "buttonAppearance",
-                    "defaultValue": "ButtonAppearance.OUTLINED",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 45
-                },
-                {
                     "name": "cardInformation",
-                    "defaultValue": "{\r\n\t\tappearance: CardAppearance.OUTLINED,\r\n\t\tpadding: CardPadding.X_SM\r\n\t}",
+                    "defaultValue": "{\r\n\t\tappearance: CardAppearance.OUTLINED,\r\n\t\tpadding: CardPadding.NONE,\r\n\t}",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 40
+                    "line": 69
                 },
                 {
-                    "name": "navBarItems",
-                    "defaultValue": "[\r\n\t\t{ label: 'Register', routerLink: '/register', active: false },\r\n\t\t{ label: 'Login', routerLink: '/login', active: false },\r\n\t\t{ label: 'Profile', routerLink: '/profile', active: false },\r\n\t]",
+                    "name": "notAuthenticatedNavBarItems",
+                    "defaultValue": "NOT_AUTHENTICATED_NAV_BAR_ITEMS",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "INavBarItem[]",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 67
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "setActiveNavItem",
+                    "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "setActiveNavItemByUrl",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSets the active navigation item based on the current route.\n",
+                    "description": "<p>Sets the active navigation item based on the current route.</p>\n"
                 }
             ],
             "deprecated": false,
@@ -1393,47 +1678,39 @@
                 {
                     "name": "RspdCardComponent",
                     "type": "component"
+                },
+                {
+                    "name": "RspdTabComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatTabsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
                 }
             ],
-            "description": "<p>Component for displaying a content inside a card</p>\n",
-            "rawdescription": "\n\nComponent for displaying a content inside a card\n",
+            "description": "<p>Component which displays the navigation bar of the frontend app</p>\n",
+            "rawdescription": "\n\nComponent which displays the navigation bar of the frontend app\n",
             "type": "component",
-            "sourceCode": "import { NgForOf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';\r\nimport { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';\r\nimport { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { ButtonAppearance, CardAppearance, RspdButtonComponent, RspdCardComponent } from '@rspd/shared/frontend/ui/atoms';\r\n\r\nimport { CardPadding } from '../../../../../atoms/src/lib/card/models/card-padding';\r\nimport { INavBarItem } from '../models/nav-bar.interface';\r\n\r\n/**\r\n * Component for displaying a content inside a card\r\n */\r\n@Component({\r\n\tselector: 'm-rspd-nav-bar',\r\n\tstandalone: true,\r\n\timports: [\r\n\t\tNgbNavModule,\r\n\t\tNgbDropdownModule,\r\n\t\tRspdButtonComponent,\r\n\t\tRouterLink,\r\n\t\tRouterOutlet,\r\n\t\tNgForOf,\r\n\t\tRspdCardComponent,\r\n\t],\r\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\r\n\tencapsulation: ViewEncapsulation.None,\r\n\ttemplateUrl: './navigation-bar.component.html',\r\n\tstyleUrls: ['./navigation-bar.component.scss'],\r\n\thost: {\r\n\t\tclass: 'm-rspd-nav-bar',\r\n\t},\r\n})\r\nexport class RspdNavigationBarComponent {\r\n\tnavBarItems: INavBarItem[] = [\r\n\t\t{ label: 'Register', routerLink: '/register', active: false },\r\n\t\t{ label: 'Login', routerLink: '/login', active: false },\r\n\t\t{ label: 'Profile', routerLink: '/profile', active: false },\r\n\t];\r\n\r\n\tcardInformation = {\r\n\t\tappearance: CardAppearance.OUTLINED,\r\n\t\tpadding: CardPadding.X_SM\r\n\t}\r\n\r\n\tbuttonAppearance = ButtonAppearance.OUTLINED\r\n\r\n\tactiveNavItem = '';\r\n\r\n\tconstructor(private router: Router) {\r\n\t\tthis.setActiveNavItem();\r\n\t}\r\n\r\n\tsetActiveNavItem() {\r\n\t\tconst currentUrl = this.router.url;\r\n\t\tconst activeItem = this.navBarItems.find((item) => currentUrl.includes(item.routerLink));\r\n\t\tthis.activeNavItem = activeItem ? activeItem.label : '';\r\n\t\tconsole.log(this.router.url);\r\n\t}\r\n}\r\n",
+            "sourceCode": "import { NgForOf, NgIf } from '@angular/common';\r\nimport {\r\n\tChangeDetectionStrategy,\r\n\tComponent,\r\n\tEventEmitter,\r\n\tInput, OnInit,\r\n\tOutput,\r\n\tSignal,\r\n\tViewEncapsulation,\r\n\tWritableSignal,\r\n} from '@angular/core';\r\nimport { MatTabsModule } from '@angular/material/tabs';\r\nimport { RouterLink, RouterOutlet } from '@angular/router';\r\nimport { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport {\r\n\tCardAppearance,\r\n\tCardPadding,\r\n\tRspdButtonComponent,\r\n\tRspdCardComponent,\r\n} from '@rspd/shared/frontend/ui/atoms';\r\nimport { RspdTabComponent } from '@rspd/shared/frontend/ui/atoms';\r\n\r\nimport { INavBarItem } from '../models/nav-bar.interface';\r\nimport { NOT_AUTHENTICATED_NAV_BAR_ITEMS } from '../models/not-authenticated-nav-bar-items';\r\n\r\n/**\r\n * Component which displays the navigation bar of the frontend app\r\n */\r\n@Component({\r\n\tselector: 'm-rspd-nav-bar',\r\n\tstandalone: true,\r\n\timports: [\r\n\t\tNgbNavModule,\r\n\t\tNgbDropdownModule,\r\n\t\tRspdButtonComponent,\r\n\t\tRouterLink,\r\n\t\tRouterOutlet,\r\n\t\tNgForOf,\r\n\t\tRspdCardComponent,\r\n\t\tRspdTabComponent,\r\n\t\tMatTabsModule,\r\n\t\tNgIf,\r\n\t\tTranslateModule,\r\n\t],\r\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\r\n\tencapsulation: ViewEncapsulation.None,\r\n\ttemplateUrl: './navigation-bar.component.html',\r\n\tstyleUrls: ['./navigation-bar.component.scss'],\r\n\thost: {\r\n\t\tclass: 'm-rspd-nav-bar',\r\n\t},\r\n})\r\nexport class RspdNavigationBarComponent implements OnInit{\r\n\t@Input()\r\n\tusername!: Signal<string | undefined>;\r\n\r\n\t@Input({ required: true })\r\n\tcurrentRoute!: Signal<string>;\r\n\r\n\t@Input({ required: true })\r\n\tnavBarItems!: WritableSignal<INavBarItem[]>;\r\n\r\n\t@Output()\r\n\tlogoutTriggered: EventEmitter<void> = new EventEmitter<void>();\r\n\r\n\tnotAuthenticatedNavBarItems: INavBarItem[] = NOT_AUTHENTICATED_NAV_BAR_ITEMS;\r\n\r\n\tcardInformation = {\r\n\t\tappearance: CardAppearance.OUTLINED,\r\n\t\tpadding: CardPadding.NONE,\r\n\t};\r\n\r\n\t/**\r\n\t * Sets the active navigation item based on the current route.\r\n\t */\r\n\tsetActiveNavItemByUrl(): void {\r\n\t\tif (this.username()) {\r\n\t\t\tthis.navBarItems.update((content) => {\r\n\t\t\t\treturn content.map((item) => {\r\n\t\t\t\t\titem.active = this.currentRoute() == item.routerLink;\r\n\t\t\t\t\treturn item;\r\n\t\t\t\t});\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\tthis.notAuthenticatedNavBarItems.map((item) => {\r\n\t\t\t\titem.active = this.currentRoute() == item.routerLink;\r\n\t\t\t\treturn item;\r\n\t\t\t});\r\n\t\t}\r\n\t}\r\n\r\n\tngOnInit(): void {\r\n\t\tthis.setActiveNavItemByUrl()\r\n\t}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@use 'settings/generic/colors';\r\n\r\n.m-rspd-nav-bar {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 1rem 3rem;\r\n    background-color: rgba(colors.$themed-white, 1);\r\n    align-items: center;\r\n\r\n    a {\r\n        a-rspd-card {\r\n\r\n            img {\r\n                width: 6rem;\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    .m-rspd-nav-bar__item {\r\n        margin-left: 1rem;\r\n\r\n    }\r\n}\r\n",
+                    "data": "@use 'settings/generic/colors';\r\n@use 'settings/generic/padding';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.m-rspd-nav-bar {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 0.5rem 2rem;\r\n    background-color: colors.$themed-white;\r\n    align-items: center;\r\n    margin-top: 0;\r\n\r\n    &.m-rspd-nav-bar__logo {\r\n        a-rspd-card {\r\n            padding: padding.$padding-x-sm;\r\n            background: linear-gradient(to right, colors.$secondary-400 50%, colors.$themed-white 50%);\r\n            background-size: 200% 100%;\r\n            background-position: right bottom;\r\n            align-items: center;\r\n            transition: all .5s ease-out;\r\n\r\n            &:hover {\r\n                background-position: left bottom;\r\n            }\r\n        }\r\n    }\r\n\r\n    a {\r\n        a-rspd-card {\r\n\r\n            img {\r\n                width: 6rem;\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    &.m-rspd-nav-bar__link-list {\r\n        display: flex;\r\n\r\n        .m-drop-menu {\r\n            font-family: bootstrap.$font-family-monospace;\r\n            font-size: 0.875rem;\r\n            color: colors.$themed-white;\r\n\r\n            .m-drop-menu__item {\r\n                padding: 0.5rem 0;\r\n                text-align: center;\r\n\r\n                &:active {\r\n                    background-color: colors.$secondary-400;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    .m-rspd-nav-bar__item {\r\n        margin-left: 1rem;\r\n\r\n    }\r\n\r\n    &.m-rspd-nav-bar__link-list {\r\n\r\n    }\r\n}\r\n",
                     "styleUrl": "./navigation-bar.component.scss"
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "router",
-                        "type": "Router",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 47,
-                "jsdoctags": [
-                    {
-                        "name": "router",
-                        "type": "Router",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "templateData": "<a href=\"#\">\r\n\t<a-rspd-card [appearance]=\"cardInformation.appearance\" [padding]=\"cardInformation.padding\">\r\n\t\t<img src=\"assets/svgs/rsds-simple-black.svg\" alt=\"\">\r\n\t</a-rspd-card>\r\n</a>\r\n<ul ngbNav #nav=\"ngbNav\" class=\"nav-pills\">\r\n\t<li *ngFor=\"let item of navBarItems; let i = index\" [ngbNavItem]=\"i+1\">\r\n\t\t<a ngbNavLink routerLink=\"{{item.routerLink}}\" [class.active]=\"item.label === activeNavItem\">\r\n\t\t\t{{ item.label }}\r\n\t\t</a>\r\n\t</li>\r\n</ul>\r\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<a class=\"m-rspd-nav-bar m-rspd-nav-bar__logo\" href=\"#\">\r\n\t<a-rspd-card [appearance]=\"cardInformation.appearance\" [padding]=\"cardInformation.padding\">\r\n\t\t<img src=\"assets/svgs/rsds-simple-black.svg\" alt=\"\">\r\n\t</a-rspd-card>\r\n</a>\r\n<ul class=\"m-rspd-nav-bar\" ngbNav #nav=\"ngbNav\">\r\n\t<div class=\"m-rspd-nav-bar m-rspd-nav-bar__link-list\" *ngIf=\"username(); else notAuthenticated\">\r\n\t\t<li *ngFor=\"let item of navBarItems()\">\r\n\t\t\t<a-rspd-tab [navBar]=\"item\" (click)=\"setActiveNavItemByUrl()\">{{ item.label | translate }}</a-rspd-tab>\r\n\t\t</li>\r\n\t\t<ul ngbDropdown>\r\n\t\t\t<a-rspd-tab ngbDropdownToggle>{{ username() }}</a-rspd-tab>\r\n\t\t\t<li ngbDropdownMenu class=\"dropdown-menu dropdown-menu-dark m-drop-menu\">\r\n\t\t\t\t<a [routerLink]=\"'/profile'\"\r\n\t\t\t\t   ngbDropdownItem\r\n\t\t\t\t   class='m-drop-menu m-drop-menu__item'>\r\n\t\t\t\t\t{{'NAVIGATION.LINKS.PROFILE' | translate}}\r\n\t\t\t\t</a>\r\n\t\t\t\t<button (click)='logoutTriggered.emit()'\r\n\t\t\t\t\t\tngbDropdownItem\r\n\t\t\t\t\t\tclass='m-drop-menu m-drop-menu__item'>\r\n\t\t\t\t\t{{'NAVIGATION.ACTIONS.LOGOUT' | translate}}\r\n\t\t\t\t</button>\r\n\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n\r\n\t<ng-template #notAuthenticated >\r\n\t\t<div class='m-rspd-nav-bar m-rspd-nav-bar__link-list'>\r\n\t\t\t<li *ngFor=\"let item of notAuthenticatedNavBarItems\">\r\n\t\t\t\t<a-rspd-tab [navBar]=\"item\" (click)=\"setActiveNavItemByUrl()\">{{ item.label | translate }}</a-rspd-tab>\r\n\t\t\t</li>\r\n\t\t</div>\r\n\t</ng-template>\r\n</ul>\r\n\r\n"
         },
         {
             "name": "RspdProfileComponent",
@@ -1633,8 +1910,63 @@
             "templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification [title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.PAGE.PROFILE' | translate\">\n\t\t<form [formGroup]=\"profileForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input\n\t\t\t\t\t[label]=\"formInformation.email.name | translate\"\n\t\t\t\t\t[supportingText]=\"\n\t\t\t\t\t\t'USER.IDENTITY_MANAGEMENT.AUTH.FORM.SUPPORTING_TEXT.DISABLED_MAIL'\n\t\t\t\t\t\t\t| translate\n\t\t\t\t\t\"\n\t\t\t\t>\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t[readonly]=\"true\"\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.PROFILE' | translate }}\n\t\t\t</button>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
         },
         {
+            "name": "RspdProgressBarComponent",
+            "id": "component-RspdProgressBarComponent-9adad6652e714d75cad8c0b60cf8b5c4c7188de1a65649402aa517df4231fb2655384598bc14d1401a011d43ff74eb4617d50b845291bdea295c3a757aa0fb6d",
+            "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "a-rspd-progress-bar",
+            "styleUrls": [
+                "./progress-bar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./progress-bar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgbProgressbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TranslateModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';\nimport { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';\nimport { TranslateModule } from '@ngx-translate/core';\n@Component({\n\tselector: 'a-rspd-progress-bar',\n\tstandalone: true,\n\timports: [NgbProgressbarModule,\n\t\t\t  TranslateModule, ],\n\ttemplateUrl: './progress-bar.component.html',\n\tstyleUrls: ['./progress-bar.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class RspdProgressBarComponent {\n\t//@Input({ required: true })\n\t//current: number;\n//\n\t//@Input({ required: true })\n\t//total: number;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'settings/generic/colors';\r\n\r\nprogress {\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.progress-container {\r\n    position: relative;\r\n    background: #eee;\r\n    height: 1.5rem;\r\n    border: solid;\r\n    padding: 0.5rem;\r\n    border-radius: 0.25rem\r\n}\r\n\r\n.progress-container::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 100%;\r\n    width: 0;\r\n    background: colors.$themed-black;\r\n}\r\n\r\n.progress-element--css .progress-container::before {\r\n    animation: progress-css 1s ease-in forwards;\r\n}\r\n\r\n.progress-label {\r\n    position: relative;\r\n}\r\n\r\n@property --num {\r\n    syntax: \"<integer>\";\r\n    initial-value: 0;\r\n    inherits: false;\r\n}\r\n\r\n.progress-label::after {\r\n    counter-reset: num var(--num);\r\n    content: counter(num) \"%\";\r\n    position: absolute;\r\n    top: 2.375rem;\r\n    right: 45%;\r\n    z-index: 2;\r\n    color: white;\r\n}\r\n\r\n.progress-element--css .progress-label::after {\r\n    animation: progress-text-css 1s ease-in forwards;\r\n}\r\n\r\n@keyframes progress-css {\r\n    to {\r\n        width: 80%;\r\n    }\r\n}\r\n",
+                    "styleUrl": "./progress-bar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<p><ngb-progressbar type=\"success\" textType=\"white\" [value]=\"25\" [showValue]=\"true\"></ngb-progressbar></p>\n"
+        },
+        {
             "name": "RspdRegisterComponent",
-            "id": "component-RspdRegisterComponent-ccbce2c9c51a12cc27cdbec472594d56ee47f5223682843b364e6801eb3a82f1ec78d9635cd6768cac7dce4ce31490eecc6f9d079f4c400ee0823b7239a7c9cc",
+            "id": "component-RspdRegisterComponent-ce70e127057c2e0254c5d9dc59ee0a4257f8ed476b1ac75032b07086a6f78065005a992142fbb1f168d611505b6e53982beeafaccc12da4a13827847c5f3db49",
             "file": "libs/user/frontend/identity-management/src/lib/components/register/register.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -1666,17 +1998,17 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 36
                 },
                 {
                     "name": "cardInformation",
-                    "defaultValue": "{\n\t\ticonLogo: OthLogos.OTH,\n\t\tisLoading: signal(false),\n\t\ticonSize: '100%',\n\t}",
+                    "defaultValue": "{\n\t\ticonLogo: OthLogos.OTH,\n\t\tisLoading: signal(false),\n\t\ticonSize: '70%',\n\t}",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ICardInformation",
                     "optional": false,
                     "description": "",
-                    "line": 39
+                    "line": 38
                 },
                 {
                     "name": "formInformation",
@@ -1696,17 +2028,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 38
-                },
-                {
-                    "name": "othLogo",
-                    "defaultValue": "OthLogos.OTH",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 36
+                    "line": 37
                 },
                 {
                     "name": "registerForm",
@@ -1716,7 +2038,7 @@
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 44
                 }
             ],
             "methodsClass": [
@@ -1739,7 +2061,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 66,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1769,7 +2091,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 70,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1783,7 +2105,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport {\n\tButtonAppearance,\n\tIconSize,\n\tIconUnion,\n\tOthLogos,\n\tPhosphorIcons,\n} from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { RegisterUserFacade } from '@rspd/user/frontend/domain';\nimport { forkJoin, interval } from 'rxjs';\n\nimport { formInformation } from '../../models/form-information';\nimport { ICardInformation } from '../../models/interfaces/card-information.interface';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-register',\n\ttemplateUrl: './register.component.html',\n\tstyleUrls: ['./register.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-register',\n\t},\n})\nexport class RspdRegisterComponent {\n\tconstructor(\n\t\tprivate readonly _registerUserFacade: RegisterUserFacade,\n\t\tprivate readonly _router: Router,\n\t) {}\n\n\tformInformation = formInformation;\n\tothLogo = OthLogos.OTH;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\tcardInformation: ICardInformation = {\n\t\ticonLogo: OthLogos.OTH,\n\t\tisLoading: signal(false),\n\t\ticonSize: '100%',\n\t};\n\n\tregisterForm: FormGroup = new FormGroup({\n\t\temail: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required, Validators.email, AuthInputValidator.validateEmailDomain],\n\t\t\t[AuthInputValidator.validateEmailIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tfirstName: new FormControl(undefined, [Validators.required]),\n\t\tlastName: new FormControl(undefined, [Validators.required]),\n\t\tusername: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required],\n\t\t\t[AuthInputValidator.validateUsernameIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tpassword: new FormControl(undefined, [\n\t\t\tAuthInputValidator.validPassword(this.minPasswordLength),\n\t\t]),\n\t\tconfirmPassword: new FormControl(undefined, [\n\t\t\tValidators.required,\n\t\t\tAuthInputValidator.validFieldMatch('password'),\n\t\t]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.registerForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.registerForm.valid) {\n\t\t\treturn;\n\t\t}\n\t\tthis.cardInformation = {\n\t\t\tisLoading: signal(true),\n\t\t\ticonLogo: PhosphorIcons.EMAIL,\n\t\t\ticonSize: IconSize.LG,\n\t\t};\n\t\tforkJoin(\n\t\t\tinterval(5000),\n\t\t\tthis._registerUserFacade.registerUser(this.registerForm.value as IUserIntermediate),\n\t\t).subscribe(\n\t\t\t() => {\n\t\t\t\tthis._router.navigate(['/login']);\n\t\t\t},\n\t\t\t(error) => {\n\t\t\t\tthis.registerForm.controls['username'].setErrors({\n\t\t\t\t\tincorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.UNKNOWN_ERROR',\n\t\t\t\t});\n\t\t\t\tconsole.log(error);\n\t\t\t},\n\t\t);\n\t}\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation } from '@angular/core';\nimport { FormControl, FormGroup, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport {\n\tButtonAppearance,\n\tIconSize,\n\tIconUnion,\n\tOthLogos,\n\tPhosphorIcons,\n} from '@rspd/shared/frontend/ui/atoms';\nimport { IUserIntermediate } from '@rspd/user/common/models';\nimport { RegisterUserFacade } from '@rspd/user/frontend/domain';\nimport { forkJoin, interval } from 'rxjs';\n\nimport { formInformation } from '../../models/form-information';\nimport { ICardInformation } from '../../models/interfaces/card-information.interface';\nimport { AuthInputValidator } from '../../models/validators/auth-input.validator';\n\n@Component({\n\tselector: 'o-rspd-register',\n\ttemplateUrl: './register.component.html',\n\tstyleUrls: ['./register.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'o-rspd-register',\n\t},\n})\nexport class RspdRegisterComponent {\n\tconstructor(\n\t\tprivate readonly _registerUserFacade: RegisterUserFacade,\n\t\tprivate readonly _router: Router,\n\t) {}\n\n\tformInformation = formInformation;\n\tbuttonAppearance = ButtonAppearance.SHIFTED;\n\tminPasswordLength = 8;\n\tcardInformation: ICardInformation = {\n\t\ticonLogo: OthLogos.OTH,\n\t\tisLoading: signal(false),\n\t\ticonSize: '70%',\n\t};\n\n\tregisterForm: FormGroup = new FormGroup({\n\t\temail: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required, Validators.email, AuthInputValidator.validateEmailDomain],\n\t\t\t[AuthInputValidator.validateEmailIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tfirstName: new FormControl(undefined, [Validators.required]),\n\t\tlastName: new FormControl(undefined, [Validators.required]),\n\t\tusername: new FormControl(\n\t\t\tundefined,\n\t\t\t[Validators.required],\n\t\t\t[AuthInputValidator.validateUsernameIsTaken(this._registerUserFacade)],\n\t\t),\n\t\tpassword: new FormControl(undefined, [\n\t\t\tAuthInputValidator.validPassword(this.minPasswordLength),\n\t\t]),\n\t\tconfirmPassword: new FormControl(undefined, [\n\t\t\tValidators.required,\n\t\t\tAuthInputValidator.validFieldMatch('password'),\n\t\t]),\n\t});\n\n\tgetErrorMsg(property: string, error: string): string {\n\t\treturn this.registerForm.get(property)?.getError(error);\n\t}\n\n\tonSubmit() {\n\t\tif (!this.registerForm.valid) {\n\t\t\treturn;\n\t\t}\n\t\tthis.cardInformation = {\n\t\t\tisLoading: signal(true),\n\t\t\ticonLogo: PhosphorIcons.EMAIL,\n\t\t\ticonSize: IconSize.LG,\n\t\t};\n\t\tforkJoin(\n\t\t\tinterval(5000),\n\t\t\tthis._registerUserFacade.registerUser(this.registerForm.value as IUserIntermediate),\n\t\t).subscribe(\n\t\t\t() => {\n\t\t\t\tthis._router.navigate(['/login']);\n\t\t\t},\n\t\t\t(error) => {\n\t\t\t\tthis.registerForm.controls['username'].setErrors({\n\t\t\t\t\tincorrect: 'USER.IDENTITY_MANAGEMENT.AUTH.RESPONSE.UNKNOWN_ERROR',\n\t\t\t\t});\n\t\t\t\tconsole.log(error);\n\t\t\t},\n\t\t);\n\t}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1833,7 +2155,114 @@
                     }
                 ]
             },
-            "templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification\n\t\t[headerLogo]=\"cardInformation.iconLogo\"\n\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate\"\n\t\t[isLoading]=\"cardInformation.isLoading()\"\n\t\t[size]=\"cardInformation.iconSize\"\n\t>\n\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input [label]=\"formInformation.email.name | translate\">\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\n\t\t\t</button>\n\t\t\t<div class=\"labeled_link\">\n\t\t\t\t<label for=\"register\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_LOGIN' | translate }}\n\t\t\t\t</label>\n\t\t\t\t<a id=\"register\" href=\"/register\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
+            "templateData": "<div class=\"p-rspd-page__content\">\n\t<o-rspd-verification\n\t\t[headerLogo]=\"cardInformation.iconLogo\"\n\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate\"\n\t\t[isLoading]=\"cardInformation.isLoading()\"\n\t\t[size]=\"cardInformation.iconSize\"\n\t>\n\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\t[minLength]=\"2\"\n\t\t\t\t\t\t\t[maxLength]=\"20\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<a-rspd-input [label]=\"formInformation.email.name | translate\">\n\t\t\t\t\t<input\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\n\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\n\t\t\t\t\t\trequired\n\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t/>\n\t\t\t\t</a-rspd-input>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\n\t\t\t\t\t\t\t[type]=\"'text'\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-sm\">\n\t\t\t\t\t<a-rspd-input\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\n\t\t\t\t\t>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\n\t\t\t\t\t\t\t[type]=\"'password'\"\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete=\"on\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\n\t\t\t</button>\n\t\t\t<div class=\"labeled_link\">\n\t\t\t\t<label for=\"register\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_LOGIN' | translate }}\n\t\t\t\t</label>\n\t\t\t\t<a id=\"register\" routerLink=\"/login\">\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\n\t\t\t\t</a>\n\t\t\t</div>\n\t\t</form>\n\t</o-rspd-verification>\n</div>\n"
+        },
+        {
+            "name": "RspdTabComponent",
+            "id": "component-RspdTabComponent-6596ec8e7b3b8e8369fe5c35adfaf166d8adff1c08d4ea0e13d37e03338352f9f5c79db25abc06442899fbfd58cdd6b3385dbdd10ccff8192b35252688e214f1",
+            "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "a-rspd-tab, a[src], a[navBar]",
+            "styleUrls": [
+                "./tab.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "navBar",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "INavBarItem",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "tabSelected",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter<void>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "selectTab",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class.a-rspd-tab--active",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSets the active scss class in case the navBar is active\n",
+                    "description": "<p>Sets the active scss class in case the navBar is active</p>\n",
+                    "line": 43,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "NgbNavLink"
+                },
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "<p>Represents a tab component in the application.</p>\n",
+            "rawdescription": "\n\nRepresents a tab component in the application.\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport {\r\n\tChangeDetectionStrategy,\r\n\tComponent,\r\n\tEventEmitter,\r\n\tHostBinding,\r\n\tInput,\r\n\tOutput,\r\n\tViewEncapsulation\r\n} from '@angular/core';\r\nimport { RouterLink } from '@angular/router';\r\nimport { NgbNavLink } from '@ng-bootstrap/ng-bootstrap';\r\n\r\nimport { INavBarItem } from '../models/nav-bar.interface';\r\n\r\n/**\r\n * Represents a tab component in the application.\r\n */\r\n@Component({\r\n\tselector: 'a-rspd-tab, a[src], a[navBar]',\r\n\tstandalone: true,\r\n\timports: [NgbNavLink, RouterLink],\r\n\ttemplateUrl: './tab.component.html',\r\n\tstyleUrls: ['./tab.component.scss'],\r\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\r\n\tencapsulation: ViewEncapsulation.None,\r\n\thost: {\r\n\t\tclass: 'a-rspd-tab',\r\n\t},\r\n})\r\nexport class RspdTabComponent {\r\n\t@Input() navBar?: INavBarItem;\r\n\t@Output() tabSelected: EventEmitter<void> = new EventEmitter<void>();\r\n\r\n\tselectTab(): void {\r\n\t\tthis.tabSelected.emit();\r\n\t}\r\n\r\n\t/**\r\n\t * Sets the active scss class in case the navBar is active\r\n\t */\r\n\t@HostBinding('class.a-rspd-tab--active')\r\n\tget isActive(): boolean {\r\n\t\tif(!this.navBar) {\r\n\t\t\treturn false;\r\n\t\t}\r\n\t\treturn this.navBar.active;\r\n\t}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.a-rspd-tab {\r\n    position: relative;\r\n    display: inline-block;\r\n    padding-inline: 0.5rem;\r\n\r\n    &.a-rspd-tab__label {\r\n        font-family: bootstrap.$font-family-monospace;\r\n        font-weight: 600;\r\n        text-decoration: none;\r\n        padding: 1rem;\r\n        background-clip: text;\r\n        position: relative;\r\n        display: inline-block;\r\n\r\n        background: linear-gradient(to right, colors.$primary-400, colors.$primary-400 50%, colors.$themed-black 50%);\r\n        -webkit-background-clip: text;\r\n        -webkit-text-fill-color: transparent;\r\n        background-size: 200% 100%;\r\n        background-position: 100%;\r\n        transition: background-position 275ms ease;\r\n    }\r\n\r\n    &:hover {\r\n        .a-rspd-tab__underline {\r\n            transform: scaleX(1);\r\n        }\r\n    }\r\n\r\n    &.a-rspd-tab--active {\r\n\r\n        &:hover {\r\n            .a-rspd-tab__label {\r\n                &:hover {\r\n                    background-position: 0 100%;\r\n                }\r\n            }\r\n        }\r\n\r\n        .a-rspd-tab__underline {\r\n            transform: scaleX(1);\r\n            background-color: colors.$primary-400;\r\n        }\r\n    }\r\n\r\n    &.a-rspd-tab__underline {\r\n        position: absolute;\r\n        bottom: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 0.125rem;\r\n        background-color: colors.$themed-black;\r\n        transform: scaleX(0);\r\n        transform-origin: bottom;\r\n        transition: all 0.3s;\r\n    }\r\n}\r\n\r\n",
+                    "styleUrl": "./tab.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "isActive": {
+                    "name": "isActive",
+                    "getSignature": {
+                        "name": "isActive",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 43,
+                        "rawdescription": "\n\nSets the active scss class in case the navBar is active\n",
+                        "description": "<p>Sets the active scss class in case the navBar is active</p>\n"
+                    }
+                }
+            },
+            "templateData": "<a class=\"a-rspd-tab\"\r\n   [routerLink]=\"navBar?.routerLink ? navBar?.routerLink : null\"\r\n   (click)=\"selectTab()\">\r\n\t<span class='a-rspd-tab a-rspd-tab__label'>\r\n\t\t<ng-content></ng-content>\r\n\t</span>\r\n\t<span class=\"a-rspd-tab a-rspd-tab__underline\"></span>\r\n</a>\r\n"
         },
         {
             "name": "RspdVerificationComponent",
@@ -1941,63 +2370,31 @@
             ],
             "stylesData": "",
             "templateData": "<a-rspd-card [isFlipped]=\"isLoading\">\n\t<ng-container *ngIf=\"headerLogo\">\n\t\t<a-rspd-icon class=\"card-img-top\" [appearance]=\"headerLogo\" [size]=\"size\"></a-rspd-icon>\n\t</ng-container>\n\t<div *ngIf=\"isLoading; then back; else front\"></div>\n\t<ng-template #back>\n\t\t<p>\n\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.CONFIRM_EMAIL' | translate }}\n\t\t</p>\n\t</ng-template>\n\t<ng-template #front>\n\t\t<div class=\"a-rspd-card__front-content\">\n\t\t\t<h1 class=\"display-3\">{{ title }}</h1>\n\t\t\t<ng-content></ng-content>\n\t\t</div>\n\t</ng-template>\n</a-rspd-card>\n"
-        },
-        {
-            "name": "TabComponent",
-            "id": "component-TabComponent-891c6b7ca38d082fd4d440a3bdf0abca4a707cb81c038cc89734f987178ea2add95c1765620efa3d66e0aa5313f1072f9e3283c72d03052d68cad0ca551e1b6a",
-            "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [
-                "ViewEncapsulation.None"
-            ],
-            "entryComponents": [],
-            "host": {},
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "a-rspd-tab, a[src]",
-            "styleUrls": [
-                "./tab.component.scss"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./tab.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\n\n@Component({\n\tselector: 'a-rspd-tab, a[src]',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './tab.component.html',\n\tstyleUrls: ['./tab.component.scss'],\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'a-rspd-tab',\n\t},\n})\nexport class TabComponent {}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".a-rspd-tab {\r\n    position: relative;\r\n\r\n    a.nav-link {\r\n        color: #333;\r\n        text-decoration: none;\r\n        padding: 10px;\r\n        position: relative;\r\n        overflow: hidden;\r\n        transition: color 0.3s;\r\n\r\n        &:hover {\r\n            color: purple;\r\n        }\r\n\r\n        &::after {\r\n            content: '';\r\n            position: absolute;\r\n            bottom: 0;\r\n            left: 0;\r\n            width: 100%;\r\n            height: 2px;\r\n            background-color: purple;\r\n            transform: scaleX(0);\r\n            transform-origin: left;\r\n            transition: transform 0.3s;\r\n        }\r\n\r\n        &.active {\r\n            color: purple;\r\n\r\n            &::after {\r\n                transform: scaleX(1);\r\n            }\r\n        }\r\n    }\r\n}\r\n",
-                    "styleUrl": "./tab.component.scss"
-                }
-            ],
-            "stylesData": "",
-            "templateData": "<p>tab works!</p>\n"
         }
     ],
     "modules": [],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
@@ -2032,7 +2429,37 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2079,6 +2506,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "multipleItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "IKeyFigure[]",
+                "defaultValue": "[]"
+            },
+            {
                 "name": "parameters",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2087,6 +2524,26 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdAbsoluteDigitsComponent>",
+                "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-absolute-digits [absoluteDigits]='args'></m-rspd-absolute-digits>`,\n\tprops: {\n\t\targs: args.absoluteDigits,\n\t},\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdAssignmentOverviewComponent>",
+                "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [keyFigureInput]='args'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
             },
             {
                 "name": "Template",
@@ -2142,11 +2599,41 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdKeyFigureComponent>",
+                "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-key-figure [keyFigureInput]='args'></a-rspd-key-figure>`,\n\tprops: {\n\t\targs\n\t},\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<RspdLoadingIndicatorComponent>",
                 "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-loading-indicator></a-rspd-loading-indicator>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdProgressBarComponent>",
+                "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdTabComponent>",
+                "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
             },
             {
                 "name": "Template",
@@ -2213,6 +2700,60 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "multipleItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IKeyFigure[]",
+                    "defaultValue": "[]"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdAbsoluteDigitsComponent>",
+                    "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-absolute-digits [absoluteDigits]='args'></m-rspd-absolute-digits>`,\n\tprops: {\n\t\targs: args.absoluteDigits,\n\t},\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdAssignmentOverviewComponent>",
+                    "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [keyFigureInput]='args'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                }
+            ],
             "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts": [
                 {
                     "name": "Default",
@@ -2319,6 +2860,28 @@
                     "defaultValue": "(args) => ({\n\ttemplate: `<div style='width: 10rem'>\n\t\t\t\t\t<a-rspd-input [label]='label' [supportingText]='supportingText'>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tclass='a-rspd-input__input'\n\t\t\t\t\t\t\t[placeholder]='label'\n\t\t\t\t\t\t\t[name]='label'\n\t\t\t\t\t\t\t[id]='label'\n\t\t\t\t\t\t\t[type]='pattern'\n\t\t\t\t\t\t\t[minLength]='minLength'\n\t\t\t\t\t\t\t[maxLength]='maxLength'\n\t\t\t\t\t\t\trequired\n\t\t\t\t\t\t\tautocomplete='on'\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t</a-rspd-input>\n\t\t\t\t</div>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
                 }
             ],
+            "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdKeyFigureComponent>",
+                    "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-key-figure [keyFigureInput]='args'></a-rspd-key-figure>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                }
+            ],
             "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts": [
                 {
                     "name": "Default",
@@ -2339,6 +2902,50 @@
                     "deprecationMessage": "",
                     "type": "Story<RspdLoadingIndicatorComponent>",
                     "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-loading-indicator></a-rspd-loading-indicator>`,\n\tprops: {\n\t\t...args,\n\t},\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdProgressBarComponent>",
+                    "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdTabComponent>",
+                    "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
                 }
             ],
             "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts": [
@@ -2448,7 +3055,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 10,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -2618,6 +3225,35 @@
                 "status": "very-good"
             },
             {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/key-figure/component/key-figure.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdKeyFigureComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2647,10 +3283,127 @@
                 "status": "very-good"
             },
             {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdProgressBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "TabComponent",
+                "name": "RspdTabComponent",
+                "coveragePercent": 40,
+                "coverageCount": "2/5",
+                "status": "medium"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "multipleItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdAbsoluteDigitsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdAssignmentOverviewComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2680,8 +3433,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "RspdNavigationBarComponent",
-                "coveragePercent": 14,
-                "coverageCount": "1/7",
+                "coveragePercent": 22,
+                "coverageCount": "2/9",
                 "status": "low"
             },
             {
@@ -2711,6 +3464,15 @@
                 "name": "RspdVerificationComponent",
                 "coveragePercent": 20,
                 "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/user/frontend/identity-management/src/lib/components/connect-github/connect-github.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdConnectGithubComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -2757,7 +3519,7 @@
                 "linktype": "component",
                 "name": "RspdRegisterComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/9",
                 "status": "low"
             }
         ]
