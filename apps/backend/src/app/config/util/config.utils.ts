@@ -53,6 +53,10 @@ export abstract class ConfigUtils {
 				password: environment.EMAIL_PASSWORD,
 				service: environment.EMAIL_SERVICE,
 			},
+			github: {
+				clientId: environment.GITHUB_OAUTH_CLIENT_ID,
+				clientSecret: environment.GITHUB_OAUTH_CLIENT_SECRET
+			}
 		} as AppConfig);
 	}
 }

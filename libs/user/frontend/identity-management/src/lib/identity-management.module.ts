@@ -11,10 +11,10 @@ import {
 import { RspdVerificationComponent } from '@rspd/shared/frontend/ui/organisms';
 
 import {
+	RspdConnectGithubComponent,
 	RspdLoginComponent,
 	RspdProfileComponent,
-	RspdRegisterComponent,
-} from './components/public-api';
+	RspdRegisterComponent} from './components/public-api';
 
 @NgModule({
 	imports: [
@@ -28,7 +28,7 @@ import {
 		RspdButtonComponent,
 		RspdLoadingIndicatorComponent,
 	],
-	declarations: [RspdRegisterComponent, RspdLoginComponent, RspdProfileComponent],
+	declarations: [RspdRegisterComponent, RspdLoginComponent, RspdProfileComponent, RspdConnectGithubComponent],
 	exports: [RspdRegisterComponent],
 })
 export class RspdIdentityModule {}

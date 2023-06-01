@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
  * @param {ActivatedRouteSnapshot} next - The next activated route snapshot.
  * @returns {boolean | UrlTree} Returns `true` if the user is authenticated, otherwise returns a `UrlTree` to redirect to the login page.
  */
-export const authGuard = (next: ActivatedRouteSnapshot) => {
+export const AuthGuard = (next: ActivatedRouteSnapshot) => {
 	if (!inject(AuthService).user()?.username) {
 		return createUrlTreeFromSnapshot(next, ['/', 'login']);
 	}

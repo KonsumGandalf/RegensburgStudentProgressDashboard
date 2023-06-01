@@ -17,7 +17,8 @@
 			"HELPER_TEXT": {
 				"OTH_EMAIL": "The email needs to have the suffix of @st.oth-regensburg.de",
 				"USERNAME": "The username must be unique",
-				"DISABLED_MAIL": "The email can not be reassigned"
+				"DISABLED_MAIL": "The email can not be reassigned",
+				"GITHUB_CONNECTION": "This service requires GitHub account authorization as a verification method to ensure the correct user is accessing the system."
 			}
 		},
 		"CONFIRM_EMAIL": "We're excited to have you get stared. First, you need to confirm your account by clicking the link we have send to your email address.",

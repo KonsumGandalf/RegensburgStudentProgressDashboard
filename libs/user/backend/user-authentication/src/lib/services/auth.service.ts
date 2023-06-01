@@ -5,6 +5,7 @@ import { SemesterService } from '@rspd/challenge-management/backend/semester-man
 import { MoodleManagementService } from '@rspd/moodle-management/backend/moodle-management';
 import { IAppConfig, UserRole } from '@rspd/shared/backend/utils';
 import { IComplexUser, IEmail, IUser, Student, Tutor } from '@rspd/user/backend/common-models';
+import { GithubAuthorizationUserService } from '@rspd/user/backend/github-authorization';
 import { UserMailService } from '@rspd/user/backend/user-mail-management';
 import { StudentService, TutorService, UserService } from '@rspd/user/backend/user-management';
 import {
@@ -28,6 +29,7 @@ export class AuthService {
 		private readonly _studentService: StudentService,
 		private readonly _tutorService: TutorService,
 		private readonly _userService: UserService,
+		private readonly _githubUserService: GithubAuthorizationUserService,
 		private readonly _emailService: UserMailService,
 		private readonly _configService: ConfigService<IAppConfig>,
 		private readonly _jwtService: JwtService,
@@ -110,6 +112,11 @@ export class AuthService {
 			await this.requestConfirmationMail(user.username);
 		}
 
+		const isGithubConnected =
+			user.role == UserRole.STUDENT
+				? !!(await this._githubUserService.findGithubUserByUser(user.id))
+				: true;
+
 		return {
 			access_token: this._jwtService.sign({
 				username: user.username,
@@ -117,7 +124,10 @@ export class AuthService {
 				role: (await this._userService.findOneById(user.id)).role,
 			} as IUser),
 			tokenExpirationDate,
-			isEmailValidated,
+			isValidated: {
+				email: isEmailValidated,
+				github: isGithubConnected,
+			},
 		};
 	}
 

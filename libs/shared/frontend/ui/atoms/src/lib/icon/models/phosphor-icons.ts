@@ -10,6 +10,7 @@ export enum PhosphorIcons {
 	INCORRECT = '<i class="ph-fill ph-x-square"></i>',
 	CORRECT = '<i class="ph-fill ph-check-square"></i>',
 	EMAIL = '<i class="ph-fill ph-envelope-open"></i>',
+	GITHUB= '<i class="ph-fill ph-github-logo"></i>'
 }
 
 export const phosphorIcons = {
@@ -24,4 +25,5 @@ export const phosphorIcons = {
 	incorrect: [PhosphorIcons.INCORRECT],
 	correct: [PhosphorIcons.CORRECT],
 	email: [PhosphorIcons.EMAIL],
+	github: [PhosphorIcons.GITHUB],
 };

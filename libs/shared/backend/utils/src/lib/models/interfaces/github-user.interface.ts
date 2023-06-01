@@ -22,4 +22,11 @@ export interface IGithubUser {
      * @type {string|undefined}
      */
     avatarUrl?: string;
+
+    /**
+     * The accessToken for GitHub user.
+     *
+     * @type {string}
+     */
+    accessToken: string;
 }

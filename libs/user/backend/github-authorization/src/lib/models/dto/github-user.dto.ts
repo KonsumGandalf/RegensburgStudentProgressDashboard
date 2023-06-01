@@ -1,9 +1,10 @@
+import { IGithubUser } from '@rspd/shared/backend/utils';
 import { IsString } from 'class-validator';
 
 /**
  * Data transfer object for a Github user.
  */
-export class GithubUserDto {
+export class GithubUserDto implements IGithubUser{
 	/**
 	 * The username of the Github user.
 	 */
@@ -21,4 +22,10 @@ export class GithubUserDto {
 	 */
 	@IsString()
 	avatarUrl: string;
+
+	/**
+	 * The accessToken for GitHub user.
+	 */
+	@IsString()
+	accessToken: string;
 }

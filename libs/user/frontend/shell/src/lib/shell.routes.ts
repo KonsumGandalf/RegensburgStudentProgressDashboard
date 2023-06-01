@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { authGuard } from '@rspd/user/frontend/auth';
+import { AuthGuard, GithubConnectionGuard} from '@rspd/user/frontend/auth';
 import {
 	RspdLoginComponent,
 	RspdProfileComponent,
@@ -25,9 +25,14 @@ export const SHELL_ROUTES: Route[] = [
 				component: RspdLoginComponent,
 			},
 			{
+				path: 'connect-github',
+				component: RspdLoginComponent,
+				canActivate: [AuthGuard]
+			},
+			{
 				path: 'profile',
 				component: RspdProfileComponent,
-				canActivate: [authGuard]
+				canActivate: [AuthGuard, GithubConnectionGuard]
 			},
 		],
 	},

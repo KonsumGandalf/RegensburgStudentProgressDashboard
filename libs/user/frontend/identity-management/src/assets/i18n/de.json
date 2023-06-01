@@ -17,7 +17,8 @@
 			"SUPPORTING_TEXT": {
 				"OTH_EMAIL": "Die Email muss auf @st.oth-regensburg.de enden.",
 				"USERNAME": "Der Username muss einzigartig sein.",
-				"DISABLED_MAIL": "Eine neue Email kann ich nicht zugewiesen werden."
+				"DISABLED_MAIL": "Eine neue Email kann ich nicht zugewiesen werden.",
+				"GITHUB_CONNECTION": "Dieser Dienst erfordert die Autorisierung des GitHub-Kontos als Überprüfungsmethode, um sicherzustellen, dass der richtige Benutzer auf das System zugreift."
 			}
 		},
 		"CONFIRM_EMAIL": "Wir freuen uns, dass Sie sich angemeldet haben. Zuerst musst du dein Konto bestätigen, indem du auf den Link klickst, den wir dir an deine E-Mail-Adresse geschickt haben.",

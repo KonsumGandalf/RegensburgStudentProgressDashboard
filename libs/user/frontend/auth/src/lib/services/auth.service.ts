@@ -6,26 +6,26 @@ import { IResponseAuthentication } from '@rspd/user/common/models';
 import { AuthUser } from '../models/auth-user';
 import { UnconfirmedMailError } from '../models/errors/unconfirmed-mail.error';
 
-
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthService {
-	user: WritableSignal<undefined | AuthUser > = signal(undefined);
+	user: WritableSignal<undefined | AuthUser> = signal(undefined);
 	tokenExpirationTimer?: number;
 
-	constructor(
-		private http: HttpClient,
-		private router: Router
-	) {
-	}
+	constructor(private http: HttpClient, private router: Router) {}
 
 	public handleAuthentication(response: IResponseAuthentication, username: string) {
-		if (response.isEmailValidated === false) {
+		if (response.isValidated.email === false) {
 			throw new UnconfirmedMailError();
 		}
 
-		const user = new AuthUser(response.access_token, response.tokenExpirationDate, username);
+		const user = new AuthUser(
+			response.access_token,
+			response.tokenExpirationDate,
+			response.isValidated.github,
+			username,
+		);
 		this.user.set(user);
 		this.autoLogout(this.calculateExpirationTime(response.tokenExpirationDate) * 1000);
 		localStorage.setItem('userData', JSON.stringify(user));
@@ -44,13 +44,15 @@ export class AuthService {
 		const loadedData: {
 			_access_token: string;
 			_tokenExpirationDate: string;
+			isGithubValidated: boolean
 			username: string;
 		} = JSON.parse(userData);
 
 		const loadedUser = new AuthUser(
 			loadedData._access_token,
 			new Date(loadedData._tokenExpirationDate),
-			loadedData.username
+			loadedData.isGithubValidated,
+			loadedData.username,
 		);
 		this.user.set(loadedUser);
 		this.autoLogout(this.calculateExpirationTime(loadedUser._tokenExpirationDate));
@@ -72,4 +74,3 @@ export class AuthService {
 		}, expirationDuration);
 	}
 }
-

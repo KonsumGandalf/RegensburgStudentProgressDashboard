@@ -4,8 +4,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { RspdSemesterManagementModule } from '@rspd/challenge-management/backend/semester-management';
 import { RspdMoodleManagementModule } from '@rspd/moodle-management/backend/moodle-management';
-import { IAppConfig } from '@rspd/shared/backend/utils';
-import { JwtStrategy } from '@rspd/shared/backend/utils';
+import { IAppConfig, JwtStrategy } from '@rspd/shared/backend/utils';
+import { RspdGithubAuthorizationModule } from '@rspd/user/backend/github-authorization';
 import { RspdUserMailManagementModule } from '@rspd/user/backend/user-mail-management';
 import { RspdUserModule } from '@rspd/user/backend/user-management';
 
@@ -19,7 +19,8 @@ import { LocalStrategy } from './strategies/local.strategy';
 		RspdMoodleManagementModule,
 		RspdUserMailManagementModule,
 		RspdSemesterManagementModule,
-		PassportModule.register({ session: true }),
+		RspdGithubAuthorizationModule,
+		PassportModule.register({ session: true, defaultStrategy: 'jwt' }),
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
 			useFactory: async (configService: ConfigService<IAppConfig>) => ({

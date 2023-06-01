@@ -1,1 +1,1 @@
-export * from './lib/github-authorization.module';
+export * from './lib/public-api';

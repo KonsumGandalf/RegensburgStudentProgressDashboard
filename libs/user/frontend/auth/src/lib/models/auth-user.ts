@@ -2,6 +2,7 @@ export class AuthUser {
 	constructor(
 		private readonly _access_token: string,
 		public readonly _tokenExpirationDate: Date,
+		public readonly isGithubValidated: boolean,
 		public readonly username: string,
 	) {}
 

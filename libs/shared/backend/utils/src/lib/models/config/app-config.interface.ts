@@ -1,5 +1,9 @@
+import { Type } from 'class-transformer';
+import { ValidateNested } from 'class-validator';
+
 import { AuthConfig } from './auth-config.class';
 import { EmailConfig } from './email-config.class';
+import { GithubConfig } from './github-config.class';
 import { HostEnum } from './host.enum';
 import { MoodleConfig } from './moodle-config.class';
 import { PostgresConfig } from './postgres-config.class';
@@ -46,4 +50,10 @@ export interface IAppConfig {
      * @type {EmailConfig}
      */
     email: EmailConfig;
+
+    /**
+     * Configuration class for the Regensburg Student Progress Dashboard GitHub API integration.
+     * type {GithubConfig}
+     */
+    github: GithubConfig;
 }

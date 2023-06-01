@@ -1,9 +1,10 @@
 import { Semester } from '@rspd/challenge-management/backend/common-models';
-import { GithubUser, UserRole } from '@rspd/shared/backend/utils';
+import { UserRole } from '@rspd/shared/backend/utils';
 import { AssignmentSubmission } from '@rspd/student-submissions/backend/common-models';
 import { ChallengeSubmission } from '@rspd/student-submissions/backend/common-models';
 import { ChildEntity, Column, JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 
+import { GithubUser } from './github-user.entity';
 import { User } from './user.entity';
 
 /**

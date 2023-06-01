@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
@@ -27,7 +22,10 @@ async function bootstrap() {
 	const { httpAdapter } = app.get(HttpAdapterHost);
 	app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
 
-	app.enableCors();
+	app.enableCors({
+		origin: ['http://localhost:4200'],
+		methods: ['GET', 'PUT', 'POST', 'DELETE'],
+	});
 	await app.listen(port);
 	Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }

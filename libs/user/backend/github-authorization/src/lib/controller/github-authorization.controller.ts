@@ -1,16 +1,28 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Query, Req, Request, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { IGithubUser } from '@rspd/shared/backend/utils';
+import { GithubOauthGuard, JwtAuthGuard } from '@rspd/shared/backend/utils';
+import { IRequestLogin } from '@rspd/user/backend/common-models';
 
-import { GithubAuthorizationService } from '../services/github-authorization.service';
+import { GithubUserDto } from '../models/dto/github-user.dto';
+import { IGithubRequest } from '../models/interfaces/github-request.interfaces';
+import { GithubAuthorizationUserService } from '../services/github-authorization-user.service';
 
 @ApiTags('github-authorization')
 @Controller('github')
 export class GithubAuthorizationController {
-	constructor(private readonly _githubService: GithubAuthorizationService) {}
+	constructor(private readonly _githubService: GithubAuthorizationUserService) {}
+
+	@Get()
+	@UseGuards(JwtAuthGuard, GithubOauthGuard)
+	async login(@Req() req) {
+		console.log(req.session.test)
+	}
 
 	@Get('callback')
-	async login(@Query('code') code: string): Promise<IGithubUser> {
-		return this._githubService.createUser(code);
+	@UseGuards(GithubOauthGuard)
+	async authCallback(@Request() request) {
+		console.log(request);
+		console.log(request.user);
+		// return await this._githubService.connectGithubAccount(request.user.id, request.session.userId);
 	}
 }

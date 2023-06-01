@@ -1,3 +1,5 @@
+import { IsString } from 'class-validator';
+
 /**
  * An interface describing the environment variables used by the application.
  */
