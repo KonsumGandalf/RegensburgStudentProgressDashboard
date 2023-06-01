@@ -21,7 +21,7 @@ export const Default = Template.bind({});
 Default.args = {};
 
 export default {
-	title: 'Molecules/AbsoluteDigits',
+	title: 'Molecules/Absolute Digits',
 	component: RspdAbsoluteDigitsComponent,
 	argTypes: {},
 	args: {

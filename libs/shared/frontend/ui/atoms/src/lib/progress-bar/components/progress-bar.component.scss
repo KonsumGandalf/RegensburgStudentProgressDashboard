@@ -1,18 +1,27 @@
 @use 'settings/generic/colors';
 
-.progress {
+.a-rspd-progress-bar {
+    width: 100%;
+    max-width: 30rem;
 
-    .progress-bar {
-        padding: 1rem;
-        width: var(--progress-percentage)
-    }
-}
-
-.progress--completed {
     .progress {
+        height: fit-content;
 
         .progress-bar {
-            background-color: colors.$good !important;
+            padding: 0.675rem;
+            border-radius: 0.675rem;
+            width: var(--progress-percentage);
+            background-color: colors.$themed-black !important;
         }
     }
+
+    .progress--completed {
+        .progress {
+
+            .progress-bar {
+                background-color: colors.$good !important;
+            }
+        }
+    }
+
 }

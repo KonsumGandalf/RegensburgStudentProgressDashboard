@@ -13,6 +13,7 @@
 		"lib": ["es2017", "dom"],
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
+		"strictNullChecks": false,
 		"baseUrl": ".",
 		"paths": {
 			"@rspd/auth/common/models": ["libs/auth/common/models/src/index.ts"],
@@ -66,6 +67,12 @@
 			],
 			"@rspd/student-submissions/common/models": [
 				"libs/student-submissions/common/models/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/shell": [
+				"libs/student-submissions/frontend/shell/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/submission-overview": [
+				"libs/student-submissions/frontend/submission-overview/src/index.ts"
 			],
 			"@rspd/user/backend/common-models": ["libs/user/backend/common-models/src/index.ts"],
 			"@rspd/user/backend/github-authorization": [

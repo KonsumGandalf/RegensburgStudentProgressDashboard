@@ -8,6 +8,57 @@
     "directives": [],
     "components": [
         {
+            "name": "ChallengeOverviewComponent",
+            "id": "component-ChallengeOverviewComponent-aca40382be4f445cee31562ee4c77d18d76e29e03e8b582ff8233c530fe14fc0788e554383c918a60e76fae27a9e5a1536e50cfa16abdd0dca5b0feefa46e7dd",
+            "file": "libs/shared/frontend/ui/organisms/src/lib/challenge-overview/challenge-overview.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "o-rspd-challenge-overview",
+            "styleUrls": [
+                "./challenge-overview.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./challenge-overview.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n\tselector: 'o-rspd-challenge-overview',\n\tstandalone: true,\n\timports: [CommonModule],\n\ttemplateUrl: './challenge-overview.component.html',\n\tstyleUrls: ['./challenge-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ChallengeOverviewComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./challenge-overview.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<p>challenge-overview works!</p>\n"
+        },
+        {
             "name": "RspdAbsoluteDigitsComponent",
             "id": "component-RspdAbsoluteDigitsComponent-747fbd2d9defae9ec7a5734a775436a011683f4aa7fa4690e32537e542657775b1548b47077224bc4c7626447b4a0503272c35939954a85b43a254664a443c9b",
             "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.ts",
@@ -76,7 +127,7 @@
         },
         {
             "name": "RspdAssignmentOverviewComponent",
-            "id": "component-RspdAssignmentOverviewComponent-3f20e8ed6bf17980ee878c047f968a4948b2025edf9ea6e7a52bd73d2425b716671a5799af684a557213a68ce8ed0d8e321cabf43efd3143f5570a420aba7619",
+            "id": "component-RspdAssignmentOverviewComponent-55195625e507026b6caa18addb68675263a28575175ce407d62ebb8d708fbba9cff4474388312bb55aaf09c6fa0c4582d1ed8f25fb2658da70e04446de76ad34",
             "file": "libs/shared/frontend/ui/molecules/src/lib/assignment-overview/assignment-overview.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -96,9 +147,77 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "rawdescription": "\n\nThe name of the assignment\n",
+                    "description": "<p>The name of the assignment</p>\n",
+                    "line": 39,
+                    "type": "TopicIcons",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "rawdescription": "\n\nThe name of the assignment\n",
+                    "description": "<p>The name of the assignment</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "progress",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "rawdescription": "\n\nThe progress in the assignment\n",
+                    "description": "<p>The progress in the assignment</p>\n",
+                    "line": 45,
+                    "type": "IProgressBar",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "iconSize",
+                    "defaultValue": "IconSize.MD",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "outline",
+                    "defaultValue": "CardAppearance.OUTLINED",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "padding",
+                    "defaultValue": "CardPadding.X_SM",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -113,21 +232,29 @@
                 {
                     "name": "RspdCardComponent",
                     "type": "component"
+                },
+                {
+                    "name": "RspdProgressBarComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "RspdIconComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { RspdCardComponent } from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'm-rspd-assignment-overview',\n\tstandalone: true,\n\timports: [CommonModule, RspdCardComponent],\n\ttemplateUrl: './assignment-overview.component.html',\n\tstyleUrls: ['./assignment-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'm-rspd-assignment-overview',\n\t},\n})\nexport class RspdAssignmentOverviewComponent {\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { TranslateModule } from '@ngx-translate/core';\nimport {\n\tCardAppearance, CardPadding, IconSize,\n\tIProgressBar,\n\tRspdCardComponent,\n\tRspdIconComponent,\n\tRspdProgressBarComponent,\n\tTopicIcons,\n} from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'm-rspd-assignment-overview',\n\tstandalone: true,\n\timports: [CommonModule, RspdCardComponent, RspdProgressBarComponent, RspdIconComponent],\n\ttemplateUrl: './assignment-overview.component.html',\n\tstyleUrls: ['./assignment-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'm-rspd-assignment-overview',\n\t},\n})\nexport class RspdAssignmentOverviewComponent {\n\toutline = CardAppearance.OUTLINED;\n\tpadding = CardPadding.X_SM;\n\ticonSize = IconSize.MD;\n\n\t/**\n\t * The name of the assignment\n\t */\n\t@Input({ required: true })\n\tname!: string;\n\n\t/**\n\t * The name of the assignment\n\t */\n\t@Input({ required: true })\n\ticon!: TopicIcons;\n\n\t/**\n\t * The progress in the assignment\n\t */\n\t@Input({ required: true })\n\tprogress!: IProgressBar;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".m-rspd-assignment-overview {\r\n    .m-rspd-assignment-overview__content {\r\n        width: 100%;\r\n\r\n        a-rspd-card {\r\n            width: 100%;\r\n\r\n            .a-rspd-card {\r\n                width: 100%;\r\n\r\n                .overview__card {\r\n                    display: flex;\r\n                    justify-content: space-evenly;\r\n                    align-items: center;\r\n                    overflow: hidden;\r\n\r\n                    .overview__name {\r\n                        max-width: 12rem;\r\n                    }\r\n\r\n                    *:not(:last-child) {\r\n                        margin-inline: 1rem;\r\n                    }\r\n                }\r\n            }\r\n\r\n        }\r\n\r\n    }\r\n\r\n}\r\n",
                     "styleUrl": "./assignment-overview.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<a-rspd-card></a-rspd-card>\n"
+            "templateData": "<div class='m-rspd-assignment-overview__content'>\n\t<a-rspd-card [appearance]='outline' [padding]='padding'>\n\t\t<div class='overview__card'>\n\t\t\t<p class='overview__name'>{{ name }}</p>\n\t\t\t<a-rspd-icon [appearance]='icon' [size]='iconSize'></a-rspd-icon>\n\t\t\t<a-rspd-progress-bar [progressInput]='progress'></a-rspd-progress-bar>\n\t\t</div>\n\t</a-rspd-card>\n</div>\n\n"
         },
         {
             "name": "RspdButtonComponent",
@@ -686,6 +813,73 @@
                 }
             },
             "templateData": "<div\n\tclass=\"a-rspd-card\"\n\t[class.a-rspd-card--front]=\"!isFlipped\"\n\t[class.a-rspd-card--back]=\"isFlipped\"\n>\n\t<div class=\"a-rspd-card__content\">\n\t\t<ng-content></ng-content>\n\t</div>\n</div>\n"
+        },
+        {
+            "name": "RspdChallengeOverviewComponent",
+            "id": "component-RspdChallengeOverviewComponent-ff3001b3d3185826211a97f00a26360ad2c461fffed0b00f083b1b92c7943b4bc98c436e2070f7e8c8e36f9ce48f9a81bb8ef4233c36b510c03bb3093f89c257",
+            "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "o-rspd-challenge-overview",
+            "styleUrls": [
+                "./challenge-overview.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./challenge-overview.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "overviewInput",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 17,
+                    "type": "IChallengeSubmissionOverview",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "PhosphorIcons.CORRECT",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { DatePipe } from '@angular/common';\nimport { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { PhosphorIcons, RspdIconComponent } from '@rspd/shared/frontend/ui/atoms';\nimport { IChallengeSubmissionOverview } from '@rspd/student-submissions/common/models';\n\n@Component({\n\tselector: 'o-rspd-challenge-overview',\n\ttemplateUrl: './challenge-overview.component.html',\n\tstyleUrls: ['./challenge-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'o-rspd-challenge-overview',\n\t},\n})\nexport class RspdChallengeOverviewComponent {\n\t@Input({ required: true })\n\toverviewInput!: IChallengeSubmissionOverview;\n\ticon: PhosphorIcons.CORRECT;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'settings/generic/padding';\r\n@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.o-rspd-challenge-overview {\r\n    .challenge-facts {\r\n        display: flex;\r\n        justify-content: space-around;\r\n        padding: padding.$padding-md;\r\n\r\n        h3 {\r\n            font-weight: bootstrap.$font-weight-bolder;\r\n        }\r\n\r\n        .challenge-facts__date {\r\n            color: colors.$grey-400;\r\n        }\r\n\r\n\r\n    }\r\n}\r\n",
+                    "styleUrl": "./challenge-overview.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class='challenge-facts'>\n\t<h3>{{ overviewInput.name }}</h3>\n\t<div class='challenge-facts__date'>{{ overviewInput.targetedCompletionDate | date }}</div>\n\t<div class='challenge-facts__progress'>\n\t\t<a-rspd-icon [appearance]='icon'></a-rspd-icon>\n\t\t<p class='progress__digits'>{{overviewInput.challengeScore.solved}}/{{overviewInput.challengeScore.all}}</p>\n\t</div>\n</div>\n<div class='assignments'>\n</div>\n"
         },
         {
             "name": "RspdConnectGithubComponent",
@@ -1911,13 +2105,14 @@
         },
         {
             "name": "RspdProgressBarComponent",
-            "id": "component-RspdProgressBarComponent-9adad6652e714d75cad8c0b60cf8b5c4c7188de1a65649402aa517df4231fb2655384598bc14d1401a011d43ff74eb4617d50b845291bdea295c3a757aa0fb6d",
+            "id": "component-RspdProgressBarComponent-e7745a08c1b51d82fb6a5633bb5ce0094513f22f2bc534e347186075ee2e0ecdbb4cc834028a7e7af316d419f18bf31680c5cf73a03ad849f7dc495ea576089e",
             "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
                 "ViewEncapsulation.None"
             ],
             "entryComponents": [],
+            "host": {},
             "inputs": [],
             "outputs": [],
             "providers": [],
@@ -1931,38 +2126,77 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "progressInput",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 18,
+                    "type": "IProgressBar",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
+            "hostBindings": [
                 {
-                    "name": "NgbProgressbarModule",
-                    "type": "module"
+                    "name": "class.progress--completed",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "any",
+                    "decorators": []
                 },
                 {
-                    "name": "TranslateModule",
-                    "type": "module"
+                    "name": "style.--progress-percentage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
                 }
             ],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';\nimport { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';\nimport { TranslateModule } from '@ngx-translate/core';\n@Component({\n\tselector: 'a-rspd-progress-bar',\n\tstandalone: true,\n\timports: [NgbProgressbarModule,\n\t\t\t  TranslateModule, ],\n\ttemplateUrl: './progress-bar.component.html',\n\tstyleUrls: ['./progress-bar.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class RspdProgressBarComponent {\n\t//@Input({ required: true })\n\t//current: number;\n//\n\t//@Input({ required: true })\n\t//total: number;\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';\n\nimport { IProgressBar } from '../models/progress-bar.interface';\n@Component({\n\tselector: 'a-rspd-progress-bar',\n\tstandalone: true,\n\timports: [],\n\ttemplateUrl: './progress-bar.component.html',\n\tstyleUrls: ['./progress-bar.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\tchangeDetection: ChangeDetectionStrategy.OnPush,\n\thost: {\n\t\tclass: 'a-rspd-progress-bar'\n\t}\n})\nexport class RspdProgressBarComponent {\n\t@Input({ required: true })\n\tprogressInput!: IProgressBar;\n\n\t@HostBinding('class.progress--completed')\n\tget isCompleted() {\n\t\treturn this.progressInput.isCompleted;\n\t}\n\n\t@HostBinding('style.--progress-percentage')\n\tget isActive() {\n\t\treturn `${(this.progressInput.current / this.progressInput.total * 100)}%`;\n\t}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@use 'settings/generic/colors';\r\n\r\nprogress {\r\n    opacity: 0;\r\n}\r\n\r\n\r\n.progress-container {\r\n    position: relative;\r\n    background: #eee;\r\n    height: 1.5rem;\r\n    border: solid;\r\n    padding: 0.5rem;\r\n    border-radius: 0.25rem\r\n}\r\n\r\n.progress-container::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 100%;\r\n    width: 0;\r\n    background: colors.$themed-black;\r\n}\r\n\r\n.progress-element--css .progress-container::before {\r\n    animation: progress-css 1s ease-in forwards;\r\n}\r\n\r\n.progress-label {\r\n    position: relative;\r\n}\r\n\r\n@property --num {\r\n    syntax: \"<integer>\";\r\n    initial-value: 0;\r\n    inherits: false;\r\n}\r\n\r\n.progress-label::after {\r\n    counter-reset: num var(--num);\r\n    content: counter(num) \"%\";\r\n    position: absolute;\r\n    top: 2.375rem;\r\n    right: 45%;\r\n    z-index: 2;\r\n    color: white;\r\n}\r\n\r\n.progress-element--css .progress-label::after {\r\n    animation: progress-text-css 1s ease-in forwards;\r\n}\r\n\r\n@keyframes progress-css {\r\n    to {\r\n        width: 80%;\r\n    }\r\n}\r\n",
+                    "data": "@use 'settings/generic/colors';\r\n\r\n.a-rspd-progress-bar {\r\n    width: 100%;\r\n    max-width: 30rem;\r\n\r\n    .progress {\r\n        height: fit-content;\r\n\r\n        .progress-bar {\r\n            padding: 0.675rem;\r\n            border-radius: 0.675rem;\r\n            width: var(--progress-percentage);\r\n            background-color: colors.$themed-black !important;\r\n        }\r\n    }\r\n\r\n    .progress--completed {\r\n        .progress {\r\n\r\n            .progress-bar {\r\n                background-color: colors.$good !important;\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n",
                     "styleUrl": "./progress-bar.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<p><ngb-progressbar type=\"success\" textType=\"white\" [value]=\"25\" [showValue]=\"true\"></ngb-progressbar></p>\n"
+            "accessors": {
+                "isCompleted": {
+                    "name": "isCompleted",
+                    "getSignature": {
+                        "name": "isCompleted",
+                        "type": "",
+                        "returnType": "",
+                        "line": 21
+                    }
+                },
+                "isActive": {
+                    "name": "isActive",
+                    "getSignature": {
+                        "name": "isActive",
+                        "type": "",
+                        "returnType": "",
+                        "line": 26
+                    }
+                }
+            },
+            "templateData": "<div class='progress'>\n\t<div class='progress-bar' role='progressbar' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>\n\t\t{{ progressInput.current }} / {{ progressInput.total }}\n\t</div>\n</div>\n"
         },
         {
             "name": "RspdRegisterComponent",
@@ -2543,7 +2777,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<RspdAssignmentOverviewComponent>",
-                "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [keyFigureInput]='args'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [name]='name' [icon]='icon' [progress]='progress'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\t...args\n\t},\n})"
             },
             {
                 "name": "Template",
@@ -2623,7 +2857,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<RspdProgressBarComponent>",
-                "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar [progressInput]='args'></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
             },
             {
                 "name": "Template",
@@ -2751,7 +2985,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<RspdAssignmentOverviewComponent>",
-                    "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [keyFigureInput]='args'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                    "defaultValue": "(args) => ({\n\ttemplate: `<m-rspd-assignment-overview [name]='name' [icon]='icon' [progress]='progress'></m-rspd-assignment-overview>`,\n\tprops: {\n\t\t...args\n\t},\n})"
                 }
             ],
             "libs/shared/frontend/ui/atoms/src/lib/button/component/button.component.stories.ts": [
@@ -2923,7 +3157,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<RspdProgressBarComponent>",
-                    "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                    "defaultValue": "(args) => ({\n\ttemplate: `<a-rspd-progress-bar [progressInput]='args'></a-rspd-progress-bar>`,\n\tprops: {\n\t\targs\n\t},\n})"
                 }
             ],
             "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts": [
@@ -3308,7 +3542,7 @@
                 "linktype": "component",
                 "name": "RspdProgressBarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -3404,9 +3638,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "RspdAssignmentOverviewComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 42,
+                "coverageCount": "3/7",
+                "status": "medium"
             },
             {
                 "filePath": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
@@ -3438,6 +3672,15 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/shared/frontend/ui/organisms/src/lib/challenge-overview/challenge-overview.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChallengeOverviewComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/shared/frontend/ui/organisms/src/lib/verification/component/verification.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3464,6 +3707,15 @@
                 "name": "RspdVerificationComponent",
                 "coveragePercent": 20,
                 "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdChallengeOverviewComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

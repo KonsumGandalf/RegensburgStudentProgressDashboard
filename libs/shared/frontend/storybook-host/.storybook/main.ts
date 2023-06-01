@@ -13,6 +13,7 @@ const config: StorybookConfig = {
 	stories: [
 		'../../ui/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
 		'../../../../user/frontend/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+		'../../../../student-submissions/frontend/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
 	],
 	docs: {
 		autodocs: true,

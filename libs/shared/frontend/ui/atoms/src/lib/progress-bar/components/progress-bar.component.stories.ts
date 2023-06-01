@@ -4,16 +4,16 @@ import { RspdProgressBarComponent } from './progress-bar.component';
 
 
 const Template: Story<RspdProgressBarComponent> = (args) => ({
-	template: `<a-rspd-progress-bar [current]='current' [total]='total' [isCompleted]='isCompleted'></a-rspd-progress-bar>`,
+	template: `<a-rspd-progress-bar [progressInput]='args'></a-rspd-progress-bar>`,
 	props: {
-		...args
+		args
 	},
 });
 export const Default = Template.bind({});
 Default.args = {};
 
 export default {
-	title: 'Atoms/ProgressBar',
+	title: 'Atoms/Progress Bar',
 	component: RspdProgressBarComponent,
 	argTypes: {
 		current: {

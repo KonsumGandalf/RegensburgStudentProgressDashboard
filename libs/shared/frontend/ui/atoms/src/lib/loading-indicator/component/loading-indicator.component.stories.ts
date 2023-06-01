@@ -12,7 +12,7 @@ export const Default = Template.bind({});
 Default.args = {};
 
 export default {
-	title: 'Atoms/Loading-Indicator',
+	title: 'Atoms/Loading Indicator',
 	component: RspdLoadingIndicatorComponent,
 	argTypes: {},
 	args: {},

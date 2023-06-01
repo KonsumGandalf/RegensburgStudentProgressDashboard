@@ -1,0 +1,62 @@
+@use 'settings/generic/colors';
+
+.p-rspd-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+
+	.p-rspd-page__content {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		form {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			button {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	&::before {
+		background-image: linear-gradient(
+				colors.$themed-white 0.5px,
+				transparent 0.5px,
+				transparent calc(100% - 0.5px),
+				colors.$themed-white calc(100% - 0.5px)
+			),
+			linear-gradient(
+				90deg,
+				colors.$themed-white 0.5px,
+				transparent 0.5px,
+				transparent calc(100% - 0.5px),
+				colors.$themed-white calc(100% - 0.5px)
+			);
+		background-size: 20% 20%;
+		background-color: rgba(colors.$themed-black, 0.9);
+		z-index: -1;
+	}
+
+	&::after {
+		background-image: url('/assets/svgs/rsds-simple-white.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+		z-index: -1;
+	}
+}

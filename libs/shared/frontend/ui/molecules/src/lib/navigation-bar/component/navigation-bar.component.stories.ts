@@ -14,7 +14,7 @@ Default.args = {};
 
 
 export default {
-	title: 'Molecules/NavigationBar',
+	title: 'Molecules/Navigation Bar',
 	component: RspdNavigationBarComponent,
 	decorators: [moduleMetadata({ imports: [RspdNavigationBarComponent] })],
 	argTypes: {

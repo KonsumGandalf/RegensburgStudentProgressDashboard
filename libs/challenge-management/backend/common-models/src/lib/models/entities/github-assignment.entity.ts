@@ -29,5 +29,5 @@ export class GithubAssignment extends Assignment {
 	 */
 	@OneToMany(() => GithubSubmission, (submission: GithubSubmission) => submission.assignment)
 	@JoinColumn()
-	submissions: GithubSubmission[];
+	override submissions: GithubSubmission[];
 }

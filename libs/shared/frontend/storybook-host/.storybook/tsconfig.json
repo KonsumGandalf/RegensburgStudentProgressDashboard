@@ -9,6 +9,8 @@
 		"../../ui/**/src/lib/**/*.stories.ts",
 		"../../ui/**/src/lib/**/*.component.ts",
 		"../../../../user/frontend/**/src/lib/**/*.stories.ts",
-		"../../../../user/frontend/**/*.component.ts"
+		"../../../../user/frontend/**/*.component.ts",
+		"../../../../student-submissions/frontend/**/src/lib/**/*.stories.ts",
+		"../../../../student-submissions/frontend/**/*.component.ts"
 	]
 }

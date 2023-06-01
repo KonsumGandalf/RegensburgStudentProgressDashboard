@@ -17,7 +17,7 @@ export class GithubSubmission extends AssignmentSubmission {
 	 */
 	@ManyToOne(() => GithubAssignment, (assignment: GithubAssignment) => assignment.submissions)
 	@JoinColumn()
-	assignment: GithubAssignment;
+	override assignment: GithubAssignment;
 
 	/**
 	 * References the GithubTests which were performed in one iteration of the grading process

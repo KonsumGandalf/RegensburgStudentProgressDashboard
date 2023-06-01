@@ -22,5 +22,5 @@ export class MoodleAssignment extends Assignment {
 	 */
 	@OneToMany(() => MoodleSubmission, (submission: MoodleSubmission) => submission.assignment)
 	@JoinColumn()
-	submissions: MoodleSubmission[];
+	override submissions: MoodleSubmission[];
 }

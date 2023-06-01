@@ -13,7 +13,7 @@ export const Default = Template.bind({});
 Default.args = {};
 
 export default {
-	title: 'Atoms/KeyFigure',
+	title: 'Atoms/Key Figure',
 	component: RspdKeyFigureComponent,
 	argTypes: {
 		current: {

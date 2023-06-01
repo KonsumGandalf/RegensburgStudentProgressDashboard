@@ -1,0 +1,21 @@
+@use 'settings/generic/padding';
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+
+.o-rspd-challenge-overview {
+    .challenge-facts {
+        display: flex;
+        justify-content: space-around;
+        padding: padding.$padding-md;
+
+        h3 {
+            font-weight: bootstrap.$font-weight-bolder;
+        }
+
+        .challenge-facts__date {
+            color: colors.$grey-400;
+        }
+
+
+    }
+}

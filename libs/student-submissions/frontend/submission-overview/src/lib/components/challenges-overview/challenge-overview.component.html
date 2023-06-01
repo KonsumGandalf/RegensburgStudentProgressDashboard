@@ -1,0 +1,10 @@
+<div class='challenge-facts'>
+	<h3>{{ overviewInput.name }}</h3>
+	<div class='challenge-facts__date'>{{ overviewInput.targetedCompletionDate | date }}</div>
+	<div class='challenge-facts__progress'>
+		<a-rspd-icon [appearance]='icon'></a-rspd-icon>
+		<p class='progress__digits'>{{overviewInput.challengeScore.solved}}/{{overviewInput.challengeScore.all}}</p>
+	</div>
+</div>
+<div class='assignments'>
+</div>
