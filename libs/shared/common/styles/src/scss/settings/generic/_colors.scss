@@ -25,3 +25,31 @@ $disabled: $grey-500;
 $good: #22c55e;
 $medium: #ffd700;
 $bad: #ef4444;
+
+.full-success-color {
+    color: $good;
+}
+
+.medium-success-color {
+    color: $medium;
+}
+
+.themed-black-color {
+    color: $themed-black;
+}
+
+.themed-white-color {
+    color: $themed-white;
+}
+
+.full-success-bc {
+    background-color: $good;
+}
+
+.medium-success-bc {
+    background-color: $medium;
+}
+
+.themed-black-bc {
+    background-color: $themed-black;
+}

@@ -1,4 +1,6 @@
 export enum IconColor {
-	WHITE = 'themed-white',
-	BLACK = 'themed-black',
+	WHITE = 'themed-white-color',
+	BLACK = 'themed-black-color',
+	FULL_SUCCESS = 'full-success-color',
+	MEDIUM_SUCCESS = 'medium-success-color'
 }

@@ -1,3 +1,4 @@
+import { SubmissionState } from '@rspd/student-submissions/common/models';
 import { Meta, Story } from '@storybook/angular';
 
 import { RspdProgressBarComponent } from './progress-bar.component';
@@ -22,11 +23,14 @@ export default {
 		total: {
 			control: { type: 'number' }
 		},
-		isCompleted: {control: { type: 'boolean'}}
+		state: {
+			control: { type: 'select'},
+			options: Object.values(SubmissionState)
+		}
 	},
 	args: {
 		current: 5,
 		total: 7,
-		isCompleted: false
+		state: SubmissionState.Unsolved
 	},
 } as Meta;

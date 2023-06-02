@@ -7,7 +7,7 @@ import { RspdSubmissionsOverviewPage } from './pages/overview/submissions-overvi
  */
 export const SHELL_ROUTES: Route[] = [
 	{
-		path: '',
+		path: 'overview',
 		component: RspdSubmissionsOverviewPage,
 		children: [
 		],

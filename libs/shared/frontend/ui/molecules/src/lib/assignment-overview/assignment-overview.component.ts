@@ -23,7 +23,7 @@ import {
 })
 export class RspdAssignmentOverviewComponent {
 	outline = CardAppearance.OUTLINED;
-	padding = CardPadding.X_SM;
+	padding = CardPadding.NONE;
 	iconSize = IconSize.MD;
 
 	/**

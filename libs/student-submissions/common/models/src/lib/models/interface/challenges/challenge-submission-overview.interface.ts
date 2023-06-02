@@ -1,5 +1,4 @@
-import { SubmissionState } from '@rspd/student-submissions/backend/common-models';
-
+import { SubmissionState } from '../../enums/submission-state';
 import { IScoreOf } from '../score-of.interface';
 import { IAssignmentOverview } from './assignment-overview.interface';
 

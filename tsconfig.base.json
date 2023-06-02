@@ -68,6 +68,9 @@
 			"@rspd/student-submissions/common/models": [
 				"libs/student-submissions/common/models/src/index.ts"
 			],
+			"@rspd/student-submissions/frontend/common-models": [
+				"libs/student-submissions/frontend/common-models/src/index.ts"
+			],
 			"@rspd/student-submissions/frontend/shell": [
 				"libs/student-submissions/frontend/shell/src/index.ts"
 			],

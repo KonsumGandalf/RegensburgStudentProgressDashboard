@@ -12,6 +12,11 @@ export const APP_ROUTES: Routes = [
 				loadChildren: () =>
 					import('@rspd/user/frontend/shell').then((m) => m.RspdUserShellModule),
 			},
+			{
+				path: '',
+				loadChildren: () =>
+					import('@rspd/student-submissions/frontend/shell').then((m) => m.RspdStudentSubmissionsShellModule),
+			},
 		],
 	},
 ];

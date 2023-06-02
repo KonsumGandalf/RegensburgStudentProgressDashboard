@@ -816,7 +816,7 @@
         },
         {
             "name": "RspdChallengeOverviewComponent",
-            "id": "component-RspdChallengeOverviewComponent-ff3001b3d3185826211a97f00a26360ad2c461fffed0b00f083b1b92c7943b4bc98c436e2070f7e8c8e36f9ce48f9a81bb8ef4233c36b510c03bb3093f89c257",
+            "id": "component-RspdChallengeOverviewComponent-a6da946091cc2cf24158c2df8f85968ddea940cecd0d4d06718816530d4706acea9d175a5368553211b49279aa8dca422b68f6dfa1470a8ef99cc1837979d029",
             "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -843,8 +843,8 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "optional": false,
-                    "line": 17,
-                    "type": "IChallengeSubmissionOverview",
+                    "line": 15,
+                    "type": "any",
                     "decorators": []
                 }
             ],
@@ -857,7 +857,7 @@
                     "type": "PhosphorIcons.CORRECT",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 16
                 }
             ],
             "methodsClass": [],
@@ -870,7 +870,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { DatePipe } from '@angular/common';\nimport { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { PhosphorIcons, RspdIconComponent } from '@rspd/shared/frontend/ui/atoms';\nimport { IChallengeSubmissionOverview } from '@rspd/student-submissions/common/models';\n\n@Component({\n\tselector: 'o-rspd-challenge-overview',\n\ttemplateUrl: './challenge-overview.component.html',\n\tstyleUrls: ['./challenge-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'o-rspd-challenge-overview',\n\t},\n})\nexport class RspdChallengeOverviewComponent {\n\t@Input({ required: true })\n\toverviewInput!: IChallengeSubmissionOverview;\n\ticon: PhosphorIcons.CORRECT;\n}\n",
+            "sourceCode": "import { Component, Input, ViewEncapsulation } from '@angular/core';\nimport { PhosphorIcons } from '@rspd/shared/frontend/ui/atoms';\n\n@Component({\n\tselector: 'o-rspd-challenge-overview',\n\ttemplateUrl: './challenge-overview.component.html',\n\tstyleUrls: ['./challenge-overview.component.scss'],\n\tencapsulation: ViewEncapsulation.None,\n\thost: {\n\t\tclass: 'o-rspd-challenge-overview',\n\t},\n})\nexport class RspdChallengeOverviewComponent {\n\t@Input({ required: true })\n\toverviewInput!: any;\n\ticon: PhosphorIcons.CORRECT;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2613,6 +2613,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2758,6 +2768,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n\tdocs: {\n\t\tinlineStories: true,\n\t},\n\tcontrol: {\n\t\texpanded: true,\n\t},\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdChallengeOverviewComponent>",
+                "defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-challenge-overview></o-rspd-challenge-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
             },
             {
                 "name": "Template",
@@ -2934,6 +2954,28 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdChallengeOverviewComponent>",
+                    "defaultValue": "(args) => ({\n\ttemplate: `<o-rspd-challenge-overview></o-rspd-challenge-overview>`,\n\tprops: {\n\t\targs\n\t},\n})"
+                }
+            ],
             "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3707,6 +3749,26 @@
                 "name": "RspdVerificationComponent",
                 "coveragePercent": 20,
                 "coverageCount": "1/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/student-submissions/frontend/submission-overview/src/lib/components/challenges-overview/challenge-overview.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

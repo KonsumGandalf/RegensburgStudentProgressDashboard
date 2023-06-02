@@ -1,6 +1,5 @@
-import { AssignmentTopic } from '@rspd/shared/backend/utils';
-import { SubmissionState } from '@rspd/student-submissions/backend/common-models';
-
+import { AssignmentTopic } from '../../enums/assignment-topic';
+import { SubmissionState } from '../../enums/submission-state';
 import { IScoreOf } from '../score-of.interface';
 
 export interface IAssignmentOverview {

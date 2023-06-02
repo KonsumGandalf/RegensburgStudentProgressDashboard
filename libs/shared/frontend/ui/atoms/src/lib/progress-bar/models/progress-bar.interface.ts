@@ -1,3 +1,5 @@
+import { SubmissionState } from '@rspd/student-submissions/common/models';
+
 export interface IProgressBar {
 
 	/**
@@ -13,5 +15,5 @@ export interface IProgressBar {
 	/**
 	 * Represents if an element has been completed
 	 */
-	isCompleted?: boolean;
+	state: SubmissionState;
 }

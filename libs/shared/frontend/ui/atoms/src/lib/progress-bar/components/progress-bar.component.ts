@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
+import { COMPLETION_COLOR_MAP } from '../models/completion-color-map';
 import { IProgressBar } from '../models/progress-bar.interface';
+
+
+
 @Component({
 	selector: 'a-rspd-progress-bar',
 	standalone: true,
@@ -17,13 +21,13 @@ export class RspdProgressBarComponent {
 	@Input({ required: true })
 	progressInput!: IProgressBar;
 
-	@HostBinding('class.progress--completed')
+	@HostBinding('class')
 	get isCompleted() {
-		return this.progressInput.isCompleted;
+		return `progress--${COMPLETION_COLOR_MAP[this.progressInput.state]}`;
 	}
 
 	@HostBinding('style.--progress-percentage')
-	get isActive() {
+	get isPercentage() {
 		return `${(this.progressInput.current / this.progressInput.total * 100)}%`;
 	}
 }

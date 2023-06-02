@@ -3,7 +3,6 @@ import { Meta, Story } from '@storybook/angular';
 
 import { RspdAssignmentOverviewComponent } from './assignment-overview.component';
 
-
 const Template: Story<RspdAssignmentOverviewComponent> = (args) => ({
 	template: `<m-rspd-assignment-overview [name]='name' [icon]='icon' [progress]='progress'></m-rspd-assignment-overview>`,
 	props: {

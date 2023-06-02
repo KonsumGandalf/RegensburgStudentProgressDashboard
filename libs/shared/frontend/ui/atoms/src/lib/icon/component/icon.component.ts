@@ -1,11 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	HostBinding,
-	Input,
-	ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
 import { IconColor } from '../models/icon-color';
 import { IconSize } from '../models/icon-size';
@@ -44,7 +37,7 @@ export class RspdIconComponent {
 
 	@HostBinding('class')
 	get isColored(): string {
-		return `a-rspd-icon--${this.color || IconColor.BLACK}`;
+		return this.color;
 	}
 
 	/**

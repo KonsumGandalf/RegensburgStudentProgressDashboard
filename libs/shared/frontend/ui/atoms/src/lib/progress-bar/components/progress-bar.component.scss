@@ -3,6 +3,7 @@
 .a-rspd-progress-bar {
     width: 100%;
     max-width: 30rem;
+    min-width: 7rem ;
 
     .progress {
         height: fit-content;
@@ -11,17 +12,23 @@
             padding: 0.675rem;
             border-radius: 0.675rem;
             width: var(--progress-percentage);
-            background-color: colors.$themed-black !important;
+            background-color: colors.$themed-black;
         }
     }
+}
 
-    .progress--completed {
-        .progress {
-
-            .progress-bar {
-                background-color: colors.$good !important;
-            }
+.progress--full-success {
+    .progress {
+        .progress-bar {
+            background-color: colors.$good;
         }
     }
+}
 
+.progress--medium-success {
+    .progress {
+        .progress-bar {
+            background-color: colors.$medium;
+        }
+    }
 }

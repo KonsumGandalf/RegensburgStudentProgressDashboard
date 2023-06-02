@@ -12,12 +12,4 @@
 	img {
 		width: var(--size);
 	}
-
-	&.a-rspd-icon--themed-black {
-		color: colors.$themed-black;
-	}
-
-	&.a-rspd-icon--themed-white {
-		color: colors.$themed-white;
-	}
 }

@@ -1,9 +1,13 @@
-.m-rspd-assignment-overview {
+@use 'settings/generic/padding';
+
+m-rspd-assignment-overview {
+    min-width: 18rem;
+
     .m-rspd-assignment-overview__content {
         width: 100%;
 
         a-rspd-card {
-            width: 100%;
+            padding: padding.$padding-x-sm;
 
             .a-rspd-card {
                 width: 100%;

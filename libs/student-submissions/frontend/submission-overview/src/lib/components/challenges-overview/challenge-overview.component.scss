@@ -3,19 +3,44 @@
 @use 'settings/vendors/bootstrap';
 
 .o-rspd-challenge-overview {
-    .challenge-facts {
-        display: flex;
-        justify-content: space-around;
-        padding: padding.$padding-md;
+    .challenge__card-content {
+        padding: padding.$padding-sm padding.$padding-sm;
 
-        h3 {
-            font-weight: bootstrap.$font-weight-bolder;
+        .a-rspd-card {
+            width: 100%;
         }
 
-        .challenge-facts__date {
-            color: colors.$grey-400;
+        .challenge-facts {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                font-weight: bootstrap.$font-weight-bolder;
+            }
+
+            .challenge-facts__date {
+                color: colors.$grey-400;
+            }
+
+            .challenge-facts__progress {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                a-rspd-icon {
+                    padding: padding.$padding-sm;
+                }
+            }
         }
 
+        .row {
+            display: flex;
+            justify-content: center;
 
+            .col-4 {
+                min-width: 18rem;
+            }
+        }
     }
 }

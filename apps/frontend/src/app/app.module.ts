@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { RspdEnvironmentModule } from '@rspd/shared/frontend/environment';
+import {
+	RspdSubmissionOverview
+} from '@rspd/student-submissions/frontend/submission-overview';
 import { TokenInterceptorService } from '@rspd/user/frontend/auth';
 
 import { environment } from '../environments/environment';
