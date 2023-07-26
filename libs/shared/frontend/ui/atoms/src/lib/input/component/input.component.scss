@@ -1,0 +1,45 @@
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+
+.a-rspd-input {
+	width: 100%;
+
+	&__input {
+		width: inherit;
+		padding: 1rem 1.5rem;
+		background-color: rgba(bootstrap.$white, 0.5);
+		border-radius: 0.125rem;
+		outline: 0.0625rem solid colors.$outline;
+		border: none;
+		transition: all 0.2s;
+
+		&:focus {
+			outline: 0.125rem solid colors.$primary-400;
+
+			&.ng-invalid.ng-touched {
+				outline: 0.125rem solid colors.$bad;
+			}
+		}
+
+		&.ng-invalid.ng-touched {
+			outline: 0.125rem solid colors.$bad;
+		}
+	}
+
+	&__label {
+		display: block;
+		margin-top: 0.4rem;
+		margin-left: 1.5rem;
+		transition: all 0.3s;
+		font-size: 0.675rem;
+		font-weight: bootstrap.$light;
+		color: colors.$outline;
+		margin-bottom: 1rem;
+	}
+
+	&__input:placeholder-shown + &__label {
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-2rem);
+	}
+}

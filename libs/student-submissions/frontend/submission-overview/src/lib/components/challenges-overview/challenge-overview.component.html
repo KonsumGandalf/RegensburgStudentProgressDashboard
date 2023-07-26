@@ -1,0 +1,21 @@
+<a-rspd-card class='challenge__card-content' [appearance]='outline'>
+	<div class='challenge-facts'>
+		<h3>{{ overviewInput.name }}</h3>
+		<div class='challenge-facts__date'>{{ overviewInput.targetedCompletionDate | date }}</div>
+		<div class='challenge-facts__progress'>
+			<a-rspd-icon [appearance]='icon.appearance' [color]='icon.color'></a-rspd-icon>
+			<p class='progress__digits'>{{overviewInput.challengeScore.solved}}/{{overviewInput.challengeScore.all}}</p>
+		</div>
+	</div>
+	<div class='hr'></div>
+	<div class="container-fluid">
+		<div class="row g-2">
+				<div class="col-auto" *ngFor='let assignment of processedAssignments'>
+					<m-rspd-assignment-overview
+						[name]='assignment.name'
+						[progress]='assignment.progress'
+						[icon]='assignment.icon'></m-rspd-assignment-overview>
+			</div>
+		</div>
+	</div>
+</a-rspd-card>

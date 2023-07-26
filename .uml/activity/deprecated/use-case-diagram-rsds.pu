@@ -1,0 +1,51 @@
+@startuml
+
+actor User as u
+actor Student as s
+actor Instructor as i
+actor Professor as p
+i <|-- p
+u <|-- i
+u <|-- s
+
+package github {
+    usecase "send assignment information via github action" as G1
+}
+
+package moodle {
+    usecase "answer to rest api calls" as M1
+}
+
+package rsds {
+    usecase "analyse assignments" as R1
+    usecase "analyse progress of students" as R2
+    usecase "create badges" as R3
+    usecase "determine point rewards" as R4
+    usecase "setup notifications" as R5
+    usecase "participate in help channel" as R6
+    usecase "get overview of assignments" as R7
+    usecase "track progress" as R8
+    usecase "score points" as R9
+    usecase "achieve badges" as R10
+    usecase "listed on leaderboard" as R11
+}
+
+G1 --> rsds
+rsds --> M1
+
+u --> R6
+
+i --> R2
+
+p --> R1
+p --> R3
+p --> R4
+p --> R5
+
+s --> R7
+s --> R8
+s --> R9
+s --> R10
+s --> R11
+
+@enduml

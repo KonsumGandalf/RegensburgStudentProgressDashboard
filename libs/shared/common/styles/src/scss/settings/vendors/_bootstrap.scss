@@ -1,0 +1,78 @@
+@use 'sass:list';
+@use '../generic/colors';
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/alert';
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/progress";
+
+$font-family-monospace: list.join('Space Mono', $font-family-monospace);
+$font-family-sans-serif: list.join('Montserrat', $font-family-sans-serif);
+$font-family-inter: list.join('Inter', $font-family-sans-serif);
+$display-font-family: list.join('Inter', $display-font-family);
+$display-font-weight: 200;
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: normal;
+	font-weight: 400;
+	src: url('/assets/fonts/space-mono/space-mono-regular.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: italic;
+	font-weight: 400;
+	src: url('/assets/fonts/space-mono/space-mono-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: normal;
+	font-weight: 700;
+	src: url('/assets/fonts/space-mono/space-mono-bold.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono', monospace;
+	font-style: italic;
+	font-weight: 700;
+	src: url('/assets/fonts/space-mono/space-mono-bold-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Montserrat', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	src: url('/assets/fonts/montserrat/montserrat-italic.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	src: url('/assets/fonts/montserrat/montserrat.ttf');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/assets/fonts/inter/inter.ttf');
+}

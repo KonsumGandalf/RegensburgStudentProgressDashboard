@@ -1,0 +1,11 @@
+@use 'settings/generic/colors';
+
+.m-rspd-absolute-digits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        color: colors.$grey-400;
+    }
+}

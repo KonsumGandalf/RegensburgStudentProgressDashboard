@@ -1,0 +1,9 @@
+<div
+	class="a-rspd-card"
+	[class.a-rspd-card--front]="!isFlipped"
+	[class.a-rspd-card--back]="isFlipped"
+>
+	<div class="a-rspd-card__content">
+		<ng-content></ng-content>
+	</div>
+</div>

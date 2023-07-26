@@ -1,0 +1,99 @@
+@startuml
+
+entity BaseEntity {
+    * id: string
+    * createdAt: Date
+    * updatedAt: Date
+}
+
+entity Account extends BaseEntity{
+    * firstName: string
+    * lastName: string
+    * email: string
+    * username: string
+    * password: string
+}
+
+enum AccountType {
+    INSTRUCTOR
+    STUDENT
+}
+Account -- AccountType
+
+entity Student extends Account {
+    * githubAuthToken: string
+    * replitAuthToken: string
+    * moodleAuthToken: string
+    * moodleId: id
+}
+
+entity Instructor extends Account {
+}
+
+enum AssignmentTopic {
+    FLASK
+    IOT
+    PYTHON
+    ROBOTIK
+    SQL
+    SCRATCH
+    WEB
+}
+
+enum TestState {
+    UNGRADED
+    PASSED
+    FAILED
+}
+
+entity Challenge extends BaseEntity {
+    * targetDate: Date
+    * name: string
+    completionDate: Date
+}
+
+entity Assignment extends BaseEntity {
+    * name: string
+    * passingPercentage: number
+    * repoLink: string
+    tutorsLink: string
+}
+
+entity Submission {
+    * attempts: number
+}
+Submission "0..n" *-- "1" Assignment
+
+
+Student "1" -> "0..n" Submission: processes
+Instructor "1" -> "0..n" Assignment: creates
+
+AssignmentTemplate -- AssignmentTopic
+entity GithubSubmission extends Submission {
+
+}
+entity MoodleSubmission extends Submission {
+    * id: number
+    * grade: number
+}
+
+entity Test extends BaseEntity {
+    errorMessage: string
+    completionDate: Date
+}
+
+entity Semester extends BaseEntity{
+    name: String
+    startDate: Date
+    endDate: Date
+    moodleCourseId: number
+}
+Semester "n" *-- "1" Challenge
+Semester "0..n" --o "0..n" Student
+Challenge "1" --* "0..n" Instructor
+
+Test -- TestState
+GithubSubmission "1..n" *-- "1" Test
+Challenge "1..n" *-- "1" AssignmentTemplate
+
+@enduml

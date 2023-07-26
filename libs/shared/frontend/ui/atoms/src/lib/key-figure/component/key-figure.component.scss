@@ -1,0 +1,42 @@
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+@use 'settings/generic/margin';
+
+.a-rspd-key-figure {
+	display: flex;
+    align-items: center;
+	color: colors.$grey-300;
+	padding: 1rem 3rem;
+
+
+	.label {
+		text-transform: uppercase;
+		margin-right: 2rem;
+		font-size: 0.75rem;
+		width: min-intrinsic;
+		width: -webkit-min-content;
+		width: -moz-min-content;
+		width: min-content;
+	}
+
+	.rating {
+		display: flex;
+		font-size: 2rem;
+
+		.rating__divider {
+			padding-inline: 1rem;
+		}
+
+		.rating__current {
+			color: colors.$themed-black;
+		}
+		.rating__total {
+		}
+	}
+
+	&:active {
+		box-shadow: bootstrap.$box-shadow;
+	}
+
+
+}

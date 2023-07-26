@@ -1,0 +1,32 @@
+@startuml
+|User|
+start
+: wants to login;
+note left: User is not already signed in
+    |System|
+        : show login form;
+    |User|
+        repeat
+            if (thinks to know password?) then (no)
+                |User|
+                :requests new \npassword;
+                    |System|
+                        :send new random password to mail;
+                        stop;
+            else
+                |User|
+                : input of user data;
+                    |System|
+                         :validates password;
+            endif
+        repeat while (correct input?) is (no)
+         -> yes;
+
+    |User|
+    : view landing-page;
+end
+
+
+@enduml
+
+

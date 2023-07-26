@@ -1,0 +1,21 @@
+{
+	"APPLICATION": {
+		"TITLE": "Regensburg School Of Digital Science Progress Dashboard"
+	},
+	"NAVIGATION": {
+		"LINKS": {
+			"HOME": "Home",
+			"OVERVIEW": "Overview",
+			"CERTIFICATE": "Certificate",
+			"PROFILE": "Profile",
+			"REGISTER": "Register",
+			"LOGIN": "Login"
+		},
+		"ACTIONS": {
+			"LOGOUT": "Logout"
+		},
+		"USER": {
+			"USERNAME": "Username"
+		}
+	}
+}

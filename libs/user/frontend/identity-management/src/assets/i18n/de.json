@@ -1,0 +1,38 @@
+{
+	"AUTH": {
+		"PAGE": {
+			"LOGIN": "Login",
+			"PROFILE": "Profil",
+			"REGISTER": "Registrierung"
+		},
+		"FORM": {
+			"LABEL": {
+				"FIRST_NAME": "Vorname",
+				"LAST_NAME": "Nachname",
+				"OTH_EMAIL": "Oth Email Adresse",
+				"USERNAME": "Username",
+				"PASSWORD": "Passwort",
+				"CONFIRM_PASSWORD": "Bestätige Passwort"
+			},
+			"SUPPORTING_TEXT": {
+				"OTH_EMAIL": "Die Email muss auf @st.oth-regensburg.de enden.",
+				"USERNAME": "Der Username muss einzigartig sein.",
+				"DISABLED_MAIL": "Eine neue Email kann ich nicht zugewiesen werden.",
+				"GITHUB_CONNECTION": "Dieser Dienst erfordert die Autorisierung des GitHub-Kontos als Überprüfungsmethode, um sicherzustellen, dass der richtige Benutzer auf das System zugreift."
+			}
+		},
+		"CONFIRM_EMAIL": "Wir freuen uns, dass Sie sich angemeldet haben. Zuerst musst du dein Konto bestätigen, indem du auf den Link klickst, den wir dir an deine E-Mail-Adresse geschickt haben.",
+		"ACTION": {
+			"LOGIN": "Login",
+			"PROFILE": "Update das Profil",
+			"REGISTER": "Registrierung",
+			"SWITCH_TO_REGISTER": "Sie haben noch kein Konto?",
+			"SWITCH_TO_LOGIN": "Sie haben bereits ein Konto?"
+		},
+		"RESPONSE": {
+			"INVALID_LOGIN": "Benutzername und Passwort stimmen nicht überein.",
+			"UNCONFIRMED_EMAIL": "Die Email wurde noch nicht bestätigt.",
+			"UNKNOWN_ERROR": "Ein unbekannter Fehler ist aufgetreten."
+		}
+	}
+}

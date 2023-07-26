@@ -1,0 +1,37 @@
+<a class="m-rspd-nav-bar m-rspd-nav-bar__logo" href="#">
+	<a-rspd-card [appearance]="cardInformation.appearance" [padding]="cardInformation.padding">
+		<img src="assets/svgs/rsds-simple-black.svg" alt="">
+	</a-rspd-card>
+</a>
+<ul class="m-rspd-nav-bar" ngbNav #nav="ngbNav">
+	<div class="m-rspd-nav-bar m-rspd-nav-bar__link-list" *ngIf="username(); else notAuthenticated">
+		<li *ngFor="let item of navBarItems()">
+			<a-rspd-tab [navBar]="item" (click)="setActiveNavItemByUrl()">{{ item.label | translate }}</a-rspd-tab>
+		</li>
+		<ul ngbDropdown>
+			<a-rspd-tab ngbDropdownToggle>{{ username() }}</a-rspd-tab>
+			<li ngbDropdownMenu class="dropdown-menu dropdown-menu-dark m-drop-menu">
+				<a [routerLink]="'/profile'"
+				   ngbDropdownItem
+				   class='m-drop-menu m-drop-menu__item'>
+					{{'NAVIGATION.LINKS.PROFILE' | translate}}
+				</a>
+				<button (click)='logoutTriggered.emit()'
+						ngbDropdownItem
+						class='m-drop-menu m-drop-menu__item'>
+					{{'NAVIGATION.ACTIONS.LOGOUT' | translate}}
+				</button>
+
+			</li>
+		</ul>
+	</div>
+
+	<ng-template #notAuthenticated >
+		<div class='m-rspd-nav-bar m-rspd-nav-bar__link-list'>
+			<li *ngFor="let item of notAuthenticatedNavBarItems">
+				<a-rspd-tab [navBar]="item" (click)="setActiveNavItemByUrl()">{{ item.label | translate }}</a-rspd-tab>
+			</li>
+		</div>
+	</ng-template>
+</ul>
+

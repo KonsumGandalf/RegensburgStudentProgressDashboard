@@ -1,0 +1,21 @@
+@use 'settings/generic/colors';
+
+.p-rspd-submissions-overview-2 {
+    padding: 2rem;
+    background-color: colors.$themed-white;
+
+    .p-student-submission__absolute-progress {
+    }
+
+    .p-student-submission__challenges {
+
+        .challenges__table {
+            padding: 1.25rem;
+            margin-inline: 25rem;
+
+            o-rspd-challenge-overview {
+                margin: 0.75rem;
+            }
+        }
+    }
+}

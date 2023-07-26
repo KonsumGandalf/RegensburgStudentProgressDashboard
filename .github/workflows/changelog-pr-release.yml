@@ -1,0 +1,59 @@
+name: Changelog and Release
+run-name: Create Changelog and Release by @${{ github.actor }}
+on:
+    push:
+        branches: [develop]
+
+    workflow_dispatch:
+
+jobs:
+    changelog-pr-release:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x]
+
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: git fetch origin $NX_BRANCH
+
+            - uses: actions/cache@v3
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+            - name: Install dependencies
+              run: npm ci
+
+            - name: release-please-action
+              uses: google-github-actions/release-please-action@v3
+              id: release
+              with:
+                  release-type: node
+                  package-name: rsdp
+                  monorepo-tags: true
+                  changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+
+            - uses: actions/checkout@v2
+            - name: tag major and minor versions
+              if: ${{ steps.release.outputs.release_created }}
+              run: |
+                  git config user.name github-actions[bot]
+                  git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+                  git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/google-github-actions/release-please-action.git"
+                  git tag -d v${{ steps.release.outputs.major }} || true
+                  git tag -d v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
+                  git push origin :v${{ steps.release.outputs.major }} || true
+                  git push origin :v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} || true
+                  git tag -a v${{ steps.release.outputs.major }} -m "Release v${{ steps.release.outputs.major }}"
+                  git tag -a v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }} -m "Release v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}"
+                  git push origin v${{ steps.release.outputs.major }}
+                  git push origin v${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}

@@ -1,0 +1,106 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": ["es2017", "dom"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"strictNullChecks": false,
+		"baseUrl": ".",
+		"paths": {
+			"@rspd/auth/common/models": ["libs/auth/common/models/src/index.ts"],
+			"@rspd/challenge-management/backend/challenge-management": [
+				"libs/challenge-management/backend/challenge-management/src/index.ts"
+			],
+			"@rspd/challenge-management/backend/common-models": [
+				"libs/challenge-management/backend/common-models/src/index.ts"
+			],
+			"@rspd/challenge-management/backend/semester-management": [
+				"libs/challenge-management/backend/semester-management/src/index.ts"
+			],
+			"@rspd/moodle-management/backend/moodle-management": [
+				"libs/moodle-management/backend/moodle-management/src/index.ts"
+			],
+			"@rspd/moodle-management/backend/moodle-request-handler": [
+				"libs/moodle-management/backend/moodle-request-handler/src/index.ts"
+			],
+			"@rspd/shared-frontend/storybook-host": [
+				"libs/shared-frontend/storybook-host/src/index.ts"
+			],
+			"@rspd/shared/backend/test-util": ["libs/shared/backend/test-util/src/index.ts"],
+			"@rspd/shared/backend/utils": ["libs/shared/backend/utils/src/index.ts"],
+			"@rspd/shared/common/styles": ["libs/shared/common/styles/src/index.ts"],
+			"@rspd/shared/frontend/assets": ["libs/shared/frontend/assets/src/index.ts"],
+			"@rspd/shared/frontend/environment": ["libs/shared/frontend/environment/src/index.ts"],
+			"@rspd/shared/frontend/storybook-host": [
+				"libs/shared/frontend/storybook-host/src/index.ts"
+			],
+			"@rspd/shared/frontend/ui/atoms": ["libs/shared/frontend/ui/atoms/src/index.ts"],
+			"@rspd/shared/frontend/ui/molecules": [
+				"libs/shared/frontend/ui/molecules/src/index.ts"
+			],
+			"@rspd/shared/frontend/ui/organisms": [
+				"libs/shared/frontend/ui/organisms/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/common-models": [
+				"libs/student-submissions/backend/common-models/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/github-submissions": [
+				"libs/student-submissions/backend/github-submissions/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/moodle-submissions": [
+				"libs/student-submissions/backend/moodle-submissions/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/submission-insights": [
+				"libs/student-submissions/backend/submission-insights/src/index.ts"
+			],
+			"@rspd/student-submissions/backend/submission-management": [
+				"libs/student-submissions/backend/submission-management/src/index.ts"
+			],
+			"@rspd/student-submissions/common/models": [
+				"libs/student-submissions/common/models/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/common-models": [
+				"libs/student-submissions/frontend/common-models/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/domain": [
+				"libs/student-submissions/frontend/domain/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/shell": [
+				"libs/student-submissions/frontend/shell/src/index.ts"
+			],
+			"@rspd/student-submissions/frontend/submission-overview": [
+				"libs/student-submissions/frontend/submission-overview/src/index.ts"
+			],
+			"@rspd/user/backend/common-models": ["libs/user/backend/common-models/src/index.ts"],
+			"@rspd/user/backend/github-authorization": [
+				"libs/user/backend/github-authorization/src/index.ts"
+			],
+			"@rspd/user/backend/user-authentication": [
+				"libs/user/backend/user-authentication/src/index.ts"
+			],
+			"@rspd/user/backend/user-mail-management": [
+				"libs/user/backend/user-mail-management/src/index.ts"
+			],
+			"@rspd/user/backend/user-management": [
+				"libs/user/backend/user-management/src/index.ts"
+			],
+			"@rspd/user/common/models": ["libs/user/common/models/src/index.ts"],
+			"@rspd/user/frontend/auth": ["libs/user/frontend/auth/src/index.ts"],
+			"@rspd/user/frontend/domain": ["libs/user/frontend/domain/src/index.ts"],
+			"@rspd/user/frontend/identity-management": [
+				"libs/user/frontend/identity-management/src/index.ts"
+			],
+			"@rspd/user/frontend/shell": ["libs/user/frontend/shell/src/index.ts"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,36 @@
+@use '../vendors/bootstrap';
+@use './colors';
+
+@mixin base-display {
+	text-align: center;
+	color: colors.$themed-black;
+	font-family: bootstrap.$display-font-family;
+	font-weight: bootstrap.$display-font-weight;
+}
+
+.display-1 {
+	@include base-display;
+	font-size: map-get(bootstrap.$display-font-sizes, 3);
+}
+
+.display-2 {
+	@include base-display;
+	font-size: map-get(bootstrap.$display-font-sizes, 4);
+}
+
+.display-3 {
+	@include base-display;
+	font-size: map-get(bootstrap.$display-font-sizes, 5);
+}
+
+@mixin base-header {
+	text-align: center;
+	color: colors.$themed-black;
+	font-family: bootstrap.$font-family-inter;
+	font-weight: 300;
+}
+
+.h2 {
+	@include base-header;
+	font-size: map-get(bootstrap.$display-font-sizes, 6);
+}

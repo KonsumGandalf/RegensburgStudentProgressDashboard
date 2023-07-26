@@ -1,0 +1,59 @@
+{
+	"name": "shared-frontend-storybook-host",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/shared/frontend/storybook-host/src",
+	"prefix": "rspd",
+	"tags": ["type:util", "domain:shared", "kind:frontend"],
+	"projectType": "library",
+	"targets": {
+		"storybook": {
+			"executor": "@storybook/angular:start-storybook",
+			"options": {
+				"port": 4400,
+				"configDir": "libs/shared/frontend/storybook-host/.storybook",
+				"browserTarget": "shared-frontend-storybook-host:build-storybook",
+				"compodoc": true,
+				"compodocArgs": ["-e", "json", "-d", "libs/shared/frontend/ui/atoms"]
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		},
+		"build-storybook": {
+			"executor": "@storybook/angular:build-storybook",
+			"outputs": ["{options.outputDir}"],
+			"options": {
+				"outputDir": "dist/storybook/shared-frontend-storybook-host",
+				"configDir": "libs/shared/frontend/storybook-host/.storybook",
+				"browserTarget": "shared-frontend-storybook-host:build-storybook",
+				"compodoc": true,
+				"compodocArgs": ["-e", "json", "-d", "libs/shared/frontend/ui/atoms"],
+				"styles": ["apps/frontend/src/styles.scss"],
+				"stylePreprocessorOptions": {
+					"includePaths": [
+						"libs/shared/common/styles/src/scss"
+					]
+				}
+			},
+			"configurations": {
+				"ci": {
+					"quiet": true
+				}
+			}
+		},
+		"static-storybook": {
+			"executor": "@nx/web:file-server",
+			"options": {
+				"buildTarget": "shared-frontend-storybook-host:build-storybook",
+				"staticFilePath": "dist/storybook/shared-frontend-storybook-host"
+			},
+			"configurations": {
+				"ci": {
+					"buildTarget": "shared-frontend-storybook-host:build-storybook:ci"
+				}
+			}
+		}
+	}
+}

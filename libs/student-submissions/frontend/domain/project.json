@@ -1,0 +1,35 @@
+{
+	"name": "student-submissions-frontend-domain",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/student-submissions/frontend/domain/src",
+	"prefix": "rspd",
+	"tags": [],
+	"projectType": "library",
+	"targets": {
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+			"options": {
+				"jestConfig": "libs/student-submissions/frontend/domain/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
+		},
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": [
+					"libs/student-submissions/frontend/domain/**/*.ts",
+					"libs/student-submissions/frontend/domain/**/*.html"
+				]
+			}
+		}
+	},
+	"tags": ["type:util-feature", "domain:submission", "kind:frontend"]
+}

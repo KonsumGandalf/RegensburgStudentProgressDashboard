@@ -1,0 +1,30 @@
+{
+	"name": "student-submissions-backend-submission-insights",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/student-submissions/backend/submission-insights/src",
+	"projectType": "library",
+	"targets": {
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["libs/student-submissions/backend/submission-insights/**/*.ts"]
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+			"options": {
+				"jestConfig": "libs/student-submissions/backend/submission-insights/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
+		}
+	},
+	"tags": ["kind:backend", "type:master-feature", "domain:submission"]
+}

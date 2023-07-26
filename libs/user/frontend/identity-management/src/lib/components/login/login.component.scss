@@ -1,0 +1,11 @@
+.o-rspd-login {
+	transition: all 1.5s ease;
+
+	p {
+		max-width: 25rem;
+	}
+
+	a-rspd-loading-indicator {
+		visibility: var(--progressBarVisible);
+	}
+}

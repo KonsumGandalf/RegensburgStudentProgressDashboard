@@ -1,0 +1,177 @@
+{
+	"root": true,
+	"ignorePatterns": ["**/*"],
+	"plugins": ["@nx"],
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+			"rules": {
+				"@nx/enforce-module-boundaries": [
+					"error",
+					{
+						"enforceBuildableLibDependency": true,
+						"allow": [],
+						"depConstraints": [
+							{
+								"sourceTag": "type:app",
+								"onlyDependOnLibsWithTags": [
+									"*"
+								]
+							},
+							{
+								"sourceTag": "type:master-feature",
+								"onlyDependOnLibsWithTags": [
+									"type:feature",
+									"type:util-feature",
+									"type:util",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:feature",
+								"onlyDependOnLibsWithTags": [
+									"type:feature",
+									"type:util-feature",
+									"type:util",
+									"type:common-model",
+									"type:ui"
+								]
+							},
+							{
+								"sourceTag": "type:util-feature",
+								"onlyDependOnLibsWithTags": [
+									"type:util",
+									"type:util-feature",
+									"type:common-model"
+								]
+							},
+							{
+								"sourceTag": "type:util",
+								"onlyDependOnLibsWithTags": ["type:util", "type:common-model"]
+							},
+							{
+								"sourceTag": "type:common-model",
+								"onlyDependOnLibsWithTags": ["type:common-model"]
+							},
+							{
+								"sourceTag": "type:ui",
+								"onlyDependOnLibsWithTags": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
+							},
+							{
+								"sourceTag": "type:atoms-ui",
+								"onlyDependOnLibsWithTag": ["type:ui"]
+							},
+							{
+								"sourceTag": "type:molecules-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui"
+								]
+							},
+							{
+								"sourceTag": "type:organisms-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
+							},
+							{
+								"sourceTag": "type:page-ui",
+								"onlyDependOnLibsWithTag": [
+									"type:ui",
+									"type:atoms-ui",
+									"type:molecules-ui",
+									"type:organisms-ui"
+								]
+							},
+							{
+								"sourceTag": "domain:shared",
+								"onlyDependOnLibsWithTags": ["domain:shared"]
+							},
+							{
+								"sourceTag": "domain:challenge",
+								"onlyDependOnLibsWithTag": [
+									"domain:challenge",
+									"domain:shared",
+									"domain:user"
+								]
+							},
+							{
+								"sourceTag": "domain:submission",
+								"onlyDependOnLibsWithTag": [
+									"domain:challenge",
+									"domain:submission",
+									"domain:shared",
+									"domain:user"
+								]
+							},
+							{
+								"sourceTag": "domain:auth",
+								"onlyDependOnLibsWithTag": [
+									"domain:auth",
+									"domain:user",
+									"domain:shared",
+									"domain:moodle"
+								]
+							},
+							{
+								"sourceTag": "domain:user",
+								"onlyDependOnLibsWithTag": ["domain:user", "domain:shared"]
+							},
+							{
+								"sourceTag": "kind:backend",
+								"onlyDependOnLibsWithTag": ["kind:backend", "kind:common"]
+							},
+							{
+								"sourceTag": "kind:frontend",
+								"onlyDependOnLibsWithTag": ["kind:frontend", "kind:common"]
+							},
+							{
+								"sourceTag": "kind:common",
+								"onlyDependOnLibsWithTag": ["kind:common"]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"files": ["*.ts", "*.tsx"],
+			"extends": [
+				"plugin:@nx/typescript",
+				"plugin:@typescript-eslint/eslint-recommended",
+				"plugin:@typescript-eslint/recommended"
+			],
+			"plugins": ["simple-import-sort"],
+			"rules": {
+				"simple-import-sort/imports": "error",
+				"@typescript-eslint/no-explicit-any": "off"
+			}
+		},
+		{
+			"files": ["*.js", "*.jsx"],
+			"extends": ["plugin:@nx/javascript"],
+			"rules": {}
+		},
+		{
+			"files": ["*.scss"],
+			"extends": ["stylelint"],
+			"rules": {}
+		},
+		{
+			"files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+			"env": {
+				"jest": true
+			},
+			"rules": {}
+		}
+	]
+}

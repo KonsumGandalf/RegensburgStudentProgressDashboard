@@ -1,0 +1,39 @@
+{
+	"extends": ["../../.eslintrc.json"],
+	"ignorePatterns": ["!**/*"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"rules": {
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"type": "attribute",
+						"prefix": "rspd",
+						"style": "camelCase"
+					}
+				],
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"type": "element",
+						"prefix": "rspd",
+						"style": "kebab-case"
+					}
+				],
+				"@angular-eslint/component-class-suffix": [
+					"warn",
+					{
+						"suffixes": ["Component", "Page", "Layout"]
+					}
+				]
+			},
+			"extends": ["plugin:@nx/angular"]
+		},
+		{
+			"files": ["*.html"],
+			"extends": ["plugin:@nx/angular-template"],
+			"rules": {}
+		}
+	]
+}

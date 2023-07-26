@@ -1,0 +1,15 @@
+@use 'settings/generic/colors';
+
+.a-rspd-icon {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+
+	i {
+		font-size: var(--size);
+	}
+
+	img {
+		width: var(--size);
+	}
+}

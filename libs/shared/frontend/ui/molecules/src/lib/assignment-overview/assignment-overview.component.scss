@@ -1,0 +1,39 @@
+@use 'settings/generic/padding';
+
+m-rspd-assignment-overview {
+    min-width: 18rem;
+
+    .m-rspd-assignment-overview__content {
+        width: 100%;
+
+        a-rspd-card {
+            padding: padding.$padding-x-sm;
+
+            .a-rspd-card {
+                width: 100%;
+
+                .overview__card {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    overflow: hidden;
+
+                    .overview__name {
+                        max-width: 12rem;
+                    }
+
+                    *:not(:last-child) {
+                        margin-inline: 1rem;
+                    }
+                }
+
+                a-rspd-progress-bar {
+                    max-width: 40%
+                }
+            }
+
+        }
+
+    }
+
+}

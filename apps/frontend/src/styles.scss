@@ -1,0 +1,14 @@
+@import 'rspd-style.scss';
+
+body {
+	margin: 0;
+	color: $themed-black;
+	font-weight: 400;
+	font-size: 1rem;
+	font-family: $font-family-sans-serif;
+	overflow: auto;
+}
+
+* {
+	box-sizing: border-box;
+}

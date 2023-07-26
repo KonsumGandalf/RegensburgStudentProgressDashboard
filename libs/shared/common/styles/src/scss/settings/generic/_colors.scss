@@ -1,0 +1,55 @@
+// grey colors
+$grey-900: rgb(17, 20, 23);
+$grey-800: rgba($grey-900, 0.8);
+$grey-700: rgba($grey-900, 0.7);
+$grey-600: rgba($grey-900, 0.6);
+$grey-500: rgba($grey-900, 0.5);
+$grey-400: rgba($grey-900, 0.4);
+$grey-300: rgba($grey-900, 0.3);
+$grey-200: rgba($grey-900, 0.2);
+$grey-100: rgba($grey-900, 0.1);
+
+// main colors
+$themed-black: $grey-900;
+$themed-white: #f1f5f9;
+
+$primary-400: #8783fd;
+
+$secondary-400: #8dc3f9;
+
+// attribute or state based colors
+$outline: $grey-200;
+$disabled: $grey-500;
+
+// Rating colors
+$good: #22c55e;
+$medium: #ffd700;
+$bad: #ef4444;
+
+.full-success-color {
+    color: $good;
+}
+
+.medium-success-color {
+    color: $medium;
+}
+
+.themed-black-color {
+    color: $themed-black;
+}
+
+.themed-white-color {
+    color: $themed-white;
+}
+
+.full-success-bc {
+    background-color: $good;
+}
+
+.medium-success-bc {
+    background-color: $medium;
+}
+
+.themed-black-bc {
+    background-color: $themed-black;
+}

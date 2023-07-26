@@ -1,0 +1,45 @@
+@use 'settings/generic/padding';
+@use 'settings/generic/colors';
+@use 'settings/vendors/bootstrap';
+
+.a-rspd-card {
+	display: inline-block;
+	background-color: bootstrap.$white;
+	border-radius: bootstrap.$border-radius-sm;
+	padding: var(--card-padding);
+	transition: all 1.5s ease;
+	backface-visibility: hidden;
+
+	.a-rspd-button__header {
+		margin: auto;
+	}
+
+	.a-rspd-button__body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&.a-rspd-card--raised {
+		box-shadow: bootstrap.$box-shadow;
+		border-radius: bootstrap.$border-radius-lg;
+	}
+
+	&.a-rspd-card--solid {
+		background-color: colors.$themed-white;
+	}
+
+	&.a-rspd-card--outlined {
+		border: 0.0625rem solid colors.$outline;
+	}
+
+	&.a-rspd-card--front {
+		transform: rotateY(0deg);
+		backface-visibility: visible;
+	}
+
+	&.a-rspd-card--back {
+		transform: rotateY(180deg);
+		backface-visibility: visible;
+	}
+}

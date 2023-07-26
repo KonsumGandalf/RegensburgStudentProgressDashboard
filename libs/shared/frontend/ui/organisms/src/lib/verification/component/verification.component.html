@@ -1,0 +1,17 @@
+<a-rspd-card [isFlipped]="isLoading" [padding]="padding">
+	<ng-container *ngIf="headerLogo">
+		<a-rspd-icon class="card-img-top" [appearance]="headerLogo" [size]="size"></a-rspd-icon>
+	</ng-container>
+	<div *ngIf="isLoading; then back; else front"></div>
+	<ng-template #back>
+		<p>
+			{{ 'USER.IDENTITY_MANAGEMENT.AUTH.CONFIRM_EMAIL' | translate }}
+		</p>
+	</ng-template>
+	<ng-template #front>
+		<div class="a-rspd-card__front-content">
+			<h1 class="display-3">{{ title }}</h1>
+			<ng-content></ng-content>
+		</div>
+	</ng-template>
+</a-rspd-card>

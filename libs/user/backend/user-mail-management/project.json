@@ -1,0 +1,30 @@
+{
+	"name": "user-backend-user-mail-management",
+	"$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "libs/user/backend/user-mail-management/src",
+	"projectType": "library",
+	"targets": {
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["libs/user/backend/user-mail-management/**/*.ts"]
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+			"options": {
+				"jestConfig": "libs/user/backend/user-mail-management/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
+		}
+	},
+	"tags": ["type:util-feature", "kind:backend", "domain:user"]
+}
