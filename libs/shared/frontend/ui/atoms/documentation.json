@@ -936,7 +936,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@use 'settings/generic/padding';\r\n@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.o-rspd-challenge-overview {\r\n    .challenge__card-content {\r\n        padding: padding.$padding-sm padding.$padding-sm;\r\n\r\n        .a-rspd-card {\r\n            width: 100%;\r\n        }\r\n\r\n        .challenge-facts {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            align-items: center;\r\n\r\n            h3 {\r\n                font-weight: bootstrap.$font-weight-bolder;\r\n            }\r\n\r\n            .challenge-facts__date {\r\n                color: colors.$grey-400;\r\n            }\r\n\r\n            .challenge-facts__progress {\r\n                display: flex;\r\n                justify-content: space-between;\r\n                align-items: center;\r\n\r\n                a-rspd-icon {\r\n                    padding: padding.$padding-sm;\r\n                }\r\n            }\r\n        }\r\n\r\n        .row {\r\n            display: flex;\r\n            justify-content: center;\r\n\r\n            .col-4 {\r\n                min-width: 18rem;\r\n            }\r\n        }\r\n    }\r\n}\r\n",
+                    "data": "@use 'settings/generic/padding';\r\n@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.o-rspd-challenge-overview {\r\n    .challenge__card-content {\r\n        padding: padding.$padding-sm padding.$padding-sm;\r\n\r\n        .a-rspd-card {\r\n            width: 100%;\r\n        }\r\n\r\n        .challenge-facts {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            align-items: center;\r\n\r\n            h3 {\r\n                font-weight: bootstrap.$font-weight-bolder;\r\n                text-transform: capitalize;\r\n            }\r\n\r\n            .challenge-facts__date {\r\n                color: colors.$grey-400;\r\n            }\r\n\r\n            .challenge-facts__progress {\r\n                display: flex;\r\n                justify-content: space-between;\r\n                align-items: center;\r\n\r\n                a-rspd-icon {\r\n                    padding: padding.$padding-sm;\r\n                }\r\n            }\r\n        }\r\n\r\n        .row {\r\n            display: flex;\r\n            justify-content: center;\r\n\r\n            .col-4 {\r\n                min-width: 18rem;\r\n            }\r\n        }\r\n    }\r\n}\r\n",
                     "styleUrl": "./challenge-overview.component.scss"
                 }
             ],
@@ -2392,7 +2392,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@use 'settings/generic/colors';\r\n\r\n.a-rspd-progress-bar {\r\n    width: 100%;\r\n    max-width: 30rem;\r\n    min-width: 7rem ;\r\n\r\n    .progress {\r\n        height: fit-content;\r\n\r\n        .progress-bar {\r\n            padding: 0.675rem;\r\n            border-radius: 0.675rem;\r\n            width: var(--progress-percentage);\r\n            background-color: colors.$themed-black;\r\n        }\r\n    }\r\n}\r\n\r\n.progress--full-success {\r\n    .progress {\r\n        .progress-bar {\r\n            background-color: colors.$good;\r\n        }\r\n    }\r\n}\r\n\r\n.progress--medium-success {\r\n    .progress {\r\n        .progress-bar {\r\n            background-color: colors.$medium;\r\n        }\r\n    }\r\n}\r\n",
+                    "data": "@use 'settings/generic/colors';\r\n\r\n.a-rspd-progress-bar {\r\n    width: 100%;\r\n    max-width: 30rem;\r\n    min-width: 7rem ;\r\n\r\n    .progress {\r\n        height: fit-content;\r\n\r\n        .progress-bar {\r\n            padding: 0.4rem;\r\n            min-width: 3rem;\r\n            border-radius: 0.675rem;\r\n            width: var(--progress-percentage);\r\n            background-color: colors.$themed-black;\r\n        }\r\n    }\r\n}\r\n\r\n.progress--full-success {\r\n    .progress {\r\n        .progress-bar {\r\n            background-color: colors.$good;\r\n        }\r\n    }\r\n}\r\n\r\n.progress--medium-success {\r\n    .progress {\r\n        .progress-bar {\r\n            background-color: colors.$medium;\r\n        }\r\n    }\r\n}\r\n",
                     "styleUrl": "./progress-bar.component.scss"
                 }
             ],
@@ -2611,6 +2611,146 @@
                 ]
             },
             "templateData": "<div class=\"p-rspd-page__content\">\r\n\t<o-rspd-verification\r\n\t\t[headerLogo]=\"cardInformation.iconLogo\"\r\n\t\t[title]=\"'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate\"\r\n\t\t[isLoading]=\"cardInformation.isLoading()\"\r\n\t\t[size]=\"cardInformation.iconSize\"\r\n\t>\r\n\t\t<form [formGroup]=\"registerForm\" (ngSubmit)=\"onSubmit()\">\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<div class=\"col-sm\">\r\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.firstName.name | translate\">\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.firstName.name | translate\"\r\n\t\t\t\t\t\t\t[name]=\"formInformation.firstName.controlName\"\r\n\t\t\t\t\t\t\t[id]=\"formInformation.firstName.controlName\"\r\n\t\t\t\t\t\t\t[type]=\"'text'\"\r\n\t\t\t\t\t\t\t[minLength]=\"2\"\r\n\t\t\t\t\t\t\t[maxLength]=\"20\"\r\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.firstName.controlName }}\"\r\n\t\t\t\t\t\t\trequired\r\n\t\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</a-rspd-input>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"col-sm\">\r\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.lastName.name | translate\">\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.lastName.name | translate\"\r\n\t\t\t\t\t\t\t[name]=\"formInformation.lastName.controlName\"\r\n\t\t\t\t\t\t\t[id]=\"formInformation.lastName.controlName\"\r\n\t\t\t\t\t\t\t[type]=\"'text'\"\r\n\t\t\t\t\t\t\t[minLength]=\"2\"\r\n\t\t\t\t\t\t\t[maxLength]=\"20\"\r\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.lastName.controlName }}\"\r\n\t\t\t\t\t\t\trequired\r\n\t\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</a-rspd-input>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<a-rspd-input [label]=\"formInformation.email.name | translate\">\r\n\t\t\t\t\t<input\r\n\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t[placeholder]=\"formInformation.email.name | translate\"\r\n\t\t\t\t\t\t[name]=\"formInformation.email.controlName\"\r\n\t\t\t\t\t\t[id]=\"formInformation.email.controlName\"\r\n\t\t\t\t\t\t[type]=\"'text'\"\r\n\t\t\t\t\t\tformControlName=\"{{ formInformation.email.controlName }}\"\r\n\t\t\t\t\t\trequired\r\n\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t/>\r\n\t\t\t\t</a-rspd-input>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<div class=\"col-sm\">\r\n\t\t\t\t\t<a-rspd-input [label]=\"formInformation.username.name | translate\">\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.username.name | translate\"\r\n\t\t\t\t\t\t\t[name]=\"formInformation.username.controlName\"\r\n\t\t\t\t\t\t\t[id]=\"formInformation.username.controlName\"\r\n\t\t\t\t\t\t\t[type]=\"'text'\"\r\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.username.controlName }}\"\r\n\t\t\t\t\t\t\trequired\r\n\t\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</a-rspd-input>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<div class=\"col-sm\">\r\n\t\t\t\t\t<a-rspd-input\r\n\t\t\t\t\t\t[label]=\"formInformation.password.name | translate\"\r\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('password', 'invalidPassword')\"\r\n\t\t\t\t\t>\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.password.name | translate\"\r\n\t\t\t\t\t\t\t[name]=\"formInformation.password.controlName\"\r\n\t\t\t\t\t\t\t[id]=\"formInformation.password.controlName\"\r\n\t\t\t\t\t\t\t[type]=\"'password'\"\r\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\r\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.password.controlName }}\"\r\n\t\t\t\t\t\t\trequired\r\n\t\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</a-rspd-input>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"col-sm\">\r\n\t\t\t\t\t<a-rspd-input\r\n\t\t\t\t\t\t[label]=\"formInformation.confirmPassword.name | translate\"\r\n\t\t\t\t\t\t[supportingText]=\"getErrorMsg('confirmPassword', 'fieldsMismatched')\"\r\n\t\t\t\t\t>\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tclass=\"a-rspd-input__input\"\r\n\t\t\t\t\t\t\t[placeholder]=\"formInformation.confirmPassword.name | translate\"\r\n\t\t\t\t\t\t\t[name]=\"formInformation.confirmPassword.controlName\"\r\n\t\t\t\t\t\t\t[id]=\"formInformation.confirmPassword.controlName\"\r\n\t\t\t\t\t\t\t[type]=\"'password'\"\r\n\t\t\t\t\t\t\t[minLength]=\"minPasswordLength\"\r\n\t\t\t\t\t\t\tformControlName=\"{{ formInformation.confirmPassword.controlName }}\"\r\n\t\t\t\t\t\t\trequired\r\n\t\t\t\t\t\t\tautocomplete=\"on\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</a-rspd-input>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<button type=\"submit\" [appearance]=\"buttonAppearance\">\r\n\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.REGISTER' | translate }}\r\n\t\t\t</button>\r\n\t\t\t<div class=\"labeled_link\">\r\n\t\t\t\t<label for=\"register\">\r\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.SWITCH_TO_LOGIN' | translate }}\r\n\t\t\t\t</label>\r\n\t\t\t\t<a id=\"register\" routerLink=\"/login\">\r\n\t\t\t\t\t{{ 'USER.IDENTITY_MANAGEMENT.AUTH.ACTION.LOGIN' | translate }}\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</form>\r\n\t</o-rspd-verification>\r\n</div>\r\n"
+        },
+        {
+            "name": "RspdRoundProgressBarComponent",
+            "id": "component-RspdRoundProgressBarComponent-c65943598b7e5320bedf1d9b4ab518991b729d0653d3a2c543e1c551cbaef86028df8af0c7037ef70f5ef6e268245539afaf395de26e511bddd5647d2a97583c",
+            "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.ts",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "a-rspd-round-progress-bar",
+            "styleUrls": [
+                "./round-progress-bar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./round-progress-bar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "required": true,
+                    "name": "headline",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "progressPercentage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 29,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_progressPercentage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        122
+                    ]
+                },
+                {
+                    "name": "caption",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RoundProgressModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RspdIconComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DomSanitizer } from '@angular/platform-browser';\nimport { RspdIconComponent } from '@rspd/shared/frontend/ui/atoms';\nimport { RoundProgressModule } from 'angular-svg-round-progressbar';\nimport { NgCircleProgressModule } from 'ng-circle-progress';\nimport { PERCENTAGE_NAME_MAP } from './models/percentage-name';\n\n@Component({\n    selector: 'a-rspd-round-progress-bar',\n    standalone: true,\n    imports: [CommonModule, RoundProgressModule, RspdIconComponent],\n    templateUrl: './round-progress-bar.component.html',\n    styleUrls: ['./round-progress-bar.component.scss'],\n    encapsulation: ViewEncapsulation.None,\n    host: {\n        class: 'a-rspd-round-progress-bar'\n    }\n})\nexport class RspdRoundProgressBarComponent {\n    @Input({ required: true })\n    headline!: string;\n\n    caption!: string;\n\n    protected _progressPercentage!: number;\n\n    @Input({ required: true })\n    set progressPercentage(percentage: number) {\n        this._progressPercentage = Math.min(Math.max(percentage, 0), 1);\n        for (const percentage in PERCENTAGE_NAME_MAP) {\n            if (this._progressPercentage >= Number(percentage)) {\n                this.caption = PERCENTAGE_NAME_MAP[percentage];\n            }\n        }\n\n    }\n\n    get progressPercentage() {\n        return this._progressPercentage;\n    }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'settings/generic/colors';\r\n@use 'settings/vendors/bootstrap';\r\n\r\n.a-rspd-round-progress-bar {\r\n    display: inline-flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    padding: 0.5rem;\r\n\r\n    h5, .progress-text, span {\r\n        transition: all .4s ease-in-out;\r\n        text-align: center;\r\n        background: linear-gradient(to right, colors.$primary-400, colors.$primary-400 50%, colors.$themed-black 50%);\r\n        -webkit-background-clip: text;\r\n        -webkit-text-fill-color: transparent;\r\n        background-size: 200% 100%;\r\n        background-position: 100%;\r\n    }\r\n\r\n    h5 {\r\n        font-size: 1rem;\r\n\r\n        margin: 0;\r\n    }\r\n\r\n    .progress-container {\r\n        position: relative;\r\n        display: flex;\r\n        justify-content: center;\r\n        align-items: center;\r\n        margin-block: 0.625rem;\r\n\r\n        round-progress {\r\n            svg {\r\n                path {\r\n                    stroke: colors.$themed-black !important;\r\n                }\r\n            }\r\n        }\r\n\r\n        .progress-text {\r\n            position: absolute;\r\n            font-family: bootstrap.$font-family-monospace;\r\n        }\r\n    }\r\n\r\n    &:hover {\r\n        h5, .progress-text, span {\r\n            background-position: 0 100%;\r\n        }\r\n    }\r\n}\r\n\r\n",
+                    "styleUrl": "./round-progress-bar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "progressPercentage": {
+                    "name": "progressPercentage",
+                    "setSignature": {
+                        "name": "progressPercentage",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "percentage",
+                                "type": "number",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 29,
+                        "jsdoctags": [
+                            {
+                                "name": "percentage",
+                                "type": "number",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "progressPercentage",
+                        "type": "",
+                        "returnType": "",
+                        "line": 39
+                    }
+                }
+            },
+            "templateData": "<h5> {{ headline }} </h5>\n<div class=\"progress-container\">\n    <round-progress\n            [current]=\"progressPercentage\"\n            [max]=\"1\"\n            [radius]=\"8*5\"\n            [stroke]=\"2\"\n            [responsive]=\"false\"\n            [duration]=\"3000\"\n            [animation]=\"'easeInOutQuart'\"\n            [animationDelay]=\"0\">\n    </round-progress>\n    <span class=\"progress-text\">\n        {{progressPercentage * 100 | number:'1.0-0'}}%\n    </span>\n</div>\n<span> {{ caption }} </span>\n"
         },
         {
             "name": "RspdTabComponent",
@@ -2854,6 +2994,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2914,16 +3064,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2934,7 +3074,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2944,7 +3084,17 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -3009,6 +3159,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n\tdocs: {\r\n\t\tinlineStories: true,\r\n\t},\r\n\tcontrol: {\r\n\t\texpanded: true,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdRoundProgressBarComponent>",
+                "defaultValue": "(args) => ({\r\n    template: `<a-rspd-round-progress-bar \r\n                [progressPercentage]='progressPercentage' \r\n                [caption]=\"caption\" \r\n                [headline]=\"headline\"></a-rspd-round-progress-bar>`,\r\n    props: {\r\n        ...args\r\n    }\r\n})"
             },
             {
                 "name": "Template",
@@ -3084,16 +3244,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<RspdTabComponent>",
-                "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -3104,21 +3254,31 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<RspdNavigationBarComponent>",
-                "defaultValue": "(args) => ({\r\n\ttemplate: `<m-rspd-nav-bar></m-rspd-nav-bar>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<RspdProgressBarComponent>",
                 "defaultValue": "(args) => ({\r\n\ttemplate: `<a-rspd-progress-bar [progressInput]='args'></a-rspd-progress-bar>`,\r\n\tprops: {\r\n\t\targs\r\n\t},\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdTabComponent>",
+                "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdNavigationBarComponent>",
+                "defaultValue": "(args) => ({\r\n\ttemplate: `<m-rspd-nav-bar></m-rspd-nav-bar>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
             },
             {
                 "name": "Template",
@@ -3169,6 +3329,36 @@
                 "deprecationMessage": "",
                 "type": "Story<RspdCardComponent>",
                 "defaultValue": "(args) => ({\r\n\ttemplate: `<a-rspd-card [appearance]='appearance' [icon]='icon'>\r\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\r\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\r\n\t\t\t\t\t<a-rspd-button [appearance]='buttonAppearance'>Filled</a-rspd-button>\r\n\t\t\t\t</a-rspd-card>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
+            },
+            {
+                "name": "Topcis",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<RspdRoundProgressBarComponent>",
+                "defaultValue": "() => ({\r\n    template: `<div>\r\n                    <a-rspd-round-progress-bar \r\n                        [progressPercentage]=\"topic.progressPercentage\"\r\n                        [caption]=\"topic.caption\" \r\n                        [headline]=\"topic.headline\"\r\n                        *ngFor=\"let topic of topics\">\r\n                    </a-rspd-round-progress-bar>\r\n                </div>`,\r\n    props: {\r\n        topics: topics\r\n    }\r\n})"
+            },
+            {
+                "name": "topics",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "[\r\n    { headline: 'Python', caption: 'Elite Vanguard', progressPercentage: 0.65 },\r\n    { headline: 'Scratch', caption: 'Supreme Pioneer', progressPercentage: 0.8 },\r\n    { headline: 'SQL', caption: 'Novice Explorer', progressPercentage: 0.2 },\r\n    { headline: 'Web', caption: 'Novice Explorer', progressPercentage: 0 },\r\n] as RspdRoundProgressBarComponent[]"
+            },
+            {
+                "name": "TopicsLine",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Topcis.bind({})"
             },
             {
                 "name": "WithContent",
@@ -3225,6 +3415,58 @@
                     "deprecationMessage": "",
                     "type": "Story<RspdChallengeOverviewComponent>",
                     "defaultValue": "(args) => ({\r\n\ttemplate: `<o-rspd-challenge-overview [overviewInput]='args'></o-rspd-challenge-overview>`,\r\n\tprops: {\r\n\t\targs,\r\n\t},\r\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdRoundProgressBarComponent>",
+                    "defaultValue": "(args) => ({\r\n    template: `<a-rspd-round-progress-bar \r\n                [progressPercentage]='progressPercentage' \r\n                [caption]=\"caption\" \r\n                [headline]=\"headline\"></a-rspd-round-progress-bar>`,\r\n    props: {\r\n        ...args\r\n    }\r\n})"
+                },
+                {
+                    "name": "Topcis",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdRoundProgressBarComponent>",
+                    "defaultValue": "() => ({\r\n    template: `<div>\r\n                    <a-rspd-round-progress-bar \r\n                        [progressPercentage]=\"topic.progressPercentage\"\r\n                        [caption]=\"topic.caption\" \r\n                        [headline]=\"topic.headline\"\r\n                        *ngFor=\"let topic of topics\">\r\n                    </a-rspd-round-progress-bar>\r\n                </div>`,\r\n    props: {\r\n        topics: topics\r\n    }\r\n})"
+                },
+                {
+                    "name": "topics",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "[\r\n    { headline: 'Python', caption: 'Elite Vanguard', progressPercentage: 0.65 },\r\n    { headline: 'Scratch', caption: 'Supreme Pioneer', progressPercentage: 0.8 },\r\n    { headline: 'SQL', caption: 'Novice Explorer', progressPercentage: 0.2 },\r\n    { headline: 'Web', caption: 'Novice Explorer', progressPercentage: 0 },\r\n] as RspdRoundProgressBarComponent[]"
+                },
+                {
+                    "name": "TopicsLine",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Topcis.bind({})"
                 }
             ],
             "libs/shared/frontend/ui/molecules/src/lib/absolute-digits/absolute-digits.component.stories.ts": [
@@ -3409,28 +3651,6 @@
                     "defaultValue": "(args) => ({\r\n\ttemplate: `<a-rspd-key-figure [keyFigureInput]='args'></a-rspd-key-figure>`,\r\n\tprops: {\r\n\t\targs\r\n\t},\r\n})"
                 }
             ],
-            "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<RspdTabComponent>",
-                    "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
-                }
-            ],
             "libs/shared/frontend/ui/atoms/src/lib/loading-indicator/component/loading-indicator.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3453,28 +3673,6 @@
                     "defaultValue": "(args) => ({\r\n\ttemplate: `<a-rspd-loading-indicator></a-rspd-loading-indicator>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
                 }
             ],
-            "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<RspdNavigationBarComponent>",
-                    "defaultValue": "(args) => ({\r\n\ttemplate: `<m-rspd-nav-bar></m-rspd-nav-bar>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
-                }
-            ],
             "libs/shared/frontend/ui/atoms/src/lib/progress-bar/components/progress-bar.component.stories.ts": [
                 {
                     "name": "Default",
@@ -3495,6 +3693,50 @@
                     "deprecationMessage": "",
                     "type": "Story<RspdProgressBarComponent>",
                     "defaultValue": "(args) => ({\r\n\ttemplate: `<a-rspd-progress-bar [progressInput]='args'></a-rspd-progress-bar>`,\r\n\tprops: {\r\n\t\targs\r\n\t},\r\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/atoms/src/lib/tab/component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdTabComponent>",
+                    "defaultValue": "(args) => ({\r\n\ttemplate: `<a src='https://codepen.io/' [active]='active'>Tab</a>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
+                }
+            ],
+            "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/shared/frontend/ui/molecules/src/lib/navigation-bar/component/navigation-bar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RspdNavigationBarComponent>",
+                    "defaultValue": "(args) => ({\r\n\ttemplate: `<m-rspd-nav-bar></m-rspd-nav-bar>`,\r\n\tprops: {\r\n\t\t...args,\r\n\t},\r\n})"
                 }
             ],
             "libs/shared/frontend/ui/atoms/src/lib/icon/component/icon.component.stories.ts": [
@@ -3836,6 +4078,65 @@
                 "name": "RspdProgressBarComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Topcis",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "topics",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TopicsLine",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/frontend/ui/atoms/src/lib/round-progress-bar/round-progress-bar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RspdRoundProgressBarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

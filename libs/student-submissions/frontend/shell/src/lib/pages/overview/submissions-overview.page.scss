@@ -4,18 +4,33 @@
     padding: 2rem;
     background-color: colors.$themed-white;
 
-    .p-student-submission__absolute-progress {
+    .o-student-submission__absolute-progress,
+    .o-student-submission__challenges,
+    .o-student-submission__topic-progress  {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        .a-rspd-card {
+            max-width: 70rem;
+        }
     }
 
-    .p-student-submission__challenges {
 
-        .challenges__table {
-            padding: 1.25rem;
-            margin-inline: 25rem;
+    .o-student-submission__absolute-progress {
+    }
+
+    .o-student-submission__challenges {
+
+        .overview__card {
 
             o-rspd-challenge-overview {
                 margin: 0.75rem;
             }
         }
+    }
+
+    .o-student-submission__topic-progress {
     }
 }

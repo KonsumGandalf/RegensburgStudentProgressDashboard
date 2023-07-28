@@ -5,4 +5,5 @@ export * from './input/public-api';
 export * from './key-figure/public-api';
 export * from './loading-indicator/public-api';
 export * from './progress-bar/public-api';
+export * from './round-progress-bar/public-api';
 export * from './tab/public-api';

@@ -1,13 +1,24 @@
 <div class="p-rspd-submissions-overview-2">
-    <div class="p-student-submission__absolute-progress">
+    <div class="o-student-submission__absolute-progress">
         <h2 class="h2">Absolute Progress</h2>
         <m-rspd-absolute-digits [absoluteDigits]=$absoluteProgress()></m-rspd-absolute-digits>
     </div>
-    <div class="p-student-submission__challenges">
+    <div class="o-student-submission__challenges">
         <h2 class="h2">Challenges</h2>
-        <a-rspd-card class='challenges__table' >
-            <div *ngFor='let ele of $challengesOverview()'>
+        <a-rspd-card [padding]="standardPadding" class="overview__card">
+            <div *ngFor="let ele of $challengesOverview()">
                 <o-rspd-challenge-overview [overviewInput]="ele"></o-rspd-challenge-overview>
+            </div>
+        </a-rspd-card>
+    </div>
+    <div class="o-student-submission__topic-progress">
+        <h2 class="h2">Topics</h2>
+        <a-rspd-card [padding]="standardPadding" class="overview__card">
+            <div class=" row">
+                <div class="col" *ngFor="let ele of $topicProgress() | keyvalue">
+                    <a-rspd-round-progress-bar [headline]="ele.key"
+                                               [progressPercentage]="ele.value"></a-rspd-round-progress-bar>
+                </div>
             </div>
         </a-rspd-card>
     </div>

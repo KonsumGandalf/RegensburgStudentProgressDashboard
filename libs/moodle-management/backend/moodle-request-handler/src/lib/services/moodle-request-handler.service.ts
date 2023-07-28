@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppConfig } from '@rspd/shared/backend/utils';
 import { AxiosResponse } from 'axios';
@@ -18,8 +18,12 @@ export class MoodleRequestHandlerService implements OnModuleInit {
 	) {}
 
 	async onModuleInit() {
-		// this.apiUrl = this.getApiUrl();
-		// this.token = await this.login();
+		try {
+			this.apiUrl = this.getApiUrl();
+			this.token = await this.login();
+		} catch (e) {
+			Logger.error('Moodle Management Library can not log into the referenced web service');
+		}
 	}
 
 	getApiUrl() {
@@ -50,6 +54,10 @@ export class MoodleRequestHandlerService implements OnModuleInit {
 	}
 
 	async get<T>(wsFunction: string, functionParams: any): Promise<T> {
+		if(this.apiUrl == undefined || this.token == undefined) {
+			await this.onModuleInit();
+		}
+
 		return await firstValueFrom(
 			this._httpService
 				.get(this.apiUrl, {

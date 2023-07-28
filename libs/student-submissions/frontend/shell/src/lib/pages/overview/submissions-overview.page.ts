@@ -1,7 +1,14 @@
-import { NgForOf } from '@angular/common';
+import { KeyValuePipe, NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, Signal, ViewEncapsulation } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { IKeyFigure, RspdCardComponent, RspdKeyFigureComponent } from '@rspd/shared/frontend/ui/atoms';
+import { AssignmentTopic } from '@rspd/shared/backend/utils';
+import {
+    CardPadding,
+    IKeyFigure,
+    RspdCardComponent,
+    RspdKeyFigureComponent,
+    RspdRoundProgressBarComponent
+} from '@rspd/shared/frontend/ui/atoms';
 import {
     RspdAbsoluteDigitsComponent
 } from '@rspd/shared/frontend/ui/molecules';
@@ -26,7 +33,9 @@ import { flatMap, map, mergeMap, tap } from 'rxjs';
         RspdCardComponent,
         RspdChallengeOverviewComponent,
         NgForOf,
-        RspdKeyFigureComponent
+        RspdKeyFigureComponent,
+        KeyValuePipe,
+        RspdRoundProgressBarComponent
     ],
     templateUrl: './submission-overview.page.html',
     styleUrls: ['./submissions-overview.page.scss'],
@@ -37,13 +46,15 @@ import { flatMap, map, mergeMap, tap } from 'rxjs';
     }
 })
 export class RspdSubmissionsOverviewPage {
-
+    protected readonly standardPadding = CardPadding.SM;
     $absoluteProgress: Signal<IKeyFigure[]>;
     $challengesOverview: Signal<IChallengeSubmissionOverview[]>;
+    $topicProgress: Signal<Partial<Record<AssignmentTopic, number>>>;
 
     constructor(private readonly _submissionInsightFacade: SubmissionInsightFacade) {
         this.setAbsoluteProgress();
         this.setChallenges();
+        this.setTopics();
     }
 
     setAbsoluteProgress() {
@@ -77,9 +88,17 @@ export class RspdSubmissionsOverviewPage {
             this._submissionInsightFacade.getChallengeOverview()
                 .pipe(
                     map((overview: IChallengesOverview): IChallengeSubmissionOverview[] => overview.challenges)
-                ), { initialValue: [] });
+                ),
+            { initialValue: [] }
+        );
+    }
 
-        console.log(this.$challengesOverview())
+    setTopics() {
+        this.$topicProgress = toSignal(
+            this._submissionInsightFacade.getTopicProgress(),
+            { initialValue: { } }
+        )
+
     }
 
 }

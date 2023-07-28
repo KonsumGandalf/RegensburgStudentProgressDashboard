@@ -1,0 +1,17 @@
+<h5> {{ headline }} </h5>
+<div class="progress-container">
+    <round-progress
+            [current]="progressPercentage"
+            [max]="1"
+            [radius]="8*5"
+            [stroke]="2"
+            [responsive]="false"
+            [duration]="3000"
+            [animation]="'easeInOutQuart'"
+            [animationDelay]="0">
+    </round-progress>
+    <span class="progress-text">
+        {{progressPercentage * 100 | number:'1.0-0'}}%
+    </span>
+</div>
+<span> {{ caption }} </span>

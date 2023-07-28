@@ -85,31 +85,95 @@ git clone https://github.com/KonsumGandalf/rsdp
 npm install
 ```
 
+3. Install GitHub act
+```shell
+brew install act (Linux/macOS)
+choco install act-cli (windows)
+```
+
+4. Install Docker https://docs.docker.com/engine/install/
+5. Setup Moodle 
+    - Install Moodle distribution https://docs.moodle.org/402/de/Installation_von_Moodle
+    - Configure REST API https://moodle.org/plugins/webservice_restjson
+      - Setup webservice https://docs.moodle.org/29/en/Using_web_services
+          - config refer to the .env
+              ```dotenv   
+              MOODLE_USER=web-service
+              MOODLE_PASSWORD=Secret12345-
+              MOODLE_SERVICE=RSDP
+              ```
+          - for more detail go to the <a href="#Moodle Management">moodle management</a> section
+
+
+6. Create environments
+    - Create database .env file in path: `.docker/.envs/.postgres.env`
+
+        ```dotenv
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=postgres
+        POSTGRES_PORT=5432
+        POSTGRES_HOST=localhost/host.docker.internal
+        POSTGRES_DB=rsds
+        ```
+    - Create backend .env file in path: `apps/backend/.env.local`
+
+      ```dotenv
+      APP_PORT=3000
+      APP_URL=http://localhost
+      AUTH_SALT_ROUNDS=10
+      AUTH_SECRET_OR_KEY=Vj9=XAM$A$Nrw^VhZ+749UwjYQ+2k@zd$GKAvyc25ULL?PtFeJ@AFBYpPW!2f5+
+      APP_HOST=localhost
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=postgres
+      POSTGRES_PORT=5432
+      POSTGRES_HOST=localhost/host.docker.internal
+      POSTGRES_DB=rsds
+      MOODLE_USER=web-service
+      MOODLE_PASSWORD=Secret12345-
+      MOODLE_SERVICE=RSDP
+      MOODLE_HOST=http://localhost:80/
+      GITHUB_OAUTH_CLIENT_ID=29be134f416bc108b746
+      GITHUB_OAUTH_CLIENT_SECRET=30ec0bb4503954ced21c8f6491ab61c08899c506
+      EMAIL_HOST=smtp-mail.outlook.com
+      EMAIL_PORT=587
+      EMAIL_USER=regensburg-student-progress-dashboard@outlook.com
+      EMAIL_PASSWORD=testing-david-2004!
+      EMAIL_SERVICE=outlook
+      ```
+
+
 ## Start the platform
 
-1. start the database
+1. Start the database
 
 ```shell
+cd .\.docker
 docker compose up
 ```
 
-2. start the backend
+2. Start the backend
 
 ```shell
 nx serve backend
 ```
 
-3. start the frontend
+3. Start the frontend
 
 ```shell
 nx serve frontend
 ```
 
+4. Start storybook
+```shell
+nx storybook shared-frontend-storybook-host
+```
+
 # Apps
 
-| Name      | Path                         | Description                 |
-| --------- | ---------------------------- | --------------------------- |
-| `backend` | [apps/backend](apps/backend) | The backend of the platform |
+| Name       | Path                           | Description                  |
+|------------|--------------------------------|------------------------------|
+| `backend`  | [apps/backend](apps/backend)   | The backend of the platform  |
+| `frontend` | [apps/frontend](apps/frontend) | The frontend of the platform |
 
 # Domains
 
@@ -206,6 +270,8 @@ Project Link: [Regensburg Student Progress Dashboard](https://github.com/users/K
 
 -   Nx Workspace: https://nx.dev/getting-started/intro
 -   NestJS: https://nestjs.com/
+-   Angular: https://angular.io/
+-   Docker: https://www.docker.com/
 
 <!-- ACKNOWLEDGMENTS -->
 

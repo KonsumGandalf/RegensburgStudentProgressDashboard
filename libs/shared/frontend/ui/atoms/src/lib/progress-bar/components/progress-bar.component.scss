@@ -9,7 +9,8 @@
         height: fit-content;
 
         .progress-bar {
-            padding: 0.675rem;
+            padding: 0.4rem;
+            min-width: 3rem;
             border-radius: 0.675rem;
             width: var(--progress-percentage);
             background-color: colors.$themed-black;
